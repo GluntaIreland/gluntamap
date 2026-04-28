@@ -1,6 +1,6 @@
 /*
   Glúnta Research Church Map
-  Version: v0.5.1-clean-multi-affiliation-replacement
+  Version: v0.5.2-clean-github-online-replacement
 
   Changes in this version:
   - Uses "Denomination or affiliation" wording.
