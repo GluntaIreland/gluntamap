@@ -122,6 +122,233 @@
       font-size: 14px;
     }
 
+    /* RIGHT CHURCH DETAIL PANEL */
+    #church-detail-panel {
+      position: absolute;
+      top: 305px;
+      right: 12px;
+      z-index: 1000;
+      width: 285px;
+      max-height: calc(100vh - 330px);
+      overflow-y: auto;
+      background: white;
+      padding: 14px;
+      border-radius: 8px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+    }
+
+    #church-detail-panel h2 {
+      margin: 0 0 10px 0;
+      font-size: 19px;
+    }
+
+    #church-detail-panel h3 {
+      margin: 0 0 8px 0;
+      font-size: 17px;
+      line-height: 1.25;
+    }
+
+    .detail-empty {
+      color: #666;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .detail-row {
+      margin-bottom: 10px;
+      line-height: 1.35;
+      font-size: 14px;
+    }
+
+    .detail-label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .denomination-dot {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      margin-right: 6px;
+      vertical-align: middle;
+      border: 1px solid rgba(0, 0, 0, 0.25);
+    }
+
+    .popup-denomination {
+      margin-top: 8px;
+      font-style: italic;
+    }
+
+    .leaflet-control-zoom {
+      margin-bottom: 20px !important;
+      margin-right: 12px !important;
+    }
+
+    @media (max-width: 800px) {
+      #county-panel,
+      #control-panel,
+      #church-detail-panel {
+        position: static;
+        width: auto;
+        max-height: none;
+        margin: 10px;
+      }
+
+      #map {
+        height: 65vh;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="map"></div>
+
+  <!-- LEFT COUNTY PROFILE PANEL -->
+  <div id="county-panel">
+    <h2 id="county-title">County Profile</h2>
+
+    <div id="county-summary">
+      Click a county to view population and church data.
+    </div>
+
+    <h3>Churches in this county</h3>
+    <ol id="county-church-list"></ol>
+  </div>
+
+  <!-- RIGHT MAP CONTROL PANEL -->
+  <div id="control-panel">
+    <h2>Church Map</h2>
+
+    <label for="searchInput">Search</label>
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Search church, town, county..."
+    />
+
+    <label for="denominationFilter">Denomination</label>
+    <select id="denominationFilter">
+      <option value="all">All denominations</option>
+    </select>
+
+    <button id="resetMapButton" class="button">Reset map</button>
+    <button id="clearCountyButton" class="button">Clear county selection</button>
+
+    <div id="church-count">Loading churches...</div>
+  </div>
+
+  <!-- RIGHT CHURCH DETAIL PANEL -->
+  <div id="church-detail-panel">
+    <h2>Church Details</h2>
+    <div id="church-detail-content" class="detail-empty">
+      Click a church dot on the map to view its details here.
+    </div>
+  </div>
+
+  <!-- Leaflet JS -->
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+  </script>
+
+  <!-- PapaParse for CSV loading -->
+  <script
+    src="https://unpkg.com/papaparse@5.4.1/papaparse.min.js">
+  </script>
+
+  <!-- Your map script -->
+  <script src="script.js?v=0.4.6"></script>
+</body>
+</html>      background: white;
+      padding: 14px;
+      border-radius: 8px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+    }
+
+    #county-panel h2 {
+      margin: 0 0 10px 0;
+      font-size: 20px;
+    }
+
+    #county-summary {
+      background: #f2f2f2;
+      padding: 10px;
+      border-radius: 6px;
+      margin-bottom: 14px;
+      line-height: 1.4;
+    }
+
+    #county-church-list {
+      padding-left: 20px;
+      margin-top: 8px;
+    }
+
+    #county-church-list li {
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    /* RIGHT CONTROL PANEL */
+    #control-panel {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 1000;
+      width: 285px;
+      background: white;
+      padding: 14px;
+      border-radius: 8px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+    }
+
+    #control-panel h2 {
+      margin: 0 0 12px 0;
+      font-size: 20px;
+    }
+
+    #control-panel label {
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+      margin-bottom: 5px;
+      font-size: 14px;
+    }
+
+    #searchInput,
+    #denominationFilter {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 7px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .button {
+      width: 100%;
+      margin-top: 10px;
+      padding: 9px;
+      border: none;
+      border-radius: 4px;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    #resetMapButton {
+      background: #333;
+    }
+
+    #clearCountyButton {
+      background: #888;
+    }
+
+    #church-count {
+      margin-top: 12px;
+      font-size: 14px;
+    }
+
     /* NEW RIGHT CHURCH DETAIL PANEL */
     #church-detail-panel {
       position: absolute;
