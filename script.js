@@ -1,13 +1,13 @@
 /*
   Glúnta Research Church Map
-  Version: v0.5.2-clean-github-online-replacement
+  Version: v0.6.0-lea-layer-foundation
 
   Changes in this version:
-  - Uses "Denomination or affiliation" wording.
-  - Replaces the old single denomination dropdown with a checkbox list.
-  - Allows multiple denominations/affiliations to be selected together.
-  - No selected boxes means all churches are shown.
-  - County selection updates the county panel without hiding other map markers.
+  - Adds a boundary layer selector.
+  - Keeps County view working.
+  - Adds foundation for LEA view using lea-boundaries.geojson and lea-data.csv.
+  - Keeps multi-select "Denomination or affiliation" filter.
+  - Keeps church detail panel.
 */
 
 // --------------------------------------------------
@@ -33,10 +33,29 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
 
 let allChurches = [];
 let churchMarkers = [];
-let countyLayer = null;
-let selectedCountyName = null;
+
+let currentBoundaryType = "county";
+let currentBoundaryLayer = null;
+let selectedBoundaryName = null;
+let selectedBoundaryLayer = null;
+
 let countyData = {};
-let selectedCountyLayer = null;
+let leaData = {};
+
+const boundaryConfigs = {
+  county: {
+    labelSingular: "County",
+    labelPlural: "Counties",
+    geojsonFile: "counties.geojson",
+    dataType: "county"
+  },
+  lea: {
+    labelSingular: "LEA",
+    labelPlural: "LEAs",
+    geojsonFile: "lea-boundaries.geojson",
+    dataType: "lea"
+  }
+};
 
 // --------------------------------------------------
 // DENOMINATION / AFFILIATION COLOURS
@@ -111,7 +130,7 @@ function clean(value) {
   return String(value).trim();
 }
 
-function normaliseCountyName(value) {
+function normaliseName(value) {
   return clean(value)
     .replace(/^County\s+/i, "")
     .toUpperCase();
@@ -154,6 +173,16 @@ function getCounty(church) {
   return clean(
     church["County"] ||
     church["county"]
+  );
+}
+
+function getLea(church) {
+  return clean(
+    church["LEA"] ||
+    church["Lea"] ||
+    church["lea"] ||
+    church["Local Electoral Area"] ||
+    church["local electoral area"]
   );
 }
 
@@ -207,6 +236,46 @@ function getLongitude(church) {
   );
 }
 
+function getBoundaryFeatureName(feature, boundaryType) {
+  const props = feature.properties || {};
+
+  if (boundaryType === "lea") {
+    return clean(
+      props.LEA ||
+      props.Lea ||
+      props.lea ||
+      props.LEA_NAME ||
+      props.LEAName ||
+      props.NAME ||
+      props.Name ||
+      props.name ||
+      props.ENGLISH ||
+      props.English
+    );
+  }
+
+  return clean(
+    props.COUNTY ||
+    props.County ||
+    props.county ||
+    props.COUNTYNAME ||
+    props.CountyName ||
+    props.NAME ||
+    props.Name ||
+    props.name ||
+    props.ENGLISH ||
+    props.English
+  );
+}
+
+function getBoundaryNameForChurch(church, boundaryType) {
+  if (boundaryType === "lea") {
+    return getLea(church);
+  }
+
+  return getCounty(church);
+}
+
 function getDenominationColour(denomination) {
   const denom = clean(denomination);
 
@@ -236,23 +305,6 @@ function escapeHtml(value) {
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
-}
-
-function getCountyFeatureName(feature) {
-  const props = feature.properties || {};
-
-  return clean(
-    props.COUNTY ||
-    props.County ||
-    props.county ||
-    props.NAME ||
-    props.Name ||
-    props.name ||
-    props.ENGLISH ||
-    props.English ||
-    props.COUNTYNAME ||
-    props.CountyName
-  );
 }
 
 // --------------------------------------------------
@@ -332,6 +384,7 @@ function updateChurchDetailPanel(church) {
   const street = getStreetAddress(church);
   const city = getCity(church);
   const county = getCounty(church);
+  const lea = getLea(church);
   const eircode = getEircode(church);
   const denomination = getDenomination(church);
   const website = getWebsite(church);
@@ -352,13 +405,14 @@ function updateChurchDetailPanel(church) {
     `;
   }
 
-  if (street || city || county || eircode) {
+  if (street || city || county || lea || eircode) {
     html += `
       <div class="detail-row">
         <span class="detail-label">Address</span>
         ${street ? `${escapeHtml(street)}<br>` : ""}
         ${city ? `${escapeHtml(city)}<br>` : ""}
         ${county ? `${escapeHtml(county)}<br>` : ""}
+        ${lea ? `LEA: ${escapeHtml(lea)}<br>` : ""}
         ${eircode ? `${escapeHtml(eircode)}` : ""}
       </div>
     `;
@@ -466,6 +520,7 @@ function churchMatchesFilters(church) {
   const street = getStreetAddress(church).toLowerCase();
   const city = getCity(church).toLowerCase();
   const county = getCounty(church).toLowerCase();
+  const lea = getLea(church).toLowerCase();
   const denomination = getDenomination(church);
 
   const matchesSearch =
@@ -474,6 +529,7 @@ function churchMatchesFilters(church) {
     street.includes(searchTerm) ||
     city.includes(searchTerm) ||
     county.includes(searchTerm) ||
+    lea.includes(searchTerm) ||
     denomination.toLowerCase().includes(searchTerm);
 
   const matchesAffiliation =
@@ -500,13 +556,13 @@ function updateVisibleChurches() {
   document.getElementById("church-count").textContent =
     `${visibleCount} of ${allChurches.length} churches shown`;
 
-  if (selectedCountyName) {
-    updateCountyPanel(selectedCountyName);
+  if (selectedBoundaryName) {
+    updateProfilePanel(selectedBoundaryName);
   }
 }
 
 // --------------------------------------------------
-// COUNTY DATA
+// DATA LOADING
 // --------------------------------------------------
 
 function loadCountyData() {
@@ -516,7 +572,7 @@ function loadCountyData() {
     skipEmptyLines: true,
     complete: function (results) {
       results.data.forEach((row) => {
-        const countyName = normaliseCountyName(
+        const countyName = normaliseName(
           row.County ||
           row.county ||
           row.COUNTY
@@ -533,31 +589,72 @@ function loadCountyData() {
   });
 }
 
-// --------------------------------------------------
-// COUNTY PANEL
-// --------------------------------------------------
+function loadLeaData() {
+  Papa.parse("lea-data.csv", {
+    download: true,
+    header: true,
+    skipEmptyLines: true,
+    complete: function (results) {
+      results.data.forEach((row) => {
+        const leaName = normaliseName(
+          row.LEA ||
+          row.Lea ||
+          row.lea ||
+          row["Local Electoral Area"]
+        );
 
-function updateCountyPanel(countyName) {
-  const title = document.getElementById("county-title");
-  const summary = document.getElementById("county-summary");
-  const list = document.getElementById("county-church-list");
-
-  const normalisedCounty = normaliseCountyName(countyName);
-
-  const churchesInCounty = allChurches.filter((church) => {
-    return normaliseCountyName(getCounty(church)) === normalisedCounty;
+        if (leaName) {
+          leaData[leaName] = row;
+        }
+      });
+    },
+    error: function (error) {
+      console.error("Error loading lea-data.csv", error);
+    }
   });
+}
 
-  const data = countyData[normalisedCounty] || {};
+function getPopulationForBoundary(boundaryName) {
+  const normalised = normaliseName(boundaryName);
 
-  const populationValue =
+  let data = {};
+
+  if (currentBoundaryType === "lea") {
+    data = leaData[normalised] || {};
+  } else {
+    data = countyData[normalised] || {};
+  }
+
+  return (
     data.Population ||
     data.population ||
     data.POPULATION ||
-    "";
+    ""
+  );
+}
 
+// --------------------------------------------------
+// PROFILE PANEL
+// --------------------------------------------------
+
+function updateProfilePanel(boundaryName) {
+  const config = boundaryConfigs[currentBoundaryType];
+
+  const title = document.getElementById("profile-title");
+  const summary = document.getElementById("profile-summary");
+  const listHeading = document.getElementById("profile-list-heading");
+  const list = document.getElementById("profile-church-list");
+
+  const normalisedBoundary = normaliseName(boundaryName);
+
+  const churchesInBoundary = allChurches.filter((church) => {
+    const churchBoundaryName = getBoundaryNameForChurch(church, currentBoundaryType);
+    return normaliseName(churchBoundaryName) === normalisedBoundary;
+  });
+
+  const populationValue = getPopulationForBoundary(boundaryName);
   const populationNumber = Number(String(populationValue).replace(/,/g, ""));
-  const churchCount = churchesInCounty.length;
+  const churchCount = churchesInBoundary.length;
 
   let peoplePerChurch = "Not available";
 
@@ -566,7 +663,7 @@ function updateCountyPanel(countyName) {
       `1 church for every ${Math.round(populationNumber / churchCount).toLocaleString("en-IE")} people`;
   }
 
-  title.textContent = `County ${countyName.toUpperCase()}`;
+  title.textContent = `${config.labelSingular} ${boundaryName.toUpperCase()}`;
 
   summary.innerHTML = `
     <strong>Population:</strong> ${populationValue ? formatNumber(populationValue) : "Not available"}<br>
@@ -574,9 +671,14 @@ function updateCountyPanel(countyName) {
     <strong>People per church:</strong> ${peoplePerChurch}
   `;
 
+  listHeading.textContent =
+    currentBoundaryType === "lea"
+      ? "Churches in this LEA"
+      : "Churches in this county";
+
   list.innerHTML = "";
 
-  churchesInCounty
+  churchesInBoundary
     .sort((a, b) => getChurchName(a).localeCompare(getChurchName(b)))
     .forEach((church) => {
       const li = document.createElement("li");
@@ -606,27 +708,37 @@ function updateCountyPanel(countyName) {
     });
 }
 
-function clearCountyPanel() {
-  selectedCountyName = null;
+function clearProfilePanel() {
+  const config = boundaryConfigs[currentBoundaryType];
 
-  document.getElementById("county-title").textContent = "County Profile";
-  document.getElementById("county-summary").textContent =
-    "Click a county to view population and church data.";
-  document.getElementById("county-church-list").innerHTML = "";
+  selectedBoundaryName = null;
 
-  if (selectedCountyLayer) {
-    countyLayer.resetStyle(selectedCountyLayer);
-    selectedCountyLayer = null;
+  document.getElementById("profile-title").textContent =
+    `${config.labelSingular} Profile`;
+
+  document.getElementById("profile-summary").textContent =
+    `Click a ${config.labelSingular.toLowerCase()} to view population and church data.`;
+
+  document.getElementById("profile-list-heading").textContent =
+    currentBoundaryType === "lea"
+      ? "Churches in this LEA"
+      : "Churches in this county";
+
+  document.getElementById("profile-church-list").innerHTML = "";
+
+  if (selectedBoundaryLayer && currentBoundaryLayer) {
+    currentBoundaryLayer.resetStyle(selectedBoundaryLayer);
+    selectedBoundaryLayer = null;
   }
 
   updateVisibleChurches();
 }
 
 // --------------------------------------------------
-// COUNTY LAYER
+// BOUNDARY LAYERS
 // --------------------------------------------------
 
-function countyStyle() {
+function boundaryStyle() {
   return {
     color: "#222222",
     weight: 2,
@@ -636,7 +748,7 @@ function countyStyle() {
   };
 }
 
-function selectedCountyStyle() {
+function selectedBoundaryStyle() {
   return {
     color: "#111111",
     weight: 4,
@@ -646,32 +758,45 @@ function selectedCountyStyle() {
   };
 }
 
-function loadCountyBoundaries() {
-  fetch("counties.geojson")
+function loadBoundaryLayer(boundaryType) {
+  const config = boundaryConfigs[boundaryType];
+
+  if (currentBoundaryLayer) {
+    map.removeLayer(currentBoundaryLayer);
+    currentBoundaryLayer = null;
+  }
+
+  selectedBoundaryLayer = null;
+  selectedBoundaryName = null;
+  currentBoundaryType = boundaryType;
+
+  clearProfilePanel();
+
+  fetch(config.geojsonFile)
     .then((response) => response.json())
     .then((geojson) => {
-      countyLayer = L.geoJSON(geojson, {
-        style: countyStyle,
+      currentBoundaryLayer = L.geoJSON(geojson, {
+        style: boundaryStyle,
         onEachFeature: function (feature, layer) {
-          const countyName = getCountyFeatureName(feature);
+          const boundaryName = getBoundaryFeatureName(feature, boundaryType);
 
           layer.on("click", function () {
-            selectedCountyName = countyName;
+            selectedBoundaryName = boundaryName;
 
-            if (selectedCountyLayer) {
-              countyLayer.resetStyle(selectedCountyLayer);
+            if (selectedBoundaryLayer) {
+              currentBoundaryLayer.resetStyle(selectedBoundaryLayer);
             }
 
-            selectedCountyLayer = layer;
-            layer.setStyle(selectedCountyStyle());
+            selectedBoundaryLayer = layer;
+            layer.setStyle(selectedBoundaryStyle());
 
-            updateCountyPanel(countyName);
+            updateProfilePanel(boundaryName);
             updateVisibleChurches();
 
             if (layer.getBounds) {
               map.fitBounds(layer.getBounds(), {
                 padding: [40, 40],
-                maxZoom: 10
+                maxZoom: boundaryType === "lea" ? 11 : 10
               });
             }
           });
@@ -679,7 +804,7 @@ function loadCountyBoundaries() {
       }).addTo(map);
     })
     .catch((error) => {
-      console.error("Error loading counties.geojson", error);
+      console.error(`Error loading ${config.geojsonFile}`, error);
     });
 }
 
@@ -717,6 +842,10 @@ function loadChurches() {
 // BUTTONS AND INPUTS
 // --------------------------------------------------
 
+document.getElementById("boundaryLayerSelect").addEventListener("change", function () {
+  loadBoundaryLayer(this.value);
+});
+
 document.getElementById("searchInput").addEventListener("input", function () {
   updateVisibleChurches();
 });
@@ -725,7 +854,7 @@ document.getElementById("resetMapButton").addEventListener("click", function () 
   document.getElementById("searchInput").value = "";
 
   clearSelectedAffiliations();
-  clearCountyPanel();
+  clearProfilePanel();
 
   map.setView([53.4, -8.0], 7);
 
@@ -734,8 +863,8 @@ document.getElementById("resetMapButton").addEventListener("click", function () 
     "Click a church dot on the map to view its details here.";
 });
 
-document.getElementById("clearCountyButton").addEventListener("click", function () {
-  clearCountyPanel();
+document.getElementById("clearSelectionButton").addEventListener("click", function () {
+  clearProfilePanel();
 });
 
 // --------------------------------------------------
@@ -743,5 +872,6 @@ document.getElementById("clearCountyButton").addEventListener("click", function 
 // --------------------------------------------------
 
 loadCountyData();
-loadCountyBoundaries();
+loadLeaData();
 loadChurches();
+loadBoundaryLayer("county");
