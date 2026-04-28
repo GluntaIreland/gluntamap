@@ -5,7 +5,6 @@
   <title>Glúnta Church Map</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Leaflet CSS -->
   <link
     rel="stylesheet"
     href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -25,7 +24,6 @@
       width: 100%;
     }
 
-    /* LEFT COUNTY PANEL */
     #county-panel {
       position: absolute;
       top: 12px;
@@ -68,13 +66,12 @@
       line-height: 1.3;
     }
 
-    /* RIGHT PANEL STACK */
     #right-panel-stack {
       position: absolute;
       top: 12px;
       right: 12px;
       z-index: 1000;
-      width: 285px;
+      width: 300px;
       display: flex;
       flex-direction: column;
       gap: 18px;
@@ -91,7 +88,6 @@
       pointer-events: auto;
     }
 
-    /* RIGHT CONTROL PANEL */
     #control-panel h2 {
       margin: 0 0 12px 0;
       font-size: 20px;
@@ -115,7 +111,7 @@
     }
 
     #affiliationFilterBox {
-      max-height: 150px;
+      max-height: 160px;
       overflow-y: auto;
       border: 1px solid #ccc;
       border-radius: 4px;
@@ -182,9 +178,8 @@
       font-size: 14px;
     }
 
-    /* RIGHT CHURCH DETAIL PANEL */
     #church-detail-panel {
-      max-height: calc(100vh - 360px);
+      max-height: calc(100vh - 390px);
       overflow-y: auto;
     }
 
@@ -266,7 +261,6 @@
 <body>
   <div id="map"></div>
 
-  <!-- LEFT COUNTY PROFILE PANEL -->
   <div id="county-panel">
     <h2 id="county-title">County Profile</h2>
 
@@ -278,7 +272,6 @@
     <ol id="county-church-list"></ol>
   </div>
 
-  <!-- RIGHT PANEL STACK -->
   <div id="right-panel-stack">
     <div id="control-panel">
       <h2>Church Map</h2>
@@ -291,6 +284,7 @@
       />
 
       <label class="control-label">Denomination or affiliation</label>
+
       <div id="affiliationFilterBox">
         Loading affiliations...
       </div>
@@ -313,17 +307,8 @@
     </div>
   </div>
 
-  <!-- Leaflet JS -->
-  <script
-    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
-  </script>
-
-  <!-- PapaParse for CSV loading -->
-  <script
-    src="https://unpkg.com/papaparse@5.4.1/papaparse.min.js">
-  </script>
-
-  <!-- Your map script -->
-  <script src="script.js?v=0.5.1"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/papaparse@5.4.1/papaparse.min.js"></script>
+  <script src="script.js?v=0.5.2"></script>
 </body>
 </html>
