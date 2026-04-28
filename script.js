@@ -1,14 +1,22 @@
 /*
   Glúnta Research Church Map
-  Version: v0.6.0-lea-layer-foundation
+  Version: v0.6.2-lea-data-refresh-and-spatial-counts
 
   Changes in this version:
-  - Adds a boundary layer selector.
-  - Keeps County view working.
-  - Adds foundation for LEA view using lea-boundaries.geojson and lea-data.csv.
+  - Forces fresh loading of churches.csv, county-data.csv, lea-data.csv, counties.geojson, and lea-boundaries.geojson.
+  - Improves LEA name detection from GeoJSON properties.
+  - Counts churches inside clicked county/LEA polygons using spatial point-in-polygon logic.
+  - Removes dependence on an LEA column in churches.csv for LEA church counts.
+  - Keeps County and LEA boundary switching.
   - Keeps multi-select "Denomination or affiliation" filter.
   - Keeps church detail panel.
 */
+
+// --------------------------------------------------
+// CACHE VERSION
+// --------------------------------------------------
+
+const CACHE_VERSION = "0.6.2";
 
 // --------------------------------------------------
 // MAP SETUP
@@ -38,6 +46,7 @@ let currentBoundaryType = "county";
 let currentBoundaryLayer = null;
 let selectedBoundaryName = null;
 let selectedBoundaryLayer = null;
+let selectedBoundaryFeature = null;
 
 let countyData = {};
 let leaData = {};
@@ -122,8 +131,12 @@ const fallbackColours = [
 let generatedDenominationColours = {};
 
 // --------------------------------------------------
-// HELPER FUNCTIONS
+// BASIC HELPER FUNCTIONS
 // --------------------------------------------------
+
+function withCacheBust(filePath) {
+  return `${filePath}?v=${CACHE_VERSION}`;
+}
 
 function clean(value) {
   if (value === undefined || value === null) return "";
@@ -133,6 +146,7 @@ function clean(value) {
 function normaliseName(value) {
   return clean(value)
     .replace(/^County\s+/i, "")
+    .replace(/\s+/g, " ")
     .toUpperCase();
 }
 
@@ -236,44 +250,13 @@ function getLongitude(church) {
   );
 }
 
-function getBoundaryFeatureName(feature, boundaryType) {
-  const props = feature.properties || {};
-
-  if (boundaryType === "lea") {
-    return clean(
-      props.LEA ||
-      props.Lea ||
-      props.lea ||
-      props.LEA_NAME ||
-      props.LEAName ||
-      props.NAME ||
-      props.Name ||
-      props.name ||
-      props.ENGLISH ||
-      props.English
-    );
-  }
-
-  return clean(
-    props.COUNTY ||
-    props.County ||
-    props.county ||
-    props.COUNTYNAME ||
-    props.CountyName ||
-    props.NAME ||
-    props.Name ||
-    props.name ||
-    props.ENGLISH ||
-    props.English
-  );
-}
-
-function getBoundaryNameForChurch(church, boundaryType) {
-  if (boundaryType === "lea") {
-    return getLea(church);
-  }
-
-  return getCounty(church);
+function escapeHtml(value) {
+  return clean(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
 }
 
 function getDenominationColour(denomination) {
@@ -298,13 +281,202 @@ function createDotHtml(colour) {
   return `<span class="denomination-dot" style="background:${colour};"></span>`;
 }
 
-function escapeHtml(value) {
-  return clean(value)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
+// --------------------------------------------------
+// BOUNDARY NAME DETECTION
+// --------------------------------------------------
+
+function getFirstUsefulProperty(props, boundaryType) {
+  const keys = Object.keys(props || {});
+
+  const ignoredWords = [
+    "OBJECTID",
+    "FID",
+    "ID",
+    "GUID",
+    "GEOGID",
+    "CENTROID",
+    "AREA",
+    "SHAPE",
+    "LENGTH",
+    "PERIMETER"
+  ];
+
+  function isUsefulValue(value) {
+    const text = clean(value);
+    if (!text) return false;
+    if (/^\d+$/.test(text)) return false;
+    if (/^\d+\.\d+$/.test(text)) return false;
+    return true;
+  }
+
+  function keyIsIgnored(key) {
+    const upperKey = key.toUpperCase();
+    return ignoredWords.some((word) => upperKey.includes(word));
+  }
+
+  if (boundaryType === "lea") {
+    for (const key of keys) {
+      const upperKey = key.toUpperCase();
+      const value = props[key];
+
+      if (
+        upperKey.includes("LEA") &&
+        isUsefulValue(value) &&
+        !keyIsIgnored(key)
+      ) {
+        return clean(value);
+      }
+    }
+  }
+
+  for (const key of keys) {
+    const upperKey = key.toUpperCase();
+    const value = props[key];
+
+    if (
+      (upperKey.includes("NAME") ||
+        upperKey.includes("ENGLISH") ||
+        upperKey.includes("AREA")) &&
+      isUsefulValue(value) &&
+      !keyIsIgnored(key)
+    ) {
+      return clean(value);
+    }
+  }
+
+  for (const key of keys) {
+    const value = props[key];
+
+    if (isUsefulValue(value) && !keyIsIgnored(key)) {
+      return clean(value);
+    }
+  }
+
+  return "";
+}
+
+function getBoundaryFeatureName(feature, boundaryType) {
+  const props = feature.properties || {};
+
+  if (boundaryType === "lea") {
+    return clean(
+      props.LEA ||
+      props.Lea ||
+      props.lea ||
+      props.LEA_NAME ||
+      props.LEAName ||
+      props.LEA_ENGLISH ||
+      props.LEA_NAME_EN ||
+      props.LEA_EN ||
+      props.CSO_LEA ||
+      props.CSO_LEA_NAME ||
+      props.ENGLISH_NAME ||
+      props.English_Name ||
+      props.NAME_EN ||
+      props.NAME ||
+      props.Name ||
+      props.name ||
+      props.ENGLISH ||
+      props.English ||
+      props.AREA_NAME ||
+      props.AreaName ||
+      props["Local Electoral Area"] ||
+      getFirstUsefulProperty(props, boundaryType)
+    );
+  }
+
+  return clean(
+    props.COUNTY ||
+    props.County ||
+    props.county ||
+    props.COUNTYNAME ||
+    props.CountyName ||
+    props.NAME ||
+    props.Name ||
+    props.name ||
+    props.ENGLISH ||
+    props.English ||
+    getFirstUsefulProperty(props, boundaryType)
+  );
+}
+
+// --------------------------------------------------
+// POINT-IN-POLYGON LOGIC
+// --------------------------------------------------
+
+function pointInRing(point, ring) {
+  const x = point[0];
+  const y = point[1];
+
+  let inside = false;
+
+  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+    const xi = ring[i][0];
+    const yi = ring[i][1];
+    const xj = ring[j][0];
+    const yj = ring[j][1];
+
+    const intersects =
+      (yi > y) !== (yj > y) &&
+      x < ((xj - xi) * (y - yi)) / (yj - yi) + xi;
+
+    if (intersects) inside = !inside;
+  }
+
+  return inside;
+}
+
+function pointInPolygon(point, polygonCoordinates) {
+  if (!polygonCoordinates || polygonCoordinates.length === 0) {
+    return false;
+  }
+
+  const outerRing = polygonCoordinates[0];
+
+  if (!pointInRing(point, outerRing)) {
+    return false;
+  }
+
+  for (let i = 1; i < polygonCoordinates.length; i++) {
+    const hole = polygonCoordinates[i];
+
+    if (pointInRing(point, hole)) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+function pointInFeature(point, feature) {
+  if (!feature || !feature.geometry) {
+    return false;
+  }
+
+  const geometry = feature.geometry;
+
+  if (geometry.type === "Polygon") {
+    return pointInPolygon(point, geometry.coordinates);
+  }
+
+  if (geometry.type === "MultiPolygon") {
+    return geometry.coordinates.some((polygonCoordinates) => {
+      return pointInPolygon(point, polygonCoordinates);
+    });
+  }
+
+  return false;
+}
+
+function churchIsInsideBoundary(church, feature) {
+  const lat = getLatitude(church);
+  const lng = getLongitude(church);
+
+  if (Number.isNaN(lat) || Number.isNaN(lng)) {
+    return false;
+  }
+
+  return pointInFeature([lng, lat], feature);
 }
 
 // --------------------------------------------------
@@ -556,8 +728,8 @@ function updateVisibleChurches() {
   document.getElementById("church-count").textContent =
     `${visibleCount} of ${allChurches.length} churches shown`;
 
-  if (selectedBoundaryName) {
-    updateProfilePanel(selectedBoundaryName);
+  if (selectedBoundaryFeature && selectedBoundaryName !== null) {
+    updateProfilePanel(selectedBoundaryName, selectedBoundaryFeature);
   }
 }
 
@@ -566,11 +738,13 @@ function updateVisibleChurches() {
 // --------------------------------------------------
 
 function loadCountyData() {
-  Papa.parse("county-data.csv", {
+  Papa.parse(withCacheBust("county-data.csv"), {
     download: true,
     header: true,
     skipEmptyLines: true,
     complete: function (results) {
+      countyData = {};
+
       results.data.forEach((row) => {
         const countyName = normaliseName(
           row.County ||
@@ -582,6 +756,8 @@ function loadCountyData() {
           countyData[countyName] = row;
         }
       });
+
+      console.log("County data rows loaded:", Object.keys(countyData).length);
     },
     error: function (error) {
       console.error("Error loading county-data.csv", error);
@@ -590,23 +766,30 @@ function loadCountyData() {
 }
 
 function loadLeaData() {
-  Papa.parse("lea-data.csv", {
+  Papa.parse(withCacheBust("lea-data.csv"), {
     download: true,
     header: true,
     skipEmptyLines: true,
     complete: function (results) {
+      leaData = {};
+
       results.data.forEach((row) => {
         const leaName = normaliseName(
           row.LEA ||
           row.Lea ||
           row.lea ||
-          row["Local Electoral Area"]
+          row["Local Electoral Area"] ||
+          row["Local Electoral Area Name"] ||
+          row.Name ||
+          row.NAME
         );
 
         if (leaName) {
           leaData[leaName] = row;
         }
       });
+
+      console.log("LEA data rows loaded:", Object.keys(leaData).length);
     },
     error: function (error) {
       console.error("Error loading lea-data.csv", error);
@@ -629,6 +812,10 @@ function getPopulationForBoundary(boundaryName) {
     data.Population ||
     data.population ||
     data.POPULATION ||
+    data.Total ||
+    data.total ||
+    data["Total Population"] ||
+    data["Usually Resident Population"] ||
     ""
   );
 }
@@ -637,7 +824,7 @@ function getPopulationForBoundary(boundaryName) {
 // PROFILE PANEL
 // --------------------------------------------------
 
-function updateProfilePanel(boundaryName) {
+function updateProfilePanel(boundaryName, boundaryFeature) {
   const config = boundaryConfigs[currentBoundaryType];
 
   const title = document.getElementById("profile-title");
@@ -645,11 +832,8 @@ function updateProfilePanel(boundaryName) {
   const listHeading = document.getElementById("profile-list-heading");
   const list = document.getElementById("profile-church-list");
 
-  const normalisedBoundary = normaliseName(boundaryName);
-
   const churchesInBoundary = allChurches.filter((church) => {
-    const churchBoundaryName = getBoundaryNameForChurch(church, currentBoundaryType);
-    return normaliseName(churchBoundaryName) === normalisedBoundary;
+    return churchIsInsideBoundary(church, boundaryFeature);
   });
 
   const populationValue = getPopulationForBoundary(boundaryName);
@@ -663,7 +847,11 @@ function updateProfilePanel(boundaryName) {
       `1 church for every ${Math.round(populationNumber / churchCount).toLocaleString("en-IE")} people`;
   }
 
-  title.textContent = `${config.labelSingular} ${boundaryName.toUpperCase()}`;
+  const displayName = boundaryName
+    ? `${config.labelSingular} ${boundaryName.toUpperCase()}`
+    : `${config.labelSingular}`;
+
+  title.textContent = displayName;
 
   summary.innerHTML = `
     <strong>Population:</strong> ${populationValue ? formatNumber(populationValue) : "Not available"}<br>
@@ -706,12 +894,18 @@ function updateProfilePanel(boundaryName) {
 
       list.appendChild(li);
     });
+
+  console.log("Clicked boundary:", boundaryName);
+  console.log("Boundary type:", currentBoundaryType);
+  console.log("Churches inside boundary:", churchCount);
+  console.log("Population found:", populationValue || "Not available");
 }
 
 function clearProfilePanel() {
   const config = boundaryConfigs[currentBoundaryType];
 
   selectedBoundaryName = null;
+  selectedBoundaryFeature = null;
 
   document.getElementById("profile-title").textContent =
     `${config.labelSingular} Profile`;
@@ -768,13 +962,28 @@ function loadBoundaryLayer(boundaryType) {
 
   selectedBoundaryLayer = null;
   selectedBoundaryName = null;
+  selectedBoundaryFeature = null;
   currentBoundaryType = boundaryType;
 
   clearProfilePanel();
 
-  fetch(config.geojsonFile)
-    .then((response) => response.json())
+  fetch(withCacheBust(config.geojsonFile))
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`Could not load ${config.geojsonFile}: ${response.status}`);
+      }
+
+      return response.json();
+    })
     .then((geojson) => {
+      console.log("Loaded boundary file:", config.geojsonFile);
+      console.log("Boundary type:", boundaryType);
+      console.log("Number of features:", geojson.features ? geojson.features.length : "No features array");
+      console.log(
+        "First feature properties:",
+        geojson.features && geojson.features[0] ? geojson.features[0].properties : "No first feature"
+      );
+
       currentBoundaryLayer = L.geoJSON(geojson, {
         style: boundaryStyle,
         onEachFeature: function (feature, layer) {
@@ -782,6 +991,7 @@ function loadBoundaryLayer(boundaryType) {
 
           layer.on("click", function () {
             selectedBoundaryName = boundaryName;
+            selectedBoundaryFeature = feature;
 
             if (selectedBoundaryLayer) {
               currentBoundaryLayer.resetStyle(selectedBoundaryLayer);
@@ -790,8 +1000,7 @@ function loadBoundaryLayer(boundaryType) {
             selectedBoundaryLayer = layer;
             layer.setStyle(selectedBoundaryStyle());
 
-            updateProfilePanel(boundaryName);
-            updateVisibleChurches();
+            updateProfilePanel(boundaryName, feature);
 
             if (layer.getBounds) {
               map.fitBounds(layer.getBounds(), {
@@ -813,7 +1022,7 @@ function loadBoundaryLayer(boundaryType) {
 // --------------------------------------------------
 
 function loadChurches() {
-  Papa.parse("churches.csv", {
+  Papa.parse(withCacheBust("churches.csv"), {
     download: true,
     header: true,
     skipEmptyLines: true,
@@ -829,6 +1038,9 @@ function loadChurches() {
 
       populateAffiliationFilter();
       updateVisibleChurches();
+
+      console.log("Church rows loaded:", results.data.length);
+      console.log("Churches with valid coordinates:", allChurches.length);
     },
     error: function (error) {
       console.error("Error loading churches.csv", error);
