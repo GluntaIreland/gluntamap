@@ -1,22 +1,21 @@
 /*
   Glúnta Research Church Map
-  Version: v0.6.2-lea-data-refresh-and-spatial-counts
+  Version: v0.6.3-lea-name-and-spatial-count-fix
 
   Changes in this version:
-  - Forces fresh loading of churches.csv, county-data.csv, lea-data.csv, counties.geojson, and lea-boundaries.geojson.
-  - Improves LEA name detection from GeoJSON properties.
-  - Counts churches inside clicked county/LEA polygons using spatial point-in-polygon logic.
-  - Removes dependence on an LEA column in churches.csv for LEA church counts.
+  - Improves LEA name detection from many possible GeoJSON property fields.
+  - Counts churches inside the clicked Leaflet boundary layer rather than relying on an LEA column.
   - Keeps County and LEA boundary switching.
   - Keeps multi-select "Denomination or affiliation" filter.
   - Keeps church detail panel.
+  - Forces fresh loading of CSV and GeoJSON files.
 */
 
 // --------------------------------------------------
 // CACHE VERSION
 // --------------------------------------------------
 
-const CACHE_VERSION = "0.6.2";
+const CACHE_VERSION = "0.6.3";
 
 // --------------------------------------------------
 // MAP SETUP
@@ -45,8 +44,7 @@ let churchMarkers = [];
 let currentBoundaryType = "county";
 let currentBoundaryLayer = null;
 let selectedBoundaryName = null;
-let selectedBoundaryLayer = null;
-let selectedBoundaryFeature = null;
+let selectedBoundaryLeafletLayer = null;
 
 let countyData = {};
 let leaData = {};
@@ -55,14 +53,12 @@ const boundaryConfigs = {
   county: {
     labelSingular: "County",
     labelPlural: "Counties",
-    geojsonFile: "counties.geojson",
-    dataType: "county"
+    geojsonFile: "counties.geojson"
   },
   lea: {
     labelSingular: "LEA",
     labelPlural: "LEAs",
-    geojsonFile: "lea-boundaries.geojson",
-    dataType: "lea"
+    geojsonFile: "lea-boundaries.geojson"
   }
 };
 
@@ -131,7 +127,7 @@ const fallbackColours = [
 let generatedDenominationColours = {};
 
 // --------------------------------------------------
-// BASIC HELPER FUNCTIONS
+// BASIC HELPERS
 // --------------------------------------------------
 
 function withCacheBust(filePath) {
@@ -155,6 +151,19 @@ function formatNumber(value) {
   if (Number.isNaN(number)) return value;
   return number.toLocaleString("en-IE");
 }
+
+function escapeHtml(value) {
+  return clean(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+// --------------------------------------------------
+// CHURCH FIELD HELPERS
+// --------------------------------------------------
 
 function getChurchName(church) {
   return clean(
@@ -250,14 +259,9 @@ function getLongitude(church) {
   );
 }
 
-function escapeHtml(value) {
-  return clean(value)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
-}
+// --------------------------------------------------
+// DENOMINATION / AFFILIATION HELPERS
+// --------------------------------------------------
 
 function getDenominationColour(denomination) {
   const denom = clean(denomination);
@@ -285,71 +289,34 @@ function createDotHtml(colour) {
 // BOUNDARY NAME DETECTION
 // --------------------------------------------------
 
-function getFirstUsefulProperty(props, boundaryType) {
-  const keys = Object.keys(props || {});
-
-  const ignoredWords = [
+function getFirstUsefulProperty(props) {
+  const ignoredKeyParts = [
     "OBJECTID",
     "FID",
-    "ID",
     "GUID",
+    "GLOBALID",
     "GEOGID",
     "CENTROID",
-    "AREA",
     "SHAPE",
+    "AREA",
     "LENGTH",
     "PERIMETER"
   ];
 
-  function isUsefulValue(value) {
-    const text = clean(value);
-    if (!text) return false;
-    if (/^\d+$/.test(text)) return false;
-    if (/^\d+\.\d+$/.test(text)) return false;
-    return true;
-  }
-
-  function keyIsIgnored(key) {
-    const upperKey = key.toUpperCase();
-    return ignoredWords.some((word) => upperKey.includes(word));
-  }
-
-  if (boundaryType === "lea") {
-    for (const key of keys) {
-      const upperKey = key.toUpperCase();
-      const value = props[key];
-
-      if (
-        upperKey.includes("LEA") &&
-        isUsefulValue(value) &&
-        !keyIsIgnored(key)
-      ) {
-        return clean(value);
-      }
-    }
-  }
+  const keys = Object.keys(props || {});
 
   for (const key of keys) {
     const upperKey = key.toUpperCase();
-    const value = props[key];
+    const value = clean(props[key]);
 
-    if (
-      (upperKey.includes("NAME") ||
-        upperKey.includes("ENGLISH") ||
-        upperKey.includes("AREA")) &&
-      isUsefulValue(value) &&
-      !keyIsIgnored(key)
-    ) {
-      return clean(value);
-    }
-  }
+    if (!value) continue;
+    if (/^\d+$/.test(value)) continue;
+    if (/^\d+\.\d+$/.test(value)) continue;
 
-  for (const key of keys) {
-    const value = props[key];
+    const ignored = ignoredKeyParts.some((part) => upperKey.includes(part));
+    if (ignored) continue;
 
-    if (isUsefulValue(value) && !keyIsIgnored(key)) {
-      return clean(value);
-    }
+    return value;
   }
 
   return "";
@@ -359,62 +326,80 @@ function getBoundaryFeatureName(feature, boundaryType) {
   const props = feature.properties || {};
 
   if (boundaryType === "lea") {
-    return clean(
+    const possibleLeaName = clean(
       props.LEA ||
       props.Lea ||
       props.lea ||
       props.LEA_NAME ||
       props.LEAName ||
-      props.LEA_ENGLISH ||
       props.LEA_NAME_EN ||
+      props.LEA_ENGLISH ||
       props.LEA_EN ||
       props.CSO_LEA ||
       props.CSO_LEA_NAME ||
+      props.CSO_LEA_2022 ||
+      props.LEA2022 ||
+      props.LEA_2022 ||
+      props["LEA 2022"] ||
+      props["LEA Name"] ||
+      props["LEA_NAME"] ||
+      props["Local Electoral Area"] ||
+      props["Local Electoral Area Name"] ||
+      props.ENGLISH ||
+      props.English ||
       props.ENGLISH_NAME ||
       props.English_Name ||
-      props.NAME_EN ||
       props.NAME ||
       props.Name ||
       props.name ||
-      props.ENGLISH ||
-      props.English ||
       props.AREA_NAME ||
       props.AreaName ||
-      props["Local Electoral Area"] ||
-      getFirstUsefulProperty(props, boundaryType)
+      props.AREANAME
     );
+
+    if (possibleLeaName) {
+      return possibleLeaName;
+    }
+
+    return getFirstUsefulProperty(props);
   }
 
-  return clean(
+  const possibleCountyName = clean(
     props.COUNTY ||
     props.County ||
     props.county ||
     props.COUNTYNAME ||
     props.CountyName ||
-    props.NAME ||
-    props.Name ||
-    props.name ||
+    props.COUNTY_NAME ||
     props.ENGLISH ||
     props.English ||
-    getFirstUsefulProperty(props, boundaryType)
+    props.NAME ||
+    props.Name ||
+    props.name
   );
+
+  if (possibleCountyName) {
+    return possibleCountyName;
+  }
+
+  return getFirstUsefulProperty(props);
 }
 
 // --------------------------------------------------
-// POINT-IN-POLYGON LOGIC
+// POINT IN POLYGON USING LEAFLET LATLNGS
 // --------------------------------------------------
 
-function pointInRing(point, ring) {
-  const x = point[0];
-  const y = point[1];
+function pointInLatLngRing(point, ring) {
+  const x = point.lng;
+  const y = point.lat;
 
   let inside = false;
 
   for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
-    const xi = ring[i][0];
-    const yi = ring[i][1];
-    const xj = ring[j][0];
-    const yj = ring[j][1];
+    const xi = ring[i].lng;
+    const yi = ring[i].lat;
+    const xj = ring[j].lng;
+    const yj = ring[j].lat;
 
     const intersects =
       (yi > y) !== (yj > y) &&
@@ -426,21 +411,37 @@ function pointInRing(point, ring) {
   return inside;
 }
 
-function pointInPolygon(point, polygonCoordinates) {
-  if (!polygonCoordinates || polygonCoordinates.length === 0) {
+function isRing(latlngs) {
+  return (
+    Array.isArray(latlngs) &&
+    latlngs.length > 0 &&
+    latlngs[0] &&
+    typeof latlngs[0].lat === "number" &&
+    typeof latlngs[0].lng === "number"
+  );
+}
+
+function isPolygon(latlngs) {
+  return (
+    Array.isArray(latlngs) &&
+    latlngs.length > 0 &&
+    isRing(latlngs[0])
+  );
+}
+
+function pointInLatLngPolygon(point, polygonLatLngs) {
+  if (!isPolygon(polygonLatLngs)) return false;
+
+  const outerRing = polygonLatLngs[0];
+
+  if (!pointInLatLngRing(point, outerRing)) {
     return false;
   }
 
-  const outerRing = polygonCoordinates[0];
+  for (let i = 1; i < polygonLatLngs.length; i++) {
+    const hole = polygonLatLngs[i];
 
-  if (!pointInRing(point, outerRing)) {
-    return false;
-  }
-
-  for (let i = 1; i < polygonCoordinates.length; i++) {
-    const hole = polygonCoordinates[i];
-
-    if (pointInRing(point, hole)) {
+    if (pointInLatLngRing(point, hole)) {
       return false;
     }
   }
@@ -448,27 +449,25 @@ function pointInPolygon(point, polygonCoordinates) {
   return true;
 }
 
-function pointInFeature(point, feature) {
-  if (!feature || !feature.geometry) {
-    return false;
+function pointInLatLngStructure(point, latlngs) {
+  if (isRing(latlngs)) {
+    return pointInLatLngRing(point, latlngs);
   }
 
-  const geometry = feature.geometry;
-
-  if (geometry.type === "Polygon") {
-    return pointInPolygon(point, geometry.coordinates);
+  if (isPolygon(latlngs)) {
+    return pointInLatLngPolygon(point, latlngs);
   }
 
-  if (geometry.type === "MultiPolygon") {
-    return geometry.coordinates.some((polygonCoordinates) => {
-      return pointInPolygon(point, polygonCoordinates);
-    });
+  if (Array.isArray(latlngs)) {
+    return latlngs.some((part) => pointInLatLngStructure(point, part));
   }
 
   return false;
 }
 
-function churchIsInsideBoundary(church, feature) {
+function churchIsInsideBoundaryLayer(church, leafletLayer) {
+  if (!leafletLayer || !leafletLayer.getLatLngs) return false;
+
   const lat = getLatitude(church);
   const lng = getLongitude(church);
 
@@ -476,7 +475,13 @@ function churchIsInsideBoundary(church, feature) {
     return false;
   }
 
-  return pointInFeature([lng, lat], feature);
+  const point = L.latLng(lat, lng);
+
+  if (leafletLayer.getBounds && !leafletLayer.getBounds().contains(point)) {
+    return false;
+  }
+
+  return pointInLatLngStructure(point, leafletLayer.getLatLngs());
 }
 
 // --------------------------------------------------
@@ -728,8 +733,8 @@ function updateVisibleChurches() {
   document.getElementById("church-count").textContent =
     `${visibleCount} of ${allChurches.length} churches shown`;
 
-  if (selectedBoundaryFeature && selectedBoundaryName !== null) {
-    updateProfilePanel(selectedBoundaryName, selectedBoundaryFeature);
+  if (selectedBoundaryLeafletLayer && selectedBoundaryName !== null) {
+    updateProfilePanel(selectedBoundaryName, selectedBoundaryLeafletLayer);
   }
 }
 
@@ -749,7 +754,9 @@ function loadCountyData() {
         const countyName = normaliseName(
           row.County ||
           row.county ||
-          row.COUNTY
+          row.COUNTY ||
+          row.Name ||
+          row.NAME
         );
 
         if (countyName) {
@@ -778,6 +785,8 @@ function loadLeaData() {
           row.LEA ||
           row.Lea ||
           row.lea ||
+          row["LEA Name"] ||
+          row["LEA_NAME"] ||
           row["Local Electoral Area"] ||
           row["Local Electoral Area Name"] ||
           row.Name ||
@@ -824,7 +833,7 @@ function getPopulationForBoundary(boundaryName) {
 // PROFILE PANEL
 // --------------------------------------------------
 
-function updateProfilePanel(boundaryName, boundaryFeature) {
+function updateProfilePanel(boundaryName, boundaryLeafletLayer) {
   const config = boundaryConfigs[currentBoundaryType];
 
   const title = document.getElementById("profile-title");
@@ -833,7 +842,7 @@ function updateProfilePanel(boundaryName, boundaryFeature) {
   const list = document.getElementById("profile-church-list");
 
   const churchesInBoundary = allChurches.filter((church) => {
-    return churchIsInsideBoundary(church, boundaryFeature);
+    return churchIsInsideBoundaryLayer(church, boundaryLeafletLayer);
   });
 
   const populationValue = getPopulationForBoundary(boundaryName);
@@ -895,7 +904,7 @@ function updateProfilePanel(boundaryName, boundaryFeature) {
       list.appendChild(li);
     });
 
-  console.log("Clicked boundary:", boundaryName);
+  console.log("Clicked boundary:", boundaryName || "(no name found)");
   console.log("Boundary type:", currentBoundaryType);
   console.log("Churches inside boundary:", churchCount);
   console.log("Population found:", populationValue || "Not available");
@@ -905,7 +914,7 @@ function clearProfilePanel() {
   const config = boundaryConfigs[currentBoundaryType];
 
   selectedBoundaryName = null;
-  selectedBoundaryFeature = null;
+  selectedBoundaryLeafletLayer = null;
 
   document.getElementById("profile-title").textContent =
     `${config.labelSingular} Profile`;
@@ -920,9 +929,8 @@ function clearProfilePanel() {
 
   document.getElementById("profile-church-list").innerHTML = "";
 
-  if (selectedBoundaryLayer && currentBoundaryLayer) {
-    currentBoundaryLayer.resetStyle(selectedBoundaryLayer);
-    selectedBoundaryLayer = null;
+  if (selectedBoundaryLeafletLayer && currentBoundaryLayer) {
+    currentBoundaryLayer.resetStyle(selectedBoundaryLeafletLayer);
   }
 
   updateVisibleChurches();
@@ -960,9 +968,8 @@ function loadBoundaryLayer(boundaryType) {
     currentBoundaryLayer = null;
   }
 
-  selectedBoundaryLayer = null;
   selectedBoundaryName = null;
-  selectedBoundaryFeature = null;
+  selectedBoundaryLeafletLayer = null;
   currentBoundaryType = boundaryType;
 
   clearProfilePanel();
@@ -990,17 +997,16 @@ function loadBoundaryLayer(boundaryType) {
           const boundaryName = getBoundaryFeatureName(feature, boundaryType);
 
           layer.on("click", function () {
-            selectedBoundaryName = boundaryName;
-            selectedBoundaryFeature = feature;
-
-            if (selectedBoundaryLayer) {
-              currentBoundaryLayer.resetStyle(selectedBoundaryLayer);
+            if (selectedBoundaryLeafletLayer && currentBoundaryLayer) {
+              currentBoundaryLayer.resetStyle(selectedBoundaryLeafletLayer);
             }
 
-            selectedBoundaryLayer = layer;
+            selectedBoundaryName = boundaryName;
+            selectedBoundaryLeafletLayer = layer;
+
             layer.setStyle(selectedBoundaryStyle());
 
-            updateProfilePanel(boundaryName, feature);
+            updateProfilePanel(boundaryName, layer);
 
             if (layer.getBounds) {
               map.fitBounds(layer.getBounds(), {
