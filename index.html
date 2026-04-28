@@ -24,7 +24,7 @@
       width: 100%;
     }
 
-    #county-panel {
+    #profile-panel {
       position: absolute;
       top: 12px;
       left: 12px;
@@ -38,17 +38,17 @@
       box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
     }
 
-    #county-panel h2 {
+    #profile-panel h2 {
       margin: 0 0 10px 0;
       font-size: 20px;
     }
 
-    #county-panel h3 {
+    #profile-panel h3 {
       margin-top: 14px;
       font-size: 16px;
     }
 
-    #county-summary {
+    #profile-summary {
       background: #f2f2f2;
       padding: 10px;
       border-radius: 6px;
@@ -56,12 +56,12 @@
       line-height: 1.4;
     }
 
-    #county-church-list {
+    #profile-church-list {
       padding-left: 20px;
       margin-top: 8px;
     }
 
-    #county-church-list li {
+    #profile-church-list li {
       margin-bottom: 8px;
       line-height: 1.3;
     }
@@ -101,7 +101,8 @@
       font-size: 14px;
     }
 
-    #searchInput {
+    #searchInput,
+    #boundaryLayerSelect {
       width: 100%;
       box-sizing: border-box;
       padding: 7px;
@@ -169,7 +170,7 @@
       background: #333;
     }
 
-    #clearCountyButton {
+    #clearSelectionButton {
       background: #888;
     }
 
@@ -237,7 +238,7 @@
         height: 65vh;
       }
 
-      #county-panel,
+      #profile-panel,
       #right-panel-stack {
         position: static;
         width: auto;
@@ -261,20 +262,26 @@
 <body>
   <div id="map"></div>
 
-  <div id="county-panel">
-    <h2 id="county-title">County Profile</h2>
+  <div id="profile-panel">
+    <h2 id="profile-title">County Profile</h2>
 
-    <div id="county-summary">
+    <div id="profile-summary">
       Click a county to view population and church data.
     </div>
 
-    <h3>Churches in this county</h3>
-    <ol id="county-church-list"></ol>
+    <h3 id="profile-list-heading">Churches in this county</h3>
+    <ol id="profile-church-list"></ol>
   </div>
 
   <div id="right-panel-stack">
     <div id="control-panel">
       <h2>Church Map</h2>
+
+      <label class="control-label" for="boundaryLayerSelect">Boundary layer</label>
+      <select id="boundaryLayerSelect">
+        <option value="county">Counties</option>
+        <option value="lea">LEAs</option>
+      </select>
 
       <label class="control-label" for="searchInput">Search</label>
       <input
@@ -294,7 +301,7 @@
       </div>
 
       <button id="resetMapButton" class="button">Reset map</button>
-      <button id="clearCountyButton" class="button">Clear county selection</button>
+      <button id="clearSelectionButton" class="button">Clear boundary selection</button>
 
       <div id="church-count">Loading churches...</div>
     </div>
@@ -309,6 +316,6 @@
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="https://unpkg.com/papaparse@5.4.1/papaparse.min.js"></script>
-  <script src="script.js?v=0.5.2"></script>
+  <script src="script.js?v=0.6.0"></script>
 </body>
 </html>
