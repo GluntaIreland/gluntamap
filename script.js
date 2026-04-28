@@ -1,14 +1,14 @@
 /*
   Glúnta Research Church Map
-  Version: v0.4.4-church-detail-panel
+  Version: v0.4.5-county-selection-no-marker-filter
 
   Changes in this version:
-  - Adds right-side church detail panel below the Church Map control box.
-  - Clicking a church marker updates the new detail panel.
-  - Keeps existing Leaflet marker popup.
-  - Keeps denomination colours.
-  - Keeps county click profile.
+  - Clicking a county no longer hides church markers outside that county.
+  - County panel still lists only churches in the selected county.
+  - Search and denomination filters still filter visible church markers.
+  - Keeps right-side church detail panel.
   - Keeps county zoom-to-bounds.
+  - Keeps denomination colours.
 */
 
 // --------------------------------------------------
@@ -41,7 +41,6 @@ let selectedCountyLayer = null;
 
 // --------------------------------------------------
 // DENOMINATION COLOURS
-// Add or adjust colours here if needed.
 // --------------------------------------------------
 
 const denominationColours = {
@@ -413,11 +412,18 @@ function churchMatchesFilters(church) {
     selectedDenomination === "all" ||
     denomination === selectedDenomination;
 
-  const matchesCounty =
-    !selectedCountyName ||
-    normaliseCountyName(county) === normaliseCountyName(selectedCountyName);
+  /*
+    Important change in v0.4.5:
 
-  return matchesSearch && matchesDenomination && matchesCounty;
+    County selection is no longer used to filter map markers.
+
+    This means:
+    - Clicked county still updates the county profile panel.
+    - Clicked county still lists churches from that county.
+    - But all other church pins remain visible and active on the map.
+  */
+
+  return matchesSearch && matchesDenomination;
 }
 
 function updateVisibleChurches() {
@@ -624,6 +630,11 @@ function loadCountyBoundaries() {
             layer.setStyle(selectedCountyStyle());
 
             updateCountyPanel(countyName);
+
+            /*
+              This still refreshes marker visibility for search/denomination filters,
+              but no longer filters by selected county.
+            */
             updateVisibleChurches();
 
             if (layer.getBounds) {
