@@ -1,14 +1,13 @@
 /*
   Glúnta Research Church Map
-  Version: v0.4.9-multi-affiliation-filter
+  Version: v0.5.0-multi-affiliation-checkbox-fix
 
   Changes in this version:
-  - Changes "Denomination" wording to "Denomination or affiliation".
-  - Replaces single denomination dropdown with multi-select checkboxes.
-  - Allows selecting multiple denominations/affiliations at once.
+  - Replaces old single denomination dropdown with checkbox list.
+  - Changes display language to "Denomination or affiliation".
+  - Allows multiple denominations/affiliations to be selected together.
   - No selected boxes means all churches are shown.
-  - County selection still updates only the county panel and county highlight.
-  - County selection does not hide markers outside the selected county.
+  - County selection updates the county panel without hiding other map markers.
 */
 
 // --------------------------------------------------
@@ -179,9 +178,10 @@ function getWebsite(church) {
 
 function getDenomination(church) {
   return clean(
-    church["Denomination"] ||
     church["Denomination or affiliation"] ||
+    church["Denomination or Affiliation"] ||
     church["Affiliation"] ||
+    church["Denomination"] ||
     church["denomination"] ||
     church["affiliation"]
   );
