@@ -97,7 +97,7 @@
       font-size: 20px;
     }
 
-    #control-panel label {
+    #control-panel label.control-label {
       font-weight: bold;
       display: block;
       margin-top: 10px;
@@ -115,12 +115,12 @@
     }
 
     #affiliationFilterBox {
-      max-height: 145px;
+      max-height: 150px;
       overflow-y: auto;
       border: 1px solid #ccc;
       border-radius: 4px;
       padding: 8px;
-      background: #fff;
+      background: white;
       font-size: 13px;
     }
 
@@ -130,6 +130,7 @@
       gap: 6px;
       margin-bottom: 7px;
       line-height: 1.25;
+      cursor: pointer;
     }
 
     .affiliation-option:last-child {
@@ -282,17 +283,18 @@
     <div id="control-panel">
       <h2>Church Map</h2>
 
-      <label for="searchInput">Search</label>
+      <label class="control-label" for="searchInput">Search</label>
       <input
         type="text"
         id="searchInput"
         placeholder="Search church, town, county..."
       />
 
-      <label>Denomination or affiliation</label>
+      <label class="control-label">Denomination or affiliation</label>
       <div id="affiliationFilterBox">
         Loading affiliations...
       </div>
+
       <div id="affiliationFilterHint">
         Tick one or more. Leave all unticked to show all.
       </div>
@@ -322,6 +324,6 @@
   </script>
 
   <!-- Your map script -->
-  <script src="script.js?v=0.4.9"></script>
+  <script src="script.js?v=0.5.0"></script>
 </body>
 </html>
