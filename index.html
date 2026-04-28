@@ -1,0 +1,262 @@
+<!-- 
+  Ireland Church Map
+  Version: v0.4.6-denomination-colour-fix
+  Notes:
+  - Based on v0.4.5-denomination-dropdown-colours.
+  - Rolls back the fragile custom denomination dropdown.
+  - Restores the normal HTML select dropdown for reliability.
+  - Adds a colour preview dot beside the denomination dropdown.
+  - Church marker colours are fixed by denomination.
+  - County polygons are clickable.
+  - Left panel shows county profile.
+  - Clicking a county fits the map to the full county boundary.
+  - Zoom control forcibly moved away from top-left panel.
+  - No church-detail side panel yet.
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Ireland Church Map</title>
+
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    #map {
+      height: 100vh;
+      width: 100%;
+    }
+
+    /*
+      Version v0.4.2 fix:
+      Force Leaflet's default top-left zoom control away from the county panel.
+      This catches it even if Leaflet tries to render it in the default top-left position.
+    */
+    .leaflet-top.leaflet-left {
+      top: auto !important;
+      left: auto !important;
+      bottom: 24px !important;
+      right: 18px !important;
+    }
+
+    .leaflet-left .leaflet-control {
+      margin-left: 0 !important;
+      margin-bottom: 0 !important;
+    }
+
+    #control-panel {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 1000;
+      background: white;
+      padding: 14px;
+      border-radius: 8px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+      width: 280px;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    #county-panel {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      z-index: 1000;
+      background: white;
+      padding: 14px;
+      border-radius: 8px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+      width: 340px;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    #control-panel h2,
+    #county-panel h2 {
+      font-size: 18px;
+      margin: 0 0 10px;
+    }
+
+    #county-panel h3 {
+      font-size: 15px;
+      margin: 14px 0 6px;
+    }
+
+    #control-panel label {
+      display: block;
+      font-size: 13px;
+      font-weight: bold;
+      margin-top: 10px;
+      margin-bottom: 4px;
+    }
+
+    #control-panel input,
+    #control-panel select {
+      width: 100%;
+      padding: 7px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background: white;
+    }
+
+    .denomination-select-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .denomination-select-row select {
+      flex: 1;
+    }
+
+    #denomination-colour-preview {
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background: #111827;
+      border: 1px solid rgba(0,0,0,0.3);
+      flex: 0 0 auto;
+    }
+
+    #results-count {
+      margin-top: 10px;
+      font-size: 13px;
+      color: #333;
+    }
+
+    .stat-box {
+      background: #f5f5f5;
+      padding: 10px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+
+    .stat-box p {
+      margin: 0 0 5px;
+      font-size: 14px;
+    }
+
+    .stat-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    .county-help {
+      font-size: 13px;
+      color: #555;
+      line-height: 1.4;
+      margin: 0;
+    }
+
+    .church-list {
+      padding-left: 18px;
+      margin-top: 8px;
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .church-list li {
+      margin-bottom: 5px;
+    }
+
+    button {
+      margin-top: 10px;
+      width: 100%;
+      padding: 8px;
+      border: none;
+      background: #333;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #555;
+    }
+
+    .secondary-button {
+      background: #777;
+    }
+
+    .secondary-button:hover {
+      background: #666;
+    }
+
+    .popup-title {
+      font-weight: bold;
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+
+    .popup-detail {
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .popup-denomination-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 3px;
+    }
+
+    .colour-dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 999px;
+      display: inline-block;
+      border: 1px solid rgba(0,0,0,0.25);
+      flex: 0 0 auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="county-panel">
+    <h2>County Profile</h2>
+    <p class="county-help">
+      Click a county on the map to see population, churches listed, people per church, and the churches in that county.
+    </p>
+  </div>
+
+  <div id="control-panel">
+    <h2>Church Map</h2>
+
+    <label for="search-box">Search</label>
+    <input
+      id="search-box"
+      type="text"
+      placeholder="Search church, town, county..."
+    />
+
+    <label for="denomination-filter">Denomination</label>
+    <div class="denomination-select-row">
+      <select id="denomination-filter">
+        <option value="all">All denominations</option>
+      </select>
+      <span id="denomination-colour-preview" title="Selected denomination colour"></span>
+    </div>
+
+    <button id="reset-button">Reset map</button>
+    <button id="clear-county-button" class="secondary-button">Clear county selection</button>
+
+    <div id="results-count">Loading churches...</div>
+  </div>
+
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
