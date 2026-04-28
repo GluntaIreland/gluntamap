@@ -1,10 +1,10 @@
 /*
   Glúnta Research Church Map
-  Version: v0.5.0-multi-affiliation-checkbox-fix
+  Version: v0.5.1-clean-multi-affiliation-replacement
 
   Changes in this version:
-  - Replaces old single denomination dropdown with checkbox list.
-  - Changes display language to "Denomination or affiliation".
+  - Uses "Denomination or affiliation" wording.
+  - Replaces the old single denomination dropdown with a checkbox list.
   - Allows multiple denominations/affiliations to be selected together.
   - No selected boxes means all churches are shown.
   - County selection updates the county panel without hiding other map markers.
