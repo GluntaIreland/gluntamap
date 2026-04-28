@@ -1,14 +1,14 @@
 /*
   Glúnta Research Church Map
-  Version: v0.4.5-county-selection-no-marker-filter
+  Version: v0.4.9-multi-affiliation-filter
 
   Changes in this version:
-  - Clicking a county no longer hides church markers outside that county.
-  - County panel still lists only churches in the selected county.
-  - Search and denomination filters still filter visible church markers.
-  - Keeps right-side church detail panel.
-  - Keeps county zoom-to-bounds.
-  - Keeps denomination colours.
+  - Changes "Denomination" wording to "Denomination or affiliation".
+  - Replaces single denomination dropdown with multi-select checkboxes.
+  - Allows selecting multiple denominations/affiliations at once.
+  - No selected boxes means all churches are shown.
+  - County selection still updates only the county panel and county highlight.
+  - County selection does not hide markers outside the selected county.
 */
 
 // --------------------------------------------------
@@ -40,7 +40,7 @@ let countyData = {};
 let selectedCountyLayer = null;
 
 // --------------------------------------------------
-// DENOMINATION COLOURS
+// DENOMINATION / AFFILIATION COLOURS
 // --------------------------------------------------
 
 const denominationColours = {
@@ -180,7 +180,10 @@ function getWebsite(church) {
 function getDenomination(church) {
   return clean(
     church["Denomination"] ||
-    church["denomination"]
+    church["Denomination or affiliation"] ||
+    church["Affiliation"] ||
+    church["denomination"] ||
+    church["affiliation"]
   );
 }
 
@@ -253,6 +256,72 @@ function getCountyFeatureName(feature) {
 }
 
 // --------------------------------------------------
+// MULTI AFFILIATION FILTER
+// --------------------------------------------------
+
+function getSelectedAffiliations() {
+  const checkedBoxes = document.querySelectorAll(
+    "#affiliationFilterBox input[type='checkbox']:checked"
+  );
+
+  return Array.from(checkedBoxes).map((box) => box.value);
+}
+
+function clearSelectedAffiliations() {
+  const boxes = document.querySelectorAll(
+    "#affiliationFilterBox input[type='checkbox']"
+  );
+
+  boxes.forEach((box) => {
+    box.checked = false;
+  });
+}
+
+function populateAffiliationFilter() {
+  const filterBox = document.getElementById("affiliationFilterBox");
+
+  const affiliations = [...new Set(
+    allChurches
+      .map(getDenomination)
+      .filter(Boolean)
+  )].sort();
+
+  filterBox.innerHTML = "";
+
+  affiliations.forEach((affiliation) => {
+    const colour = getDenominationColour(affiliation);
+
+    const label = document.createElement("label");
+    label.className = "affiliation-option";
+
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.value = affiliation;
+
+    checkbox.addEventListener("change", function () {
+      updateVisibleChurches();
+    });
+
+    const dot = document.createElement("span");
+    dot.className = "affiliation-dot";
+    dot.style.background = colour;
+
+    const text = document.createElement("span");
+    text.textContent = affiliation;
+
+    label.appendChild(checkbox);
+    label.appendChild(dot);
+    label.appendChild(text);
+
+    filterBox.appendChild(label);
+  });
+
+  if (affiliations.length === 0) {
+    filterBox.textContent = "No affiliations found.";
+  }
+}
+
+// --------------------------------------------------
 // CHURCH DETAIL PANEL
 // --------------------------------------------------
 
@@ -277,7 +346,7 @@ function updateChurchDetailPanel(church) {
   if (denomination) {
     html += `
       <div class="detail-row">
-        <span class="detail-label">Denomination</span>
+        <span class="detail-label">Denomination or affiliation</span>
         ${createDotHtml(colour)}${escapeHtml(denomination)}
       </div>
     `;
@@ -389,10 +458,9 @@ function createChurchMarker(church) {
 
 function churchMatchesFilters(church) {
   const searchInput = document.getElementById("searchInput");
-  const denominationFilter = document.getElementById("denominationFilter");
 
   const searchTerm = clean(searchInput.value).toLowerCase();
-  const selectedDenomination = denominationFilter.value;
+  const selectedAffiliations = getSelectedAffiliations();
 
   const name = getChurchName(church).toLowerCase();
   const street = getStreetAddress(church).toLowerCase();
@@ -408,22 +476,11 @@ function churchMatchesFilters(church) {
     county.includes(searchTerm) ||
     denomination.toLowerCase().includes(searchTerm);
 
-  const matchesDenomination =
-    selectedDenomination === "all" ||
-    denomination === selectedDenomination;
+  const matchesAffiliation =
+    selectedAffiliations.length === 0 ||
+    selectedAffiliations.includes(denomination);
 
-  /*
-    Important change in v0.4.5:
-
-    County selection is no longer used to filter map markers.
-
-    This means:
-    - Clicked county still updates the county profile panel.
-    - Clicked county still lists churches from that county.
-    - But all other church pins remain visible and active on the map.
-  */
-
-  return matchesSearch && matchesDenomination;
+  return matchesSearch && matchesAffiliation;
 }
 
 function updateVisibleChurches() {
@@ -446,27 +503,6 @@ function updateVisibleChurches() {
   if (selectedCountyName) {
     updateCountyPanel(selectedCountyName);
   }
-}
-
-// --------------------------------------------------
-// DENOMINATION FILTER SETUP
-// --------------------------------------------------
-
-function populateDenominationFilter() {
-  const select = document.getElementById("denominationFilter");
-
-  const denominations = [...new Set(
-    allChurches
-      .map(getDenomination)
-      .filter(Boolean)
-  )].sort();
-
-  denominations.forEach((denomination) => {
-    const option = document.createElement("option");
-    option.value = denomination;
-    option.textContent = denomination;
-    select.appendChild(option);
-  });
 }
 
 // --------------------------------------------------
@@ -630,11 +666,6 @@ function loadCountyBoundaries() {
             layer.setStyle(selectedCountyStyle());
 
             updateCountyPanel(countyName);
-
-            /*
-              This still refreshes marker visibility for search/denomination filters,
-              but no longer filters by selected county.
-            */
             updateVisibleChurches();
 
             if (layer.getBounds) {
@@ -671,7 +702,7 @@ function loadChurches() {
         .map(createChurchMarker)
         .filter(Boolean);
 
-      populateDenominationFilter();
+      populateAffiliationFilter();
       updateVisibleChurches();
     },
     error: function (error) {
@@ -690,14 +721,10 @@ document.getElementById("searchInput").addEventListener("input", function () {
   updateVisibleChurches();
 });
 
-document.getElementById("denominationFilter").addEventListener("change", function () {
-  updateVisibleChurches();
-});
-
 document.getElementById("resetMapButton").addEventListener("click", function () {
   document.getElementById("searchInput").value = "";
-  document.getElementById("denominationFilter").value = "all";
 
+  clearSelectedAffiliations();
   clearCountyPanel();
 
   map.setView([53.4, -8.0], 7);
