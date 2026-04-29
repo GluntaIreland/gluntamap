@@ -1,16 +1,23 @@
 /*
   Glúnta Research Church Map
-  Version: v0.7.4-auto-gospel-opportunities
+  Version: v0.7.5-partnership-sensitive-gospel-opportunities
 
-  Gospel Opportunities are now calculated automatically:
-  - 0 churches = Urgent
-  - >15,000 people per church = High
+  Gospel Opportunities are calculated automatically and now respond to
+  denomination / affiliation filters.
+
+  Logic:
+  - No affiliation selected = count all churches
+  - One or more affiliations selected = count only selected churches
+
+  Opportunity levels:
+  - 0 selected/countable churches = Urgent
+  - >15,000 people per selected/countable church = High
   - 10,000–15,000 = Significant
   - 5,000–10,000 = Lower
   - <5,000 = Established Presence
 */
 
-const CACHE_VERSION = "0.7.4";
+const CACHE_VERSION = "0.7.5";
 
 // --------------------------------------------------
 // MAP SETUP
@@ -403,9 +410,22 @@ function getGospelOpportunityColour(level) {
   return gospelOpportunityColours[clean(level)] || "#cccccc";
 }
 
+function churchCountsForOpportunity(church) {
+  const selectedAffiliations = getSelectedAffiliations();
+
+  if (selectedAffiliations.length === 0) {
+    return true;
+  }
+
+  return selectedAffiliations.includes(getDenomination(church));
+}
+
 function calculateGospelOpportunity(boundaryName, boundaryLayer) {
   const churchesInBoundary = allChurches.filter((church) => {
-    return churchIsInsideBoundaryLayer(church, boundaryLayer);
+    return (
+      churchIsInsideBoundaryLayer(church, boundaryLayer) &&
+      churchCountsForOpportunity(church)
+    );
   });
 
   const churchCount = churchesInBoundary.length;
@@ -453,6 +473,27 @@ function showOrHideGospelLegend() {
   if (!legend) return;
 
   legend.style.display = currentBoundaryType === "gospel" ? "block" : "none";
+}
+
+function refreshGospelOpportunityLayerStyles() {
+  if (currentBoundaryType !== "gospel" || !currentBoundaryLayer) return;
+
+  currentBoundaryLayer.eachLayer((layer) => {
+    const boundaryName = getBoundaryFeatureName(layer.feature, "gospel");
+    const result = calculateGospelOpportunity(boundaryName, layer);
+
+    layer.setStyle({
+      fillColor: getGospelOpportunityColour(result.level),
+      fillOpacity: 0.58,
+      color: "#ffffff",
+      weight: 1
+    });
+  });
+
+  if (selectedBoundaryLeafletLayer && selectedBoundaryName) {
+    selectedBoundaryLeafletLayer.setStyle(selectedBoundaryStyle());
+    updateProfilePanel(selectedBoundaryName, selectedBoundaryLeafletLayer);
+  }
 }
 
 // --------------------------------------------------
@@ -509,641 +550,4 @@ function populateAffiliationFilter() {
     filterBox.appendChild(label);
   });
 
-  if (affiliations.length === 0) {
-    filterBox.textContent = "No affiliations found.";
-  }
-}
-
-// --------------------------------------------------
-// CHURCH DETAIL PANEL
-// --------------------------------------------------
-
-function updateChurchDetailPanel(church) {
-  const panel = document.getElementById("church-detail-content");
-
-  const name = getChurchName(church);
-  const street = getStreetAddress(church);
-  const city = getCity(church);
-  const county = getCounty(church);
-  const lea = getLea(church);
-  const eircode = getEircode(church);
-  const denomination = getDenomination(church);
-  const website = getWebsite(church);
-  const latitude = getLatitude(church);
-  const longitude = getLongitude(church);
-  const colour = getDenominationColour(denomination);
-
-  let html = `<h3>${escapeHtml(name || "Unnamed church")}</h3>`;
-
-  if (denomination) {
-    html += `
-      <div class="detail-row">
-        <span class="detail-label">Denomination or affiliation</span>
-        ${createDotHtml(colour)}${escapeHtml(denomination)}
-      </div>
-    `;
-  }
-
-  if (street || city || county || lea || eircode) {
-    html += `
-      <div class="detail-row">
-        <span class="detail-label">Address</span>
-        ${street ? `${escapeHtml(street)}<br>` : ""}
-        ${city ? `${escapeHtml(city)}<br>` : ""}
-        ${county ? `${escapeHtml(county)}<br>` : ""}
-        ${lea ? `LEA: ${escapeHtml(lea)}<br>` : ""}
-        ${eircode ? `${escapeHtml(eircode)}` : ""}
-      </div>
-    `;
-  }
-
-  if (website) {
-    const safeWebsite = website.startsWith("http") ? website : `https://${website}`;
-
-    html += `
-      <div class="detail-row">
-        <span class="detail-label">Website</span>
-        <a href="${escapeHtml(safeWebsite)}" target="_blank" rel="noopener">
-          ${escapeHtml(website)}
-        </a>
-      </div>
-    `;
-  }
-
-  if (!Number.isNaN(latitude) && !Number.isNaN(longitude)) {
-    html += `
-      <div class="detail-row">
-        <span class="detail-label">Coordinates</span>
-        ${latitude.toFixed(6)}, ${longitude.toFixed(6)}
-      </div>
-    `;
-  }
-
-  panel.className = "";
-  panel.innerHTML = html;
-}
-
-function buildPopupContent(church) {
-  const name = getChurchName(church);
-  const street = getStreetAddress(church);
-  const city = getCity(church);
-  const county = getCounty(church);
-  const eircode = getEircode(church);
-  const denomination = getDenomination(church);
-  const colour = getDenominationColour(denomination);
-
-  return `
-    <strong>${escapeHtml(name)}</strong><br>
-    ${street ? `${escapeHtml(street)}<br>` : ""}
-    ${city || county ? `${escapeHtml(city)}${city && county ? ", " : ""}${escapeHtml(county)}<br>` : ""}
-    ${eircode ? `${escapeHtml(eircode)}<br>` : ""}
-    ${denomination ? `<div class="popup-denomination">${createDotHtml(colour)}${escapeHtml(denomination)}</div>` : ""}
-  `;
-}
-
-// --------------------------------------------------
-// CHURCH MARKERS
-// --------------------------------------------------
-
-function createChurchMarker(church) {
-  const lat = getLatitude(church);
-  const lng = getLongitude(church);
-  const denomination = getDenomination(church);
-  const colour = getDenominationColour(denomination);
-
-  if (Number.isNaN(lat) || Number.isNaN(lng)) return null;
-
-  const marker = L.circleMarker([lat, lng], {
-    pane: "churchPane",
-    radius: 6,
-    fillColor: colour,
-    color: "#ffffff",
-    weight: 1,
-    opacity: 1,
-    fillOpacity: 0.95
-  });
-
-  marker.bindPopup(buildPopupContent(church));
-
-  marker.on("click", function () {
-    updateChurchDetailPanel(church);
-  });
-
-  marker.churchData = church;
-
-  return marker;
-}
-
-// --------------------------------------------------
-// FILTERING
-// --------------------------------------------------
-
-function churchMatchesFilters(church) {
-  const searchInput = document.getElementById("searchInput");
-  const searchTerm = clean(searchInput.value).toLowerCase();
-  const selectedAffiliations = getSelectedAffiliations();
-
-  const name = getChurchName(church).toLowerCase();
-  const street = getStreetAddress(church).toLowerCase();
-  const city = getCity(church).toLowerCase();
-  const county = getCounty(church).toLowerCase();
-  const lea = getLea(church).toLowerCase();
-  const denomination = getDenomination(church);
-
-  const matchesSearch =
-    !searchTerm ||
-    name.includes(searchTerm) ||
-    street.includes(searchTerm) ||
-    city.includes(searchTerm) ||
-    county.includes(searchTerm) ||
-    lea.includes(searchTerm) ||
-    denomination.toLowerCase().includes(searchTerm);
-
-  const matchesAffiliation =
-    selectedAffiliations.length === 0 ||
-    selectedAffiliations.includes(denomination);
-
-  return matchesSearch && matchesAffiliation;
-}
-
-function updateVisibleChurches() {
-  churchMarkers.forEach((marker) => {
-    map.removeLayer(marker);
-  });
-
-  let visibleCount = 0;
-
-  churchMarkers.forEach((marker) => {
-    if (churchMatchesFilters(marker.churchData)) {
-      marker.addTo(map);
-      marker.bringToFront();
-      visibleCount++;
-    }
-  });
-
-  document.getElementById("church-count").textContent =
-    `${visibleCount} of ${allChurches.length} churches shown`;
-
-  if (selectedBoundaryLeafletLayer && selectedBoundaryName !== null) {
-    updateProfilePanel(selectedBoundaryName, selectedBoundaryLeafletLayer);
-  }
-}
-
-// --------------------------------------------------
-// DATA LOADING
-// --------------------------------------------------
-
-function loadCountyData() {
-  Papa.parse(withCacheBust("county-data.csv"), {
-    download: true,
-    header: true,
-    skipEmptyLines: true,
-    complete: function (results) {
-      countyData = {};
-
-      results.data.forEach((row) => {
-        const countyName = normaliseName(row.County || row.county || row.COUNTY || row.Name || row.NAME);
-        if (countyName) countyData[countyName] = row;
-      });
-
-      console.log("County data rows loaded:", Object.keys(countyData).length);
-    }
-  });
-}
-
-function loadLeaData() {
-  Papa.parse(withCacheBust("lea-data.csv"), {
-    download: true,
-    header: true,
-    skipEmptyLines: true,
-    complete: function (results) {
-      leaData = {};
-
-      results.data.forEach((row) => {
-        const leaName = normaliseName(
-          row.LEA ||
-          row.Lea ||
-          row.lea ||
-          row["LEA Name"] ||
-          row["Local Electoral Area"] ||
-          row.Name ||
-          row.NAME
-        );
-
-        if (leaName) leaData[leaName] = row;
-      });
-
-      console.log("LEA data rows loaded:", Object.keys(leaData).length);
-    }
-  });
-}
-
-function loadUrbanData() {
-  Papa.parse(withCacheBust("urban-zone-data.csv"), {
-    download: true,
-    header: true,
-    skipEmptyLines: true,
-    complete: function (results) {
-      urbanData = {};
-
-      results.data.forEach((row) => {
-        const urbanName = normaliseName(
-          row.UrbanZone ||
-          row["Urban Zone"] ||
-          row.URBAN_AREA_NAME ||
-          row["Urban Area"] ||
-          row["Town Name"] ||
-          row.Name ||
-          row.NAME
-        );
-
-        if (urbanName) urbanData[urbanName] = row;
-      });
-
-      console.log("Urban zone data rows loaded:", Object.keys(urbanData).length);
-    }
-  });
-}
-
-function getPopulationForBoundary(boundaryName) {
-  const normalised = normaliseName(boundaryName);
-
-  let data = {};
-
-  if (currentBoundaryType === "lea" || currentBoundaryType === "gospel") {
-    data = leaData[normalised] || {};
-  } else if (currentBoundaryType === "urban") {
-    data = urbanData[normalised] || {};
-  } else {
-    data = countyData[normalised] || {};
-  }
-
-  return (
-    data.Population ||
-    data.population ||
-    data.POPULATION ||
-    data.Total ||
-    data.total ||
-    data["Total Population"] ||
-    data["Usually Resident Population"] ||
-    ""
-  );
-}
-
-// --------------------------------------------------
-// PROFILE PANEL
-// --------------------------------------------------
-
-function updateProfilePanel(boundaryName, boundaryLeafletLayer) {
-  const config = boundaryConfigs[currentBoundaryType];
-
-  const title = document.getElementById("profile-title");
-  const summary = document.getElementById("profile-summary");
-  const listHeading = document.getElementById("profile-list-heading");
-  const list = document.getElementById("profile-church-list");
-
-  const churchesInBoundary = allChurches.filter((church) => {
-    return churchIsInsideBoundaryLayer(church, boundaryLeafletLayer);
-  });
-
-  const populationValue = getPopulationForBoundary(boundaryName);
-  const populationNumber = Number(String(populationValue).replace(/,/g, ""));
-  const churchCount = churchesInBoundary.length;
-
-  let peoplePerChurch = "Not available";
-
-  if (!Number.isNaN(populationNumber) && populationNumber > 0 && churchCount > 0) {
-    peoplePerChurch =
-      `1 church for every ${Math.round(populationNumber / churchCount).toLocaleString("en-IE")} people`;
-  }
-
-  title.textContent = boundaryName
-    ? `${config.labelSingular} ${boundaryName.toUpperCase()}`
-    : `${config.labelSingular}`;
-
-  if (currentBoundaryType === "gospel") {
-    const result = calculateGospelOpportunity(boundaryName, boundaryLeafletLayer);
-
-    summary.innerHTML = `
-      <strong>Population:</strong> ${result.population ? formatNumber(result.population) : "Not available"}<br>
-      <strong>Churches listed:</strong> ${result.churchCount}<br>
-      <strong>People per church:</strong> ${
-        result.populationPerChurch
-          ? `1 church for every ${formatNumber(result.populationPerChurch)} people`
-          : "Not available"
-      }<br>
-      <strong>Opportunity level:</strong> ${escapeHtml(result.level)}<br>
-      <strong>Opportunity type:</strong> ${escapeHtml(result.type)}<br><br>
-      <em>Opportunity levels are indicative, not definitive. Local knowledge is essential.</em>
-    `;
-  } else {
-    summary.innerHTML = `
-      <strong>Population:</strong> ${populationValue ? formatNumber(populationValue) : "Not available"}<br>
-      <strong>Churches listed:</strong> ${churchCount}<br>
-      <strong>People per church:</strong> ${peoplePerChurch}
-    `;
-  }
-
-  if (currentBoundaryType === "urban") {
-    listHeading.textContent = "Churches in this urban zone";
-  } else if (currentBoundaryType === "lea") {
-    listHeading.textContent = "Churches in this LEA";
-  } else if (currentBoundaryType === "gospel") {
-    listHeading.textContent = "Churches in this Gospel Opportunity area";
-  } else {
-    listHeading.textContent = "Churches in this county";
-  }
-
-  list.innerHTML = "";
-
-  if (churchesInBoundary.length === 0) {
-    const li = document.createElement("li");
-    li.textContent = "No churches currently listed inside this boundary.";
-    list.appendChild(li);
-  } else {
-    churchesInBoundary
-      .sort((a, b) => getChurchName(a).localeCompare(getChurchName(b)))
-      .forEach((church) => {
-        const li = document.createElement("li");
-        const denomination = getDenomination(church);
-        const colour = getDenominationColour(denomination);
-
-        li.innerHTML = `
-          ${escapeHtml(getChurchName(church))}
-          ${getCity(church) ? `, ${escapeHtml(getCity(church))}` : ""}
-          ${denomination ? ` ${createDotHtml(colour)}<em>(${escapeHtml(denomination)})</em>` : ""}
-        `;
-
-        li.style.cursor = "pointer";
-
-        li.addEventListener("click", function () {
-          const marker = churchMarkers.find((m) => m.churchData === church);
-
-          if (marker) {
-            map.setView(marker.getLatLng(), 13);
-            marker.openPopup();
-            updateChurchDetailPanel(church);
-          }
-        });
-
-        list.appendChild(li);
-      });
-  }
-}
-
-function clearProfilePanel() {
-  const config = boundaryConfigs[currentBoundaryType];
-
-  selectedBoundaryName = null;
-  selectedBoundaryLeafletLayer = null;
-
-  document.getElementById("profile-title").textContent =
-    `${config.labelSingular} Profile`;
-
-  document.getElementById("profile-summary").textContent =
-    `Click a ${config.labelSingular.toLowerCase()} to view population and church data.`;
-
-  if (currentBoundaryType === "urban") {
-    document.getElementById("profile-list-heading").textContent =
-      "Churches in this urban zone";
-  } else if (currentBoundaryType === "lea") {
-    document.getElementById("profile-list-heading").textContent =
-      "Churches in this LEA";
-  } else if (currentBoundaryType === "gospel") {
-    document.getElementById("profile-list-heading").textContent =
-      "Churches in this Gospel Opportunity area";
-  } else {
-    document.getElementById("profile-list-heading").textContent =
-      "Churches in this county";
-  }
-
-  document.getElementById("profile-church-list").innerHTML = "";
-}
-
-// --------------------------------------------------
-// BOUNDARY LAYERS
-// --------------------------------------------------
-
-function boundaryStyle(feature) {
-  if (currentBoundaryType === "urban") {
-    return {
-      pane: "boundaryPane",
-      color: "#b0006d",
-      weight: 2,
-      opacity: 0.9,
-      fillColor: "#ff4fb3",
-      fillOpacity: 0.18
-    };
-  }
-
-  if (currentBoundaryType === "gospel") {
-    return {
-      pane: "boundaryPane",
-      color: "#ffffff",
-      weight: 1,
-      opacity: 0.9,
-      fillColor: "#cccccc",
-      fillOpacity: 0.55
-    };
-  }
-
-  return {
-    pane: "boundaryPane",
-    color: "#222222",
-    weight: 2,
-    opacity: 0.9,
-    fillColor: "#ffffff",
-    fillOpacity: 0.08
-  };
-}
-
-function selectedBoundaryStyle() {
-  if (currentBoundaryType === "urban") {
-    return {
-      color: "#7a004a",
-      weight: 4,
-      opacity: 1,
-      fillColor: "#ff4fb3",
-      fillOpacity: 0.28
-    };
-  }
-
-  if (currentBoundaryType === "gospel") {
-    return {
-      color: "#111111",
-      weight: 4,
-      opacity: 1,
-      fillOpacity: 0.68
-    };
-  }
-
-  return {
-    color: "#111111",
-    weight: 4,
-    opacity: 1,
-    fillColor: "#f5d76e",
-    fillOpacity: 0.18
-  };
-}
-
-function loadBoundaryLayer(boundaryType) {
-  const config = boundaryConfigs[boundaryType];
-
-  if (currentBoundaryLayer) {
-    map.removeLayer(currentBoundaryLayer);
-    currentBoundaryLayer = null;
-  }
-
-  selectedBoundaryName = null;
-  selectedBoundaryLeafletLayer = null;
-  currentBoundaryType = boundaryType;
-
-  showOrHideGospelLegend();
-  clearProfilePanel();
-
-  fetch(withCacheBust(config.geojsonFile))
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`Could not load ${config.geojsonFile}: ${response.status}`);
-      }
-
-      return response.json();
-    })
-    .then((geojson) => {
-      currentBoundaryLayer = L.geoJSON(geojson, {
-        pane: "boundaryPane",
-        style: boundaryStyle,
-        onEachFeature: function (feature, layer) {
-          const boundaryName = getBoundaryFeatureName(feature, boundaryType);
-
-          if (boundaryType === "gospel") {
-            const result = calculateGospelOpportunity(boundaryName, layer);
-
-            layer.setStyle({
-              fillColor: getGospelOpportunityColour(result.level),
-              fillOpacity: 0.58,
-              color: "#ffffff",
-              weight: 1
-            });
-          }
-
-          layer.on("click", function () {
-            if (selectedBoundaryLeafletLayer && currentBoundaryLayer) {
-              currentBoundaryLayer.resetStyle(selectedBoundaryLeafletLayer);
-
-              if (currentBoundaryType === "gospel") {
-                currentBoundaryLayer.eachLayer((l) => {
-                  const featureName = getBoundaryFeatureName(l.feature, "gospel");
-                  const result = calculateGospelOpportunity(featureName, l);
-                  l.setStyle({
-                    fillColor: getGospelOpportunityColour(result.level),
-                    fillOpacity: 0.58,
-                    color: "#ffffff",
-                    weight: 1
-                  });
-                });
-              }
-            }
-
-            selectedBoundaryName = boundaryName;
-            selectedBoundaryLeafletLayer = layer;
-
-            layer.setStyle(selectedBoundaryStyle());
-            updateProfilePanel(boundaryName, layer);
-
-            if (layer.getBounds) {
-              map.fitBounds(layer.getBounds(), {
-                padding: [40, 40],
-                maxZoom:
-                  boundaryType === "urban"
-                    ? 13
-                    : boundaryType === "lea" || boundaryType === "gospel"
-                      ? 11
-                      : 10
-              });
-            }
-          });
-        }
-      }).addTo(map);
-
-      churchMarkers.forEach((marker) => {
-        if (map.hasLayer(marker)) marker.bringToFront();
-      });
-    })
-    .catch((error) => {
-      console.error(`Error loading ${config.geojsonFile}`, error);
-    });
-}
-
-// --------------------------------------------------
-// CHURCH CSV LOADING
-// --------------------------------------------------
-
-function loadChurches() {
-  Papa.parse(withCacheBust("churches.csv"), {
-    download: true,
-    header: true,
-    skipEmptyLines: true,
-    complete: function (results) {
-      allChurches = results.data.filter((church) => {
-        return !Number.isNaN(getLatitude(church)) &&
-               !Number.isNaN(getLongitude(church));
-      });
-
-      churchMarkers = allChurches
-        .map(createChurchMarker)
-        .filter(Boolean);
-
-      populateAffiliationFilter();
-      updateVisibleChurches();
-
-      console.log("Church rows loaded:", results.data.length);
-      console.log("Churches with valid coordinates:", allChurches.length);
-    },
-    error: function () {
-      document.getElementById("church-count").textContent =
-        "Error loading churches.";
-    }
-  });
-}
-
-// --------------------------------------------------
-// BUTTONS AND INPUTS
-// --------------------------------------------------
-
-document.getElementById("boundaryLayerSelect").addEventListener("change", function () {
-  loadBoundaryLayer(this.value);
-});
-
-document.getElementById("searchInput").addEventListener("input", function () {
-  updateVisibleChurches();
-});
-
-document.getElementById("resetMapButton").addEventListener("click", function () {
-  document.getElementById("searchInput").value = "";
-
-  clearSelectedAffiliations();
-  clearProfilePanel();
-
-  map.setView([53.4, -8.0], 7);
-
-  document.getElementById("church-detail-content").className = "detail-empty";
-  document.getElementById("church-detail-content").innerHTML =
-    "Click a church dot on the map to view its details here.";
-
-  updateVisibleChurches();
-});
-
-document.getElementById("clearSelectionButton").addEventListener("click", function () {
-  clearProfilePanel();
-});
-
-// --------------------------------------------------
-// INITIAL LOAD
-// --------------------------------------------------
-
-loadCountyData();
-loadLeaData();
-loadUrbanData();
-loadChurches();
-loadBoundaryLayer("county");
+  if (affiliations.length === 0)
