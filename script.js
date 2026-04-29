@@ -1,15 +1,13 @@
 /*
   Glúnta Research Church Map
-  Version: v0.7.0-urban-zone-layer-foundation
+  Version: v0.7.1-urban-zone-name-match
 
   Changes in this version:
-  - Adds Urban Zones as a third selectable boundary layer.
-  - Loads urban-zones.geojson.
-  - Loads urban-zone-data.csv.
-  - Labels the left panel as Urban Zone when that layer is selected.
+  - Reads Urban Zone names directly from URBAN_AREA_NAME in urban-zones.geojson.
+  - Matches Urban Zone population from UrbanZone in urban-zone-data.csv.
+  - Keeps County, LEA, and Urban Zone boundary switching.
   - Counts churches inside clicked boundaries using Leaflet polygon geometry.
   - Adds "Closest church to this urban zone" section for Urban Zones.
-  - Keeps County and LEA boundary switching.
   - Keeps multi-select "Denomination or affiliation" filter.
   - Keeps church detail panel.
   - Forces fresh loading of CSV and GeoJSON files.
@@ -19,7 +17,7 @@
 // CACHE VERSION
 // --------------------------------------------------
 
-const CACHE_VERSION = "0.7.0";
+const CACHE_VERSION = "0.7.1";
 
 // --------------------------------------------------
 // MAP SETUP
@@ -315,7 +313,8 @@ function getFirstUsefulProperty(props) {
     "LENGTH",
     "PERIMETER",
     "SMALL_AREA",
-    "ED_ID"
+    "ED_ID",
+    "CODE"
   ];
 
   const keys = Object.keys(props || {});
@@ -340,8 +339,24 @@ function getFirstUsefulProperty(props) {
 function getBoundaryFeatureName(feature, boundaryType) {
   const props = feature.properties || {};
 
+  if (boundaryType === "urban") {
+    return clean(
+      props.URBAN_AREA_NAME ||
+      props.UrbanZone ||
+      props["Urban Zone"] ||
+      props.URBAN_NAME ||
+      props.BUA_NAME ||
+      props.BUILT_UP_AREA_NAME ||
+      props.SETTLEMENT_NAME ||
+      props.TOWN_NAME ||
+      props.NAME ||
+      props.Name ||
+      getFirstUsefulProperty(props)
+    );
+  }
+
   if (boundaryType === "lea") {
-    const possibleLeaName = clean(
+    return clean(
       props.LEA ||
       props.Lea ||
       props.lea ||
@@ -369,57 +384,12 @@ function getBoundaryFeatureName(feature, boundaryType) {
       props.name ||
       props.AREA_NAME ||
       props.AreaName ||
-      props.AREANAME
+      props.AREANAME ||
+      getFirstUsefulProperty(props)
     );
-
-    if (possibleLeaName) {
-      return possibleLeaName;
-    }
-
-    return getFirstUsefulProperty(props);
   }
 
-  if (boundaryType === "urban") {
-    const possibleUrbanName = clean(
-      props.URBAN ||
-      props.Urban ||
-      props.urban ||
-      props.URBAN_NAME ||
-      props.UrbanName ||
-      props.URBANAREA ||
-      props.URBAN_AREA ||
-      props.URBAN_AREA_NAME ||
-      props.BUA ||
-      props.BUA_NAME ||
-      props.BUAName ||
-      props.BUILT_UP_AREA ||
-      props.BUILT_UP_AREA_NAME ||
-      props.SETTLEMENT ||
-      props.SETTLEMENT_NAME ||
-      props.TOWN ||
-      props.TOWN_NAME ||
-      props.Town ||
-      props.TownName ||
-      props.NAME ||
-      props.Name ||
-      props.name ||
-      props.ENGLISH ||
-      props.English ||
-      props.ENGLISH_NAME ||
-      props.English_Name ||
-      props.AREA_NAME ||
-      props.AreaName ||
-      props.AREANAME
-    );
-
-    if (possibleUrbanName) {
-      return possibleUrbanName;
-    }
-
-    return getFirstUsefulProperty(props);
-  }
-
-  const possibleCountyName = clean(
+  return clean(
     props.COUNTY ||
     props.County ||
     props.county ||
@@ -430,14 +400,9 @@ function getBoundaryFeatureName(feature, boundaryType) {
     props.English ||
     props.NAME ||
     props.Name ||
-    props.name
+    props.name ||
+    getFirstUsefulProperty(props)
   );
-
-  if (possibleCountyName) {
-    return possibleCountyName;
-  }
-
-  return getFirstUsefulProperty(props);
 }
 
 // --------------------------------------------------
@@ -922,6 +887,8 @@ function loadUrbanData() {
           row.UrbanZone ||
           row["Urban Zone"] ||
           row["UrbanZone"] ||
+          row.URBAN_AREA_NAME ||
+          row["URBAN_AREA_NAME"] ||
           row.BUA ||
           row["BUA Name"] ||
           row["BUA_NAME"] ||
