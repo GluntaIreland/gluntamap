@@ -5,14 +5,10 @@
   <title>Glúnta Church Map</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-  />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
   <style>
-    html,
-    body {
+    html, body {
       margin: 0;
       padding: 0;
       height: 100%;
@@ -35,7 +31,7 @@
       background: white;
       padding: 14px;
       border-radius: 8px;
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.25);
     }
 
     #profile-panel h2 {
@@ -84,7 +80,7 @@
       background: white;
       padding: 14px;
       border-radius: 8px;
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.25);
       pointer-events: auto;
     }
 
@@ -130,22 +126,21 @@
       cursor: pointer;
     }
 
-    .affiliation-option:last-child {
-      margin-bottom: 0;
-    }
-
     .affiliation-option input {
       margin: 0;
       flex-shrink: 0;
     }
 
-    .affiliation-dot {
+    .affiliation-dot,
+    .denomination-dot {
       width: 11px;
       height: 11px;
       border-radius: 50%;
       display: inline-block;
-      border: 1px solid rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(0,0,0,0.25);
       flex-shrink: 0;
+      margin-right: 6px;
+      vertical-align: middle;
     }
 
     #affiliationFilterHint {
@@ -172,7 +167,7 @@
       height: 12px;
       margin-right: 6px;
       border-radius: 2px;
-      border: 1px solid rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(0,0,0,0.2);
       vertical-align: middle;
     }
 
@@ -234,16 +229,6 @@
       margin-bottom: 2px;
     }
 
-    .denomination-dot {
-      display: inline-block;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      margin-right: 6px;
-      vertical-align: middle;
-      border: 1px solid rgba(0, 0, 0, 0.25);
-    }
-
     .popup-denomination {
       margin-top: 8px;
       font-style: italic;
@@ -253,30 +238,6 @@
       margin-bottom: 20px !important;
       margin-right: 12px !important;
     }
-
-    @media (max-width: 800px) {
-      #map {
-        height: 65vh;
-      }
-
-      #profile-panel,
-      #right-panel-stack {
-        position: static;
-        width: auto;
-        max-height: none;
-        margin: 10px;
-      }
-
-      #right-panel-stack {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-      }
-
-      #church-detail-panel {
-        max-height: none;
-      }
-    }
   </style>
 </head>
 
@@ -285,11 +246,7 @@
 
   <div id="profile-panel">
     <h2 id="profile-title">County Profile</h2>
-
-    <div id="profile-summary">
-      Click a county to view population and church data.
-    </div>
-
+    <div id="profile-summary">Click a county to view population and church data.</div>
     <h3 id="profile-list-heading">Churches in this county</h3>
     <ol id="profile-church-list"></ol>
   </div>
@@ -308,6 +265,7 @@
 
       <div id="gospelOpportunityLegend">
         <strong>Gospel Opportunities</strong><br>
+        <div><span class="legend-swatch" style="background:#8b0000;"></span>Urgent</div>
         <div><span class="legend-swatch" style="background:#e74c3c;"></span>High</div>
         <div><span class="legend-swatch" style="background:#f39c12;"></span>Significant</div>
         <div><span class="legend-swatch" style="background:#9ccc65;"></span>Lower</div>
@@ -315,21 +273,11 @@
       </div>
 
       <label class="control-label" for="searchInput">Search</label>
-      <input
-        type="text"
-        id="searchInput"
-        placeholder="Search church, town, county..."
-      />
+      <input type="text" id="searchInput" placeholder="Search church, town, county..." />
 
       <label class="control-label">Denomination or affiliation</label>
-
-      <div id="affiliationFilterBox">
-        Loading affiliations...
-      </div>
-
-      <div id="affiliationFilterHint">
-        Tick one or more. Leave all unticked to show all.
-      </div>
+      <div id="affiliationFilterBox">Loading affiliations...</div>
+      <div id="affiliationFilterHint">Tick one or more. Leave all unticked to show all.</div>
 
       <button id="resetMapButton" class="button">Reset map</button>
       <button id="clearSelectionButton" class="button">Clear boundary selection</button>
@@ -347,6 +295,6 @@
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="https://unpkg.com/papaparse@5.4.1/papaparse.min.js"></script>
-  <script src="script.js?v=0.7.3"></script>
+  <script src="script.js?v=0.7.4"></script>
 </body>
 </html>
