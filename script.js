@@ -1,10 +1,14 @@
 /*
   Glúnta Research Church Map
-  Version: v0.6.3-lea-name-and-spatial-count-fix
+  Version: v0.7.0-urban-zone-layer-foundation
 
   Changes in this version:
-  - Improves LEA name detection from many possible GeoJSON property fields.
-  - Counts churches inside the clicked Leaflet boundary layer rather than relying on an LEA column.
+  - Adds Urban Zones as a third selectable boundary layer.
+  - Loads urban-zones.geojson.
+  - Loads urban-zone-data.csv.
+  - Labels the left panel as Urban Zone when that layer is selected.
+  - Counts churches inside clicked boundaries using Leaflet polygon geometry.
+  - Adds "Closest church to this urban zone" section for Urban Zones.
   - Keeps County and LEA boundary switching.
   - Keeps multi-select "Denomination or affiliation" filter.
   - Keeps church detail panel.
@@ -15,7 +19,7 @@
 // CACHE VERSION
 // --------------------------------------------------
 
-const CACHE_VERSION = "0.6.3";
+const CACHE_VERSION = "0.7.0";
 
 // --------------------------------------------------
 // MAP SETUP
@@ -48,17 +52,26 @@ let selectedBoundaryLeafletLayer = null;
 
 let countyData = {};
 let leaData = {};
+let urbanData = {};
 
 const boundaryConfigs = {
   county: {
     labelSingular: "County",
     labelPlural: "Counties",
-    geojsonFile: "counties.geojson"
+    geojsonFile: "counties.geojson",
+    dataFile: "county-data.csv"
   },
   lea: {
     labelSingular: "LEA",
     labelPlural: "LEAs",
-    geojsonFile: "lea-boundaries.geojson"
+    geojsonFile: "lea-boundaries.geojson",
+    dataFile: "lea-data.csv"
+  },
+  urban: {
+    labelSingular: "Urban Zone",
+    labelPlural: "Urban Zones",
+    geojsonFile: "urban-zones.geojson",
+    dataFile: "urban-zone-data.csv"
   }
 };
 
@@ -300,7 +313,9 @@ function getFirstUsefulProperty(props) {
     "SHAPE",
     "AREA",
     "LENGTH",
-    "PERIMETER"
+    "PERIMETER",
+    "SMALL_AREA",
+    "ED_ID"
   ];
 
   const keys = Object.keys(props || {});
@@ -359,6 +374,46 @@ function getBoundaryFeatureName(feature, boundaryType) {
 
     if (possibleLeaName) {
       return possibleLeaName;
+    }
+
+    return getFirstUsefulProperty(props);
+  }
+
+  if (boundaryType === "urban") {
+    const possibleUrbanName = clean(
+      props.URBAN ||
+      props.Urban ||
+      props.urban ||
+      props.URBAN_NAME ||
+      props.UrbanName ||
+      props.URBANAREA ||
+      props.URBAN_AREA ||
+      props.URBAN_AREA_NAME ||
+      props.BUA ||
+      props.BUA_NAME ||
+      props.BUAName ||
+      props.BUILT_UP_AREA ||
+      props.BUILT_UP_AREA_NAME ||
+      props.SETTLEMENT ||
+      props.SETTLEMENT_NAME ||
+      props.TOWN ||
+      props.TOWN_NAME ||
+      props.Town ||
+      props.TownName ||
+      props.NAME ||
+      props.Name ||
+      props.name ||
+      props.ENGLISH ||
+      props.English ||
+      props.ENGLISH_NAME ||
+      props.English_Name ||
+      props.AREA_NAME ||
+      props.AreaName ||
+      props.AREANAME
+    );
+
+    if (possibleUrbanName) {
+      return possibleUrbanName;
     }
 
     return getFirstUsefulProperty(props);
@@ -482,6 +537,54 @@ function churchIsInsideBoundaryLayer(church, leafletLayer) {
   }
 
   return pointInLatLngStructure(point, leafletLayer.getLatLngs());
+}
+
+// --------------------------------------------------
+// DISTANCE HELPERS
+// --------------------------------------------------
+
+function getBoundaryCentre(leafletLayer) {
+  if (leafletLayer && leafletLayer.getBounds) {
+    return leafletLayer.getBounds().getCenter();
+  }
+
+  return null;
+}
+
+function distanceKmBetweenLatLngs(a, b) {
+  if (!a || !b) return null;
+  return a.distanceTo(b) / 1000;
+}
+
+function getClosestChurchToBoundary(leafletLayer) {
+  const centre = getBoundaryCentre(leafletLayer);
+
+  if (!centre || allChurches.length === 0) {
+    return null;
+  }
+
+  let closest = null;
+
+  allChurches.forEach((church) => {
+    const lat = getLatitude(church);
+    const lng = getLongitude(church);
+
+    if (Number.isNaN(lat) || Number.isNaN(lng)) {
+      return;
+    }
+
+    const churchLatLng = L.latLng(lat, lng);
+    const distanceKm = distanceKmBetweenLatLngs(centre, churchLatLng);
+
+    if (!closest || distanceKm < closest.distanceKm) {
+      closest = {
+        church,
+        distanceKm
+      };
+    }
+  });
+
+  return closest;
 }
 
 // --------------------------------------------------
@@ -806,6 +909,47 @@ function loadLeaData() {
   });
 }
 
+function loadUrbanData() {
+  Papa.parse(withCacheBust("urban-zone-data.csv"), {
+    download: true,
+    header: true,
+    skipEmptyLines: true,
+    complete: function (results) {
+      urbanData = {};
+
+      results.data.forEach((row) => {
+        const urbanName = normaliseName(
+          row.UrbanZone ||
+          row["Urban Zone"] ||
+          row["UrbanZone"] ||
+          row.BUA ||
+          row["BUA Name"] ||
+          row["BUA_NAME"] ||
+          row["Built Up Area"] ||
+          row["Built-Up Area"] ||
+          row["Built Up Area Name"] ||
+          row["Built-Up Area Name"] ||
+          row["Urban Area"] ||
+          row["Urban Area Name"] ||
+          row.Town ||
+          row["Town Name"] ||
+          row.Name ||
+          row.NAME
+        );
+
+        if (urbanName) {
+          urbanData[urbanName] = row;
+        }
+      });
+
+      console.log("Urban zone data rows loaded:", Object.keys(urbanData).length);
+    },
+    error: function (error) {
+      console.error("Error loading urban-zone-data.csv", error);
+    }
+  });
+}
+
 function getPopulationForBoundary(boundaryName) {
   const normalised = normaliseName(boundaryName);
 
@@ -813,6 +957,8 @@ function getPopulationForBoundary(boundaryName) {
 
   if (currentBoundaryType === "lea") {
     data = leaData[normalised] || {};
+  } else if (currentBoundaryType === "urban") {
+    data = urbanData[normalised] || {};
   } else {
     data = countyData[normalised] || {};
   }
@@ -832,6 +978,38 @@ function getPopulationForBoundary(boundaryName) {
 // --------------------------------------------------
 // PROFILE PANEL
 // --------------------------------------------------
+
+function buildClosestChurchHtml(boundaryLeafletLayer) {
+  if (currentBoundaryType !== "urban") {
+    return "";
+  }
+
+  const closest = getClosestChurchToBoundary(boundaryLeafletLayer);
+
+  if (!closest) {
+    return `
+      <h3>Closest church to this urban zone</h3>
+      <p>No churches with valid coordinates found.</p>
+    `;
+  }
+
+  const church = closest.church;
+  const name = getChurchName(church);
+  const city = getCity(church);
+  const denomination = getDenomination(church);
+  const colour = getDenominationColour(denomination);
+
+  return `
+    <h3>Closest church to this urban zone</h3>
+    <p>
+      <strong>${escapeHtml(name || "Unnamed church")}</strong>
+      ${city ? `, ${escapeHtml(city)}` : ""}
+      ${denomination ? `<br>${createDotHtml(colour)}<em>${escapeHtml(denomination)}</em>` : ""}
+      <br>
+      <strong>Distance:</strong> ${closest.distanceKm.toFixed(1)} km
+    </p>
+  `;
+}
 
 function updateProfilePanel(boundaryName, boundaryLeafletLayer) {
   const config = boundaryConfigs[currentBoundaryType];
@@ -868,41 +1046,66 @@ function updateProfilePanel(boundaryName, boundaryLeafletLayer) {
     <strong>People per church:</strong> ${peoplePerChurch}
   `;
 
-  listHeading.textContent =
-    currentBoundaryType === "lea"
-      ? "Churches in this LEA"
-      : "Churches in this county";
+  if (currentBoundaryType === "urban") {
+    listHeading.textContent = "Churches in this urban zone";
+  } else if (currentBoundaryType === "lea") {
+    listHeading.textContent = "Churches in this LEA";
+  } else {
+    listHeading.textContent = "Churches in this county";
+  }
 
   list.innerHTML = "";
 
-  churchesInBoundary
-    .sort((a, b) => getChurchName(a).localeCompare(getChurchName(b)))
-    .forEach((church) => {
-      const li = document.createElement("li");
+  if (churchesInBoundary.length === 0) {
+    const li = document.createElement("li");
+    li.textContent =
+      currentBoundaryType === "urban"
+        ? "No churches currently listed inside this urban zone."
+        : "No churches currently listed inside this boundary.";
+    list.appendChild(li);
+  } else {
+    churchesInBoundary
+      .sort((a, b) => getChurchName(a).localeCompare(getChurchName(b)))
+      .forEach((church) => {
+        const li = document.createElement("li");
 
-      const denomination = getDenomination(church);
-      const colour = getDenominationColour(denomination);
+        const denomination = getDenomination(church);
+        const colour = getDenominationColour(denomination);
 
-      li.innerHTML = `
-        ${escapeHtml(getChurchName(church))}
-        ${getCity(church) ? `, ${escapeHtml(getCity(church))}` : ""}
-        ${denomination ? ` ${createDotHtml(colour)}<em>(${escapeHtml(denomination)})</em>` : ""}
-      `;
+        li.innerHTML = `
+          ${escapeHtml(getChurchName(church))}
+          ${getCity(church) ? `, ${escapeHtml(getCity(church))}` : ""}
+          ${denomination ? ` ${createDotHtml(colour)}<em>(${escapeHtml(denomination)})</em>` : ""}
+        `;
 
-      li.style.cursor = "pointer";
+        li.style.cursor = "pointer";
 
-      li.addEventListener("click", function () {
-        const marker = churchMarkers.find((m) => m.churchData === church);
+        li.addEventListener("click", function () {
+          const marker = churchMarkers.find((m) => m.churchData === church);
 
-        if (marker) {
-          map.setView(marker.getLatLng(), 13);
-          marker.openPopup();
-          updateChurchDetailPanel(church);
-        }
+          if (marker) {
+            map.setView(marker.getLatLng(), 13);
+            marker.openPopup();
+            updateChurchDetailPanel(church);
+          }
+        });
+
+        list.appendChild(li);
       });
+  }
 
-      list.appendChild(li);
-    });
+  const existingClosestBlock = document.getElementById("closest-church-block");
+
+  if (existingClosestBlock) {
+    existingClosestBlock.remove();
+  }
+
+  if (currentBoundaryType === "urban") {
+    const closestBlock = document.createElement("div");
+    closestBlock.id = "closest-church-block";
+    closestBlock.innerHTML = buildClosestChurchHtml(boundaryLeafletLayer);
+    list.parentNode.appendChild(closestBlock);
+  }
 
   console.log("Clicked boundary:", boundaryName || "(no name found)");
   console.log("Boundary type:", currentBoundaryType);
@@ -922,12 +1125,24 @@ function clearProfilePanel() {
   document.getElementById("profile-summary").textContent =
     `Click a ${config.labelSingular.toLowerCase()} to view population and church data.`;
 
-  document.getElementById("profile-list-heading").textContent =
-    currentBoundaryType === "lea"
-      ? "Churches in this LEA"
-      : "Churches in this county";
+  if (currentBoundaryType === "urban") {
+    document.getElementById("profile-list-heading").textContent =
+      "Churches in this urban zone";
+  } else if (currentBoundaryType === "lea") {
+    document.getElementById("profile-list-heading").textContent =
+      "Churches in this LEA";
+  } else {
+    document.getElementById("profile-list-heading").textContent =
+      "Churches in this county";
+  }
 
   document.getElementById("profile-church-list").innerHTML = "";
+
+  const existingClosestBlock = document.getElementById("closest-church-block");
+
+  if (existingClosestBlock) {
+    existingClosestBlock.remove();
+  }
 
   if (selectedBoundaryLeafletLayer && currentBoundaryLayer) {
     currentBoundaryLayer.resetStyle(selectedBoundaryLeafletLayer);
@@ -941,6 +1156,16 @@ function clearProfilePanel() {
 // --------------------------------------------------
 
 function boundaryStyle() {
+  if (currentBoundaryType === "urban") {
+    return {
+      color: "#b0006d",
+      weight: 2,
+      opacity: 0.9,
+      fillColor: "#ff4fb3",
+      fillOpacity: 0.18
+    };
+  }
+
   return {
     color: "#222222",
     weight: 2,
@@ -951,6 +1176,16 @@ function boundaryStyle() {
 }
 
 function selectedBoundaryStyle() {
+  if (currentBoundaryType === "urban") {
+    return {
+      color: "#7a004a",
+      weight: 4,
+      opacity: 1,
+      fillColor: "#ff4fb3",
+      fillOpacity: 0.28
+    };
+  }
+
   return {
     color: "#111111",
     weight: 4,
@@ -1011,7 +1246,7 @@ function loadBoundaryLayer(boundaryType) {
             if (layer.getBounds) {
               map.fitBounds(layer.getBounds(), {
                 padding: [40, 40],
-                maxZoom: boundaryType === "lea" ? 11 : 10
+                maxZoom: boundaryType === "urban" ? 13 : boundaryType === "lea" ? 11 : 10
               });
             }
           });
@@ -1091,5 +1326,6 @@ document.getElementById("clearSelectionButton").addEventListener("click", functi
 
 loadCountyData();
 loadLeaData();
+loadUrbanData();
 loadChurches();
 loadBoundaryLayer("county");
