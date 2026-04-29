@@ -231,3 +231,13 @@ A sensible approach would be:
 | v1.0 | First public-facing release once the hosted map is stable, tested, and ready to share |
 
 For now, `v0.4.6` should be treated as the safest working baseline.
+
+## License
+
+The source code in this repository is licensed under the MIT License.
+
+The data files, including CSV and GeoJSON files created for the Glúnta Map project, are licensed under the Creative Commons Attribution 4.0 International License (CC BY 4.0), unless otherwise stated.
+
+Please attribute data use to:
+
+Glúnta Research, Glúnta Map, https://gluntaireland.github.io/gluntamap/
