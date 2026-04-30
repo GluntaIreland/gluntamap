@@ -5,12 +5,8 @@
   <title>Glúnta Ireland Church Map</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-  />
-
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="./style.css" />
 </head>
 
 <body>
@@ -33,13 +29,17 @@
       <section class="panel">
         <h2>Map controls</h2>
 
+        <p class="intro">
+          Explore Protestant and Evangelical church presence across Ireland by denomination or broad tradition.
+        </p>
+
         <label class="label">Colour map by:</label>
 
         <div class="toggle-group">
-          <button id="denominationMode" class="toggle active">
+          <button id="denominationMode" class="toggle">
             Denomination / Affiliation
           </button>
-          <button id="traditionMode" class="toggle">
+          <button id="traditionMode" class="toggle active">
             Broad Tradition
           </button>
         </div>
@@ -47,11 +47,7 @@
 
       <section class="panel">
         <h2>Search</h2>
-        <input
-          id="searchInput"
-          type="text"
-          placeholder="Search churches..."
-        />
+        <input id="searchInput" type="text" placeholder="Search churches..." />
       </section>
 
       <section class="panel">
@@ -69,6 +65,7 @@
       <section class="panel summary-panel">
         <h2 id="summaryTitle">Summary</h2>
         <div id="summaryList"></div>
+
         <div class="summary-total">
           <span>Total</span>
           <strong id="summaryTotal">0</strong>
@@ -90,6 +87,7 @@
       <div id="legend" class="legend">
         <h3 id="legendTitle">Broad Tradition</h3>
         <div id="legendItems"></div>
+
         <div class="legend-total">
           <strong id="legendTotal">0 churches</strong>
         </div>
@@ -99,6 +97,6 @@
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
-  <script src="script.js"></script>
+  <script src="./script.js"></script>
 </body>
 </html>
