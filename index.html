@@ -2,101 +2,293 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Glúnta Ireland Church Map</title>
+  <title>Glúnta Church Map</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <link rel="stylesheet" href="./style.css" />
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+    }
+
+    #map {
+      height: 100vh;
+      width: 100%;
+    }
+
+    #profile-panel {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      z-index: 1000;
+      width: 350px;
+      max-height: calc(100vh - 40px);
+      overflow-y: auto;
+      background: white;
+      padding: 14px;
+      border-radius: 8px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+    }
+
+    #profile-panel h2 {
+      margin: 0 0 10px 0;
+      font-size: 20px;
+      line-height: 1.2;
+    }
+
+    #profile-panel h3 {
+      margin-top: 14px;
+      font-size: 16px;
+    }
+
+    #profile-summary {
+      background: #f2f2f2;
+      padding: 10px;
+      border-radius: 6px;
+      margin-bottom: 14px;
+      line-height: 1.4;
+    }
+
+    #profile-church-list {
+      padding-left: 20px;
+      margin-top: 8px;
+    }
+
+    #profile-church-list li {
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    #right-panel-stack {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 1000;
+      width: 300px;
+      max-height: calc(100vh - 24px);
+      pointer-events: none;
+    }
+
+    #control-panel {
+      background: white;
+      padding: 14px;
+      border-radius: 8px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+      pointer-events: auto;
+    }
+
+    #control-panel h2 {
+      margin: 0 0 12px 0;
+      font-size: 20px;
+    }
+
+    #control-panel label.control-label {
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+      margin-bottom: 5px;
+      font-size: 14px;
+    }
+
+    #searchInput,
+    #boundaryLayerSelect {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 7px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    #affiliationFilterBox {
+      max-height: 180px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 8px;
+      background: white;
+      font-size: 13px;
+    }
+
+    .affiliation-option {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 7px;
+      line-height: 1.25;
+      cursor: pointer;
+    }
+
+    .affiliation-option input {
+      margin: 0;
+      flex-shrink: 0;
+    }
+
+    .affiliation-dot,
+    .denomination-dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      display: inline-block;
+      border: 1px solid rgba(0,0,0,0.25);
+      flex-shrink: 0;
+      margin-right: 6px;
+      vertical-align: middle;
+    }
+
+    #affiliationFilterHint {
+      font-size: 12px;
+      color: #666;
+      margin-top: 5px;
+      line-height: 1.3;
+    }
+
+    #gospelOpportunityLegend {
+      display: none;
+      margin-top: 10px;
+      padding: 9px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      background: #fafafa;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .legend-swatch {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      margin-right: 6px;
+      border-radius: 2px;
+      border: 1px solid rgba(0,0,0,0.2);
+      vertical-align: middle;
+    }
+
+    .urban-opportunity-marker {
+      width: 15px;
+      height: 15px;
+      background: white;
+      border: 2px solid black;
+      box-sizing: border-box;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.35);
+    }
+
+    .button {
+      width: 100%;
+      margin-top: 10px;
+      padding: 9px;
+      border: none;
+      border-radius: 4px;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    #resetMapButton {
+      background: #333;
+    }
+
+    #clearSelectionButton {
+      background: #888;
+    }
+
+    #church-count {
+      margin-top: 12px;
+      font-size: 14px;
+    }
+
+    .popup-denomination {
+      margin-top: 8px;
+      font-style: italic;
+    }
+
+    .profile-detail-row {
+      margin-bottom: 10px;
+      line-height: 1.35;
+    }
+
+    .profile-detail-label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .leaflet-control-zoom {
+      display: flex !important;
+      flex-direction: row !important;
+      margin-bottom: 12px !important;
+      margin-right: 12px !important;
+    }
+
+    .leaflet-control-zoom a {
+      width: 28px !important;
+      height: 28px !important;
+      line-height: 28px !important;
+      font-size: 18px !important;
+    }
+
+    .leaflet-control-zoom-in {
+      border-bottom: none !important;
+      border-right: 1px solid #ccc !important;
+    }
+  </style>
 </head>
 
 <body>
-  <header class="topbar">
-    <div class="brand">
-      <span class="brand-icon">✣</span>
-      <span>Glúnta Ireland Church Map</span>
-    </div>
+  <div id="map"></div>
 
-    <nav>
-      <a href="#">About</a>
-      <a href="#">Methodology</a>
-      <a href="#">Data</a>
-      <a href="#">Contact</a>
-    </nav>
-  </header>
+  <div id="profile-panel">
+    <h2 id="profile-title">County Profile</h2>
+    <div id="profile-summary">Click a county to view population and church data.</div>
+    <h3 id="profile-list-heading">Churches in this county</h3>
+    <ol id="profile-church-list"></ol>
+  </div>
 
-  <main class="layout">
-    <aside class="sidebar">
-      <section class="panel">
-        <h2>Map controls</h2>
+  <div id="right-panel-stack">
+    <div id="control-panel">
+      <h2>Church Map</h2>
 
-        <p class="intro">
-          Explore Protestant and Evangelical church presence across Ireland by denomination or broad tradition.
-        </p>
+      <label class="control-label" for="boundaryLayerSelect">Boundary layer</label>
+      <select id="boundaryLayerSelect">
+        <option value="county">Counties</option>
+        <option value="lea">LEAs</option>
+        <option value="urban">Urban Zones</option>
+        <option value="gospel">Gospel Opportunities</option>
+      </select>
 
-        <label class="label">Colour map by:</label>
-
-        <div class="toggle-group">
-          <button id="denominationMode" class="toggle">
-            Denomination / Affiliation
-          </button>
-          <button id="traditionMode" class="toggle active">
-            Broad Tradition
-          </button>
-        </div>
-      </section>
-
-      <section class="panel">
-        <h2>Search</h2>
-        <input id="searchInput" type="text" placeholder="Search churches..." />
-      </section>
-
-      <section class="panel">
-        <h2>Filters</h2>
-
-        <select id="traditionFilter">
-          <option value="">All traditions</option>
-        </select>
-
-        <select id="denominationFilter">
-          <option value="">All denominations</option>
-        </select>
-      </section>
-
-      <section class="panel summary-panel">
-        <h2 id="summaryTitle">Summary</h2>
-        <div id="summaryList"></div>
-
-        <div class="summary-total">
-          <span>Total</span>
-          <strong id="summaryTotal">0</strong>
-        </div>
-      </section>
-
-      <section class="hint-box">
-        <strong>ⓘ</strong>
-        <div>
-          <p>Zoom in to view more churches.</p>
-          <p>Click a point for more information.</p>
-        </div>
-      </section>
-    </aside>
-
-    <section class="map-wrap">
-      <div id="map"></div>
-
-      <div id="legend" class="legend">
-        <h3 id="legendTitle">Broad Tradition</h3>
-        <div id="legendItems"></div>
-
-        <div class="legend-total">
-          <strong id="legendTotal">0 churches</strong>
+      <div id="gospelOpportunityLegend">
+        <strong>Gospel Opportunities</strong><br>
+        <div><span class="legend-swatch" style="background:#8b0000;"></span>Urgent</div>
+        <div><span class="legend-swatch" style="background:#e74c3c;"></span>High</div>
+        <div><span class="legend-swatch" style="background:#f39c12;"></span>Significant</div>
+        <div><span class="legend-swatch" style="background:#9ccc65;"></span>Lower</div>
+        <div><span class="legend-swatch" style="background:#2e8b57;"></span>Established Presence</div>
+        <div style="margin-top:8px;">
+          <span class="urban-opportunity-marker" style="display:inline-block;vertical-align:middle;margin-right:6px;"></span>
+          Unreached Towns
         </div>
       </div>
-    </section>
-  </main>
+
+      <label class="control-label" for="searchInput">Search</label>
+      <input type="text" id="searchInput" placeholder="Search church, town, county..." />
+
+      <label class="control-label">Denomination or affiliation</label>
+      <div id="affiliationFilterBox">Loading affiliations...</div>
+      <div id="affiliationFilterHint">Tick one or more. Leave all unticked to show all.</div>
+
+      <button id="resetMapButton" class="button">Reset map</button>
+      <button id="clearSelectionButton" class="button">Clear boundary selection</button>
+
+      <div id="church-count">Loading churches...</div>
+    </div>
+  </div>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
-  <script src="./script.js"></script>
+  <script src="https://unpkg.com/papaparse@5.4.1/papaparse.min.js"></script>
+  <script src="script.js?v=0.8.5"></script>
 </body>
 </html>
