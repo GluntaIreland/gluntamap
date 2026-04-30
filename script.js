@@ -1,9 +1,9 @@
 /*
   Glúnta Research Church Map
-  Version: v0.8.6-compact-colour-toggle
+  Version: v0.8.7-filter-dots-stay-denomination-colours
 */
 
-const CACHE_VERSION = "0.8.6";
+const CACHE_VERSION = "0.8.7";
 
 // --------------------------------------------------
 // MAP SETUP
@@ -121,6 +121,7 @@ const traditionMap = {
   "Evangelical": "Baptist/Independent Evangelical",
   "Non-denominational": "Baptist/Independent Evangelical",
   "Christian Fellowship": "Baptist/Independent Evangelical",
+  "Christian Fellowship (Telugu)": "Baptist/Independent Evangelical",
 
   "PCI": "Presbyterian/Reformed",
   "Presbyterian": "Presbyterian/Reformed",
@@ -156,9 +157,11 @@ const denominationColours = {
   "Brethren": "#8b4513",
   "Calvary Chapel": "#7b2cbf",
   "Chinese Gospel Church": "#00b894",
-  "Christian Assembly": "#f1c40f",
+  "Christian Assembly": "#9a4f32",
   "Christian Churches Ireland": "#e76f51",
   "Christian Congregation in Ireland": "#2a9d8f",
+  "Christian Fellowship": "#16a34a",
+  "Christian Fellowship (Telugu)": "#059669",
   "Church of Christ": "#264653",
   "Church of Ireland": "#00c7c7",
   "Church of the Nazarene": "#2ecc71",
@@ -458,12 +461,7 @@ function refreshAffiliationFilterDots() {
 
       if (!checkbox || !dot) return;
 
-      if (colourMode === "tradition") {
-        const tradition = getTraditionFromDenomination(checkbox.value);
-        dot.style.background = traditionColours[tradition] || traditionColours["Other Protestant/Evangelical"];
-      } else {
-        dot.style.background = getDenominationColour(checkbox.value);
-      }
+      dot.style.background = getDenominationColour(checkbox.value);
     });
 }
 
@@ -995,12 +993,7 @@ function populateAffiliationFilter() {
   filterBox.innerHTML = "";
 
   affiliations.forEach((affiliation) => {
-    let colour = getDenominationColour(affiliation);
-
-    if (colourMode === "tradition") {
-      const tradition = getTraditionFromDenomination(affiliation);
-      colour = traditionColours[tradition] || traditionColours["Other Protestant/Evangelical"];
-    }
+    const colour = getDenominationColour(affiliation);
 
     const label = document.createElement("label");
     label.className = "affiliation-option";
