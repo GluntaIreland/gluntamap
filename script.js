@@ -1,9 +1,11 @@
 /*
   Glúnta Research Church Map
-  Version: v0.7.5-partnership-sensitive-gospel-opportunities
+  Version: v0.8-gospel-opportunities-with-urban-zone-markers
+
+  Adds Urban Zone opportunity markers inside the Gospel Opportunities layer.
 */
 
-const CACHE_VERSION = "0.7.5";
+const CACHE_VERSION = "0.8";
 
 // --------------------------------------------------
 // MAP SETUP
@@ -15,6 +17,9 @@ const map = L.map("map", {
 
 map.createPane("boundaryPane");
 map.getPane("boundaryPane").style.zIndex = 400;
+
+map.createPane("urbanOpportunityPane");
+map.getPane("urbanOpportunityPane").style.zIndex = 575;
 
 map.createPane("churchPane");
 map.getPane("churchPane").style.zIndex = 650;
@@ -39,6 +44,9 @@ let currentBoundaryType = "county";
 let currentBoundaryLayer = null;
 let selectedBoundaryName = null;
 let selectedBoundaryLeafletLayer = null;
+
+let urbanOpportunityLayer = null;
+let urbanGeoJsonData = null;
 
 let countyData = {};
 let leaData = {};
@@ -77,6 +85,11 @@ const gospelOpportunityColours = {
   "Significant": "#f39c12",
   "Lower": "#9ccc65",
   "Established Presence": "#2e8b57"
+};
+
+const townOpportunityColours = {
+  "High": "#8b0000",
+  "Significant": "#f39c12"
 };
 
 const denominationColours = {
@@ -396,6 +409,10 @@ function getGospelOpportunityColour(level) {
   return gospelOpportunityColours[clean(level)] || "#cccccc";
 }
 
+function getTownOpportunityColour(level) {
+  return townOpportunityColours[clean(level)] || "#666666";
+}
+
 function getSelectedAffiliations() {
   const checkedBoxes = document.querySelectorAll(
     "#affiliationFilterBox input[type='checkbox']:checked"
@@ -488,6 +505,239 @@ function refreshGospelOpportunityLayerStyles() {
     selectedBoundaryLeafletLayer.setStyle(selectedBoundaryStyle());
     updateProfilePanel(selectedBoundaryName, selectedBoundaryLeafletLayer);
   }
+
+  refreshUrbanOpportunityMarkers();
+}
+
+// --------------------------------------------------
+// URBAN ZONE OPPORTUNITY MARKERS
+// --------------------------------------------------
+
+function getPopulationForUrbanZone(urbanName) {
+  const normalised = normaliseName(urbanName);
+  const data = urbanData[normalised] || {};
+
+  return (
+    data.Population ||
+    data.population ||
+    data.POPULATION ||
+    data.Total ||
+    data.total ||
+    data["Total Population"] ||
+    data["Usually Resident Population"] ||
+    ""
+  );
+}
+
+function getLayerCentre(layer) {
+  if (layer && layer.getBounds) {
+    return layer.getBounds().getCenter();
+  }
+
+  return null;
+}
+
+function getCountedChurches() {
+  return allChurches.filter((church) => churchCountsForOpportunity(church));
+}
+
+function getClosestCountedChurchToPoint(point) {
+  const countedChurches = getCountedChurches();
+
+  let closest = null;
+
+  countedChurches.forEach((church) => {
+    const lat = getLatitude(church);
+    const lng = getLongitude(church);
+
+    if (Number.isNaN(lat) || Number.isNaN(lng)) return;
+
+    const churchPoint = L.latLng(lat, lng);
+    const distanceKm = point.distanceTo(churchPoint) / 1000;
+
+    if (!closest || distanceKm < closest.distanceKm) {
+      closest = {
+        church,
+        distanceKm
+      };
+    }
+  });
+
+  return closest;
+}
+
+function calculateUrbanOpportunity(urbanName, urbanLayer) {
+  const populationValue = getPopulationForUrbanZone(urbanName);
+  const populationNumber = Number(String(populationValue).replace(/,/g, ""));
+
+  const countedChurchesInside = allChurches.filter((church) => {
+    return (
+      churchCountsForOpportunity(church) &&
+      churchIsInsideBoundaryLayer(church, urbanLayer)
+    );
+  });
+
+  if (countedChurchesInside.length > 0) {
+    return {
+      shouldShow: false,
+      level: "Covered",
+      population: populationValue,
+      churchCount: countedChurchesInside.length,
+      nearestChurch: null,
+      distanceKm: null
+    };
+  }
+
+  if (Number.isNaN(populationNumber) || populationNumber < 1500) {
+    return {
+      shouldShow: false,
+      level: "Hidden",
+      population: populationValue,
+      churchCount: 0,
+      nearestChurch: null,
+      distanceKm: null
+    };
+  }
+
+  const centre = getLayerCentre(urbanLayer);
+
+  if (!centre) {
+    return {
+      shouldShow: false,
+      level: "Hidden",
+      population: populationValue,
+      churchCount: 0,
+      nearestChurch: null,
+      distanceKm: null
+    };
+  }
+
+  const closest = getClosestCountedChurchToPoint(centre);
+
+  if (!closest) {
+    return {
+      shouldShow: true,
+      level: "High",
+      population: populationValue,
+      churchCount: 0,
+      nearestChurch: null,
+      distanceKm: null
+    };
+  }
+
+  const distanceKm = closest.distanceKm;
+
+  let shouldShow = false;
+  let level = "";
+
+  if (populationNumber >= 5000 && distanceKm > 5) {
+    shouldShow = true;
+    level = distanceKm > 10 ? "High" : "Significant";
+  } else if (populationNumber >= 1500 && populationNumber < 5000 && distanceKm > 10) {
+    shouldShow = true;
+    level = "High";
+  }
+
+  return {
+    shouldShow,
+    level,
+    population: populationValue,
+    churchCount: 0,
+    nearestChurch: closest.church,
+    distanceKm
+  };
+}
+
+function buildUrbanOpportunityPopup(urbanName, result) {
+  const selectedAffiliations = getSelectedAffiliations();
+
+  const nearestChurchName = result.nearestChurch
+    ? getChurchName(result.nearestChurch)
+    : "No counted church found";
+
+  const nearestChurchTown = result.nearestChurch
+    ? getCity(result.nearestChurch)
+    : "";
+
+  return `
+    <strong>${escapeHtml(urbanName)}</strong><br>
+    <strong>Population:</strong> ${result.population ? formatNumber(result.population) : "Not available"}<br>
+    <strong>Churches counted in urban zone:</strong> ${result.churchCount}<br>
+    <strong>Nearest counted church:</strong> ${escapeHtml(nearestChurchName)}${nearestChurchTown ? `, ${escapeHtml(nearestChurchTown)}` : ""}<br>
+    <strong>Distance:</strong> ${result.distanceKm !== null ? `${result.distanceKm.toFixed(1)} km` : "Not available"}<br>
+    <strong>Town opportunity:</strong> ${escapeHtml(result.level)}<br><br>
+    <strong>Partnership lens:</strong><br>
+    ${
+      selectedAffiliations.length === 0
+        ? "All churches are currently counted."
+        : escapeHtml(selectedAffiliations.join(", "))
+    }
+  `;
+}
+
+function clearUrbanOpportunityMarkers() {
+  if (urbanOpportunityLayer) {
+    map.removeLayer(urbanOpportunityLayer);
+    urbanOpportunityLayer = null;
+  }
+}
+
+function refreshUrbanOpportunityMarkers() {
+  clearUrbanOpportunityMarkers();
+
+  if (currentBoundaryType !== "gospel") return;
+  if (!urbanGeoJsonData) return;
+
+  urbanOpportunityLayer = L.layerGroup([], {
+    pane: "urbanOpportunityPane"
+  }).addTo(map);
+
+  L.geoJSON(urbanGeoJsonData, {
+    onEachFeature: function (feature, layer) {
+      const urbanName = getBoundaryFeatureName(feature, "urban");
+      const result = calculateUrbanOpportunity(urbanName, layer);
+
+      if (!result.shouldShow) return;
+
+      const centre = getLayerCentre(layer);
+      if (!centre) return;
+
+      const marker = L.circleMarker(centre, {
+        pane: "urbanOpportunityPane",
+        radius: result.level === "High" ? 7 : 6,
+        fillColor: getTownOpportunityColour(result.level),
+        color: "#ffffff",
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 0.95
+      });
+
+      marker.bindPopup(buildUrbanOpportunityPopup(urbanName, result));
+      marker.addTo(urbanOpportunityLayer);
+    }
+  });
+
+  churchMarkers.forEach((marker) => {
+    if (map.hasLayer(marker)) marker.bringToFront();
+  });
+}
+
+function loadUrbanGeoJsonData() {
+  fetch(withCacheBust("urban-zones.geojson"))
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`Could not load urban-zones.geojson: ${response.status}`);
+      }
+
+      return response.json();
+    })
+    .then((geojson) => {
+      urbanGeoJsonData = geojson;
+      console.log("Urban GeoJSON cached for opportunity markers.");
+    })
+    .catch((error) => {
+      console.error("Error loading urban-zones.geojson for opportunity markers", error);
+    });
 }
 
 // --------------------------------------------------
@@ -1047,6 +1297,8 @@ function loadBoundaryLayer(boundaryType) {
     currentBoundaryLayer = null;
   }
 
+  clearUrbanOpportunityMarkers();
+
   selectedBoundaryName = null;
   selectedBoundaryLeafletLayer = null;
   currentBoundaryType = boundaryType;
@@ -1109,6 +1361,10 @@ function loadBoundaryLayer(boundaryType) {
           });
         }
       }).addTo(map);
+
+      if (boundaryType === "gospel") {
+        refreshUrbanOpportunityMarkers();
+      }
 
       churchMarkers.forEach((marker) => {
         if (map.hasLayer(marker)) marker.bringToFront();
@@ -1189,5 +1445,6 @@ document.getElementById("clearSelectionButton").addEventListener("click", functi
 loadCountyData();
 loadLeaData();
 loadUrbanData();
+loadUrbanGeoJsonData();
 loadChurches();
 loadBoundaryLayer("county");
