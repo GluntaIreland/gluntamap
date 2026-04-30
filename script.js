@@ -1,9 +1,9 @@
 /*
   Glúnta Research Church Map
-  Version: v0.8.7-filter-dots-stay-denomination-colours
+  Version: v0.8.8-collapsible-denomination-filter
 */
 
-const CACHE_VERSION = "0.8.7";
+const CACHE_VERSION = "0.8.8";
 
 // --------------------------------------------------
 // MAP SETUP
@@ -992,6 +992,41 @@ function populateAffiliationFilter() {
 
   filterBox.innerHTML = "";
 
+  const wrapper = document.createElement("div");
+  wrapper.id = "affiliationFilterWrapper";
+
+  const toggleButton = document.createElement("button");
+  toggleButton.type = "button";
+  toggleButton.id = "affiliationToggleButton";
+  toggleButton.textContent = "Show denomination filters";
+  toggleButton.style.width = "100%";
+  toggleButton.style.marginBottom = "10px";
+  toggleButton.style.padding = "10px";
+  toggleButton.style.cursor = "pointer";
+  toggleButton.style.fontWeight = "700";
+  toggleButton.style.background = "#ffffff";
+  toggleButton.style.border = "1px solid #cccccc";
+  toggleButton.style.borderRadius = "4px";
+
+  const listContainer = document.createElement("div");
+  listContainer.id = "affiliationListContainer";
+  listContainer.style.display = "none";
+  listContainer.style.maxHeight = "250px";
+  listContainer.style.overflowY = "auto";
+  listContainer.style.border = "1px solid #dddddd";
+  listContainer.style.padding = "10px";
+  listContainer.style.borderRadius = "6px";
+  listContainer.style.background = "#ffffff";
+
+  toggleButton.addEventListener("click", function () {
+    const isHidden = listContainer.style.display === "none";
+
+    listContainer.style.display = isHidden ? "block" : "none";
+    toggleButton.textContent = isHidden
+      ? "Hide denomination filters"
+      : "Show denomination filters";
+  });
+
   affiliations.forEach((affiliation) => {
     const colour = getDenominationColour(affiliation);
 
@@ -1014,12 +1049,17 @@ function populateAffiliationFilter() {
     label.appendChild(dot);
     label.appendChild(text);
 
-    filterBox.appendChild(label);
+    listContainer.appendChild(label);
   });
 
   if (affiliations.length === 0) {
-    filterBox.textContent = "No affiliations found.";
+    listContainer.textContent = "No affiliations found.";
   }
+
+  wrapper.appendChild(toggleButton);
+  wrapper.appendChild(listContainer);
+
+  filterBox.appendChild(wrapper);
 }
 
 // --------------------------------------------------
