@@ -1,9 +1,9 @@
 /*
   Glúnta Research Church Map
-  Version: v0.8.1-square-town-opportunity-markers
+  Version: v0.8.4-remove-church-details-panel
 */
 
-const CACHE_VERSION = "0.8.1";
+const CACHE_VERSION = "0.8.4";
 
 // --------------------------------------------------
 // MAP SETUP
@@ -780,73 +780,8 @@ function populateAffiliationFilter() {
 }
 
 // --------------------------------------------------
-// CHURCH DETAIL PANEL
+// POPUPS
 // --------------------------------------------------
-
-function updateChurchDetailPanel(church) {
-  const panel = document.getElementById("church-detail-content");
-
-  const name = getChurchName(church);
-  const street = getStreetAddress(church);
-  const city = getCity(church);
-  const county = getCounty(church);
-  const lea = getLea(church);
-  const eircode = getEircode(church);
-  const denomination = getDenomination(church);
-  const website = getWebsite(church);
-  const latitude = getLatitude(church);
-  const longitude = getLongitude(church);
-  const colour = getDenominationColour(denomination);
-
-  let html = `<h3>${escapeHtml(name || "Unnamed church")}</h3>`;
-
-  if (denomination) {
-    html += `
-      <div class="detail-row">
-        <span class="detail-label">Denomination or affiliation</span>
-        ${createDotHtml(colour)}${escapeHtml(denomination)}
-      </div>
-    `;
-  }
-
-  if (street || city || county || lea || eircode) {
-    html += `
-      <div class="detail-row">
-        <span class="detail-label">Address</span>
-        ${street ? `${escapeHtml(street)}<br>` : ""}
-        ${city ? `${escapeHtml(city)}<br>` : ""}
-        ${county ? `${escapeHtml(county)}<br>` : ""}
-        ${lea ? `LEA: ${escapeHtml(lea)}<br>` : ""}
-        ${eircode ? `${escapeHtml(eircode)}` : ""}
-      </div>
-    `;
-  }
-
-  if (website) {
-    const safeWebsite = website.startsWith("http") ? website : `https://${website}`;
-
-    html += `
-      <div class="detail-row">
-        <span class="detail-label">Website</span>
-        <a href="${escapeHtml(safeWebsite)}" target="_blank" rel="noopener">
-          ${escapeHtml(website)}
-        </a>
-      </div>
-    `;
-  }
-
-  if (!Number.isNaN(latitude) && !Number.isNaN(longitude)) {
-    html += `
-      <div class="detail-row">
-        <span class="detail-label">Coordinates</span>
-        ${latitude.toFixed(6)}, ${longitude.toFixed(6)}
-      </div>
-    `;
-  }
-
-  panel.className = "";
-  panel.innerHTML = html;
-}
 
 function buildPopupContent(church) {
   const name = getChurchName(church);
@@ -855,6 +790,7 @@ function buildPopupContent(church) {
   const county = getCounty(church);
   const eircode = getEircode(church);
   const denomination = getDenomination(church);
+  const website = getWebsite(church);
   const colour = getDenominationColour(denomination);
 
   return `
@@ -862,7 +798,16 @@ function buildPopupContent(church) {
     ${street ? `${escapeHtml(street)}<br>` : ""}
     ${city || county ? `${escapeHtml(city)}${city && county ? ", " : ""}${escapeHtml(county)}<br>` : ""}
     ${eircode ? `${escapeHtml(eircode)}<br>` : ""}
-    ${denomination ? `<div class="popup-denomination">${createDotHtml(colour)}${escapeHtml(denomination)}</div>` : ""}
+    ${
+      denomination
+        ? `<div class="popup-denomination">${createDotHtml(colour)}${escapeHtml(denomination)}</div>`
+        : ""
+    }
+    ${
+      website
+        ? `<br><a href="${escapeHtml(website.startsWith("http") ? website : `https://${website}`)}" target="_blank" rel="noopener">Website</a>`
+        : ""
+    }
   `;
 }
 
@@ -889,11 +834,6 @@ function createChurchMarker(church) {
   });
 
   marker.bindPopup(buildPopupContent(church));
-
-  marker.on("click", function () {
-    updateChurchDetailPanel(church);
-  });
-
   marker.churchData = church;
 
   return marker;
@@ -1173,7 +1113,6 @@ function updateProfilePanel(boundaryName, boundaryLeafletLayer) {
           if (marker) {
             map.setView(marker.getLatLng(), 13);
             marker.openPopup();
-            updateChurchDetailPanel(church);
           }
         });
 
@@ -1414,10 +1353,6 @@ document.getElementById("resetMapButton").addEventListener("click", function () 
   clearProfilePanel();
 
   map.setView([53.4, -8.0], 7);
-
-  document.getElementById("church-detail-content").className = "detail-empty";
-  document.getElementById("church-detail-content").innerHTML =
-    "Click a church dot on the map to view its details here.";
 
   updateVisibleChurches();
 });
