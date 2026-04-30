@@ -1,11 +1,9 @@
 /*
   Glúnta Research Church Map
-  Version: v0.8-gospel-opportunities-with-urban-zone-markers
-
-  Adds Urban Zone opportunity markers inside the Gospel Opportunities layer.
+  Version: v0.8.1-square-town-opportunity-markers
 */
 
-const CACHE_VERSION = "0.8";
+const CACHE_VERSION = "0.8.1";
 
 // --------------------------------------------------
 // MAP SETUP
@@ -85,11 +83,6 @@ const gospelOpportunityColours = {
   "Significant": "#f39c12",
   "Lower": "#9ccc65",
   "Established Presence": "#2e8b57"
-};
-
-const townOpportunityColours = {
-  "High": "#8b0000",
-  "Significant": "#f39c12"
 };
 
 const denominationColours = {
@@ -409,10 +402,6 @@ function getGospelOpportunityColour(level) {
   return gospelOpportunityColours[clean(level)] || "#cccccc";
 }
 
-function getTownOpportunityColour(level) {
-  return townOpportunityColours[clean(level)] || "#666666";
-}
-
 function getSelectedAffiliations() {
   const checkedBoxes = document.querySelectorAll(
     "#affiliationFilterBox input[type='checkbox']:checked"
@@ -630,12 +619,9 @@ function calculateUrbanOpportunity(urbanName, urbanLayer) {
   let shouldShow = false;
   let level = "";
 
-  if (populationNumber >= 5000 && distanceKm > 5) {
+  if (populationNumber >= 1500) {
     shouldShow = true;
     level = distanceKm > 10 ? "High" : "Significant";
-  } else if (populationNumber >= 1500 && populationNumber < 5000 && distanceKm > 10) {
-    shouldShow = true;
-    level = "High";
   }
 
   return {
@@ -702,14 +688,16 @@ function refreshUrbanOpportunityMarkers() {
       const centre = getLayerCentre(layer);
       if (!centre) return;
 
-      const marker = L.circleMarker(centre, {
-        pane: "urbanOpportunityPane",
-        radius: result.level === "High" ? 7 : 6,
-        fillColor: getTownOpportunityColour(result.level),
-        color: "#ffffff",
-        weight: 2,
-        opacity: 1,
-        fillOpacity: 0.95
+      const icon = L.divIcon({
+        className: "",
+        html: `<div class="urban-opportunity-marker"></div>`,
+        iconSize: [15, 15],
+        iconAnchor: [7.5, 7.5]
+      });
+
+      const marker = L.marker(centre, {
+        icon: icon,
+        pane: "urbanOpportunityPane"
       });
 
       marker.bindPopup(buildUrbanOpportunityPopup(urbanName, result));
