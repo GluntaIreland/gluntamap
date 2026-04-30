@@ -1,9 +1,9 @@
 /*
   Glúnta Research Church Map
-  Version: v0.8.5-denomination-tradition-colour-toggle
+  Version: v0.8.6-compact-colour-toggle
 */
 
-const CACHE_VERSION = "0.8.5";
+const CACHE_VERSION = "0.8.6";
 
 // --------------------------------------------------
 // MAP SETUP
@@ -89,7 +89,7 @@ const gospelOpportunityColours = {
 
 const traditionColours = {
   "Pentecostal/Charismatic": "#d62728",
-  "Baptist/Independent Evangelical": "#1f77b4",
+  "Baptist/Independent Evangelical": "#0057ff",
   "Presbyterian/Reformed": "#8e44ad",
   "Methodist/Wesleyan": "#2ca02c",
   "Brethren/Gospel Hall": "#8c564b",
@@ -150,33 +150,53 @@ const traditionMap = {
 };
 
 const denominationColours = {
-  "ABCI": "#0066ff",
+  "ABCI": "#0057ff",
+  "Assemblies of God": "#00a3ff",
   "Baptist": "#0066ff",
-  "Methodist": "#00a65a",
-  "Pentecostal": "#ffd700",
-  "Independent Evangelical": "#008000",
-  "RCCG": "#c1121f",
-  "Plumbline": "#00c7c7",
-  "PCI": "#1f77b4",
-  "Presbyterian": "#1f77b4",
-  "Elim / Pentecostal": "#ff8c00",
-  "Calvary Chapel": "#7b2cbf",
   "Brethren": "#8b4513",
-  "Church of Ireland": "#2a9d8f",
+  "Calvary Chapel": "#7b2cbf",
+  "Chinese Gospel Church": "#00b894",
+  "Christian Assembly": "#f1c40f",
   "Christian Churches Ireland": "#e76f51",
-  "Redeemed Christian Church of God": "#c1121f",
-  "Apostolic": "#6a4c93",
-  "Vineyard": "#bc5090",
-  "Non-denominational": "#4d908e",
+  "Christian Congregation in Ireland": "#2a9d8f",
+  "Church of Christ": "#264653",
+  "Church of Ireland": "#00c7c7",
+  "Church of the Nazarene": "#2ecc71",
+  "Congregational": "#9b5de5",
+  "Elim / Pentecostal": "#ff8c00",
+  "Elim Pentecostal": "#ff8c00",
+  "Evangelical": "#008000",
+  "Four12": "#f15bb5",
+  "ICM": "#577590",
   "Independent": "#008000",
-  "Evangelical": "#008000"
+  "Independent Baptist": "#1d4ed8",
+  "Independent Evangelical": "#16a34a",
+  "Indian Pentecostal Church of God": "#dc2626",
+  "Ireland Christian Revival Mission": "#ef4444",
+  "Methodist": "#00a65a",
+  "New Apostolic": "#c1121f",
+  "Non-denominational": "#4d908e",
+  "PCI": "#6d28d9",
+  "Pentecostal": "#e11d48",
+  "Pentecostal (Romanian)": "#fb923c",
+  "Pentecostal (Tamil)": "#f97316",
+  "Plumbline": "#0891b2",
+  "Presbyterian": "#7c3aed",
+  "RCCG": "#b91c1c",
+  "Redeemed Christian Church of God": "#b91c1c",
+  "Reformed Baptist": "#2563eb",
+  "Reformed Presbyterian Church of Ireland": "#9333ea",
+  "Romanian Pentecostal": "#ea580c",
+  "Tamil Pentecostal": "#c2410c",
+  "The Redeemed Evangelical Mission": "#991b1b",
+  "TREM": "#991b1b",
+  "Vineyard": "#bc5090"
 };
 
 const fallbackColours = [
-  "#0066ff", "#00a65a", "#ffd700", "#008000", "#c1121f", "#00c7c7",
-  "#1f77b4", "#ff8c00", "#7b2cbf", "#8b4513", "#2a9d8f", "#e76f51",
-  "#6a4c93", "#bc5090", "#4d908e", "#f94144", "#577590", "#43aa8b",
-  "#f3722c", "#90be6d", "#277da1", "#9b5de5", "#f15bb5", "#fee440"
+  "#0057ff", "#e11d48", "#00a65a", "#7c3aed", "#ff8c00", "#0891b2",
+  "#8b4513", "#f15bb5", "#264653", "#2a9d8f", "#f1c40f", "#577590",
+  "#dc2626", "#16a34a", "#9333ea", "#fb923c", "#4d908e", "#9b5de5"
 ];
 
 let generatedDenominationColours = {};
@@ -314,6 +334,25 @@ function createDotHtml(colour) {
 }
 
 // --------------------------------------------------
+// LABEL CLEANUP
+// --------------------------------------------------
+
+function updateAffiliationHeadingText() {
+  const possibleHeadings = document.querySelectorAll("h1, h2, h3, h4, label, strong");
+
+  possibleHeadings.forEach((element) => {
+    const text = clean(element.textContent).toLowerCase();
+
+    if (
+      text === "denomination or affiliation" ||
+      text === "denomination or affiliation:"
+    ) {
+      element.textContent = "Denomination or Affiliation (Please Select)";
+    }
+  });
+}
+
+// --------------------------------------------------
 // COLOUR MODE CONTROL
 // --------------------------------------------------
 
@@ -325,18 +364,16 @@ function createColourModeControl() {
   const control = document.createElement("div");
   control.id = "colourModeControl";
   control.style.marginBottom = "12px";
-  control.style.padding = "10px";
-  control.style.border = "1px solid #ddd";
-  control.style.borderRadius = "6px";
-  control.style.background = "#ffffff";
+  control.style.padding = "8px 0 2px 0";
+  control.style.border = "0";
+  control.style.background = "transparent";
 
   control.innerHTML = `
-    <div style="font-weight:700; margin-bottom:8px;">Colour map by</div>
-    <div style="display:flex; gap:6px; flex-wrap:wrap;">
-      <button id="colourByDenominationButton" type="button" style="padding:6px 9px; cursor:pointer;">
+    <div style="display:flex; gap:8px; flex-wrap:wrap;">
+      <button id="colourByDenominationButton" type="button" style="padding:8px 12px; cursor:pointer; font-weight:700;">
         Denomination
       </button>
-      <button id="colourByTraditionButton" type="button" style="padding:6px 9px; cursor:pointer;">
+      <button id="colourByTraditionButton" type="button" style="padding:8px 12px; cursor:pointer; font-weight:700;">
         Tradition
       </button>
     </div>
@@ -399,6 +436,8 @@ function setColourMode(mode) {
     marker.setStyle({
       fillColor: colour
     });
+
+    marker.bindPopup(buildPopupContent(marker.churchData));
   });
 
   refreshAffiliationFilterDots();
@@ -1550,6 +1589,7 @@ function loadChurches() {
 
       populateAffiliationFilter();
       createColourModeControl();
+      updateAffiliationHeadingText();
       updateVisibleChurches();
 
       console.log("Church rows loaded:", results.data.length);
