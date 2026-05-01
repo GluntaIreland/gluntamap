@@ -1,16 +1,15 @@
 /*
   Glúnta Research Church Map
-  Version: v0.8.9-tradition-column
+  Version: v0.8.10-tradition-filter-fix
 
-  What this version does:
-  - Reads the new Tradition column from churches.csv.
-  - Colours churches by Denomination or Tradition.
-  - Keeps denomination filters.
-  - Keeps Gospel Opportunities.
-  - Keeps Show Filters wording.
+  Changes:
+  - Denomination button now shows denomination filters.
+  - Tradition button now shows tradition filters.
+  - Marker colours update properly.
+  - Filter list rebuilds when switching between Denomination and Tradition.
 */
 
-const CACHE_VERSION = "0.8.9";
+const CACHE_VERSION = "0.8.10";
 
 // --------------------------------------------------
 // MAP SETUP
@@ -284,6 +283,14 @@ function getTraditionFromChurch(church) {
   return traditionMap[getDenomination(church)] || "Other Protestant/Evangelical";
 }
 
+function getFilterValue(church) {
+  if (colourMode === "tradition") {
+    return getTraditionFromChurch(church);
+  }
+
+  return getDenomination(church);
+}
+
 function getLatitude(church) {
   return Number(church["Latitude"] || church["latitude"] || church["Lat"] || church["lat"]);
 }
@@ -307,10 +314,21 @@ function getDenominationColour(denomination) {
   return generatedDenominationColours[denom];
 }
 
+function getTraditionColour(tradition) {
+  return traditionColours[tradition] || traditionColours["Other Protestant/Evangelical"];
+}
+
+function getFilterColour(value) {
+  if (colourMode === "tradition") {
+    return getTraditionColour(value);
+  }
+
+  return getDenominationColour(value);
+}
+
 function getChurchColour(church) {
   if (colourMode === "tradition") {
-    const tradition = getTraditionFromChurch(church);
-    return traditionColours[tradition] || traditionColours["Other Protestant/Evangelical"];
+    return getTraditionColour(getTraditionFromChurch(church));
   }
 
   return getDenominationColour(getDenomination(church));
@@ -335,23 +353,23 @@ function createColourModeControl() {
 
   control.innerHTML = `
     <div style="display:flex; gap:8px; flex-wrap:wrap;">
-      <button id="colourByTraditionButton" type="button" style="padding:8px 12px; cursor:pointer; font-weight:700;">
-        Tradition
-      </button>
       <button id="colourByDenominationButton" type="button" style="padding:8px 12px; cursor:pointer; font-weight:700;">
         Denomination
+      </button>
+      <button id="colourByTraditionButton" type="button" style="padding:8px 12px; cursor:pointer; font-weight:700;">
+        Tradition
       </button>
     </div>
   `;
 
   filterBox.parentNode.insertBefore(control, filterBox);
 
-  document.getElementById("colourByTraditionButton").addEventListener("click", function () {
-    setColourMode("tradition");
-  });
-
   document.getElementById("colourByDenominationButton").addEventListener("click", function () {
     setColourMode("denomination");
+  });
+
+  document.getElementById("colourByTraditionButton").addEventListener("click", function () {
+    setColourMode("tradition");
   });
 
   updateColourModeButtons();
@@ -367,14 +385,14 @@ function updateColourModeButtons() {
     background: "#064e3b",
     color: "#ffffff",
     border: "1px solid #064e3b",
-    borderRadius: "4px"
+    borderRadius: "0"
   };
 
   const inactiveStyles = {
     background: "#ffffff",
     color: "#111827",
     border: "1px solid #cccccc",
-    borderRadius: "4px"
+    borderRadius: "0"
   };
 
   Object.assign(denominationButton.style, colourMode === "denomination" ? activeStyles : inactiveStyles);
@@ -383,14 +401,15 @@ function updateColourModeButtons() {
 
 function setColourMode(mode) {
   colourMode = mode === "denomination" ? "denomination" : "tradition";
+
   updateColourModeButtons();
+  populateAffiliationFilter();
 
   churchMarkers.forEach((marker) => {
     marker.setStyle({ fillColor: getChurchColour(marker.churchData) });
     marker.bindPopup(buildPopupContent(marker.churchData));
   });
 
-  refreshAffiliationFilterDots();
   updateVisibleChurches();
 }
 
@@ -725,7 +744,7 @@ function getSelectedAffiliations() {
 function churchCountsForOpportunity(church) {
   const selectedAffiliations = getSelectedAffiliations();
   if (selectedAffiliations.length === 0) return true;
-  return selectedAffiliations.includes(getDenomination(church));
+  return selectedAffiliations.includes(getFilterValue(church));
 }
 
 function calculateGospelOpportunity(boundaryName, boundaryLayer) {
@@ -984,9 +1003,10 @@ function clearSelectedAffiliations() {
 
 function populateAffiliationFilter() {
   const filterBox = document.getElementById("affiliationFilterBox");
+  if (!filterBox) return;
 
   const affiliations = [...new Set(
-    allChurches.map(getDenomination).filter(Boolean)
+    allChurches.map(getFilterValue).filter(Boolean)
   )].sort();
 
   filterBox.innerHTML = "";
@@ -1019,13 +1039,12 @@ function populateAffiliationFilter() {
 
   toggleButton.addEventListener("click", function () {
     const isHidden = listContainer.style.display === "none";
-
     listContainer.style.display = isHidden ? "block" : "none";
     toggleButton.textContent = isHidden ? "Hide Filters" : "Show Filters";
   });
 
   affiliations.forEach((affiliation) => {
-    const colour = getDenominationColour(affiliation);
+    const colour = getFilterColour(affiliation);
 
     const label = document.createElement("label");
     label.className = "affiliation-option";
@@ -1050,25 +1069,12 @@ function populateAffiliationFilter() {
   });
 
   if (affiliations.length === 0) {
-    listContainer.textContent = "No affiliations found.";
+    listContainer.textContent = "No categories found.";
   }
 
   wrapper.appendChild(toggleButton);
   wrapper.appendChild(listContainer);
   filterBox.appendChild(wrapper);
-}
-
-function refreshAffiliationFilterDots() {
-  document
-    .querySelectorAll("#affiliationFilterBox .affiliation-option")
-    .forEach((label) => {
-      const checkbox = label.querySelector("input[type='checkbox']");
-      const dot = label.querySelector(".affiliation-dot");
-
-      if (!checkbox || !dot) return;
-
-      dot.style.background = getDenominationColour(checkbox.value);
-    });
 }
 
 // --------------------------------------------------
@@ -1125,7 +1131,7 @@ function createChurchMarker(church) {
 
 function churchMatchesFilters(church) {
   const searchInput = document.getElementById("searchInput");
-  const searchTerm = clean(searchInput.value).toLowerCase();
+  const searchTerm = searchInput ? clean(searchInput.value).toLowerCase() : "";
   const selectedAffiliations = getSelectedAffiliations();
 
   const fields = [
@@ -1142,7 +1148,7 @@ function churchMatchesFilters(church) {
 
   const matchesAffiliation =
     selectedAffiliations.length === 0 ||
-    selectedAffiliations.includes(getDenomination(church));
+    selectedAffiliations.includes(getFilterValue(church));
 
   return matchesSearch && matchesAffiliation;
 }
@@ -1310,8 +1316,8 @@ function loadChurches() {
 
       churchMarkers = allChurches.map(createChurchMarker).filter(Boolean);
 
-      populateAffiliationFilter();
       createColourModeControl();
+      populateAffiliationFilter();
       updateVisibleChurches();
 
       console.log("Church rows loaded:", results.data.length);
