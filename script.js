@@ -1,9 +1,9 @@
 /*
   Glúnta Research Church Map
-  Version: v0.8.8-collapsible-denomination-filter
+  Version: v0.8.9-mobile-layout-show-filters-label
 */
 
-const CACHE_VERSION = "0.8.8";
+const CACHE_VERSION = "0.8.9";
 
 // --------------------------------------------------
 // MAP SETUP
@@ -998,7 +998,7 @@ function populateAffiliationFilter() {
   const toggleButton = document.createElement("button");
   toggleButton.type = "button";
   toggleButton.id = "affiliationToggleButton";
-  toggleButton.textContent = "Show denomination filters";
+  toggleButton.textContent = "Show Filters";
   toggleButton.style.width = "100%";
   toggleButton.style.marginBottom = "10px";
   toggleButton.style.padding = "10px";
@@ -1023,8 +1023,8 @@ function populateAffiliationFilter() {
 
     listContainer.style.display = isHidden ? "block" : "none";
     toggleButton.textContent = isHidden
-      ? "Hide denomination filters"
-      : "Show denomination filters";
+      ? "Hide Filters"
+      : "Show Filters";
   });
 
   affiliations.forEach((affiliation) => {
