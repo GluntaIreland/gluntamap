@@ -200,6 +200,15 @@
       background: #888;
     }
 
+    #downloadUnreachedTownsButton {
+      display: none;
+      background: #064e3b;
+    }
+
+    #downloadUnreachedTownsButton.is-visible {
+      display: block;
+    }
+
     #church-count {
       margin-top: 12px;
       font-size: 14px;
@@ -241,10 +250,8 @@
     }
 
     /* --------------------------------------------------
-       v0.8.9-mobile-layout
-       Change 1: Mobile-only layout improvements.
-       Change 2: Collapsible mobile controls.
-       Desktop layout above remains unchanged.
+       v0.8.11-unreached-town-download
+       Adds Gospel Opportunities-only CSV download button.
     -------------------------------------------------- */
 
     @media (max-width: 700px) {
@@ -498,6 +505,7 @@
 
       <button id="resetMapButton" class="button">Reset map</button>
       <button id="clearSelectionButton" class="button">Clear boundary selection</button>
+      <button id="downloadUnreachedTownsButton" class="button" type="button">Download unreached towns CSV</button>
 
       <div id="church-count">Loading churches...</div>
     </div>
@@ -521,6 +529,6 @@
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="https://unpkg.com/papaparse@5.4.1/papaparse.min.js"></script>
-  <script src="script.js?v=0.8.12"></script>
+  <script src="script.js?v=0.8.13"></script>
 </body>
 </html>
