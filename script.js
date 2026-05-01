@@ -1,15 +1,14 @@
 /*
   Glúnta Research Church Map
-  Version: v0.8.13-y-field-gospel-colour-fix
+  Version: v0.8.14-cso-lea-name-fix
 
   Changes:
-  - Prevents GeoJSON boolean fields such as "Y" from being used as area names.
-  - Improves LEA name detection for the Gospel Opportunities layer.
-  - Fixes blank population values being treated as 0.
-  - Keeps unreached town CSV download button.
+  - Fixes Gospel Opportunities and LEA names by using CSO_LEA from lea-boundaries.geojson.
+  - Prevents LEA_GUID and other ID/GUID fields from being used as display names.
+  - Keeps the unreached towns CSV download button.
 */
 
-const CACHE_VERSION = "0.8.13";
+const CACHE_VERSION = "0.8.14";
 
 // --------------------------------------------------
 // MAP SETUP
@@ -274,13 +273,26 @@ function getTodayIsoDate() {
   return new Date().toISOString().slice(0, 10);
 }
 
+function isUsefulBoundaryNameValue(value) {
+  const cleaned = clean(value);
+
+  if (!cleaned) return false;
+  if (/^[YN]$/i.test(cleaned)) return false;
+  if (/^\d+$/.test(cleaned)) return false;
+  if (/^\d+\.\d+$/.test(cleaned)) return false;
+  if (/^[a-f0-9-]{20,}$/i.test(cleaned)) return false;
+  if (cleaned.length < 3) return false;
+
+  return true;
+}
+
 function getValueByPossibleKeys(object, possibleKeys) {
   if (!object) return "";
 
   for (const wantedKey of possibleKeys) {
     if (Object.prototype.hasOwnProperty.call(object, wantedKey)) {
       const value = clean(object[wantedKey]);
-      if (value) return value;
+      if (isUsefulBoundaryNameValue(value)) return value;
     }
   }
 
@@ -293,41 +305,11 @@ function getValueByPossibleKeys(object, possibleKeys) {
 
     if (matchingKey) {
       const value = clean(object[matchingKey]);
-      if (value) return value;
+      if (isUsefulBoundaryNameValue(value)) return value;
     }
   }
 
   return "";
-}
-
-function findValueFromKeyPatterns(object, patterns) {
-  if (!object) return "";
-
-  const keys = Object.keys(object);
-
-  for (const key of keys) {
-    const upperKey = key.toUpperCase();
-    const matchesPattern = patterns.some((pattern) => upperKey.includes(pattern));
-
-    if (!matchesPattern) continue;
-
-    const value = clean(object[key]);
-    if (isUsefulBoundaryNameValue(value)) return value;
-  }
-
-  return "";
-}
-
-function isUsefulBoundaryNameValue(value) {
-  const cleaned = clean(value);
-
-  if (!cleaned) return false;
-  if (/^[YN]$/i.test(cleaned)) return false;
-  if (/^\d+$/.test(cleaned)) return false;
-  if (/^\d+\.\d+$/.test(cleaned)) return false;
-  if (cleaned.length < 3) return false;
-
-  return true;
 }
 
 // --------------------------------------------------
@@ -534,7 +516,7 @@ function getFirstUsefulProperty(props) {
 
     if (!isUsefulBoundaryNameValue(value)) continue;
 
-    const ignored = ignoredKeyParts.some((part) => upperKey === part || upperKey.includes(`_${part}`));
+    const ignored = ignoredKeyParts.some((part) => upperKey.includes(part));
     if (ignored) continue;
 
     return value;
@@ -547,91 +529,58 @@ function getBoundaryFeatureName(feature, boundaryType) {
   const props = feature.properties || {};
 
   if (boundaryType === "urban") {
-    const directUrbanName = getValueByPossibleKeys(props, [
-      "UrbanZone",
-      "Urban Zone",
-      "URBAN_AREA_NAME",
-      "URBAN_NAME",
-      "SETTLEMENT",
-      "SETTLEMENT_NAME",
-      "TOWN",
-      "Town",
-      "NAME",
-      "Name",
-      "ENGLISH"
-    ]);
-
-    if (isUsefulBoundaryNameValue(directUrbanName)) return directUrbanName;
-
-    const patternUrbanName = findValueFromKeyPatterns(props, [
-      "URBAN",
-      "SETTLEMENT",
-      "TOWN",
-      "NAME",
-      "ENGLISH"
-    ]);
-
-    if (isUsefulBoundaryNameValue(patternUrbanName)) return patternUrbanName;
-
-    return getFirstUsefulProperty(props);
+    return clean(
+      getValueByPossibleKeys(props, [
+        "UrbanZone",
+        "Urban Zone",
+        "URBAN_AREA_NAME",
+        "URBAN_NAME",
+        "SETTLEMENT",
+        "SETTLEMENT_NAME",
+        "TOWN",
+        "Town",
+        "NAME",
+        "Name",
+        "ENGLISH"
+      ]) ||
+      getFirstUsefulProperty(props)
+    );
   }
 
   if (boundaryType === "lea" || boundaryType === "gospel") {
-    const directLeaName = getValueByPossibleKeys(props, [
-      "LEA",
-      "Lea",
-      "LEA_NAME",
-      "LEAName",
-      "LEA Name",
-      "LEA_NAME_TAG",
-      "Local Electoral Area",
-      "LOCAL_ELECTORAL_AREA",
-      "ED_LEA_NAME",
-      "ENGLISH",
-      "NAME",
-      "Name"
-    ]);
-
-    if (isUsefulBoundaryNameValue(directLeaName)) return directLeaName;
-
-    const patternLeaName = findValueFromKeyPatterns(props, [
-      "LEA_NAME",
-      "LEA",
-      "LOCAL_ELECTORAL",
-      "NAME",
-      "ENGLISH"
-    ]);
-
-    if (isUsefulBoundaryNameValue(patternLeaName)) return patternLeaName;
-
-    return getFirstUsefulProperty(props);
+    return clean(
+      getValueByPossibleKeys(props, [
+        "CSO_LEA",
+        "LEA",
+        "Lea",
+        "LEA_NAME",
+        "LEA Name",
+        "Local Electoral Area",
+        "LOCAL_ELECTORAL_AREA",
+        "ED_LEA_NAME",
+        "NAME",
+        "Name"
+      ]) ||
+      getFirstUsefulProperty(props)
+    );
   }
 
-  const directCountyName = getValueByPossibleKeys(props, [
-    "COUNTY",
-    "County",
-    "COUNTY_NAME",
-    "CountyName",
-    "NAME",
-    "Name",
-    "ENGLISH"
-  ]);
-
-  if (isUsefulBoundaryNameValue(directCountyName)) return directCountyName;
-
-  const patternCountyName = findValueFromKeyPatterns(props, [
-    "COUNTY",
-    "NAME",
-    "ENGLISH"
-  ]);
-
-  if (isUsefulBoundaryNameValue(patternCountyName)) return patternCountyName;
-
-  return getFirstUsefulProperty(props);
+  return clean(
+    getValueByPossibleKeys(props, [
+      "COUNTY",
+      "County",
+      "COUNTY_NAME",
+      "CountyName",
+      "NAME",
+      "Name",
+      "ENGLISH"
+    ]) ||
+    getFirstUsefulProperty(props)
+  );
 }
 
 function getUrbanCounty(urbanName, feature) {
-  const urbanRow = urbanData[normaliseName(urbanName)] || {};
+  const urbanRow = findRowByNormalisedName(urbanData, urbanName);
   const props = feature && feature.properties ? feature.properties : {};
 
   return clean(
@@ -777,12 +726,14 @@ function loadLeaData() {
     skipEmptyLines: true,
     complete: function (results) {
       leaData = {};
+
       results.data.forEach((row) => {
         const name = normaliseName(
           row.LEA ||
           row.Lea ||
           row["LEA Name"] ||
           row.LEA_NAME ||
+          row.CSO_LEA ||
           row["Local Electoral Area"] ||
           row.Name ||
           row.NAME
@@ -958,8 +909,6 @@ function calculateGospelOpportunity(boundaryName, boundaryLayer) {
     else if (populationPerChurch >= 10000) level = "Significant";
     else if (populationPerChurch >= 5000) level = "Lower";
     else level = "Established Presence";
-  } else {
-    level = "Established Presence";
   }
 
   let type = "Established Presence";
