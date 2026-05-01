@@ -1,15 +1,16 @@
 /*
   Glúnta Research Church Map
-  Version: v0.8.10-tradition-filter-fix
+  Version: v0.8.12-gospel-opportunity-name-fix
 
   Changes:
-  - Denomination button now shows denomination filters.
-  - Tradition button now shows tradition filters.
-  - Marker colours update properly.
-  - Filter list rebuilds when switching between Denomination and Tradition.
+  - Uses the Tradition column from churches.csv.
+  - Fixes Denomination / Tradition filter switching.
+  - Improves LEA / Gospel Opportunity name detection.
+  - Prevents the selected area showing as "Y".
+  - Improves Gospel Opportunity population matching.
 */
 
-const CACHE_VERSION = "0.8.10";
+const CACHE_VERSION = "0.8.12";
 
 // --------------------------------------------------
 // MAP SETUP
@@ -99,60 +100,7 @@ const traditionColours = {
   "Presbyterian/Reformed": "#8e44ad",
   "Methodist/Wesleyan": "#2ca02c",
   "Brethren/Gospel Hall": "#8c564b",
-  "Other Protestant/Evangelical": "#7f7f7f",
-  "International Churches": "#ff7f0e",
-  "International/Migrant-led": "#ff7f0e"
-};
-
-const traditionMap = {
-  "PCI": "Presbyterian/Reformed",
-  "Presbyterian": "Presbyterian/Reformed",
-  "Reformed Presbyterian Church of Ireland": "Presbyterian/Reformed",
-  "Congregational": "Presbyterian/Reformed",
-
-  "Methodist": "Methodist/Wesleyan",
-  "Church of the Nazarene": "Methodist/Wesleyan",
-
-  "ABCI": "Baptist/Independent Evangelical",
-  "Baptist": "Baptist/Independent Evangelical",
-  "Various Baptist": "Baptist/Independent Evangelical",
-  "Independent Baptist": "Baptist/Independent Evangelical",
-  "Reformed Baptist": "Baptist/Independent Evangelical",
-  "Independent Evangelical": "Baptist/Independent Evangelical",
-  "Independent": "Baptist/Independent Evangelical",
-  "Non-denominational": "Baptist/Independent Evangelical",
-  "Calvary Chapel": "Baptist/Independent Evangelical",
-
-  "Brethren": "Brethren/Gospel Hall",
-  "Christian Assembly": "Brethren/Gospel Hall",
-
-  "RCCG": "Pentecostal/Charismatic",
-  "Redeemed Christian Church of God": "Pentecostal/Charismatic",
-  "Pentecostal": "Pentecostal/Charismatic",
-  "Various Pentecostal": "Pentecostal/Charismatic",
-  "Assemblies of God": "Pentecostal/Charismatic",
-  "Elim Ministries Ireland": "Pentecostal/Charismatic",
-  "Elim / Pentecostal": "Pentecostal/Charismatic",
-  "Elim Pentecostal": "Pentecostal/Charismatic",
-  "Apostolic": "Pentecostal/Charismatic",
-  "Vineyard": "Pentecostal/Charismatic",
-  "Indian Pentecostal Church of God": "Pentecostal/Charismatic",
-  "TREM": "Pentecostal/Charismatic",
-  "The Redeemed Evangelical Mission": "Pentecostal/Charismatic",
-
-  "Christian Churches Ireland": "Other Protestant/Evangelical",
-  "Church of Ireland": "Other Protestant/Evangelical",
-  "ICM": "Other Protestant/Evangelical",
-  "Church of Christ": "Other Protestant/Evangelical",
-  "Four12": "Other Protestant/Evangelical",
-  "Plumbline": "Other Protestant/Evangelical",
-  "Christian Congregation in Ireland": "Other Protestant/Evangelical",
-
-  "Chinese Gospel Church": "International Churches",
-  "Romanian Pentecostal": "International Churches",
-  "Tamil Pentecostal": "International Churches",
-  "Pentecostal (Romanian)": "International Churches",
-  "Pentecostal (Tamil)": "International Churches"
+  "Other Protestant/Evangelical": "#7f7f7f"
 };
 
 const denominationColours = {
@@ -174,8 +122,6 @@ const denominationColours = {
   "Various Pentecostal": "#e11d48",
   "Assemblies of God": "#00a3ff",
   "Elim Ministries Ireland": "#ff8c00",
-  "Elim / Pentecostal": "#ff8c00",
-  "Elim Pentecostal": "#ff8c00",
   "Church of Ireland": "#00c7c7",
   "ICM": "#577590",
   "Vineyard": "#bc5090",
@@ -210,6 +156,9 @@ function normaliseName(value) {
   return clean(value)
     .replace(/^County\s+/i, "")
     .replace(/\s+/g, " ")
+    .replace(/[’']/g, "")
+    .replace(/-/g, " ")
+    .replace(/\//g, " ")
     .toUpperCase();
 }
 
@@ -262,25 +211,21 @@ function getWebsite(church) {
 
 function getDenomination(church) {
   return clean(
+    church["Denomination"] ||
     church["Denomination or affiliation"] ||
     church["Denomination or Affiliation"] ||
     church["Affiliation"] ||
-    church["Denomination"] ||
     church["denomination"] ||
     church["affiliation"]
   );
 }
 
 function getTraditionFromChurch(church) {
-  const existingTradition = clean(
+  return clean(
     church["Tradition"] ||
     church["Broad Tradition"] ||
     church["tradition"]
-  );
-
-  if (existingTradition) return existingTradition;
-
-  return traditionMap[getDenomination(church)] || "Other Protestant/Evangelical";
+  ) || "Other Protestant/Evangelical";
 }
 
 function getFilterValue(church) {
@@ -420,7 +365,9 @@ function setColourMode(mode) {
 function getFirstUsefulProperty(props) {
   const ignoredKeyParts = [
     "OBJECTID", "FID", "GUID", "GLOBALID", "GEOGID", "CENTROID",
-    "SHAPE", "AREA", "LENGTH", "PERIMETER", "SMALL_AREA", "ED_ID", "CODE"
+    "SHAPE", "AREA", "LENGTH", "PERIMETER", "SMALL_AREA", "ED_ID",
+    "CODE", "X", "Y", "LAT", "LONG", "LON", "EASTING", "NORTHING",
+    "COORD", "IRISH", "GAEILGE"
   ];
 
   const keys = Object.keys(props || {});
@@ -430,10 +377,10 @@ function getFirstUsefulProperty(props) {
     const value = clean(props[key]);
 
     if (!value) continue;
-    if (/^\d+$/.test(value)) continue;
-    if (/^\d+\.\d+$/.test(value)) continue;
+    if (value.toUpperCase() === "Y" || value.toUpperCase() === "N") continue;
+    if (!Number.isNaN(Number(value))) continue;
 
-    const ignored = ignoredKeyParts.some((part) => upperKey.includes(part));
+    const ignored = ignoredKeyParts.some((part) => upperKey === part || upperKey.includes(part));
     if (ignored) continue;
 
     return value;
@@ -447,11 +394,14 @@ function getBoundaryFeatureName(feature, boundaryType) {
 
   if (boundaryType === "urban") {
     return clean(
-      props.URBAN_AREA_NAME ||
       props.UrbanZone ||
       props["Urban Zone"] ||
+      props.URBAN_AREA_NAME ||
+      props.SETTLEMENT ||
+      props.TOWN ||
       props.NAME ||
       props.Name ||
+      props.name ||
       getFirstUsefulProperty(props)
     );
   }
@@ -460,11 +410,18 @@ function getBoundaryFeatureName(feature, boundaryType) {
     return clean(
       props.LEA ||
       props.Lea ||
+      props.lea ||
       props.LEA_NAME ||
       props["LEA Name"] ||
-      props["Local Electoral Area"] ||
+      props.LE_NAME ||
+      props.ED_NAME ||
+      props.ENGLISH ||
+      props.English ||
       props.NAME ||
       props.Name ||
+      props.name ||
+      props.LABEL ||
+      props.Label ||
       getFirstUsefulProperty(props)
     );
   }
@@ -472,9 +429,12 @@ function getBoundaryFeatureName(feature, boundaryType) {
   return clean(
     props.COUNTY ||
     props.County ||
+    props.county ||
     props.COUNTY_NAME ||
+    props["County Name"] ||
     props.NAME ||
     props.Name ||
+    props.name ||
     getFirstUsefulProperty(props)
   );
 }
@@ -596,10 +556,29 @@ function loadLeaData() {
     skipEmptyLines: true,
     complete: function (results) {
       leaData = {};
+
       results.data.forEach((row) => {
-        const name = normaliseName(row.LEA || row.Lea || row["LEA Name"] || row.Name || row.NAME);
-        if (name) leaData[name] = row;
+        const possibleName =
+          row.LEA ||
+          row.Lea ||
+          row.lea ||
+          row["LEA Name"] ||
+          row.LEA_NAME ||
+          row.Name ||
+          row.NAME ||
+          row.Area ||
+          row.AREA;
+
+        const name = normaliseName(possibleName);
+
+        if (name) {
+          leaData[name] = row;
+        }
       });
+
+      if (currentBoundaryType === "gospel" && currentBoundaryLayer) {
+        refreshGospelOpportunityLayerStyles();
+      }
     }
   });
 }
@@ -670,8 +649,9 @@ function updateProfilePanel(boundaryName, boundaryLayer) {
 
   const populationValue = getPopulationForBoundary(boundaryName);
   const populationNumber = Number(String(populationValue).replace(/,/g, ""));
+
   const populationPerChurch =
-    !Number.isNaN(populationNumber) && churchesInBoundary.length > 0
+    !Number.isNaN(populationNumber) && populationNumber > 0 && churchesInBoundary.length > 0
       ? Math.round(populationNumber / churchesInBoundary.length).toLocaleString("en-IE")
       : "Not available";
 
@@ -743,7 +723,9 @@ function getSelectedAffiliations() {
 
 function churchCountsForOpportunity(church) {
   const selectedAffiliations = getSelectedAffiliations();
+
   if (selectedAffiliations.length === 0) return true;
+
   return selectedAffiliations.includes(getFilterValue(church));
 }
 
@@ -754,7 +736,9 @@ function calculateGospelOpportunity(boundaryName, boundaryLayer) {
 
   const churchCount = churchesInBoundary.length;
   const populationValue = getPopulationForBoundary(boundaryName);
-  const populationNumber = Number(String(populationValue).replace(/,/g, ""));
+
+  const cleanedPopulation = clean(populationValue).replace(/,/g, "");
+  const populationNumber = cleanedPopulation ? Number(cleanedPopulation) : NaN;
 
   let populationPerChurch = "";
   let level = "Established Presence";
@@ -764,16 +748,28 @@ function calculateGospelOpportunity(boundaryName, boundaryLayer) {
   } else if (!Number.isNaN(populationNumber) && populationNumber > 0) {
     populationPerChurch = Math.round(populationNumber / churchCount);
 
-    if (populationPerChurch > 15000) level = "High";
-    else if (populationPerChurch >= 10000) level = "Significant";
-    else if (populationPerChurch >= 5000) level = "Lower";
-    else level = "Established Presence";
+    if (populationPerChurch > 15000) {
+      level = "High";
+    } else if (populationPerChurch >= 10000) {
+      level = "Significant";
+    } else if (populationPerChurch >= 5000) {
+      level = "Lower";
+    } else {
+      level = "Established Presence";
+    }
+  } else {
+    level = "Established Presence";
   }
 
   let type = "Established Presence";
-  if (level === "Urgent" || level === "High") type = "Pioneer Location";
-  else if (level === "Significant") type = "Strengthen Existing Work";
-  else if (level === "Lower") type = "Partner / Support";
+
+  if (level === "Urgent" || level === "High") {
+    type = "Pioneer Location";
+  } else if (level === "Significant") {
+    type = "Strengthen Existing Work";
+  } else if (level === "Lower") {
+    type = "Partner / Support";
+  }
 
   return {
     level,
