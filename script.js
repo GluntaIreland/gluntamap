@@ -1,9 +1,9 @@
 /*
   Glúnta Research Church Map
-  Version: v0.8.4-remove-church-details-panel
+  Version: v0.8.8-collapsible-denomination-filter
 */
 
-const CACHE_VERSION = "0.8.4";
+const CACHE_VERSION = "0.8.8";
 
 // --------------------------------------------------
 // MAP SETUP
@@ -50,6 +50,8 @@ let countyData = {};
 let leaData = {};
 let urbanData = {};
 
+let colourMode = "denomination";
+
 const boundaryConfigs = {
   county: {
     labelSingular: "County",
@@ -85,34 +87,119 @@ const gospelOpportunityColours = {
   "Established Presence": "#2e8b57"
 };
 
+const traditionColours = {
+  "Pentecostal/Charismatic": "#d62728",
+  "Baptist/Independent Evangelical": "#0057ff",
+  "Presbyterian/Reformed": "#8e44ad",
+  "Methodist/Wesleyan": "#2ca02c",
+  "Brethren/Gospel Hall": "#8c564b",
+  "Other Protestant/Evangelical": "#7f7f7f",
+  "International/Migrant-led": "#ff7f0e"
+};
+
+const traditionMap = {
+  "Pentecostal": "Pentecostal/Charismatic",
+  "RCCG": "Pentecostal/Charismatic",
+  "Redeemed Christian Church of God": "Pentecostal/Charismatic",
+  "Assemblies of God": "Pentecostal/Charismatic",
+  "Elim / Pentecostal": "Pentecostal/Charismatic",
+  "Elim Pentecostal": "Pentecostal/Charismatic",
+  "Apostolic": "Pentecostal/Charismatic",
+  "Vineyard": "Pentecostal/Charismatic",
+  "New Apostolic": "Pentecostal/Charismatic",
+  "Indian Pentecostal Church of God": "Pentecostal/Charismatic",
+  "Ireland Christian Revival Mission": "Pentecostal/Charismatic",
+  "TREM": "Pentecostal/Charismatic",
+  "The Redeemed Evangelical Mission": "Pentecostal/Charismatic",
+
+  "Baptist": "Baptist/Independent Evangelical",
+  "ABCI": "Baptist/Independent Evangelical",
+  "Independent Baptist": "Baptist/Independent Evangelical",
+  "Reformed Baptist": "Baptist/Independent Evangelical",
+  "Independent Evangelical": "Baptist/Independent Evangelical",
+  "Independent": "Baptist/Independent Evangelical",
+  "Evangelical": "Baptist/Independent Evangelical",
+  "Non-denominational": "Baptist/Independent Evangelical",
+  "Christian Fellowship": "Baptist/Independent Evangelical",
+  "Christian Fellowship (Telugu)": "Baptist/Independent Evangelical",
+
+  "PCI": "Presbyterian/Reformed",
+  "Presbyterian": "Presbyterian/Reformed",
+  "Reformed Presbyterian Church of Ireland": "Presbyterian/Reformed",
+  "Congregational": "Presbyterian/Reformed",
+
+  "Methodist": "Methodist/Wesleyan",
+  "Church of the Nazarene": "Methodist/Wesleyan",
+
+  "Brethren": "Brethren/Gospel Hall",
+  "Christian Assembly": "Brethren/Gospel Hall",
+
+  "Chinese Gospel Church": "International/Migrant-led",
+  "Romanian Pentecostal": "International/Migrant-led",
+  "Tamil Pentecostal": "International/Migrant-led",
+  "Pentecostal (Romanian)": "International/Migrant-led",
+  "Pentecostal (Tamil)": "International/Migrant-led",
+
+  "Church of Ireland": "Other Protestant/Evangelical",
+  "Christian Churches Ireland": "Other Protestant/Evangelical",
+  "Calvary Chapel": "Other Protestant/Evangelical",
+  "ICM": "Other Protestant/Evangelical",
+  "Church of Christ": "Other Protestant/Evangelical",
+  "Four12": "Other Protestant/Evangelical",
+  "Plumbline": "Other Protestant/Evangelical",
+  "Christian Congregation in Ireland": "Other Protestant/Evangelical"
+};
+
 const denominationColours = {
-  "ABCI": "#0066ff",
+  "ABCI": "#0057ff",
+  "Assemblies of God": "#00a3ff",
   "Baptist": "#0066ff",
-  "Methodist": "#00a65a",
-  "Pentecostal": "#ffd700",
-  "Independent Evangelical": "#008000",
-  "RCCG": "#c1121f",
-  "Plumbline": "#00c7c7",
-  "PCI": "#1f77b4",
-  "Presbyterian": "#1f77b4",
-  "Elim / Pentecostal": "#ff8c00",
-  "Calvary Chapel": "#7b2cbf",
   "Brethren": "#8b4513",
-  "Church of Ireland": "#2a9d8f",
+  "Calvary Chapel": "#7b2cbf",
+  "Chinese Gospel Church": "#00b894",
+  "Christian Assembly": "#9a4f32",
   "Christian Churches Ireland": "#e76f51",
-  "Redeemed Christian Church of God": "#c1121f",
-  "Apostolic": "#6a4c93",
-  "Vineyard": "#bc5090",
-  "Non-denominational": "#4d908e",
+  "Christian Congregation in Ireland": "#2a9d8f",
+  "Christian Fellowship": "#16a34a",
+  "Christian Fellowship (Telugu)": "#059669",
+  "Church of Christ": "#264653",
+  "Church of Ireland": "#00c7c7",
+  "Church of the Nazarene": "#2ecc71",
+  "Congregational": "#9b5de5",
+  "Elim / Pentecostal": "#ff8c00",
+  "Elim Pentecostal": "#ff8c00",
+  "Evangelical": "#008000",
+  "Four12": "#f15bb5",
+  "ICM": "#577590",
   "Independent": "#008000",
-  "Evangelical": "#008000"
+  "Independent Baptist": "#1d4ed8",
+  "Independent Evangelical": "#16a34a",
+  "Indian Pentecostal Church of God": "#dc2626",
+  "Ireland Christian Revival Mission": "#ef4444",
+  "Methodist": "#00a65a",
+  "New Apostolic": "#c1121f",
+  "Non-denominational": "#4d908e",
+  "PCI": "#6d28d9",
+  "Pentecostal": "#e11d48",
+  "Pentecostal (Romanian)": "#fb923c",
+  "Pentecostal (Tamil)": "#f97316",
+  "Plumbline": "#0891b2",
+  "Presbyterian": "#7c3aed",
+  "RCCG": "#b91c1c",
+  "Redeemed Christian Church of God": "#b91c1c",
+  "Reformed Baptist": "#2563eb",
+  "Reformed Presbyterian Church of Ireland": "#9333ea",
+  "Romanian Pentecostal": "#ea580c",
+  "Tamil Pentecostal": "#c2410c",
+  "The Redeemed Evangelical Mission": "#991b1b",
+  "TREM": "#991b1b",
+  "Vineyard": "#bc5090"
 };
 
 const fallbackColours = [
-  "#0066ff", "#00a65a", "#ffd700", "#008000", "#c1121f", "#00c7c7",
-  "#1f77b4", "#ff8c00", "#7b2cbf", "#8b4513", "#2a9d8f", "#e76f51",
-  "#6a4c93", "#bc5090", "#4d908e", "#f94144", "#577590", "#43aa8b",
-  "#f3722c", "#90be6d", "#277da1", "#9b5de5", "#f15bb5", "#fee440"
+  "#0057ff", "#e11d48", "#00a65a", "#7c3aed", "#ff8c00", "#0891b2",
+  "#8b4513", "#f15bb5", "#264653", "#2a9d8f", "#f1c40f", "#577590",
+  "#dc2626", "#16a34a", "#9333ea", "#fb923c", "#4d908e", "#9b5de5"
 ];
 
 let generatedDenominationColours = {};
@@ -195,6 +282,24 @@ function getDenomination(church) {
   );
 }
 
+function getTraditionFromChurch(church) {
+  const existingTradition = clean(
+    church["Tradition"] ||
+    church["Broad Tradition"] ||
+    church["tradition"]
+  );
+
+  if (existingTradition) return existingTradition;
+
+  const denomination = getDenomination(church);
+  return getTraditionFromDenomination(denomination);
+}
+
+function getTraditionFromDenomination(denomination) {
+  const denom = clean(denomination);
+  return traditionMap[denom] || "Other Protestant/Evangelical";
+}
+
 function getLatitude(church) {
   return Number(church["Latitude"] || church["latitude"] || church["Lat"] || church["lat"]);
 }
@@ -218,8 +323,146 @@ function getDenominationColour(denomination) {
   return generatedDenominationColours[denom];
 }
 
+function getChurchColour(church) {
+  if (colourMode === "tradition") {
+    const tradition = getTraditionFromChurch(church);
+    return traditionColours[tradition] || traditionColours["Other Protestant/Evangelical"];
+  }
+
+  return getDenominationColour(getDenomination(church));
+}
+
 function createDotHtml(colour) {
   return `<span class="denomination-dot" style="background:${colour};"></span>`;
+}
+
+// --------------------------------------------------
+// LABEL CLEANUP
+// --------------------------------------------------
+
+function updateAffiliationHeadingText() {
+  const possibleHeadings = document.querySelectorAll("h1, h2, h3, h4, label, strong");
+
+  possibleHeadings.forEach((element) => {
+    const text = clean(element.textContent).toLowerCase();
+
+    if (
+      text === "denomination or affiliation" ||
+      text === "denomination or affiliation:"
+    ) {
+      element.textContent = "Denomination or Affiliation (Please Select)";
+    }
+  });
+}
+
+// --------------------------------------------------
+// COLOUR MODE CONTROL
+// --------------------------------------------------
+
+function createColourModeControl() {
+  const filterBox = document.getElementById("affiliationFilterBox");
+
+  if (!filterBox || document.getElementById("colourModeControl")) return;
+
+  const control = document.createElement("div");
+  control.id = "colourModeControl";
+  control.style.marginBottom = "12px";
+  control.style.padding = "8px 0 2px 0";
+  control.style.border = "0";
+  control.style.background = "transparent";
+
+  control.innerHTML = `
+    <div style="display:flex; gap:8px; flex-wrap:wrap;">
+      <button id="colourByDenominationButton" type="button" style="padding:8px 12px; cursor:pointer; font-weight:700;">
+        Denomination
+      </button>
+      <button id="colourByTraditionButton" type="button" style="padding:8px 12px; cursor:pointer; font-weight:700;">
+        Tradition
+      </button>
+    </div>
+  `;
+
+  filterBox.parentNode.insertBefore(control, filterBox);
+
+  document
+    .getElementById("colourByDenominationButton")
+    .addEventListener("click", function () {
+      setColourMode("denomination");
+    });
+
+  document
+    .getElementById("colourByTraditionButton")
+    .addEventListener("click", function () {
+      setColourMode("tradition");
+    });
+
+  updateColourModeButtons();
+}
+
+function updateColourModeButtons() {
+  const denominationButton = document.getElementById("colourByDenominationButton");
+  const traditionButton = document.getElementById("colourByTraditionButton");
+
+  if (!denominationButton || !traditionButton) return;
+
+  const activeStyles = {
+    background: "#064e3b",
+    color: "#ffffff",
+    border: "1px solid #064e3b"
+  };
+
+  const inactiveStyles = {
+    background: "#ffffff",
+    color: "#111827",
+    border: "1px solid #cccccc"
+  };
+
+  Object.assign(
+    denominationButton.style,
+    colourMode === "denomination" ? activeStyles : inactiveStyles
+  );
+
+  Object.assign(
+    traditionButton.style,
+    colourMode === "tradition" ? activeStyles : inactiveStyles
+  );
+}
+
+function setColourMode(mode) {
+  colourMode = mode === "tradition" ? "tradition" : "denomination";
+
+  updateColourModeButtons();
+
+  churchMarkers.forEach((marker) => {
+    const colour = getChurchColour(marker.churchData);
+
+    marker.setStyle({
+      fillColor: colour
+    });
+
+    marker.bindPopup(buildPopupContent(marker.churchData));
+  });
+
+  refreshAffiliationFilterDots();
+
+  if (selectedBoundaryLeafletLayer && selectedBoundaryName !== null) {
+    updateProfilePanel(selectedBoundaryName, selectedBoundaryLeafletLayer);
+  }
+
+  refreshGospelOpportunityLayerStyles();
+}
+
+function refreshAffiliationFilterDots() {
+  document
+    .querySelectorAll("#affiliationFilterBox .affiliation-option")
+    .forEach((label) => {
+      const checkbox = label.querySelector("input[type='checkbox']");
+      const dot = label.querySelector(".affiliation-dot");
+
+      if (!checkbox || !dot) return;
+
+      dot.style.background = getDenominationColour(checkbox.value);
+    });
 }
 
 // --------------------------------------------------
@@ -749,6 +992,41 @@ function populateAffiliationFilter() {
 
   filterBox.innerHTML = "";
 
+  const wrapper = document.createElement("div");
+  wrapper.id = "affiliationFilterWrapper";
+
+  const toggleButton = document.createElement("button");
+  toggleButton.type = "button";
+  toggleButton.id = "affiliationToggleButton";
+  toggleButton.textContent = "Show denomination filters";
+  toggleButton.style.width = "100%";
+  toggleButton.style.marginBottom = "10px";
+  toggleButton.style.padding = "10px";
+  toggleButton.style.cursor = "pointer";
+  toggleButton.style.fontWeight = "700";
+  toggleButton.style.background = "#ffffff";
+  toggleButton.style.border = "1px solid #cccccc";
+  toggleButton.style.borderRadius = "4px";
+
+  const listContainer = document.createElement("div");
+  listContainer.id = "affiliationListContainer";
+  listContainer.style.display = "none";
+  listContainer.style.maxHeight = "250px";
+  listContainer.style.overflowY = "auto";
+  listContainer.style.border = "1px solid #dddddd";
+  listContainer.style.padding = "10px";
+  listContainer.style.borderRadius = "6px";
+  listContainer.style.background = "#ffffff";
+
+  toggleButton.addEventListener("click", function () {
+    const isHidden = listContainer.style.display === "none";
+
+    listContainer.style.display = isHidden ? "block" : "none";
+    toggleButton.textContent = isHidden
+      ? "Hide denomination filters"
+      : "Show denomination filters";
+  });
+
   affiliations.forEach((affiliation) => {
     const colour = getDenominationColour(affiliation);
 
@@ -771,12 +1049,17 @@ function populateAffiliationFilter() {
     label.appendChild(dot);
     label.appendChild(text);
 
-    filterBox.appendChild(label);
+    listContainer.appendChild(label);
   });
 
   if (affiliations.length === 0) {
-    filterBox.textContent = "No affiliations found.";
+    listContainer.textContent = "No affiliations found.";
   }
+
+  wrapper.appendChild(toggleButton);
+  wrapper.appendChild(listContainer);
+
+  filterBox.appendChild(wrapper);
 }
 
 // --------------------------------------------------
@@ -790,8 +1073,9 @@ function buildPopupContent(church) {
   const county = getCounty(church);
   const eircode = getEircode(church);
   const denomination = getDenomination(church);
+  const tradition = getTraditionFromChurch(church);
   const website = getWebsite(church);
-  const colour = getDenominationColour(denomination);
+  const colour = getChurchColour(church);
 
   return `
     <strong>${escapeHtml(name)}</strong><br>
@@ -801,6 +1085,11 @@ function buildPopupContent(church) {
     ${
       denomination
         ? `<div class="popup-denomination">${createDotHtml(colour)}${escapeHtml(denomination)}</div>`
+        : ""
+    }
+    ${
+      colourMode === "tradition"
+        ? `<div><strong>Tradition:</strong> ${escapeHtml(tradition)}</div>`
         : ""
     }
     ${
@@ -818,8 +1107,7 @@ function buildPopupContent(church) {
 function createChurchMarker(church) {
   const lat = getLatitude(church);
   const lng = getLongitude(church);
-  const denomination = getDenomination(church);
-  const colour = getDenominationColour(denomination);
+  const colour = getChurchColour(church);
 
   if (Number.isNaN(lat) || Number.isNaN(lng)) return null;
 
@@ -854,6 +1142,7 @@ function churchMatchesFilters(church) {
   const county = getCounty(church).toLowerCase();
   const lea = getLea(church).toLowerCase();
   const denomination = getDenomination(church);
+  const tradition = getTraditionFromChurch(church);
 
   const matchesSearch =
     !searchTerm ||
@@ -862,7 +1151,8 @@ function churchMatchesFilters(church) {
     city.includes(searchTerm) ||
     county.includes(searchTerm) ||
     lea.includes(searchTerm) ||
-    denomination.toLowerCase().includes(searchTerm);
+    denomination.toLowerCase().includes(searchTerm) ||
+    tradition.toLowerCase().includes(searchTerm);
 
   const matchesAffiliation =
     selectedAffiliations.length === 0 ||
@@ -881,6 +1171,10 @@ function updateVisibleChurches() {
   churchMarkers.forEach((marker) => {
     if (churchMatchesFilters(marker.churchData)) {
       marker.addTo(map);
+      marker.setStyle({
+        fillColor: getChurchColour(marker.churchData)
+      });
+      marker.bindPopup(buildPopupContent(marker.churchData));
       marker.bringToFront();
       visibleCount++;
     }
@@ -1097,12 +1391,17 @@ function updateProfilePanel(boundaryName, boundaryLeafletLayer) {
       .forEach((church) => {
         const li = document.createElement("li");
         const denomination = getDenomination(church);
-        const colour = getDenominationColour(denomination);
+        const tradition = getTraditionFromChurch(church);
+        const colour = getChurchColour(church);
 
         li.innerHTML = `
           ${escapeHtml(getChurchName(church))}
           ${getCity(church) ? `, ${escapeHtml(getCity(church))}` : ""}
-          ${denomination ? ` ${createDotHtml(colour)}<em>(${escapeHtml(denomination)})</em>` : ""}
+          ${
+            denomination
+              ? ` ${createDotHtml(colour)}<em>(${escapeHtml(colourMode === "tradition" ? tradition : denomination)})</em>`
+              : ""
+          }
         `;
 
         li.style.cursor = "pointer";
@@ -1322,6 +1621,8 @@ function loadChurches() {
         .filter(Boolean);
 
       populateAffiliationFilter();
+      createColourModeControl();
+      updateAffiliationHeadingText();
       updateVisibleChurches();
 
       console.log("Church rows loaded:", results.data.length);

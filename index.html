@@ -235,6 +235,188 @@
       border-bottom: none !important;
       border-right: 1px solid #ccc !important;
     }
+
+    /* --------------------------------------------------
+       v0.8.9-mobile-layout
+       Change 1: Mobile-only layout improvements.
+       Desktop layout above remains unchanged.
+    -------------------------------------------------- */
+
+    @media (max-width: 700px) {
+      html,
+      body {
+        height: 100%;
+        overflow: hidden;
+      }
+
+      #map {
+        height: 100dvh;
+        min-height: 100dvh;
+      }
+
+      #right-panel-stack {
+        top: 8px;
+        right: 8px;
+        left: 8px;
+        width: auto;
+        max-height: 44vh;
+        z-index: 1100;
+      }
+
+      #control-panel {
+        padding: 10px;
+        border-radius: 10px;
+        max-height: 44vh;
+        overflow-y: auto;
+      }
+
+      #control-panel h2 {
+        font-size: 17px;
+        margin-bottom: 8px;
+      }
+
+      #control-panel label.control-label {
+        font-size: 13px;
+        margin-top: 8px;
+        margin-bottom: 4px;
+      }
+
+      #searchInput,
+      #boundaryLayerSelect {
+        padding: 8px;
+        font-size: 14px;
+      }
+
+      #affiliationFilterBox {
+        max-height: 115px;
+        font-size: 12px;
+        padding: 7px;
+      }
+
+      .affiliation-option {
+        margin-bottom: 6px;
+      }
+
+      #affiliationFilterHint {
+        font-size: 11px;
+      }
+
+      #gospelOpportunityLegend {
+        font-size: 12px;
+        padding: 8px;
+        line-height: 1.45;
+      }
+
+      .button {
+        padding: 8px;
+        font-size: 13px;
+        margin-top: 8px;
+      }
+
+      #church-count {
+        font-size: 13px;
+        margin-top: 9px;
+      }
+
+      #profile-panel {
+        top: auto;
+        left: 8px;
+        right: 8px;
+        bottom: 8px;
+        width: auto;
+        max-height: 36vh;
+        padding: 12px;
+        border-radius: 12px;
+        z-index: 1050;
+      }
+
+      #profile-panel h2 {
+        font-size: 17px;
+        margin-bottom: 8px;
+      }
+
+      #profile-panel h3 {
+        font-size: 14px;
+        margin-top: 10px;
+        margin-bottom: 6px;
+      }
+
+      #profile-summary {
+        padding: 8px;
+        margin-bottom: 10px;
+        font-size: 13px;
+      }
+
+      #profile-church-list {
+        padding-left: 18px;
+        margin-top: 6px;
+        font-size: 13px;
+      }
+
+      #profile-church-list li {
+        margin-bottom: 6px;
+      }
+
+      .leaflet-control-zoom {
+        transform: scale(0.85);
+        transform-origin: bottom right;
+        margin-bottom: 42vh !important;
+        margin-right: 10px !important;
+      }
+
+      .leaflet-control-attribution {
+        display: none;
+      }
+
+      .leaflet-popup-content {
+        font-size: 13px;
+        max-width: 230px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      #right-panel-stack {
+        max-height: 42vh;
+      }
+
+      #control-panel {
+        max-height: 42vh;
+      }
+
+      #profile-panel {
+        max-height: 34vh;
+      }
+
+      #affiliationFilterBox {
+        max-height: 95px;
+      }
+
+      .leaflet-control-zoom {
+        margin-bottom: 40vh !important;
+      }
+    }
+
+    @media (max-height: 650px) and (max-width: 700px) {
+      #right-panel-stack {
+        max-height: 40vh;
+      }
+
+      #control-panel {
+        max-height: 40vh;
+      }
+
+      #profile-panel {
+        max-height: 32vh;
+      }
+
+      #affiliationFilterBox {
+        max-height: 80px;
+      }
+
+      .leaflet-control-zoom {
+        margin-bottom: 38vh !important;
+      }
+    }
   </style>
 </head>
 
@@ -276,7 +458,7 @@
       <label class="control-label" for="searchInput">Search</label>
       <input type="text" id="searchInput" placeholder="Search church, town, county..." />
 
-      <label class="control-label">Denomination or affiliation</label>
+      <label class="control-label">Denomination or Affiliation (Please Select)</label>
       <div id="affiliationFilterBox">Loading affiliations...</div>
       <div id="affiliationFilterHint">Tick one or more. Leave all unticked to show all.</div>
 
@@ -289,6 +471,6 @@
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="https://unpkg.com/papaparse@5.4.1/papaparse.min.js"></script>
-  <script src="script.js?v=0.8.5"></script>
+  <script src="script.js?v=0.8.9"></script>
 </body>
 </html>
