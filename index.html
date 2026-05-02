@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Glúnta Church Map</title>
+  <title>Glúnta Research Map</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -13,25 +13,135 @@
       padding: 0;
       height: 100%;
       font-family: Arial, sans-serif;
+      overflow: hidden;
+      background: #f7f5ef;
+    }
+
+    body {
+      color: #111111;
+    }
+
+    :root {
+      --glunta-green: #064e3b;
+      --glunta-green-dark: #043525;
+      --header-height: 76px;
+      --panel-width: 390px;
+    }
+
+    #app-shell {
+      position: relative;
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
     }
 
     #map {
-      height: 100vh;
+      position: absolute;
+      top: var(--header-height);
+      left: 0;
+      right: 0;
+      bottom: 0;
       width: 100%;
+      height: calc(100vh - var(--header-height));
+      z-index: 1;
+    }
+
+    #glunta-header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--header-height);
+      z-index: 1200;
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.10);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 26px;
+      box-sizing: border-box;
+      backdrop-filter: blur(8px);
+    }
+
+    .header-left {
+      display: flex;
+      align-items: baseline;
+      gap: 18px;
+      min-width: 0;
+    }
+
+    .map-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--glunta-green-dark);
+      white-space: nowrap;
+      letter-spacing: -0.02em;
+    }
+
+    .map-subtitle {
+      font-size: 13px;
+      color: #374151;
+      white-space: nowrap;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      flex-shrink: 0;
+    }
+
+    .glunta-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--glunta-green);
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      font-size: 24px;
+    }
+
+    .glunta-brand img {
+      width: 38px;
+      height: 38px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .about-glunta-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: linear-gradient(180deg, #076144 0%, #064e3b 100%);
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 5px;
+      padding: 15px 25px;
+      font-weight: 800;
+      font-size: 15px;
+      box-shadow: 0 2px 7px rgba(6, 78, 59, 0.28);
+      white-space: nowrap;
+    }
+
+    .about-glunta-button:hover {
+      background: var(--glunta-green-dark);
     }
 
     #profile-panel {
       position: absolute;
-      top: 12px;
-      left: 12px;
+      top: calc(var(--header-height) + 16px);
+      left: 16px;
       z-index: 1000;
       width: 350px;
-      max-height: calc(100vh - 40px);
+      max-height: calc(100vh - var(--header-height) - 32px);
       overflow-y: auto;
-      background: white;
+      background: rgba(255, 255, 255, 0.96);
       padding: 14px;
-      border-radius: 8px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+      border-radius: 12px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.22);
+      border: 1px solid rgba(0,0,0,0.08);
     }
 
     #profile-panel h2 {
@@ -65,11 +175,11 @@
 
     #right-panel-stack {
       position: absolute;
-      top: 12px;
-      right: 12px;
-      z-index: 1000;
-      width: 300px;
-      max-height: calc(100vh - 24px);
+      top: var(--header-height);
+      right: 0;
+      z-index: 1100;
+      width: var(--panel-width);
+      max-height: calc(100vh - var(--header-height));
       pointer-events: none;
     }
 
@@ -78,41 +188,46 @@
     }
 
     #control-panel {
-      background: white;
-      padding: 14px;
-      border-radius: 8px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+      background: rgba(255, 255, 255, 0.97);
+      padding: 28px 28px 24px;
+      box-shadow: -3px 6px 26px rgba(0,0,0,0.20);
       pointer-events: auto;
+      max-height: calc(100vh - var(--header-height));
+      overflow-y: auto;
+      border-left: 1px solid rgba(0,0,0,0.10);
+      border-bottom-left-radius: 12px;
     }
 
     #control-panel h2 {
-      margin: 0 0 12px 0;
-      font-size: 20px;
+      margin: 0 0 18px 0;
+      font-size: 24px;
+      line-height: 1.2;
     }
 
     #control-panel label.control-label {
       font-weight: bold;
       display: block;
-      margin-top: 10px;
-      margin-bottom: 5px;
-      font-size: 14px;
+      margin-top: 16px;
+      margin-bottom: 7px;
+      font-size: 15px;
     }
 
     #searchInput,
     #boundaryLayerSelect {
       width: 100%;
       box-sizing: border-box;
-      padding: 7px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      font-size: 14px;
+      padding: 10px;
+      border: 1px solid #cfcfcf;
+      border-radius: 5px;
+      font-size: 15px;
+      background: #ffffff;
     }
 
     #affiliationFilterBox {
       max-height: 180px;
       overflow-y: auto;
       border: 1px solid #ccc;
-      border-radius: 4px;
+      border-radius: 5px;
       padding: 8px;
       background: white;
       font-size: 13px;
@@ -145,9 +260,9 @@
     }
 
     #affiliationFilterHint {
-      font-size: 12px;
+      font-size: 14px;
       color: #666;
-      margin-top: 5px;
+      margin-top: 10px;
       line-height: 1.3;
     }
 
@@ -183,13 +298,14 @@
 
     .button {
       width: 100%;
-      margin-top: 10px;
-      padding: 9px;
+      margin-top: 13px;
+      padding: 12px 10px;
       border: none;
-      border-radius: 4px;
+      border-radius: 5px;
       color: white;
       cursor: pointer;
       font-weight: bold;
+      font-size: 15px;
     }
 
     #resetMapButton {
@@ -210,8 +326,8 @@
     }
 
     #church-count {
-      margin-top: 12px;
-      font-size: 14px;
+      margin-top: 18px;
+      font-size: 18px;
     }
 
     .popup-denomination {
@@ -234,7 +350,7 @@
       display: flex !important;
       flex-direction: row !important;
       margin-bottom: 12px !important;
-      margin-right: 12px !important;
+      margin-right: calc(var(--panel-width) + 16px) !important;
     }
 
     .leaflet-control-zoom a {
@@ -249,24 +365,44 @@
       border-right: 1px solid #ccc !important;
     }
 
-    /* --------------------------------------------------
-       v0.8.13-y-field-gospel-colour-fix
-    -------------------------------------------------- */
-
-    @media (max-width: 700px) {
-      html,
-      body {
-        height: 100%;
-        overflow: hidden;
+    @media (max-width: 900px) {
+      :root {
+        --header-height: 68px;
       }
 
-      #map {
-        height: 100dvh;
-        min-height: 100dvh;
+      #glunta-header {
+        padding: 0 14px;
+      }
+
+      .map-title {
+        font-size: 18px;
+      }
+
+      .map-subtitle {
+        display: none;
+      }
+
+      .glunta-brand {
+        font-size: 18px;
+        letter-spacing: 0.08em;
+      }
+
+      .glunta-brand img {
+        width: 30px;
+        height: 30px;
+      }
+
+      .about-glunta-button {
+        padding: 11px 14px;
+        font-size: 13px;
+      }
+
+      #profile-panel {
+        display: none;
       }
 
       #right-panel-stack {
-        top: 8px;
+        top: calc(var(--header-height) + 8px);
         right: 8px;
         left: 8px;
         width: auto;
@@ -299,10 +435,11 @@
       #control-panel {
         display: none;
         margin-top: 8px;
-        padding: 10px;
+        padding: 14px;
         border-radius: 12px;
         max-height: 50vh;
         overflow-y: auto;
+        border-left: none;
       }
 
       body.mobile-controls-open #control-panel {
@@ -361,49 +498,10 @@
         margin-top: 9px;
       }
 
-      #profile-panel {
-        top: auto;
-        left: 8px;
-        right: 8px;
-        bottom: 8px;
-        width: auto;
-        max-height: 31vh;
-        padding: 12px;
-        border-radius: 12px;
-        z-index: 1050;
-      }
-
-      #profile-panel h2 {
-        font-size: 17px;
-        margin-bottom: 8px;
-      }
-
-      #profile-panel h3 {
-        font-size: 14px;
-        margin-top: 10px;
-        margin-bottom: 6px;
-      }
-
-      #profile-summary {
-        padding: 8px;
-        margin-bottom: 10px;
-        font-size: 13px;
-      }
-
-      #profile-church-list {
-        padding-left: 18px;
-        margin-top: 6px;
-        font-size: 13px;
-      }
-
-      #profile-church-list li {
-        margin-bottom: 6px;
-      }
-
       .leaflet-control-zoom {
         transform: scale(0.85);
         transform-origin: bottom right;
-        margin-bottom: 35vh !important;
+        margin-bottom: 14px !important;
         margin-right: 10px !important;
       }
 
@@ -417,96 +515,114 @@
       }
     }
 
+    @media (max-width: 560px) {
+      .glunta-brand {
+        display: none;
+      }
+
+      .about-glunta-button {
+        padding: 10px 12px;
+      }
+
+      .about-glunta-button span {
+        display: none;
+      }
+    }
+
     @media (max-width: 420px) {
       #control-panel {
         max-height: 50vh;
       }
 
-      #profile-panel {
-        max-height: 29vh;
-      }
-
       #affiliationFilterBox {
         max-height: 95px;
       }
-
-      .leaflet-control-zoom {
-        margin-bottom: 33vh !important;
-      }
     }
 
-    @media (max-height: 650px) and (max-width: 700px) {
+    @media (max-height: 650px) and (max-width: 900px) {
       #control-panel {
         max-height: 48vh;
       }
 
-      #profile-panel {
-        max-height: 27vh;
-      }
-
       #affiliationFilterBox {
         max-height: 80px;
-      }
-
-      .leaflet-control-zoom {
-        margin-bottom: 31vh !important;
       }
     }
   </style>
 </head>
 
 <body>
-  <div id="map"></div>
-
-  <div id="profile-panel">
-    <h2 id="profile-title">County Profile</h2>
-    <div id="profile-summary">Click a county to view population and church data.</div>
-    <h3 id="profile-list-heading">Churches in this county</h3>
-    <ol id="profile-church-list"></ol>
-  </div>
-
-  <div id="right-panel-stack">
-    <button id="mobileControlsToggle" type="button" aria-expanded="false" aria-controls="control-panel">
-      <span>Filters &amp; Layers</span>
-      <span id="mobileControlsToggleIcon">＋</span>
-    </button>
-
-    <div id="control-panel">
-      <h2>Church Map</h2>
-
-      <label class="control-label" for="boundaryLayerSelect">Boundary layer</label>
-      <select id="boundaryLayerSelect">
-        <option value="county">Counties</option>
-        <option value="lea">LEAs</option>
-        <option value="urban">Urban Zones</option>
-        <option value="gospel">Gospel Opportunities</option>
-      </select>
-
-      <div id="gospelOpportunityLegend">
-        <strong>Gospel Opportunities</strong><br>
-        <div><span class="legend-swatch" style="background:#8b0000;"></span>Urgent</div>
-        <div><span class="legend-swatch" style="background:#e74c3c;"></span>High</div>
-        <div><span class="legend-swatch" style="background:#f39c12;"></span>Significant</div>
-        <div><span class="legend-swatch" style="background:#9ccc65;"></span>Lower</div>
-        <div><span class="legend-swatch" style="background:#2e8b57;"></span>Established Presence</div>
-        <div style="margin-top:8px;">
-          <span class="urban-opportunity-marker" style="display:inline-block;vertical-align:middle;margin-right:6px;"></span>
-          Unreached Towns
-        </div>
+  <div id="app-shell">
+    <header id="glunta-header">
+      <div class="header-left">
+        <div class="map-title">Glúnta Research Map</div>
+        <div class="map-subtitle">Exploring Gospel Presence Across Ireland</div>
       </div>
 
-      <label class="control-label" for="searchInput">Search</label>
-      <input type="text" id="searchInput" placeholder="Search church, town, county..." />
+      <div class="header-right">
+        <div class="glunta-brand">
+          <img src="Glunta (small logo).png" alt="Glúnta logo" />
+          <span>GLÚNTA</span>
+        </div>
 
-      <label class="control-label">Denomination or Affiliation (Please Select)</label>
-      <div id="affiliationFilterBox">Loading affiliations...</div>
-      <div id="affiliationFilterHint">Tick one or more. Leave all unticked to show all.</div>
+        <a class="about-glunta-button" href="https://glunta.com" target="_blank" rel="noopener">
+          <span>About Glúnta</span> ↗
+        </a>
+      </div>
+    </header>
 
-      <button id="resetMapButton" class="button">Reset map</button>
-      <button id="clearSelectionButton" class="button">Clear boundary selection</button>
-      <button id="downloadUnreachedTownsButton" class="button" type="button">Download unreached towns CSV</button>
+    <div id="map"></div>
 
-      <div id="church-count">Loading churches...</div>
+    <div id="profile-panel">
+      <h2 id="profile-title">County Profile</h2>
+      <div id="profile-summary">Click a county to view population and church data.</div>
+      <h3 id="profile-list-heading">Churches in this county</h3>
+      <ol id="profile-church-list"></ol>
+    </div>
+
+    <div id="right-panel-stack">
+      <button id="mobileControlsToggle" type="button" aria-expanded="false" aria-controls="control-panel">
+        <span>Filters &amp; Layers</span>
+        <span id="mobileControlsToggleIcon">＋</span>
+      </button>
+
+      <div id="control-panel">
+        <h2>Filters</h2>
+
+        <label class="control-label" for="boundaryLayerSelect">Boundary layer</label>
+        <select id="boundaryLayerSelect">
+          <option value="county">Counties</option>
+          <option value="lea">LEAs</option>
+          <option value="urban">Urban Zones</option>
+          <option value="gospel">Gospel Opportunities</option>
+        </select>
+
+        <div id="gospelOpportunityLegend">
+          <strong>Gospel Opportunities</strong><br>
+          <div><span class="legend-swatch" style="background:#8b0000;"></span>Urgent</div>
+          <div><span class="legend-swatch" style="background:#e74c3c;"></span>High</div>
+          <div><span class="legend-swatch" style="background:#f39c12;"></span>Significant</div>
+          <div><span class="legend-swatch" style="background:#9ccc65;"></span>Lower</div>
+          <div><span class="legend-swatch" style="background:#2e8b57;"></span>Established Presence</div>
+          <div style="margin-top:8px;">
+            <span class="urban-opportunity-marker" style="display:inline-block;vertical-align:middle;margin-right:6px;"></span>
+            Unreached Towns
+          </div>
+        </div>
+
+        <label class="control-label" for="searchInput">Search</label>
+        <input type="text" id="searchInput" placeholder="Search church, town, county..." />
+
+        <label class="control-label">Denomination or Affiliation (Please Select)</label>
+        <div id="affiliationFilterBox">Loading affiliations...</div>
+        <div id="affiliationFilterHint">Tick one or more. Leave all unticked to show all.</div>
+
+        <button id="resetMapButton" class="button">Reset map</button>
+        <button id="clearSelectionButton" class="button">Clear boundary selection</button>
+        <button id="downloadUnreachedTownsButton" class="button" type="button">Download unreached towns CSV</button>
+
+        <div id="church-count">Loading churches...</div>
+      </div>
     </div>
   </div>
 
@@ -528,6 +644,6 @@
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="https://unpkg.com/papaparse@5.4.1/papaparse.min.js"></script>
-  <script src="script.js?v=0.8.14"></script>
+  <script src="script.js?v=0.8.15"></script>
 </body>
 </html>
