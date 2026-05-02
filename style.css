@@ -248,29 +248,226 @@ select {
     overflow-y: auto;
   }
 
+  .topbar {
+    height: 52px;
+    padding: 0 16px;
+  }
+
+  .brand {
+    font-size: 1rem;
+    gap: 8px;
+  }
+
+  .brand-icon {
+    font-size: 1.2rem;
+  }
+
   .topbar nav {
     display: none;
   }
 
   .layout {
     grid-template-columns: 1fr;
-    grid-template-rows: 380px auto;
+    grid-template-rows: 340px auto;
     height: auto;
-    min-height: calc(100vh - 64px);
+    min-height: calc(100vh - 52px);
     overflow: visible;
   }
 
   .map-wrap {
-    height: 380px;
+    height: 340px;
     order: 1;
+  }
+
+  #map {
+    min-height: 340px;
   }
 
   .sidebar {
     order: 2;
     height: auto;
+    padding: 12px 14px;
+    font-size: 0.82rem;
+  }
+
+  .panel {
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+
+  .panel h2 {
+    font-size: 0.95rem;
+    margin: 0 0 8px;
+  }
+
+  .intro {
+    font-size: 0.78rem;
+    line-height: 1.3;
+    margin: 0 0 10px;
+  }
+
+  .label {
+    margin-bottom: 5px;
+    font-size: 0.82rem;
+    font-weight: 700;
+  }
+
+  input,
+  select {
+    padding: 7px 9px;
+    margin-bottom: 8px;
+    font-size: 0.82rem;
+    border-radius: 5px;
+  }
+
+  .toggle {
+    padding: 8px 8px;
+    font-size: 0.78rem;
   }
 
   .legend {
     display: none;
+  }
+
+  .legend h3 {
+    font-size: 0.9rem;
+    margin-bottom: 7px;
+  }
+
+  .legend-item,
+  .summary-item {
+    grid-template-columns: 15px minmax(0, 1fr) auto;
+    gap: 7px;
+    margin-bottom: 6px;
+    font-size: 0.78rem;
+  }
+
+  .colour-dot {
+    width: 12px;
+    height: 12px;
+  }
+
+  .hint-box {
+    gap: 8px;
+    padding: 9px;
+    font-size: 0.78rem;
+  }
+
+  .leaflet-popup-content {
+    font-size: 0.8rem;
+  }
+
+  .popup-title {
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+  }
+
+  #affiliationFilterBox {
+    padding: 8px !important;
+    margin-top: 8px !important;
+    border-radius: 6px;
+  }
+
+  .affiliation-option {
+    font-size: 0.8rem !important;
+    margin-bottom: 5px !important;
+    line-height: 1.15;
+  }
+
+  .affiliation-option input[type="checkbox"] {
+    width: 13px;
+    height: 13px;
+    margin-right: 6px;
+  }
+
+  .affiliation-option .colour-dot,
+  .affiliation-option span[style*="background"],
+  .affiliation-option span[style*="background-color"] {
+    width: 13px !important;
+    height: 13px !important;
+    min-width: 13px !important;
+    margin-right: 7px !important;
+  }
+
+  button,
+  .button,
+  #resetMapButton,
+  #clearBoundaryButton,
+  #downloadUnreachedButton {
+    padding: 9px 10px !important;
+    margin-bottom: 8px !important;
+    font-size: 0.82rem !important;
+    min-height: 38px;
+    border-radius: 6px;
+  }
+}
+
+@media (max-width: 520px) {
+  .layout {
+    grid-template-rows: 300px auto;
+  }
+
+  .map-wrap {
+    height: 300px;
+  }
+
+  #map {
+    min-height: 300px;
+  }
+
+  .sidebar {
+    padding: 10px 12px;
+  }
+
+  .panel h2 {
+    font-size: 0.9rem;
+  }
+
+  .label {
+    font-size: 0.78rem;
+  }
+
+  input,
+  select {
+    padding: 6px 8px;
+    font-size: 0.78rem;
+    margin-bottom: 6px;
+  }
+
+  .toggle {
+    padding: 7px 6px;
+    font-size: 0.75rem;
+  }
+
+  #affiliationFilterBox {
+    padding: 7px !important;
+  }
+
+  .affiliation-option {
+    font-size: 0.76rem !important;
+    margin-bottom: 4px !important;
+  }
+
+  .affiliation-option input[type="checkbox"] {
+    width: 12px;
+    height: 12px;
+  }
+
+  .affiliation-option .colour-dot,
+  .affiliation-option span[style*="background"],
+  .affiliation-option span[style*="background-color"] {
+    width: 12px !important;
+    height: 12px !important;
+    min-width: 12px !important;
+  }
+
+  button,
+  .button,
+  #resetMapButton,
+  #clearBoundaryButton,
+  #downloadUnreachedButton {
+    padding: 8px 9px !important;
+    font-size: 0.78rem !important;
+    min-height: 34px;
   }
 }
