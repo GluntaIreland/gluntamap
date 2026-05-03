@@ -1,14 +1,14 @@
 /*
   Glúnta Research Church Map
-  Version: v0.8.15-cso-lea-name-fix
+  Version: v0.8.16-click-to-zoom-church
 
   Changes:
-  - Fixes Gospel Opportunities and LEA names by using CSO_LEA from lea-boundaries.geojson.
-  - Prevents LEA_GUID and other ID/GUID fields from being used as display names.
-  - Keeps the unreached towns CSV download button.
+  - Clicking a church marker now zooms tightly into the church meeting location.
+  - The popup opens after the zoom.
+  - Keeps Gospel Opportunities, LEA name fixes, and unreached towns CSV download.
 */
 
-const CACHE_VERSION = "0.8.15";
+const CACHE_VERSION = "0.8.16";
 
 // --------------------------------------------------
 // MAP SETUP
@@ -855,7 +855,10 @@ function updateProfilePanel(boundaryName, boundaryLayer) {
         const lng = getLongitude(church);
 
         if (!Number.isNaN(lat) && !Number.isNaN(lng)) {
-          map.setView([lat, lng], 13);
+          map.flyTo([lat, lng], 18, {
+            animate: true,
+            duration: 0.6
+          });
         }
       });
 
@@ -1351,6 +1354,17 @@ function createChurchMarker(church) {
 
   marker.bindPopup(buildPopupContent(church));
   marker.churchData = church;
+
+  marker.on("click", function () {
+    map.flyTo([lat, lng], 18, {
+      animate: true,
+      duration: 0.6
+    });
+
+    setTimeout(function () {
+      marker.openPopup();
+    }, 650);
+  });
 
   return marker;
 }
