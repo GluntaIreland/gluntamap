@@ -1,284 +1,390 @@
 Church Name,Street Address,Street Address Line 2,City,County,Postal / EirCode,Website (if available),Denomination,Tradition,Latitude,Longitude,LEA
-(Howth and) Malahide Presbyterian Church,Dublin Road,,Malahide,Dublin,,https://www.hmpchurch.org,PCI,Presbyterian/Reformed,53.45027,-6.15906,HOWTH-MALAHIDE
-Abbey Presbyterian Church,Parnell Square North,,North Frederick Street,Dublin,,https://www.abbeychurch.ie,PCI,Presbyterian/Reformed,53.35442,-6.26392,NORTH INNER CITY
-Abbey St Methodist Church,9c Lower Abbey Street,,Dublin 1,Dublin,D01 EY05,,Methodist,Methodist/Wesleyan,53.3486,-6.2592,NORTH INNER CITY
-Abbey Street Methodist Church,9C Lower Abbey Street,Dublin Central Mission,Dublin 1,Dublin,D01 A3C4,dublincentralmission.ie,Methodist,Methodist/Wesleyan,53.348712,-6.258178,NORTH INNER CITY
-Abundant Grace,"Unit 2, John Crossan Business Park, Bonagee",,Letterkenny,Donegal,F92 F862,,RCCG,Pentecostal/Charismatic,54.9452,-7.7123,LETTERKENNY
-Abundant Grace Christian Assembly,"Regal House, 28 Fitzwilliam Street",Ringsend,Dublin 4,Dublin,D04 FH24,https://www.abundantgrace.ie,Various Pentecostal,Pentecostal/Charismatic,53.342294,-6.227141,SOUTH EAST INNER CITY
-Abundant Life Christian Church,"Crown House, 55/56 Henry Street",,Limerick,Limerick,V94 PTY8,https://www.abunlife.com/,Christian Churches Ireland,Pentecostal/Charismatic,52.66103,-8.63137,LIMERICK CITY WEST
-Abundant Life Family Church,"Abundant Life Family Church, Bluebell Lane",George Cooke Industrial Estate,Dublin,Dublin,D12 HPY2,https://www.facebook.com/abundantlifefamilychurchdublin/,Various Pentecostal,Pentecostal/Charismatic,53.329155,-6.346923,BALLYFERMOT-DRIMNAGH
-Adare Methodist Church,Blackabbey Road,,Adare,Limerick,V94 TW83,,Methodist,Methodist/Wesleyan,52.5639,-8.7901,ADARE-RATHKEALE
-Adelaide Road Presbyterian Church,18a Adelaide Road,,Dublin 2,Dublin,,https://www.adelaideroadchurch.ie,PCI,Presbyterian/Reformed,53.33266,-6.25829,SOUTH EAST INNER CITY
-Adelaide Road Presbyterian Church,18A Adelaide Road,Dublin 2,Dublin,Dublin,D02 HP49,,PCI,Presbyterian/Reformed,53.332755,-6.258598,SOUTH EAST INNER CITY
-AFM Praise Tabernacle,9 Portland Row,Dublin 1,Dublin,Dublin,,,Various Pentecostal,Pentecostal/Charismatic,53.356380,-6.24893,NORTH INNER CITY
-Agape Family Centre,"Unit 6, Seapoint Business Park",,Tramore,Waterford,X91 E023,,RCCG,Pentecostal/Charismatic,52.1624,-7.1512,TRAMORE-WATERFORD CITY WEST
-Agape Parish,"33 Belmont Court, Rochestown",,Ballincollig,Cork,T12 P652,,RCCG,Pentecostal/Charismatic,51.8794,-8.6012,CORK CITY SOUTH WEST
-Aghada Presbyterian Church,"Church Road, Upper Aghada",,Midleton,Cork,,,PCI,Presbyterian/Reformed,51.83735,-8.21453,MIDLETON
-Alive Chapel,Mill Park Road,,Enniscorthy,Wexford,,,Various Pentecostal,Pentecostal/Charismatic,52.499977,-6.567202,ENNISCORTHY
-Alive Church Enniscorthy,Unit 2 Abbey Centre,,Enniscorthy,Wexford,Y21 V2X4,alivechurch.ie,Various Pentecostal,Pentecostal/Charismatic,52.500249,-6.565136,ENNISCORTHY
-All Nations Assembly,"Apple Community Centre, Bunbury Gate Ave",,Swords,Dublin,K67 E903,,RCCG,Pentecostal/Charismatic,53.4564,-6.2134,SWORDS
-All Nations Church,"National Stadium, 145 South Circular Road",,Dublin 8,Dublin,D08 HY40,https://www.allnations.ie/,Various Pentecostal,Pentecostal/Charismatic,53.330833,-6.280278,SOUTH WEST INNER CITY
-All Saints Parish,"Trinity Hall, Behind KIA Motors, Dublin Road",,Portlaoise,Laois,R32 E023,,RCCG,Pentecostal/Charismatic,53.0324,-7.2912,PORTLAOISE
-All Souls Parish,"Unit 36, Edenderry Business Park",,Edenderry,Offaly,R45 W902,,RCCG,Pentecostal/Charismatic,53.3412,-7.0512,EDENDERRY
-Alt Presbyterian Church,"Alt Upper, Castlefin",,Lifford,Donegal,,,PCI,Presbyterian/Reformed,54.76657,-7.59044,LIFFORD-STRANORLAR
-"Amazing Grace Church, Westport",Castlebar Road,Drummindoo / Sheroe,Westport,Mayo,,amazinggracewestport.com,Elim Ministries Ireland,Pentecostal/Charismatic,53.803707,-9.49051,WESTPORT
-Arann Reformed Baptist Church,Royal Marine Hotel Marine Road,,Dún Laoghaire,Dublin,,,Various Baptist,Baptist/Independent Evangelical,53.2923517,-6.1336491,DÚN LAOGHAIRE
-Ardara Methodist Church,Front Street,,Ardara,Donegal,,,Methodist,Methodist/Wesleyan,54.763620,-8.41155,GLENTIES
-Arklow Baptist Church,St Michael's Terrace,Tinahask Lower,Arklow,Wicklow,,arklowbaptistchurch.com,Various Baptist,Baptist/Independent Evangelical,52.793156,-6.148974,ARKLOW
-Arklow Christian Community Church,"St Mary's Chapel, St Mary's Road",,Arklow,Wicklow,Y14 P957,,Various Pentecostal,Pentecostal/Charismatic,52.7944300,-6.14958,ARKLOW
-Arklow Methodist Church,15-17 Ferrybank,,Arklow,Wicklow,Y14 VK65,,Methodist,Methodist/Wesleyan,52.7931,-6.1432,ARKLOW
-Arklow Presbyterian Church,Dublin Road,,Arklow,Wicklow,,https://www.arklowpresbyterianchurch.com,PCI,Presbyterian/Reformed,52.80458,-6.14905,ARKLOW
+Athlone Baptist Church,Westlodge,Battery Road,Athlone,Westmeath,N37 FF80,www.cherithabc.com,ABCI,Baptist/Independent Evangelical,53.424940,-7.94494,ATHLONE
+Balbriggan Baptist Church,St. George's National School,"Naul Road, Clogheder",Balbriggan,Dublin,K32 KC95,www.balbrigganbaptist.com,ABCI,Baptist/Independent Evangelical,53.607680,-6.18412,BALBRIGGAN
+Ballycullen Community Church,St. Colmcilles School,Scholarstown Rd,Dublin 16,Dublin,D16 H298,www.ballycullencc.com,ABCI,Baptist/Independent Evangelical,53.275944,-6.2768,FIRHOUSE-BOHERNABREENA
+Belturbet Baptist Church,The Goods Store,The Station,Belturbet,Cavan,H14 DP03,https://belturbetbaptist.ie/,ABCI,Baptist/Independent Evangelical,54.099154,-7.446291,CAVAN-BELTURBET
+Blackrock Community Church,St. Andrew's College,55 Booterstown Ave,Williamstown,Dublin,A94 P2N7,blackrockchurch.ie,ABCI,Baptist/Independent Evangelical,53.306740,-6.188417,BLACKROCK
+Brannockstown Baptist Church,Brannockstown Baptist Church,,Brannockstown,Kildare,W91 K004,brannockstownbaptist.com,ABCI,Baptist/Independent Evangelical,53.127213,-6.707423,NEWBRIDGE
+Carrickmacross Baptist Church,Woodlands Christian Centre,Magheross Road,Carrickmacross,Monaghan,A81N Y04,www.carrickbaptist.ie,ABCI,Baptist/Independent Evangelical,53.977744,-6.719579,CARRICKMACROSS-CASTLEBLAYNEY
+Carrigaline Baptist Church,Carrigaline Community Centre,Church Road,Carrigaline,Cork,P43T K70,www.carrigalinebaptist.org,ABCI,Baptist/Independent Evangelical,51.8149652283768,-8.38652562905707,CARRIGALINE
+Carrigtwohill Baptist Church,Carrigtwohill Community Centre,Main Street,Carrigtwohill,Cork,T45 X3N1,carrigtwohillbaptist.ie,ABCI,Baptist/Independent Evangelical,51.910550,-8.259964,COBH
+Cavan Baptist Church,Corglass,Oldtown,Cavan,Cavan,H12 ND36,www.cavanbaptist.ie,ABCI,Baptist/Independent Evangelical,53.990830,-7.36056,CAVAN-BELTURBET
+Cork Baptist Church,46 MacCurtain Street,,Cork,Cork,T23K N76,www.corkbaptist.org,ABCI,Baptist/Independent Evangelical,51.903614,-8.468399,CORK CITY NORTH EAST
+Douglas Baptist Church,Douglas Community School,Clermont Avenue,Douglas Road,Cork,T12H F77,douglasbaptist.ie,ABCI,Baptist/Independent Evangelical,51.878422,-8.437283,CORK CITY SOUTH CENTRAL
+Dundalk Baptist Church,Ardee Terrace,Ardee Road,Dundalk,Louth,A91N A0D,www.dundalkbaptistchurch.org,ABCI,Baptist/Independent Evangelical,54.000000,-6.41667,DUNDALK SOUTH
+Furbo Baptist Church,CARRAIG NA GREINE,,Furbo,Galway,H91 FK71,twitter.com/FurboChurch/media,ABCI,Baptist/Independent Evangelical,53.257500,-9.2125,CONAMARA SOUTH
+Galway City Baptist Church,Knocknacarra National School,Western Distributor Road,Knocknacarra,Galway,H91R 3N1,www.galwaycitychurch.com,ABCI,Baptist/Independent Evangelical,53.258398,-9.127748,GALWAY CITY WEST
+Grace Baptist Church (Killarney),St Olivers National School,Rookery Road,Killarney,Kerry,V93 W594,www.gracebaptistchurch.ie,ABCI,Baptist/Independent Evangelical,52.059937,-9.504427,KILLARNEY
+Grace Bible Fellowship,28a Pearse Street,,Dublin 2,Dublin,D02 NA48,www.grace.ie,ABCI,Baptist/Independent Evangelical,53.340270,-6.252518,SOUTH EAST INNER CITY
+Grosvenor Road Baptist Church,15A Grosvenor Road,Rathmines,Dublin 6,Dublin,D06 AH26,www.grosvenorbaptist.org,ABCI,Baptist/Independent Evangelical,53.329640,-6.26311,PEMBROKE
+Hope Community Church,Lower Main St,Townparks,Longford,Longford,N39 K2N2,hopelongford.com,ABCI,Baptist/Independent Evangelical,53.725360,-7.79823,LONGFORD
+Jamestown Road Baptist Church,29a Jamestown Road,,Finglas,Dublin,D11 HX89,www.jamestownroadchurch.ie,ABCI,Baptist/Independent Evangelical,53.389170,-6.29694,BALLYMUN-FINGLAS
+Kinsale Baptist Church,"Sáile, Kinsale Sports & Community Centre",Cappagh,Kinsale,Cork,P17 WD21,www.kinsaleabc.ie,ABCI,Baptist/Independent Evangelical,51.706051,-8.522501,BANDON-KINSALE
+Letterkenny Baptist Church,73 Port Road,,Letterkenny,Donegal,F92R K29,www.letterkennybaptistchurch.com,ABCI,Baptist/Independent Evangelical,54.949037,-7.734217,LETTERKENNY
+Limerick Baptist Church,Old Cratloe Road,,Caherdavin,Limerick,V94 A564,limerickbaptist.ie,ABCI,Baptist/Independent Evangelical,52.671400,-8.6653,LIMERICK CITY NORTH
+Living Hope,FBD Building,Navan Gate Street,Trim,Meath,C15 A6YD,livinghope.ie,ABCI,Baptist/Independent Evangelical,53.553624,-6.793584,TRIM
+Midleton Baptist Church,Clonmult Memorial Park,,Midleton,Cork,P25 TD73,midletonbaptist.ie,ABCI,Baptist/Independent Evangelical,51.915260,-8.18052,MIDLETON
+Naas Baptist Fellowship,Monread Community Centre,Maudlins Avenue,Naas,Kildare,W91 FNV9,naasbaptist.ie,ABCI,Baptist/Independent Evangelical,53.220565,-6.659308,NAAS
+Nenagh Baptist Church,Nenagh Arts Centre,"Town Hall, Banba Square",Nenagh,Tipperary,E45 NX26,nenaghbaptistchurch.eu,ABCI,Baptist/Independent Evangelical,52.864297,-8.197556,NENAGH
+North City Baptist Church,Deaf Village Ireland,Ratoath Road,Cabra West,Dublin,D07 V4KP,www.northcitychurch.ie,ABCI,Baptist/Independent Evangelical,53.369048,-6.299793,CABRA-GLASNEVIN
+Passage Baptist Church,Fr Collins Centre,Cork Street,Passage West,Cork,T12 DT78,passagebaptistchurch.ie,ABCI,Baptist/Independent Evangelical,51.869751,-8.336546,CARRIGALINE
+Sligo Baptist Church,Cartron Village,Rosses Point Road,Sligo,Sligo,F91X E42,facebook.com/pages/Sligo-Baptist-Church/273579899430747,ABCI,Baptist/Independent Evangelical,54.270601,-8.471644,SLIGO-STRANDHILL
+Swords Baptist Church,The Riasc Centre,Feltrim Road,Swords,Dublin,K67P X85,www.swordsbaptistchurch.com,ABCI,Baptist/Independent Evangelical,53.459720,-6.21806,SWORDS
+Thurles Baptist Church,Graigue,,Thurles,Tipperary,E41F C62,www.thurlesbaptistchurch.ie/Contact.html,ABCI,Baptist/Independent Evangelical,52.681940,-7.80222,THURLES
+Tralee Baptist Church,Collis Sandes House,Oakpark,Tralee,Kerry,V92P F5N,www.traleebaptistchurch.com/welcome,ABCI,Baptist/Independent Evangelical,52.270420,-9.70264,TRALEE
+Tullamore Bible Church,21H Cluster 2,Axis Business Park,Tullamore,Offaly,R35 K762,www.tullamorebiblechurch.org,ABCI,Baptist/Independent Evangelical,53.275526,-7.493385,TULLAMORE
+Waterford Baptist Church,Catherine Street,,Waterford,Waterford,X91N N56,www.waterfordbaptist.ie,ABCI,Baptist/Independent Evangelical,52.258330,-7.11194,WATERFORD CITY SOUTH
+Westside Baptist Church,Old Chapel Village,,Bandon,Cork,P72 CK23,www.westsidebaptist.ie,ABCI,Baptist/Independent Evangelical,51.748975,-8.735469,BANDON-KINSALE
+Youghal Baptist Church,Brú Na Sí,Blackwater Heights,Youghal,Cork,P36H 265,youghalbaptist.ie/contact/,ABCI,Baptist/Independent Evangelical,51.954270,-7.847171,MIDLETON
 Assembly of God Carlow,1 Castle Hill,Graigue,Carlow,Carlow,,https://www.facebook.com/Assemblyofgodcarlow/,Assemblies of God,Pentecostal/Charismatic,52.836607,-6.936136,CARLOW
 Assembly of God Church Roscommon,2 St Theresa's Terrace,Ardnanagh,Roscommon,Roscommon,,https://www.agireland.org/,Assemblies of God,Pentecostal/Charismatic,53.624116,-8.199358,ROSCOMMON
 Assembly of God Ennis,Clon Road Business Park Clonroad More,,Ennis,Clare,,,Assemblies of God,Pentecostal/Charismatic,52.842891,-8.973692,ENNIS
 Assembly of God Ireland Ministry Carlow,Unit 6 Castle Hill,,Carlow,Carlow,R93 A970,,Assemblies of God,Pentecostal/Charismatic,52.8365755,-6.9352375,CARLOW
 Assembly Of God Ireland Ministry Dublin,2 Rutland Place,Rotunda,Dublin 1,Dublin,D01 FP66,https://www.facebook.com/assemblyofgoddublinministrymadureira12/,Assemblies of God,Pentecostal/Charismatic,53.353764,-6.261279,NORTH INNER CITY
-Assembly of Praise,Lusk,,Lusk,Dublin,K45 X762,,RCCG,Pentecostal/Charismatic,53.5243,-6.1624,RUSH-LUSK
-Athenry Gospel Church,Athenry Community Hall Clarke Street,,Athenry,Galway,H65 KT10,,Independent Evangelical,Baptist/Independent Evangelical,"53.2973013,-8.7478859",,ATHENRY-ORANMORE
-Athlone Baptist Church,Westlodge,Battery Road,Athlone,Westmeath,N37 FF80,www.cherithabc.com,ABCI,Baptist/Independent Evangelical,53.424940,-7.94494,ATHLONE
-Athlone Methodist Church,Northgate Street,,Athlone,Westmeath,N37 ND76,,Methodist,Methodist/Wesleyan,53.4249,-7.9421,ATHLONE
-Athy Methodist Church,5-6 Woodstock Street,,Athy,Kildare,R14 RH70,,Methodist,Methodist/Wesleyan,52.9921,-6.9832,ATHY
-Athy Presbyterian Church,Dublin Road,,Athy,Kildare,,,PCI,Presbyterian/Reformed,52.99316,-6.97439,ATHY
-Bailieborough - First Presbyterian Church,Corglass,,Bailieborough,Cavan,,https://www.bgpc.ie,PCI,Presbyterian/Reformed,53.95346,-6.97184,BAILIEBOROUGH-COOTEHILL
-Bailieborough - Trinity Presbyterian Church,Virginia Road,,Bailieborough,Cavan,,https://www.bgpc.ie,PCI,Presbyterian/Reformed,53.91604,-6.96051,BAILIEBOROUGH-COOTEHILL
-Balbriggan Baptist Church,St. George's National School,"Naul Road, Clogheder",Balbriggan,Dublin,K32 KC95,www.balbrigganbaptist.com,ABCI,Baptist/Independent Evangelical,53.607680,-6.18412,BALBRIGGAN
-Balbriggan Presbyterian Church,Balbriggan Clubs Community Centre Dublin Street,,Balbriggan,Dublin,K32 NA00,,PCI,Presbyterian/Reformed,53.6074901,-6.1836503,BALBRIGGAN
-Ballaghaderreen Baptist Church,Circular Road,,Ballaghaderreen,Roscommon,,,Various Baptist,Baptist/Independent Evangelical,53.9010000,-8.5767,BOYLE
-Ballina Methodist Church,Wesley Place James Connolly Street,,Ballina,Mayo,,,Methodist,Methodist/Wesleyan,54.11194,-9.15664,BALLINA
-Ballina Presbyterian Church,Walsh Street,,Ballina,Mayo,,https://www.ballinapresbyterian.ie,PCI,Presbyterian/Reformed,54.11443,-9.15282,BALLINA
+Open Door Christian Fellowship,"Northwest Business Park, Unit 5D Bymac Centre",,"Blanchardstown, Dublin 15",Dublin,,,Assemblies of God,Pentecostal/Charismatic,53.4112,-6.355819,BLANCHARDSTOWN-MULHUDDART
+Christian Congregation in Ireland - Ennis,Rear of 8 Carmody Street,Clonroad Beg,Ennis,Clare,,https://www.ccirl.ie/churchlocator/,Brethren,Pentecostal/Charismatic,52.84251,-8.987792,ENNIS
+Fairview Hall,13 Annesley Bridge Road,Fairview,Dublin 3,Dublin,D03 DC92,https://fairviewhall.ie,Brethren,Brethren/Gospel Hall,53.361783,-6.238005,CLONTARF
+Irishtown Gospel Hall & Chapel of Ease.,57 Irishtown Road,,Dublin 4,Dublin,D04 CA43,https://www.facebook.com/go2chapelofease/,Brethren,Brethren/Gospel Hall,53.338596,-6.223424,SOUTH EAST INNER CITY
+Laois Bible Church,Epworth Hall,Main Street,Abbeyleix,Laois,R32 FX6X,https://laoisbiblechurch.ie/,Brethren,Brethren/Gospel Hall,52.911561,-7.35074,PORTLAOISE
+Mallow St Christian Fellowship,Mallow Street Hall,Mallow Street,Limerick City,Limerick,V94 DP60,mallowstchristians.com,Brethren,Brethren/Gospel Hall,52.65995,-8.629589,LIMERICK CITY WEST
+Newcastle West Bible Fellowship,North Quay,,Newcastle West,Limerick,,https://www.ncwbiblefellowship.com/,Brethren,Brethren/Gospel Hall,52.449692,-9.057948,NEWCASTLE WEST
+Riverside Gospel Hall,2 Allen Square,,Bandon,Cork,P72 TE29,https://www.riversidegospelhall.com/,Brethren,Brethren/Gospel Hall,51.747039,-8.741141,BANDON-KINSALE
+Shankill Bible Church,Glen Maris House,Eaton Wood Grove,Shankill,Dublin,D18 WK27,https://www.shankillbiblechurch.org/,Brethren,Brethren/Gospel Hall,53.234116,-6.116952,KILLINEY-SHANKILL
+Wicklow Christian Assembly,6 Wentworth Place,,Wicklow Town,Wicklow,,,Brethren,Brethren/Gospel Hall,52.9818550,-6.0466405,WICKLOW
 Ballinasloe Christian Fellowship,The Storehouse,"Harbour Road, Townparks",Ballinasloe,Galway,H53 YD51,https://www.ballinasloechristianfellowship.com,Calvary Chapel,Other Protestant/Evangelical,53.3267919,-8.2204615,BALLINASLOE
-Ballineen Methodist Church,West End,,Ballineen,Cork,P47 DW68,,Methodist,Methodist/Wesleyan,51.7332,-8.9661,SKIBBEREEN-WEST CORK
-Ballingrane Methodist Church,Ballingrane,,Askeaton,Limerick,V94 H793,,Methodist,Methodist/Wesleyan,52.5661,-8.9332,ADARE-RATHKEALE
-Ballintra Methodist Church,Main Street,,Ballintra,Donegal,,,Methodist,Methodist/Wesleyan,54.578820,-8.12481,DONEGAL
-Ballyalbany Presbyterian Church,"Coolshannagh Road, Ballyalbany",,Monaghan,Monaghan,,https://www.ballyalbanychurch.com,PCI,Presbyterian/Reformed,54.26268,-6.96528,MONAGHAN
-Ballybay - First Presbyterian Church,Derryvally,,Ballybay,Monaghan,,,PCI,Presbyterian/Reformed,54.13404,-6.93483,BALLYBAY-CLONES
-Ballybay - Second Presbyterian Church,Hall Street,,Ballybay,Monaghan,,,PCI,Presbyterian/Reformed,54.12878,-6.90641,BALLYBAY-CLONES
-Ballycullen Community Church,St. Colmcilles School,Scholarstown Rd,Dublin 16,Dublin,D16 H298,www.ballycullencc.com,ABCI,Baptist/Independent Evangelical,53.275944,-6.2768,FIRHOUSE-BOHERNABREENA
-Ballyfermot Community Church,1 Drumfinn Park,"Drumfinn, Ballyfermot",Dublin 10,Dublin,D10 TX63,https://elimbcc.com/,Elim Ministries Ireland,Pentecostal/Charismatic,53.344088,-6.359767,BALLYFERMOT-DRIMNAGH
-Ballylennon Presbyterian Church,"Listannagh, Saint Johnston",,Lifford,Donegal,,,PCI,Presbyterian/Reformed,54.88789,-7.51102,LIFFORD-STRANORLAR
-Bandon Methodist Church,Bridge Street,,Bandon,Cork,P72 KD27,,Methodist,Methodist/Wesleyan,51.7451,-8.7412,BANDON-KINSALE
-Banner of Love Church Arklow,"The UpperRoom, Abbey Lane",,Arklow,Wicklow,Y14 PP23,,Various Pentecostal,Pentecostal/Charismatic,52.7999410,-6.144013,ARKLOW
-Banner of Love Church Wicklow,"The Basement, Wicklow House, Market Square",,Wicklow Town,Wicklow,,,Various Pentecostal,Pentecostal/Charismatic,52.9798477,-6.0381429,WICKLOW
-Bantry Christian Fellowship Church,Tower Street,near The Quay,Bantry,Cork,,https://bantrychristianfellowship.ie/,Independent Evangelical,Baptist/Independent Evangelical,51.679898,-9.456097,BANTRY-WEST CORK
-Barrowvalley Community Church,"Unit 5A Barrowside Business Park, Sleaty Road",Graiguecullen,Carlow,Carlow,R93 X037,bvcchurch.com,Independent Evangelical,Baptist/Independent Evangelical,52.843242,-6.936739,GRAIGUECULLEN-PORTARLINGTON
-Bellasis Presbyterian Church,N3 Drumgora,,Virginia,Cavan,,https://jeanmackarel.wixsite.com/cavanpresbyterian,PCI,Presbyterian/Reformed,53.87663,-7.12645,BALLYJAMESDUFF
-Belturbet Baptist Church,The Goods Store,The Station,Belturbet,Cavan,H14 DP03,https://belturbetbaptist.ie/,ABCI,Baptist/Independent Evangelical,54.099154,-7.446291,CAVAN-BELTURBET
-Betania Church,Powerstown Road,Tyrrelstown,Dublin 15,Dublin,D15 V0YK,https://www.betania.ie/en,Various Pentecostal,Pentecostal/Charismatic,53.414611,-6.394757,BLANCHARDSTOWN-MULHUDDART
-Betel Dublin (Romanian),1 Parnell Square North,Rotunda,Dublin,Dublin,,beteldublin.com,International Church,Pentecostal/Charismatic,53.354534,-6.263908,NORTH INNER CITY
-Bethany Church,16 Whitehall Close,,"Terenure, Dublin 6W",Dublin,,https://www.bethanychurch.ie,Independent Evangelical,Baptist/Independent Evangelical,53.306299,-6.318744,RATHFARNHAM-TEMPLEOGUE
-Bethel Christian Assembly Dublin,"St Luke's Social Service Centre, Kilbarron Park, Kilmore West",,Dublin 5,Dublin,D05 W925,,Various Pentecostal,Pentecostal/Charismatic,53.3943,-6.2218,ARTANE-WHITEHALL
-Bethel Parish,"Unit 28, Ballybrit Heights",,Galway City,Galway,H91 CH6C,,RCCG,Pentecostal/Charismatic,53.2894,-9.0123,GALWAY CITY EAST
-Bethel Worship Centre,1 Drumfinn Park,,Dublin 10,Dublin,D10 TX63,,Various Pentecostal,Pentecostal/Charismatic,53.344167,-6.359596,BALLYFERMOT-DRIMNAGH
-Bethlehem Christian Fellowship,"Unit 3B, Century Business Park, St Margaret's Road, Finglas",,Dublin 11,Dublin,D11 H972,https://www.bcfchurch.ie,Independent Evangelical,Baptist/Independent Evangelical,53.402099,-6.301452,BLANCHARDSTOWN-MULHUDDART
-Birr Methodist,Emmet Street,,Birr,Offaly,R42 KC42,,Methodist,Methodist/Wesleyan,53.0945,-7.9122,BIRR
-Biserica Muntele Sionului,143B Slaney Close,"Dublin Industrial Estate, Glasnevin, Dublin 11",Dublin,Dublin,,https://www.facebook.com/BisericaMunteleSionuluiDublin/,International Church,Pentecostal/Charismatic,53.375146,-6.289379,CABRA-GLASNEVIN
-Blacklion Methodist Church,Cornagee Road,,Blacklion,Cavan,F91 PC97,,Methodist,Methodist/Wesleyan,54.290042,-7.887404,CAVAN-BELTURBET
-Blackrock - St Andrew’s Presbyterian Church,18 Mount Merrion Avenue,,Blackrock,Dublin,,https://www.standrewschurchblackrock.ie,PCI,Presbyterian/Reformed,53.30182,-6.18379,BLACKROCK
-Blackrock Community Church,St. Andrew's College,55 Booterstown Ave,Williamstown,Dublin,A94 P2N7,blackrockchurch.ie,ABCI,Baptist/Independent Evangelical,53.306740,-6.188417,BLACKROCK
-Blanchardstown Baptist Church,Rath Dara Community College Blanchardstown Road North,,Dublin,Dublin,D15 P380,,Various Baptist,Baptist/Independent Evangelical,53.4014400,-6.37923,BLANCHARDSTOWN-MULHUDDART
-Blanchardstown Methodist Church,1-21 Boulevard,"French Park, Tyrrelstown",Dublin 15,Dublin,D15 H5H0,blanchardstownmethodistchurch.com,Methodist,Methodist/Wesleyan,53.420376,-6.383319,BLANCHARDSTOWN-MULHUDDART
-Borrisokane Methodist Church,Main Street,,Borrisokane,Tipperary,E45 F611,,Methodist,Methodist/Wesleyan,53.0231,-8.1282,NENAGH
-Boyne Valley Baptist Church,Ballymakenny Road,,Drogheda,Louth,A92 P662,https://www.facebook.com/61557349603260/,Various Baptist,Baptist/Independent Evangelical,53.763505,-6.344261,DROGHEDA RURAL
-Brannockstown Baptist Church,Brannockstown Baptist Church,,Brannockstown,Kildare,W91 K004,brannockstownbaptist.com,ABCI,Baptist/Independent Evangelical,53.127213,-6.707423,NEWBRIDGE
-Bray - St. Andrew's Presbyterian Church,Quinsborough Road,,Bray,Wicklow,,https://www.standrewschurchbray.com,PCI,Presbyterian/Reformed,53.20468,-6.10672,BRAY EAST
-Bray Christian Assembly,"Gospel Hall, 27 Florence Road",,Bray,Wicklow,A98 RD68,https://christianassemblybray.com,Christian Assembly,Brethren/Gospel Hall,53.203623,-6.107496,BRAY EAST
-Bray Methodist Church,Eglinton Road,,Bray,Wicklow,A98 YR84,,Methodist,Methodist/Wesleyan,53.2012,-6.1081,BRAY EAST
-Bridge Christian Community,1A Wexford Road,The Centre,Arklow,Wicklow,Y14 PA46,bccarklow.ie,Plumbline,Other Protestant/Evangelical,52.797066,-6.162182,ARKLOW
-Burt Presbyterian Church,"Carrownamaddy, Speenoge",,Lifford,Donegal,,https://www.burtpresbyterianchurch.com,PCI,Presbyterian/Reformed,55.03933,-7.42582,BUNCRANA
-CAC Outreach Athlone,"Unit 54, Athlone Civic Centre","Church Street, Blyry Industrial Estate",Athlone,Westmeath,,https://www.instagram.com/cacoutreachathlone/,Various Pentecostal,Pentecostal/Charismatic,53.431137,-7.897205,ATHLONE
-Cahir Presbyterian Church,Abbey Street,,Cahir,Tipperary,,,PCI,Presbyterian/Reformed,52.37886,-7.92942,CAHIR
-Calvary Baptist Church,Wilton Park House Bishopstown,,Cork,Cork,T12 YX3Y,,Various Baptist,Baptist/Independent Evangelical,51.8779173,-8.5121851,CORK CITY SOUTH WEST
-Calvary Bible Baptist Church Bray,27 Florence Road,,Bray,Wicklow,A98 RD68,,Various Baptist,Baptist/Independent Evangelical,53.2036226,-6.1074959,BRAY EAST
 Calvary Chapel Dublin,Mulhuddart Community Centre,Church Road,Mulhuddart,Dublin,D15 R2VF,https://www.ccdublin.com,Calvary Chapel,Other Protestant/Evangelical,53.4053206,-6.3940431,BLANCHARDSTOWN-MULHUDDART
-Calvary Christian Centre Ltd,19A Muirfield Drive,"Off Naas Road, Inchicore, Bluebell",Dublin 12,Dublin,,https://ccireland.ie/,Christian Churches Ireland,Pentecostal/Charismatic,53.329004,-6.332522,BALLYFERMOT-DRIMNAGH
-Calvary Church Ballina,Ballina Family Resource Centre,Abbey St / Ardnaree,Ballina,Mayo,F26 C6P6,,Independent Evangelical,Baptist/Independent Evangelical,54.1143,-9.157,BALLINA
-Calvary Church Castlebar,Upper Chapel St,,Castlebar,Mayo,F23 DT02,calvarychurchcastlebar.ie,Independent Evangelical,Baptist/Independent Evangelical,53.857,-9.2982,CASTLEBAR
-Calvary Church Charlestown,Community Enterprise Centre,Airport Rd,Charlestown,Mayo,,,Independent Evangelical,Baptist/Independent Evangelical,53.9634,-8.7943,SWINFORD
-Calvary Church Claremorris,"Unit 7, Lakeside Retail Park",Ballindine Rd,Claremorris,Mayo,F12 YW82,,Independent Evangelical,Baptist/Independent Evangelical,53.7175,-9.0009,CLAREMORRIS
 Calvary Church Gorey,"Ounavarra Suite, Amber Springs Hotel",,Gorey,Wexford,,,Calvary Chapel,Other Protestant/Evangelical,52.669096,-6.291371,GOREY
-Calvary Church Loughrea,Loughrea Hotel & Spa,,Loughrea,Galway,H62 Y189,www.calvarychurchloughrea.com,Independent Evangelical,Baptist/Independent Evangelical,53.202562,-8.586116,LOUGHREA
-Calvary Church Westport,Distillery Rd,,Westport,Co. Mayo,F28 P8X2,calvarywestport.ie,Independent Evangelical,Baptist/Independent Evangelical,53.800275,-9.517035,WESTPORT
 Calvary Cork,25 South Side Industrial Estate,Pouladuff Road,Cork,Cork,T12 R792,https://www.calvarycork.org,Calvary Chapel,Other Protestant/Evangelical,51.8719849,-8.4883813,CORK CITY SOUTH WEST
 Calvary Galway,Galway Bay Hotel,Upper Salthill,Galway,Galway,H91 W295,https://www.calvarygalway.com/,Calvary Chapel,Other Protestant/Evangelical,53.266791,-9.069394,GALWAY CITY WEST
 Calvary Sligo,Devins Drive,Abbeyquarter South,Sligo,Sligo,F91 KNN3,https://www.calvarysligo.org/,Calvary Chapel,Other Protestant/Evangelical,54.266434,-8.464482,SLIGO-STRANDHILL
 Calvary Waterford,59/60 Lower Yellow Road,,Waterford City,Waterford,X91 W278,https://www.calvarywaterford.com,Calvary Chapel,Other Protestant/Evangelical,52.259513,-7.122727,TRAMORE-WATERFORD CITY WEST
+North Clare Community Church,Ennistymon Community Centre,Parliament St,Ennistymon,Clare,V95 X8XC,https://www.northclarechurch.com,Calvary Chapel,Other Protestant/Evangelical,52.9405119,-9.291085,ENNISTIMON
+Chinese Gospel Church Abbey Street,49 Middle Abbey Street,,Dublin 1,Dublin,D01 Y6W3,https://cgci.ie/abbey-street/,Chinese Gospel Church,Other Protestant/Evangelical,53.347521,-6.262674,NORTH INNER CITY
+Chinese Gospel Church Esker House,"Esker House, Esker Road, Esker South",,Lucan,Dublin,,https://cgci.ie,Chinese Gospel Church,Other Protestant/Evangelical,53.349466,-6.441046,LUCAN
+Chinese Gospel Church Portlaoise,Unit A11 National Enterprise Park,,Portlaoise,Laois,R32 HA21,,Chinese Gospel Church,Other Protestant/Evangelical,53.0226820,-7.31462,PORTLAOISE
+Bray Christian Assembly,"Gospel Hall, 27 Florence Road",,Bray,Wicklow,A98 RD68,https://christianassemblybray.com,Brethren,Brethren/Gospel Hall,53.203623,-6.107496,BRAY EAST
+Kilkenny Christian Assembly,Lyrath,Carlow Road,Kilkenny,Kilkenny,R95 DW98,https://www.kilkennychristianassembly.com/,Brethren,Brethren/Gospel Hall,52.645567,-7.20649,CASTLECOMER
+Abundant Life Christian Church,"Crown House, 55/56 Henry Street",,Limerick,Limerick,V94 PTY8,https://www.abunlife.com/,Christian Churches Ireland,Pentecostal/Charismatic,52.66103,-8.63137,LIMERICK CITY WEST
+Calvary Christian Centre Ltd,19A Muirfield Drive,"Off Naas Road, Inchicore, Bluebell",Dublin 12,Dublin,,https://ccireland.ie/,Christian Churches Ireland,Pentecostal/Charismatic,53.329004,-6.332522,BALLYFERMOT-DRIMNAGH
+D24 Church,Movies@TheSquare Level 3 The Square Tallaght,,Dublin,Dublin,,,Christian Churches Ireland,Pentecostal/Charismatic,53.2870720,-6.370449,TALLAGHT CENTRAL
+Discovery Church (Galway),"Industrial Development Agency (IDA) Small Business Centre, Park Tuam Road",,Galway,Galway,H91 RK5Y,https://discoverychurch.ie/,Christian Churches Ireland,Pentecostal/Charismatic,53.28911,-9.02164,GALWAY CITY EAST
+Discovery Church (Tuam),"Vincent De Paul Family Centre (TUSLA Building), Dublin Road, Glebe",,Tuam,Galway,H54 AH75,https://discoverychurch.ie/,Christian Churches Ireland,Pentecostal/Charismatic,53.511193,-8.845648,TUAM
+Expectation Church,"Screen 6, Vue Cinema, Liffey Valley Shopping Centre",,Dublin 22,Dublin,D22 R6K8,https://www.weareexpectation.com/,Christian Churches Ireland,Pentecostal/Charismatic,53.3522478,-6.3936439,PALMERSTOWN-FONTHILL
+Gateway Church (Tullow),Rathoe Road,,Tullow,Carlow,R93 Y3PW,https://www.gatewaychurchtullow.ie/,Christian Churches Ireland,Pentecostal/Charismatic,52.7958005,-6.7541132,TULLOW
+Hope Centre,"Old St. Mary's Church, St Agnes Terrace, Crumlin",,Dublin 12,Dublin,D12 YC80,https://hopecentre.ie/,Christian Churches Ireland,Pentecostal/Charismatic,53.3227635,-6.319465,KIMMAGE-RATHMINES
+Hope Church Ennis,Maria Assumpta Hall Station Road,,Ennis,Clare,V95 HT99,,Christian Churches Ireland,Pentecostal/Charismatic,52.8412671,-8.981503,ENNIS
+Lighthouse Church (Dublin),"Odeon Cinema, Blanchardstown Shopping Centre, Blanchardstown Road South",,Dublin 15,Dublin,D15 XKC7,https://www.lighthousechurch.ie/,Christian Churches Ireland,Pentecostal/Charismatic,53.3925138,-6.3912158,CASTLEKNOCK
+Lighthouse Church (Dundalk),"The Venue, Imperial Hotel, Park Street",,Dundalk,Louth,A91 ND6P,https://www.lighthousechurch.ie/,Christian Churches Ireland,Pentecostal/Charismatic,54.003123,-6.402065,DUNDALK SOUTH
+Lighthouse Church (Navan),Johnstown Educational Campus,,Navan,Meath,C15 AE03,https://www.lighthousechurch.ie/,Christian Churches Ireland,Pentecostal/Charismatic,53.65283,-6.67939,NAVAN
+Naas Community Church,Millbrook,,Naas,Kildare,W91 EH96,https://www.naaschurch.ie/,Christian Churches Ireland,Pentecostal/Charismatic,53.2166451,-6.6589422,NAAS
+New Life Family Church (Drogheda),"Units 1 & 2, Mill Wharf, Merchants Quay",,Drogheda,Louth,A92 H324,https://www.nlfc.ie/,Christian Churches Ireland,Pentecostal/Charismatic,53.7152303,-6.3458384,DROGHEDA URBAN
+Open Arms Church (Newbridge),"4 The Pier, Irish Row",,Newbridge,Kildare,W12 HT38,https://openarms.ie/,Christian Churches Ireland,Pentecostal/Charismatic,53.1723845,-6.7960429,NEWBRIDGE
+Open Arms Church (Sandyford),"69c Heather Road, Sandyford Business Park",,Dublin,Dublin,D18 Y9F6,https://openarms.ie/,Christian Churches Ireland,Pentecostal/Charismatic,53.273702,-6.212426,GLENCULLEN-SANDYFORD
+St. Mark's Church Dublin,42A Pearse Street,,Dublin 2,Dublin,D02 R123,https://www.stmarks.ie,Christian Churches Ireland,Pentecostal/Charismatic,53.344737,-6.251019,SOUTH EAST INNER CITY
+Wexford Christian Community Church,"Unit 31, Westpoint Business Park, Clonard",,Wexford,Wexford,Y35 PR94,http://www.wxccc.org/,Christian Churches Ireland,Pentecostal/Charismatic,52.3843486,-6.4498605,WEXFORD
+Church Of Christ Dublin,47 Ranelagh Road,,Dublin 6,Dublin,D06 C2P3,https://www.churchofchristireland.ie,Church of Christ,Other Protestant/Evangelical,53.326938,-6.256796,PEMBROKE
+Church of Christ Knocklyon,Knocklyon Road Templeogue,,Dublin,Dublin,D16 Y157,,Church of Christ,Other Protestant/Evangelical,53.2841571,-6.3259815,FIRHOUSE-BOHERNABREENA
+Ranelagh Christian Church,47A Ranelagh Road,,Ranelagh,Dublin,D06 NX99,,Church of Christ,Other Protestant/Evangelical,53.326833,-6.256637,PEMBROKE
+The Church of Christ,New Testament Church Jamestown,,Carrick-on-Shannon,Leitrim,,,Church of Christ,Other Protestant/Evangelical,53.9490,-8.09,CARRICK-ON-SHANNON
+St Catherine's Church of Ireland,Thomas Street,The Liberties,Dublin 8,Dublin,D08 DNA7,https://saintcatherines.ie,Anglican,Other Protestant/Evangelical,53.342949,-6.281226,SOUTH WEST INNER CITY
+Nazarene Community Church - Greystones,"10 Burnaby Avenue, Killincarrig",,Greystones,Wicklow,,https://nazarene.ie,Methodist,Methodist/Wesleyan,53.131311,-6.071152,GREYSTONES
+Raphoe Congregational Church,Derry Road,Magheraboy,Raphoe,Donegal,,https://raphoechurch.com/,Independent Evangelical,Baptist/Independent Evangelical,54.875916,-7.588112,LIFFORD-STRANORLAR
+"Amazing Grace Church, Westport",Castlebar Road,Drummindoo / Sheroe,Westport,Mayo,,amazinggracewestport.com,Elim Ministries Ireland,Pentecostal/Charismatic,53.803707,-9.49051,WESTPORT
+Ballyfermot Community Church,1 Drumfinn Park,"Drumfinn, Ballyfermot",Dublin 10,Dublin,D10 TX63,https://elimbcc.com/,Elim Ministries Ireland,Pentecostal/Charismatic,53.344088,-6.359767,BALLYFERMOT-DRIMNAGH
+Castlebar Christian Fellowship,The Mall,Rock Square,Castlebar,Mayo,F23 HX96,https://www.castlebarchristianfellowship.org/,Elim Ministries Ireland,Pentecostal/Charismatic,53.854923,-9.297844,CASTLEBAR
+Livingwater Church,33 Slaney Road,"Dublin Industrial Estate, Glasnevin / Finglas",Dublin 11,Dublin,D11 VA40,facebook.com/livingwaterchurchfinglas,Elim Ministries Ireland,Pentecostal/Charismatic,53.373848,-6.290634,CABRA-GLASNEVIN
+Meath Christian Centre,Liscarton,Kells Road,Navan,Meath,C15 Y272,https://www.facebook.com/MeathChristianCentre/,Elim Ministries Ireland,Pentecostal/Charismatic,53.661155,-6.723942,NAVAN
+Monaghan Elim Pentecostal Church,Drumbear,Ballybay Road,Monaghan,Monaghan,H18 TE81,https://www.monaghanelim.com/,Elim Ministries Ireland,Pentecostal/Charismatic,54.234854,-6.963795,MONAGHAN
+New Life Church Birr,"New Order District, Syngefield Business Park",,Birr,Offaly,R42 PR27,,Elim Ministries Ireland,Pentecostal/Charismatic,53.0925949,-7.8953263,BIRR
+Oasis Christian Fellowship,"Oasis Christian Centre, Gaol Road",,Roscrea,Tipperary,,,Elim Ministries Ireland,Pentecostal/Charismatic,52.9530000,-7.801,ROSCREA-TEMPLEMORE
+Swords Elim Church,"St Colmcille's GFC, Glen Ellan Road",Holybanks,Swords,Dublin,K67 H996,https://swordselim.weebly.com/,Elim Ministries Ireland,Pentecostal/Charismatic,53.46795,-6.221682,SWORDS
+Christ Church North Dublin,"Baldoyle Community Hall, Main Street, Baldoyle",,Dublin 13,Dublin,,,ICM,Other Protestant/Evangelical,53.3994197,-6.1277145,HOWTH-MALAHIDE
+City Church Dublin,ODEON Point Square,"East Wall Road, Point Square",Dublin 1,Dublin,,https://citychurchdublin.ie,ICM,Other Protestant/Evangelical,53.34604,-6.272206,NORTH INNER CITY
+Immanuel Church Dublin,28 Bachelors Walk,,Dublin 1,Dublin,D01 P4V6,https://immanuelchurchdublin.org,ICM,Other Protestant/Evangelical,53.347479,-6.260487,NORTH INNER CITY
+Iranian Gospel Church Dublin,28 Bachelors Walk,,Dublin,Dublin,,,ICM,Other Protestant/Evangelical,53.3477,-6.2606,NORTH INNER CITY
+Athenry Gospel Church,Athenry Community Hall Clarke Street,,Athenry,Galway,H65 KT10,,Independent Evangelical,Baptist/Independent Evangelical,"53.2973013,-8.7478859",,ATHENRY-ORANMORE
+Bantry Christian Fellowship Church,Tower Street,near The Quay,Bantry,Cork,,https://bantrychristianfellowship.ie/,Independent Evangelical,Baptist/Independent Evangelical,51.679898,-9.456097,BANTRY-WEST CORK
+Barrowvalley Community Church,"Unit 5A Barrowside Business Park, Sleaty Road",Graiguecullen,Carlow,Carlow,R93 X037,bvcchurch.com,Independent Evangelical,Baptist/Independent Evangelical,52.843242,-6.936739,GRAIGUECULLEN-PORTARLINGTON
+Bethany Church,16 Whitehall Close,,"Terenure, Dublin 6W",Dublin,,https://www.bethanychurch.ie,Independent Evangelical,Baptist/Independent Evangelical,53.306299,-6.318744,RATHFARNHAM-TEMPLEOGUE
+Bethlehem Christian Fellowship,"Unit 3B, Century Business Park, St Margaret's Road, Finglas",,Dublin 11,Dublin,D11 H972,https://www.bcfchurch.ie,Independent Evangelical,Baptist/Independent Evangelical,53.402099,-6.301452,BLANCHARDSTOWN-MULHUDDART
+Calvary Church Ballina,Ballina Family Resource Centre,Abbey St / Ardnaree,Ballina,Mayo,F26 C6P6,,Independent Evangelical,Baptist/Independent Evangelical,54.1143,-9.157,BALLINA
+Calvary Church Castlebar,Upper Chapel St,,Castlebar,Mayo,F23 DT02,calvarychurchcastlebar.ie,Independent Evangelical,Baptist/Independent Evangelical,53.857,-9.2982,CASTLEBAR
+Calvary Church Charlestown,Community Enterprise Centre,Airport Rd,Charlestown,Mayo,,,Independent Evangelical,Baptist/Independent Evangelical,53.9634,-8.7943,SWINFORD
+Calvary Church Claremorris,"Unit 7, Lakeside Retail Park",Ballindine Rd,Claremorris,Mayo,F12 YW82,,Independent Evangelical,Baptist/Independent Evangelical,53.7175,-9.0009,CLAREMORRIS
+Calvary Church Loughrea,Loughrea Hotel & Spa,,Loughrea,Galway,H62 Y189,www.calvarychurchloughrea.com,Independent Evangelical,Baptist/Independent Evangelical,53.202562,-8.586116,LOUGHREA
+Calvary Church Westport,Distillery Rd,,Westport,Co. Mayo,F28 P8X2,calvarywestport.ie,Independent Evangelical,Baptist/Independent Evangelical,53.800275,-9.517035,WESTPORT
+Christ City Church Dublin,"Synge Street Secondary School, Synge Street",Portobello,Dublin 8,Dublin,,christcitychurch.ie,Independent Evangelical,Baptist/Independent Evangelical,53.333248,-6.267112,SOUTH EAST INNER CITY
+Christian Assembly Evangelical Church,110 Middle Abbey Street,,Dublin,Dublin,D01 EH48,http://www.caec.ie/,Independent Evangelical,Baptist/Independent Evangelical,53.348113,-6.263342,NORTH INNER CITY
+Christian Church Tralee,,,,,,,Independent Evangelical,Baptist/Independent Evangelical,52.268874,-9.691741,TRALEE
+Christian Community Church Arklow,,,,,,,Independent Evangelical,Baptist/Independent Evangelical,52.803083,-6.144087,ARKLOW
+Christian Fellowship Church Dublin,Unit 6 Malahide Road Industrial Park Coolock,,Dublin,Dublin,D17 EP86,,Independent Evangelical,Baptist/Independent Evangelical,53.4010,-6.2089,ARTANE-WHITEHALL
+Clondalkin Christian Fellowship,"Rowlagh Community Centre, Neilstown Road",,"Clondalkin, Dublin 22",Dublin,,https://clondalkinchristianfellowship.com,Independent Evangelical,Baptist/Independent Evangelical,53.343572,-6.398226,PALMERSTOWN-FONTHILL
+Clonmel Christian Bible Church,Western Park,,Clonmel,Tipperary,,https://clonmelbiblechurch.wordpress.com/,Independent Evangelical,Baptist/Independent Evangelical,52.353642,-7.717792,CLONMEL
+Community Christian Church,Unit 2 Gairdin Mhaire,,Moycullen,Galway,H91 K35R,Www.CommunityChristian.ie,Independent Evangelical,Baptist/Independent Evangelical,53.339307,-9.182126,CONAMARA SOUTH
+Cootehill Christian Fellowship,66 Bridge Street,,Cootehill,Cavan,,https://cootehillchristianfellowship.ie/,Independent Evangelical,Baptist/Independent Evangelical,54.074453,-7.085014,BAILIEBOROUGH-COOTEHILL
+Cornerstone Church at the Well,"The Well, Church Terrace, Main Street",,Bray,Wicklow,A98 VE43,cornerstonechurch.ie,Independent Evangelical,Baptist/Independent Evangelical,53.204859,-6.10999,BRAY EAST
+Cove Street Christian Fellowship,42 Cove Street,,Cork,Cork,,,Independent Evangelical,Baptist/Independent Evangelical,51.894949,-8.474385,CORK CITY SOUTH CENTRAL
+Crossroads Church Dublin,1A Earlscourt Industrial Estate,"Beaumont Avenue, Churchtown",Dublin 14,Dublin,D14 E0F4,https://crossroadschurchdublin.blogspot.com/,Independent Evangelical,Baptist/Independent Evangelical,53.292258,-6.259351,DUNDRUM
+Dublin Christian Fellowship,"Unit 10 Lilmar Industrial Estate, Coolock Lane",,"Santry, Dublin 9",Dublin,,https://www.messagedublin.com,Independent Evangelical,Baptist/Independent Evangelical,53.399028,-6.239085,SWORDS
+Dublin Prayer Fellowship,"39 Maplewood Park, Springfield",,"Tallaght, Dublin 24",Dublin,,http://www.dublinprayerfellowship.com/,Independent Evangelical,Baptist/Independent Evangelical,53.286018,-6.382981,TALLAGHT CENTRAL
+Dublin West Community Church,Hansfield Educate Together National School,"Barnwell Road, Hansfield",Dublin 15,Dublin,D15 H1FC,https://dublinwest.ie,Independent Evangelical,Baptist/Independent Evangelical,53.391477,-6.445011,ONGAR
+Dun Laoghaire Evangelical Church,Lower Glenageary Road,,Dún Laoghaire,Dublin,A96 F6T0,https://www.dec.ie,Independent Evangelical,Baptist/Independent Evangelical,53.285472,-6.13323,DÚN LAOGHAIRE
+Dundalk Community Church,Hagan House,The Ramparts,Dundalk,Louth,A91 D7VX,https://dundalkcommunitychurch.ie/,Independent Evangelical,Baptist/Independent Evangelical,54.001925,-6.401309,DUNDALK SOUTH
+Dungarvan Christian Fellowship,4 Harbour Mill,Davitts Quay,Dungarvan,Waterford,,dungarvanchurch.org,Independent Evangelical,Baptist/Independent Evangelical,52.084949,-7.622171,DUNGARVAN
+Elevate Community Church,"St. Philomena’s, South Circular Road",,Limerick,Limerick,V94 DFP1,https://ecclimerick.com/,Independent Evangelical,Baptist/Independent Evangelical,52.654483,-8.63662,LIMERICK CITY WEST
+Emmanuel Community Church,17 Seatown Place,,Dundalk,Louth,A91 W722,https://www.emmanueldundalk.com/contact,Independent Evangelical,Baptist/Independent Evangelical,54.004982,-6.39205,DUNDALK SOUTH
+Ennis Evangelical Church,"Unit 6, Block E, Quin Road Business Park",,Ennis,Clare,V95 XK03,https://www.ennisevangelicalchurch.org/,Independent Evangelical,Baptist/Independent Evangelical,52.835912,-8.969403,ENNIS
+Enniscorthy Christian Fellowship,"Meeting room behind Bellefield Design, Enniscorthy Community Workshop",Bellefield Road,Enniscorthy,Wexford,Y21 W6D7,https://www.enniscorthychristianfellowship.ie/,Independent Evangelical,Baptist/Independent Evangelical,52.506334,-6.579444,ENNISCORTHY
+Ferrybank Christian Community Church,Hillsfield Community Centre,"Belmont Road, Ferrybank",Waterford,Kilkenny,X91 W9YY,https://ferrybankchristianchurch.ie/,Independent Evangelical,Baptist/Independent Evangelical,52.269912,-7.097433,PILTOWN
+Free Grace Evangelical Church,8 Woodlands Avenue,,Mullingar,Westmeath,N91 WN8C,https://www.fgecmullingar.org/,Independent Evangelical,Baptist/Independent Evangelical,53.521216,-7.361458,MULLINGAR
+Galway Christian Fellowship,"New Life Centre, Monivea Road",Ballybrit,Galway,Galway,H91 H2W8,https://gcfchurch.ie/,Independent Evangelical,Baptist/Independent Evangelical,53.288847,-9.008297,GALWAY CITY EAST
+Good News Christian Church,14 Church Street,,Cobh,Cork,,https://goodnewschristianchurch.blogspot.com/p/contact-us.html,Independent Evangelical,Baptist/Independent Evangelical,51.85152,-8.289651,COBH
+Gorey Christian Assembly,"The Heath, Ramsgate Village",Knockmullen,Gorey,Wexford,Y25 P277,https://goreyca.com,Independent Evangelical,Baptist/Independent Evangelical,52.66925,-6.297709,GOREY
+Grace Church New Ross,Dunbrody Wharf,,New Ross,Wexford,,http://www.thegracechurch.ie,Independent Evangelical,Baptist/Independent Evangelical,52.397351,-6.94361,NEW ROSS
+Grace Community Church,"Corroy, Ballymurray",,Roscommon,Roscommon,F42 FT67,https://graceroscommon.church/,Independent Evangelical,Baptist/Independent Evangelical,53.590447,-8.120183,ROSCOMMON
+Grace Fellowship Church,"c/o Central Fire Station, Tara Street (corner of Pearse St & Tara St)",,Dublin 2,Dublin,,https://www.grace.ie,Independent Evangelical,Baptist/Independent Evangelical,53.345258,-6.253041,SOUTH EAST INNER CITY
+Hacketstown Christian Centre,The Green,,Hacketstown,Carlow,R93 FT75,,Independent Evangelical,Baptist/Independent Evangelical,52.861589,-6.555077,TULLOW
+Hillside Evangelical Church,Hillside Road,,Greystones,Wicklow,A63 C927,https://www.hillside.ie,Independent Evangelical,Baptist/Independent Evangelical,53.144993,-6.06594,GREYSTONES
+Kilkenny Community Church,17 Irishtown,,Kilkenny,Kilkenny,,http://www.kilcomchurch.org,Independent Evangelical,Baptist/Independent Evangelical,52.65563,-7.255477,KILKENNY
+Killarney Christian Group,Fossa Community Hall Fossa,,Killarney,Kerry,,,Independent Evangelical,Baptist/Independent Evangelical,52.07119,-9.58379,KILLARNEY
+Killult Christian Fellowship,Killult,,Falcarragh,Donegal,F92 R5X2,https://falcarraghcc.com/,Independent Evangelical,Baptist/Independent Evangelical,55.134205,-8.130093,GLENTIES
+Kilmessan Christian Church,Kilmessan,,Kilmessan,Meath,,,Independent Evangelical,Baptist/Independent Evangelical,53.560612,-6.662344,RATOATH
+Letterkenny Christian Fellowship,Bonagee Hall,Bonagee Road,Letterkenny,Donegal,F92 ED95,https://www.lcf.ie/,Independent Evangelical,Baptist/Independent Evangelical,54.944751,-7.697285,LETTERKENNY
+Limerick Christian Centre Mungret,Mungret College,Mungret,Limerick,Limerick,V94 0Y56,https://www.limerickchristiancentre.com/contact-us,Independent Evangelical,Baptist/Independent Evangelical,52.63135,-8.679542,LIMERICK CITY WEST
+Limerick City Church,,,,,,,Independent Evangelical,Baptist/Independent Evangelical,52.659873,-8.627056,LIMERICK CITY WEST
+Listowel Christian Fellowship,,,,,,,Independent Evangelical,Baptist/Independent Evangelical,52.466122,-9.530038,LISTOWEL
+Manorhamilton Christian Fellowship,Bee Park Community Centre New Line,,Manorhamilton,Leitrim,,,Independent Evangelical,Baptist/Independent Evangelical,54.3062546,-8.1754413,MANORHAMILTON
+Maynooth Community Church,Dublin Road,,Maynooth,Kildare,W23 P02A,maynoothcc.org,Independent Evangelical,Baptist/Independent Evangelical,53.381726,-6.593948,MAYNOOTH
+Mullingar Christian Fellowship,Spout Well Lane,,Mullingar,Westmeath,N91 C56R,mullingarcf.ie,Independent Evangelical,Baptist/Independent Evangelical,53.526233,-7.339066,MULLINGAR
+New Covenant Church Tralee,,,,,,,Independent Evangelical,Baptist/Independent Evangelical,52.271156,-9.707091,TRALEE
+New Life Fellowship Church,Day Centre,Off Oliver Plunkett Road,Letterkenny,Donegal,,newlifefellowship.ie,Independent Evangelical,Baptist/Independent Evangelical,54.94806,-7.736274,LETTERKENNY
+Newbridge Bible Fellowship Church,Liffey Lodge,,Newbridge,Kildare,W12 CK00,,Independent Evangelical,Baptist/Independent Evangelical,53.1805,-6.796,NEWBRIDGE
+Redeemer Church,Rathfarnham Educate Together,Lereto Ave,Dublin,Dublin,D14 V5W4,https://www.redeemerdublin.ie/,Independent Evangelical,Baptist/Independent Evangelical,53.291757,-6.275089,DUNDRUM
+Shalom Christian Fellowship,"Dawson Street / YWCA Hall, North Road",,Monaghan,Monaghan,H18 T228,https://www.facebook.com/ShalomChristianFellowshipMonaghan/,Independent Evangelical,Baptist/Independent Evangelical,54.247117,-6.970829,MONAGHAN
+Shannon Christian Church,"Unit 2, Smithstown",,Shannon,Clare,V14 KX52,https://shannonchristians.ie/,Independent Evangelical,Baptist/Independent Evangelical,52.716366,-8.870825,SHANNON
+South City Church,Glenalbyn Sports and Conference Centre,"Glenalbyn Road, Stillorgan",Dublin,Dublin,A94 WC62,https://www.southcitychurch.ie,Independent Evangelical,Baptist/Independent Evangelical,53.286534,-6.200003,STILLORGAN
+South Hill Evangelical Church,South Hill Park,"Booterstown Avenue, Mount Merrion",Blackrock,Dublin,A94 R5W4,https://www.southhillchurchdublin.ie,Independent Evangelical,Baptist/Independent Evangelical,53.298803,-6.204168,BLACKROCK
+"The Bride, Christian Fellowship",The Bride Christian Fellowship,Bruckless,Donegal Town,Donegal,F94 K263,https://www.facebook.com/p/The-Bride-Christian-Fellowship-100089613445513/,Independent Evangelical,Baptist/Independent Evangelical,54.640049,-8.389689,DONEGAL
+The Bridge Church,Unit 4 Celbridge Industrial Estate Shackleton Road,,Celbridge,Kildare,W23 R763,,Independent Evangelical,Baptist/Independent Evangelical,53.3416,-6.548,CELBRIDGE
+The Bridge Church,"Unit 4, Celbridge Industrial Estate, Shackleton Road",,Celbridge,Kildare,W23 R763,thebridgechurch.ie,Independent Evangelical,Baptist/Independent Evangelical,53.343654,-6.545904,CELBRIDGE
+The Church on Main Street,Dara Cinema,North Main Street,Naas,Kildare,,tcoms.ie,Independent Evangelical,Baptist/Independent Evangelical,53.218794,-6.662489,NAAS
+The CornerChurch Tuam,Vicar Street,,Tuam,Galway,H54 W718,http://www.irishchristian.net/tuam,Independent Evangelical,Baptist/Independent Evangelical,53.514193,-8.852097,TUAM
+The Light House,Dean Street,,Kilkenny,Kilkenny,R95 P93V,,Independent Evangelical,Baptist/Independent Evangelical,52.6514,-7.2557,KILKENNY
+Tipperary Bible Church,"Arravale Rovers, Sean Treacy Park, Station Road",,Tipperary Town,Tipperary,E34 DK26,,Independent Evangelical,Baptist/Independent Evangelical,52.4698000,-8.1549,CASHEL-TIPPERARY
+Tipperary Christian Fellowship,"St Michael's Street Community Centre, St Michael Street",,Tipperary Town,Tipperary,E34 K156,,Independent Evangelical,Baptist/Independent Evangelical,52.4751868,-8.1592594,CASHEL-TIPPERARY
+Tralee Bible Fellowship,1st Floor CWS Centre Upper Rock Street Gallowsfield,,Tralee,Kerry,V92 YH5V,,Independent Evangelical,Baptist/Independent Evangelical,52.273610,-9.705515,TRALEE
+Tramore Bible Church,"Community Care Centre, Pond Road",,Tramore,Waterford,,,Independent Evangelical,Baptist/Independent Evangelical,52.1642007,-7.1500541,TRAMORE-WATERFORD CITY WEST
+Trinity Church Network,The Exchange,50 Gardiner Street Lower,Dublin 1,Dublin,D01 VC03,https://www.trinity.ie,Independent Evangelical,Baptist/Independent Evangelical,53.350019,-6.254138,NORTH INNER CITY
+Tuam Evangelical Church,c/o Irish Wheelchair Association Dublin Road,,Tuam,Galway,H54 TR77,,Independent Evangelical,Baptist/Independent Evangelical,53.5217,-8.8475,TUAM
+United Church Castlebar,"T.F. Royal Hotel & Theatre, Old Westport Road",,Castlebar,Mayo,,,Independent Evangelical,Baptist/Independent Evangelical,53.85328602,-9.30352091,CASTLEBAR
+Waterford Christian Assembly,Tycor Business Centre,Corner of Morrissons Avenue and Tycor Avenue,Waterford,Waterford,X91 V8PX,https://waterford-assembly.com,Independent Evangelical,Baptist/Independent Evangelical,52.256999,-7.129553,WATERFORD CITY SOUTH
+Wexford Bible Church,Gaelscoil Charman,Whiterock Hill,Wexford,Wexford,Y35 XW99,wexfordbiblechurch.ie,Independent Evangelical,Baptist/Independent Evangelical,52.327924,-6.473087,WEXFORD
+Betel Dublin (Romanian),1 Parnell Square North,Rotunda,Dublin,Dublin,,beteldublin.com,Various Pentecostal,Pentecostal/Charismatic,53.354534,-6.263908,NORTH INNER CITY
+Biserica Muntele Sionului,143B Slaney Close,"Dublin Industrial Estate, Glasnevin, Dublin 11",Dublin,Dublin,,https://www.facebook.com/BisericaMunteleSionuluiDublin/,Various Pentecostal,Pentecostal/Charismatic,53.375146,-6.289379,CABRA-GLASNEVIN
+Holy Trinity Church,17 Parnell Square North,,Dublin 1,Dublin,D01 V2A0,,Various Pentecostal,Pentecostal/Charismatic,53.354486,-6.263691,NORTH INNER CITY
+ICRM Redeemer Church Dublin,"Our Lady's Hall, 12 Mourne Road",,"Drimnagh, Dublin 12",Dublin,D12 DW68,https://www.icrmchurchdublin.com,Various Pentecostal,Pentecostal/Charismatic,53.337562,-6.278521,SOUTH WEST INNER CITY
+Indian Pentecostal Church of God - IPC Dublin,86 Saint Joseph's Road,,Dublin 12,Dublin,D12 H956,ipcchurchdublin.com,Various Pentecostal,Pentecostal/Charismatic,53.309952,-6.332328,RATHFARNHAM-TEMPLEOGUE
+LA GRACE Christian Assembly,"44A John F. Kennedy Avenue, JFK Industrial Estate",,"Bluebell, Dublin 12",Dublin,D12 DKR6,http://www.lagrace.info,Various Pentecostal,Pentecostal/Charismatic,53.326427,-6.355311,CLONDALKIN
+Mount Olive Tamil Church,Saint Alphonsus' Monastery,"Saint Alphonsus' Road Upper, Drumcondra",Dublin 9,Dublin,,mountolivetamilchurch.com,Various Pentecostal,Pentecostal/Charismatic,53.365625,-6.261252,CABRA-GLASNEVIN
+New Life Church Dublin,1 Drumfinn Park,,Dublin 10,Dublin,,https://www.nlcdublin.com,Various Pentecostal,Pentecostal/Charismatic,53.344176,-6.359673,BALLYFERMOT-DRIMNAGH
+Telugu Church - Christian Fellowship Ireland - Telugu & English,"Scoil Áine Naofa, Newcastle Rd, Esker Dr",,Lucan,Dublin,,https://cfidublin.wixsite.com/cfi-church,Various Pentecostal,International Churches,53.390156,-6.435989,ONGAR
+The Romanian Pentecostal Church Mount Zion,Growtown,,Dunshaughlin,Meath,A85 WY11,,Various Pentecostal,Pentecostal/Charismatic,53.4767314,-6.5020499,RATOATH
+Abbey St Methodist Church,9c Lower Abbey Street,,Dublin 1,Dublin,D01 EY05,,Methodist,Methodist/Wesleyan,53.3486,-6.2592,NORTH INNER CITY
+Abbey Street Methodist Church,9C Lower Abbey Street,Dublin Central Mission,Dublin 1,Dublin,D01 A3C4,dublincentralmission.ie,Methodist,Methodist/Wesleyan,53.348712,-6.258178,NORTH INNER CITY
+Adare Methodist Church,Blackabbey Road,,Adare,Limerick,V94 TW83,,Methodist,Methodist/Wesleyan,52.5639,-8.7901,ADARE-RATHKEALE
+Ardara Methodist Church,Front Street,,Ardara,Donegal,,,Methodist,Methodist/Wesleyan,54.763620,-8.41155,GLENTIES
+Arklow Methodist Church,15-17 Ferrybank,,Arklow,Wicklow,Y14 VK65,,Methodist,Methodist/Wesleyan,52.7931,-6.1432,ARKLOW
+Athlone Methodist Church,Northgate Street,,Athlone,Westmeath,N37 ND76,,Methodist,Methodist/Wesleyan,53.4249,-7.9421,ATHLONE
+Athy Methodist Church,5-6 Woodstock Street,,Athy,Kildare,R14 RH70,,Methodist,Methodist/Wesleyan,52.9921,-6.9832,ATHY
+Ballina Methodist Church,Wesley Place James Connolly Street,,Ballina,Mayo,,,Methodist,Methodist/Wesleyan,54.11194,-9.15664,BALLINA
+Ballineen Methodist Church,West End,,Ballineen,Cork,P47 DW68,,Methodist,Methodist/Wesleyan,51.7332,-8.9661,SKIBBEREEN-WEST CORK
+Ballingrane Methodist Church,Ballingrane,,Askeaton,Limerick,V94 H793,,Methodist,Methodist/Wesleyan,52.5661,-8.9332,ADARE-RATHKEALE
+Ballintra Methodist Church,Main Street,,Ballintra,Donegal,,,Methodist,Methodist/Wesleyan,54.578820,-8.12481,DONEGAL
+Bandon Methodist Church,Bridge Street,,Bandon,Cork,P72 KD27,,Methodist,Methodist/Wesleyan,51.7451,-8.7412,BANDON-KINSALE
+Birr Methodist,Emmet Street,,Birr,Offaly,R42 KC42,,Methodist,Methodist/Wesleyan,53.0945,-7.9122,BIRR
+Blacklion Methodist Church,Cornagee Road,,Blacklion,Cavan,F91 PC97,,Methodist,Methodist/Wesleyan,54.290042,-7.887404,CAVAN-BELTURBET
+Blanchardstown Methodist Church,1-21 Boulevard,"French Park, Tyrrelstown",Dublin 15,Dublin,D15 H5H0,blanchardstownmethodistchurch.com,Methodist,Methodist/Wesleyan,53.420376,-6.383319,BLANCHARDSTOWN-MULHUDDART
+Borrisokane Methodist Church,Main Street,,Borrisokane,Tipperary,E45 F611,,Methodist,Methodist/Wesleyan,53.0231,-8.1282,NENAGH
+Bray Methodist Church,Eglinton Road,,Bray,Wicklow,A98 YR84,,Methodist,Methodist/Wesleyan,53.2012,-6.1081,BRAY EAST
 Carlow Methodist Church,Athy Road,,Carlow,Carlow,R93 RW31,,Methodist,Methodist/Wesleyan,52.8391,-6.9322,CARLOW
+Centenary Methodist Church,Leeson Park,,Dublin 6,Dublin,D06 N152,,Methodist,Methodist/Wesleyan,53.3302,-6.2531,PEMBROKE
+Clonakilty Methodist Church,Dunmanway Road,,Clonakilty,Cork,P85 TY80,,Methodist,Methodist/Wesleyan,51.6242,-8.8921,SKIBBEREEN-WEST CORK
+Clontarf Methodist Church,201 Clontarf Road,,Dublin 3,Dublin,D03 NY50,,Methodist,Methodist/Wesleyan,53.3631,-6.2024,CLONTARF
+Cloughjordan Methodist Church,Main Street,,Cloughjordan,Tipperary,E53 DF24,,Methodist,Methodist/Wesleyan,52.9432,-8.0351,NENAGH
+Cork (Ardfallen Methodist Church,Nursery Drive,,Ballinlough,Cork,T12 VX20,,Methodist,Methodist/Wesleyan,51.8887,-8.4391,CORK CITY SOUTH EAST
+Cork (Military Rd) Methodist Church,"St. Luke's, Military Road",,Cork,Cork,T23 K299,,Methodist,Methodist/Wesleyan,51.9051,-8.4652,CORK CITY NORTH EAST
+Donegal Town Methodist Church,Waterloo Place,,Donegal Town,Donegal,,,Methodist,Methodist/Wesleyan,54.655210,-8.11205,DONEGAL
+Drimoleague Methodist Church,West End,,Drimoleague,Cork,,https://www.westcorkmethodists.com/drimoleague,Methodist,Methodist/Wesleyan,51.659227,-9.263666,BANTRY-WEST CORK
+Dublin Central Methodist Church,Church of St George & St Thomas Cathal Brugha Street,,Rotunda,Dublin,Dublin 1,,Methodist,Methodist/Wesleyan,53.352401,-6.259216,NORTH INNER CITY
+Dublin Korean,"Litton Hall, Leeson Park",,Dublin 6,Dublin,D06 N152,,Methodist,Methodist/Wesleyan,53.3302,-6.2531,PEMBROKE
+Dun Laoghaire Methodist Church,10 Northumberland Ave,,Dun Laoghaire,Dublin,A96 VY15,,Methodist,Methodist/Wesleyan,53.2921,-6.1342,DÚN LAOGHAIRE
+Dundrum Methodist Church,Ballinteer Road,Dundrum Methodist Church,"Dundrum, Dublin 16",Dublin,D16 WK27,https://dundrummethodist.ie/,Methodist,Methodist/Wesleyan,53.276371,-6.244032,GLENCULLEN-SANDYFORD
+Enniscorthy Methodist Church,Mill Park Road,,Enniscorthy,Wexford,Y21 XE97,,Methodist,Methodist/Wesleyan,52.5021,-6.5682,ENNISCORTHY
+Gateway Methodist Church,Gateway Methodist Church,Killarney Road,Kenmare,Kerry,,https://www.kenmare.ie/kenmare-item/gateway-methodist-church/,Methodist,Methodist/Wesleyan,51.88423,-9.591112,KENMARE
+Gorey Methodist Church,Market Square,,Gorey,Wexford,Y25 AE65,,Methodist,Methodist/Wesleyan,52.6752,-6.2931,GOREY
+Inver Methodist Church,Drumconor,,Inver,Donegal,,,Methodist,Methodist/Wesleyan,54.64227,-8.25505,DONEGAL
+Kenmare Methodist Church,"Gateway, Gortamullin",,Kenmare,Kerry,V93 T9XT,,Methodist,Methodist/Wesleyan,51.8831,-9.5852,KENMARE
+Kilkenny Methodist Church,10 William Street,,Kilkenny,Kilkenny,R95 DH29,,Methodist,Methodist/Wesleyan,52.6531,-7.2512,KILKENNY
+Killarney Methodist Church,1 Countess Road,,Killarney,Kerry,V93 CHP9,,Methodist,Methodist/Wesleyan,52.0592,-9.5051,KILLARNEY
+Kinsale Methodist Church,Market Quay,,Kinsale,Cork,P17 CR29,,Methodist,Methodist/Wesleyan,51.7058,-8.5221,BANDON-KINSALE
+Limerick (Christ Church) Methodist Church,O'Connell Street,,Limerick,Limerick,V94 VY72,,Methodist,Methodist/Wesleyan,52.6625,-8.6254,LIMERICK CITY WEST
+Longford Methodist Church,Battery Road,,Longford,Longford,N39 AC62,,Methodist,Methodist/Wesleyan,53.7291,-7.7984,LONGFORD
+Lucan Methodist Church,Dispensary Road,,Lucan,Dublin,K78 R7P2,,Methodist,Methodist/Wesleyan,53.3582,-6.4491,LUCAN
+Methodist Centenary Church,"Wesley House, Leeson Park",,Ranelagh,Dublin,D06 E542,,Methodist,Methodist/Wesleyan,53.329315,-6.251702,PEMBROKE
+Methodist Church Farnagh,Farnagh,,Carrick-on-Shannon,Leitrim,,,Methodist,Methodist/Wesleyan,53.9765,-8.05157,CARRICK-ON-SHANNON
+Monaghan Methodist Church,Dawson Street,,Monaghan,Monaghan,,,Methodist,Methodist/Wesleyan,54.2472087,-6.9685796,MONAGHAN
+Mountmellick Methodist Church,Parnell Street,,Mountmellick,Laois,R32 E062,,Methodist,Methodist/Wesleyan,53.1182,-7.3271,BORRIS-IN-OSSORY-MOUNTMELLICK
+Portlaoise Methodist Church,Heatlow,,Portlaoise,Laois,R32 TP08,,Methodist,Methodist/Wesleyan,53.0331,-7.3002,PORTLAOISE
+Rathgar Methodist Church,6 Brighton Road,,Terenure,Dublin,D06 H797,,Methodist,Methodist/Wesleyan,53.3152,-6.2751,KIMMAGE-RATHMINES
+Roscrea Methodist Church,The Mall,,Roscrea,Tipperary,E53 H019,,Methodist,Methodist/Wesleyan,52.9551,-7.7972,ROSCREA-TEMPLEMORE
+Shinrone Methodist Church,Main Street,,Shinrone,Offaly,R42 N932,,Methodist,Methodist/Wesleyan,52.9982,-7.8681,BIRR
+Skerries Methodist Church,Mourne View,,Skerries,Dublin,K34 PP62,,Methodist,Methodist/Wesleyan,53.5821,-6.1112,BALBRIGGAN
+Skibbereen Methodist Church,Mill Road,,Skibbereen,Cork,P81 V184,,Methodist,Methodist/Wesleyan,51.5512,-9.2661,SKIBBEREEN-WEST CORK
+St. Patrick's United Church,"Gateway Centre, Patrick Street",,Waterford,Waterford,X91 HY48,,Methodist,Methodist/Wesleyan,52.260326,-7.114122,TRAMORE-WATERFORD CITY WEST
+Sutton (Landmark) Methodist Church,Church Road,,Sutton,Dublin,D13 K092,,Methodist,Methodist/Wesleyan,53.3912,-6.1121,HOWTH-MALAHIDE
+Tallaght (An Solas) Methodist Church,Jobstown,,Tallaght,Dublin,D24 XW6P,,Methodist,Methodist/Wesleyan,53.2751,-6.3772,TALLAGHT SOUTH
+Tullamore Methodist Church,Store Street,,Tullamore,Offaly,R35 RR62,,Methodist,Methodist/Wesleyan,53.2731,-7.4952,TULLAMORE
+Urban Junction,Blackrock,,Dublin,Dublin,A94 K6C3,,Methodist,Methodist/Wesleyan,53.3002,-6.1761,BLACKROCK
+Waterford Methodist Church,Greyfriars,,Waterford,Waterford,X91 K160,,Methodist,Methodist/Wesleyan,52.2611,-7.1082,TRAMORE-WATERFORD CITY WEST
+Wexford Methodist Church,Ardcavan Lane,,Wexford,Wexford,Y35 CY82,,Methodist,Methodist/Wesleyan,52.3481,-6.4672,WEXFORD
+Wicklow Methodist Church,Convent Road,,Wicklow,Wicklow,A67 WK11,,Methodist,Methodist/Wesleyan,52.9781,-6.0442,WICKLOW
+Youghal Methodist,Friar Street,,Youghal,Cork,P36 W271,,Methodist,Methodist/Wesleyan,51.9442,-7.8481,MIDLETON
+(Howth and) Malahide Presbyterian Church,Dublin Road,,Malahide,Dublin,,https://www.hmpchurch.org,PCI,Presbyterian/Reformed,53.45027,-6.15906,HOWTH-MALAHIDE
+Abbey Presbyterian Church,Parnell Square North,,North Frederick Street,Dublin,,https://www.abbeychurch.ie,PCI,Presbyterian/Reformed,53.35442,-6.26392,NORTH INNER CITY
+Adelaide Road Presbyterian Church,18a Adelaide Road,,Dublin 2,Dublin,,https://www.adelaideroadchurch.ie,PCI,Presbyterian/Reformed,53.33266,-6.25829,SOUTH EAST INNER CITY
+Adelaide Road Presbyterian Church,18A Adelaide Road,Dublin 2,Dublin,Dublin,D02 HP49,,PCI,Presbyterian/Reformed,53.332755,-6.258598,SOUTH EAST INNER CITY
+Aghada Presbyterian Church,"Church Road, Upper Aghada",,Midleton,Cork,,,PCI,Presbyterian/Reformed,51.83735,-8.21453,MIDLETON
+Alt Presbyterian Church,"Alt Upper, Castlefin",,Lifford,Donegal,,,PCI,Presbyterian/Reformed,54.76657,-7.59044,LIFFORD-STRANORLAR
+Arklow Presbyterian Church,Dublin Road,,Arklow,Wicklow,,https://www.arklowpresbyterianchurch.com,PCI,Presbyterian/Reformed,52.80458,-6.14905,ARKLOW
+Athy Presbyterian Church,Dublin Road,,Athy,Kildare,,,PCI,Presbyterian/Reformed,52.99316,-6.97439,ATHY
+Bailieborough - First Presbyterian Church,Corglass,,Bailieborough,Cavan,,https://www.bgpc.ie,PCI,Presbyterian/Reformed,53.95346,-6.97184,BAILIEBOROUGH-COOTEHILL
+Bailieborough - Trinity Presbyterian Church,Virginia Road,,Bailieborough,Cavan,,https://www.bgpc.ie,PCI,Presbyterian/Reformed,53.91604,-6.96051,BAILIEBOROUGH-COOTEHILL
+Balbriggan Presbyterian Church,Balbriggan Clubs Community Centre Dublin Street,,Balbriggan,Dublin,K32 NA00,,PCI,Presbyterian/Reformed,53.6074901,-6.1836503,BALBRIGGAN
+Ballina Presbyterian Church,Walsh Street,,Ballina,Mayo,,https://www.ballinapresbyterian.ie,PCI,Presbyterian/Reformed,54.11443,-9.15282,BALLINA
+Ballyalbany Presbyterian Church,"Coolshannagh Road, Ballyalbany",,Monaghan,Monaghan,,https://www.ballyalbanychurch.com,PCI,Presbyterian/Reformed,54.26268,-6.96528,MONAGHAN
+Ballybay - First Presbyterian Church,Derryvally,,Ballybay,Monaghan,,,PCI,Presbyterian/Reformed,54.13404,-6.93483,BALLYBAY-CLONES
+Ballybay - Second Presbyterian Church,Hall Street,,Ballybay,Monaghan,,,PCI,Presbyterian/Reformed,54.12878,-6.90641,BALLYBAY-CLONES
+Ballylennon Presbyterian Church,"Listannagh, Saint Johnston",,Lifford,Donegal,,,PCI,Presbyterian/Reformed,54.88789,-7.51102,LIFFORD-STRANORLAR
+Bellasis Presbyterian Church,N3 Drumgora,,Virginia,Cavan,,https://jeanmackarel.wixsite.com/cavanpresbyterian,PCI,Presbyterian/Reformed,53.87663,-7.12645,BALLYJAMESDUFF
+Blackrock - St Andrew’s Presbyterian Church,18 Mount Merrion Avenue,,Blackrock,Dublin,,https://www.standrewschurchblackrock.ie,PCI,Presbyterian/Reformed,53.30182,-6.18379,BLACKROCK
+Bray - St. Andrew's Presbyterian Church,Quinsborough Road,,Bray,Wicklow,,https://www.standrewschurchbray.com,PCI,Presbyterian/Reformed,53.20468,-6.10672,BRAY EAST
+Burt Presbyterian Church,"Carrownamaddy, Speenoge",,Lifford,Donegal,,https://www.burtpresbyterianchurch.com,PCI,Presbyterian/Reformed,55.03933,-7.42582,BUNCRANA
+Cahir Presbyterian Church,Abbey Street,,Cahir,Tipperary,,,PCI,Presbyterian/Reformed,52.37886,-7.92942,CAHIR
 Carlow Presbyterian Church,Athy Road,,Carlow,Carlow,,https://www.carlowscotspc.ie,PCI,Presbyterian/Reformed,52.83995,-6.93037,CARLOW
 Carndonagh Presbyterian Church,"Tulnaree, Carndonagh",,Lifford,Donegal,,https://www.inishowen4pc.com,PCI,Presbyterian/Reformed,55.2506,-7.23808,CARNDONAGH
 Carnone Presbyterian Church,"Carnowen, Raphoe",,Lifford,Donegal,,,PCI,Presbyterian/Reformed,54.83888,-7.62536,LIFFORD-STRANORLAR
-Carrickmacross Baptist Church,Woodlands Christian Centre,Magheross Road,Carrickmacross,Monaghan,A81N Y04,www.carrickbaptist.ie,ABCI,Baptist/Independent Evangelical,53.977744,-6.719579,CARRICKMACROSS-CASTLEBLAYNEY
 Carrickmacross Presbyterian Church,Farney Street,,Carrickmacross,Monaghan,,,PCI,Presbyterian/Reformed,53.9785850,-6.720338,CARRICKMACROSS-CASTLEBLAYNEY
-Carrickmacross RCCG,"Catholic Hall, O'Neill Street",,Carrickmacross,Monaghan,,,RCCG,Pentecostal/Charismatic,53.9802420,-6.719868,CARRICKMACROSS-CASTLEBLAYNEY
-Carrigaline Baptist Church,Carrigaline Community Centre,Church Road,Carrigaline,Cork,P43T K70,www.carrigalinebaptist.org,ABCI,Baptist/Independent Evangelical,51.811670,-8.39861,CARRIGALINE
 Carrigart Presbyterian Church,Church Road,,Carrigart,Donegal,,https://www.carrigartpresbyterianchurch.com,PCI,Presbyterian/Reformed,55.17627,-7.78911,MILFORD
-Carrigtwohill Baptist Church,Carrigtwohill Community Centre,Main Street,Carrigtwohill,Cork,T45 X3N1,carrigtwohillbaptist.ie,ABCI,Baptist/Independent Evangelical,51.910550,-8.259964,COBH
-Castlebar Christian Fellowship,The Mall,Rock Square,Castlebar,Mayo,F23 HX96,https://www.castlebarchristianfellowship.org/,Elim Ministries Ireland,Pentecostal/Charismatic,53.854923,-9.297844,CASTLEBAR
 Castleblayney - First Presbyterian Church,"Mucknoo Street, Keady Road",,Castleblayney,Monaghan,,,PCI,Presbyterian/Reformed,54.12687,-6.73601,CARRICKMACROSS-CASTLEBLAYNEY
-Cavan Baptist Church,Corglass,Oldtown,Cavan,Cavan,H12 ND36,www.cavanbaptist.ie,ABCI,Baptist/Independent Evangelical,53.990830,-7.36056,CAVAN-BELTURBET
 Cavan Presbyterian Church,15 Farnham Street,,Cavan Town,Cavan,,https://jeanmackarel.wixsite.com/cavanpresbyterian,PCI,Presbyterian/Reformed,53.99146,-7.36264,CAVAN-BELTURBET
-Centenary Methodist Church,Leeson Park,,Dublin 6,Dublin,D06 N152,,Methodist,Methodist/Wesleyan,53.3302,-6.2531,PEMBROKE
+Christ Church Presbyterian/Methodist,51 O'Connell Street,,Limerick,Limerick,V94 HPH9,,PCI,Presbyterian/Reformed,52.6612,-8.6293,LIMERICK CITY WEST
+Christ Church Rathgar Presbyterian Church,Rathgar Road,,Rathgar,Dublin,,https://www.christchurchrathgar.org,PCI,Presbyterian/Reformed,53.31282,-6.27349,KIMMAGE-RATHMINES
+Clones Presbyterian Church,Monaghan Street,,Clones,Monaghan,,https://clonespchurchesgroup.wixsite.com/clonespchurchesgroup,PCI,Presbyterian/Reformed,54.17971,-7.23052,BALLYBAY-CLONES
+Clontarf and Scots,3 Howth Road,,Clontarf,Dublin,,https://www.clontarfchurch.ie,PCI,Presbyterian/Reformed,53.36419,-6.22704,CLONTARF
+Clontibret Presbyterian Church,Braddocks,,,Monaghan,,,PCI,Presbyterian/Reformed,54.19888,-6.88718,BALLYBAY-CLONES
+Convoy Presbyterian Church,"Letterkenny Road, Convoy",,Lifford,Donegal,,,PCI,Presbyterian/Reformed,54.86086,-7.66438,LIFFORD-STRANORLAR
+Cootehill Presbyterian Church,Bridge Street,,Cootehill,Cavan,,,PCI,Presbyterian/Reformed,54.07363,-7.08443,BAILIEBOROUGH-COOTEHILL
+Corboy Presbyterian Church,Corboy,,Edgeworthstown,Longford,,https://www.corboychurch.com,PCI,Presbyterian/Reformed,53.71255,-7.67496,LONGFORD
+Cork - Trinity Presbyterian Church,Little William Street,,Cork,Cork,,https://www.presbyteriancork.com,PCI,Presbyterian/Reformed,51.90168,-8.46576,CORK CITY NORTH EAST
+Corraneary Presbyterian Church,Corraneary,,Cootehill,Cavan,,https://www.bgpc.ie,PCI,Presbyterian/Reformed,53.99265,-7.02324,BAILIEBOROUGH-COOTEHILL
+Corvally Presbyterian Church,"Shanco, Corvally",,Carrickmacross,Monaghan,,,PCI,Presbyterian/Reformed,53.99754,-6.83572,CARRICKMACROSS-CASTLEBLAYNEY
+Crossroads Presbyterian Church,"Garshooey, Newtowncunningham",,Lifford,Donegal,,,PCI,Presbyterian/Reformed,54.98318,-7.43688,BUNCRANA
+Donabate Presbyterian Church,"Donabate & Portrane Community Centre, Portrane Road",,Donabate,Dublin,,https://www.donabatepc.org,PCI,Presbyterian/Reformed,53.48999,-6.14255,RUSH-LUSK
+Donegal Presbyterian Church,Mountcharles Road,,Donegal Town,Donegal,,https://www.donegaltownpresbyterianchurch.com,PCI,Presbyterian/Reformed,54.65569,-8.11371,DONEGAL
+Donoughmore Presbyterian Church,"1 Carricknashane, Castlefin",,Lifford,Donegal,,,PCI,Presbyterian/Reformed,54.80107,-7.63912,LIFFORD-STRANORLAR
+Drogheda Presbyterian Church,Colpe East,,Drogheda,Louth,,https://www.droghedapresbyterian.ie,PCI,Presbyterian/Reformed,53.71656,-6.34763,DROGHEDA URBAN
+Drumkeen Presbyterian Church,Aghadrumkeen,,Newbliss,Monaghan,,,PCI,Presbyterian/Reformed,54.14865,-7.06005,BALLYBAY-CLONES
+Drumkeeran Presbyterian Church,"L125B Drumkilroosk, Drumkeeran",,Killeshandra,Cavan,,https://jeanmackarel.wixsite.com/cavanpresbyterian,PCI,Presbyterian/Reformed,53.96031,-7.52671,BALLYJAMESDUFF
+Dun Laoghaire Presbyterian Church,York Road,,Dun Laoghaire,Dublin,,https://www.dl-pc.org,PCI,Presbyterian/Reformed,53.29069,-6.14397,DÚN LAOGHAIRE
+Dundalk Presbyterian Church,Jocelyn Street,,Dundalk,Louth,,https://www.dundalkpresbyterianchurch.com,PCI,Presbyterian/Reformed,54.00485,-6.39564,DUNDALK SOUTH
+Dunfanaghy Presbyterian Church,"St Patrick's Hill, Dunfanaghy",,Letterkenny,Donegal,,,PCI,Presbyterian/Reformed,55.18307,-7.96812,GLENTIES
+Ervey Presbyterian Church,nr Ervey Lough,,Ervey,Meath,,https://www.bgpc.ie,PCI,Presbyterian/Reformed,53.88891,-6.84413,KELLS
+Fahan Presbyterian Church,"Tievebane, Burnfoot",,Lifford,Donegal,,https://www.fahanchurch.org,PCI,Presbyterian/Reformed,55.06506,-7.43113,BUNCRANA
+Fannet Presbyterian Church,"Main Street, Kerrykeel",,Letterkenny,Donegal,,,PCI,Presbyterian/Reformed,55.13932,-7.66459,MILFORD
+Fermoy Presbyterian Church,"Allen's Walk, Carrignagroghera",,Fermoy,Cork,,,PCI,Presbyterian/Reformed,52.14206,-8.27408,FERMOY
+First Monaghan Presbyterian Church,Old Cross Square,,Monaghan,Monaghan,H18 XW22,,PCI,Presbyterian/Reformed,54.2471900,-6.96571,MONAGHAN
+Frankford Presbyterian Church,"Blaney Road, Newtownhamilton Road",,Castleblaney,Monaghan,,,PCI,Presbyterian/Reformed,54.13535,-6.72347,CARRICKMACROSS-CASTLEBLAYNEY
+Garmany's Grove Presbyterian Church,"Formil, Drumagrib",,Castleblayney,Monaghan,,,PCI,Presbyterian/Reformed,54.14911,-6.68581,CARRICKMACROSS-CASTLEBLAYNEY
+Glennan Presbyterian Church,"Glennan, Glaslough",,Monaghan,Monaghan,,,PCI,Presbyterian/Reformed,54.32415,-6.91707,MONAGHAN
+Greenbank Presbyterian Church,"Greenbank, Quigleys Point",,Lifford,Donegal,,https://www.inishowen4pc.com,PCI,Presbyterian/Reformed,55.12026,-7.20339,BUNCRANA
+Greystones Presbyterian Church,Trafalgar Road,,Greystones,Wicklow,,https://www.greystonespc.org,PCI,Presbyterian/Reformed,53.14727,-6.06379,GREYSTONES
+Howth (and Malahide) Presbyterian Church,"103 Howth Road, Howth",,Dublin,,,https://www.hmpchurch.org,PCI,Presbyterian/Reformed,53.39061,-6.08596,HOWTH-MALAHIDE
+Inch Presbyterian,Carnaghan,,Inch Island,Donegal,,,PCI,Presbyterian/Reformed,55.06249,-7.48661,BUNCRANA
+Kells Presbyterian Church,Bective Street,,Kells,Meath,,,PCI,Presbyterian/Reformed,53.72422,-6.88043,KELLS
+Kilkenny Presbyterian Church,16 New Road,,Kilkenny,Kilkenny,,https://www.kilkennychurch.com,PCI,Presbyterian/Reformed,52.65998,-7.25005,KILKENNY
+Killeshandra Presbyterian Church,Shancroghan,,Killeshandra,Cavan,,https://jeanmackarel.wixsite.com/cavanpresbyterian,PCI,Presbyterian/Reformed,54.02238,-7.54324,CAVAN-BELTURBET
+Kilmacrennan,"Leiter, Kilmacrennan",,Letterkenny,Donegal,,,PCI,Presbyterian/Reformed,55.03113,-7.75047,MILFORD
+Kilmount Presbyterian Church,"Cornasaus, Mountain Lodge",,Cootehill,Cavan,,,PCI,Presbyterian/Reformed,54.00694,-7.08776,BAILIEBOROUGH-COOTEHILL
+Knowhead Presbyterian Church,"Knowehead, Muff",,Lifford,Donegal,,,PCI,Presbyterian/Reformed,55.06509,-7.28452,BUNCRANA
+Letterkenny - Trinity Presbyterian Church,Upper Main Street,,Letterkenny,Donegal,,,PCI,Presbyterian/Reformed,54.95149,-7.73603,LETTERKENNY
+Letterkenny Presbyterian Church,Main Street,,Letterkenny,Donegal,,,PCI,Presbyterian/Reformed,54.951420,-7.73581,LETTERKENNY
+Lucan Presbyterian Church,Lower Main Street,,Lucan,Dublin,,https://www.lpc.ie,PCI,Presbyterian/Reformed,53.35804,-6.44846,LUCAN
+Malahide Presbyterian Church,Dublin Road,,Malahide,Dublin,K36 PE80,,PCI,Presbyterian/Reformed,53.4501268,-6.1595067,HOWTH-MALAHIDE
+Malin Presbyterian Church,"Goorey, Malin",,Lifford,Donegal,,https://www.inishowen4pc.com,PCI,Presbyterian/Reformed,55.31021,-7.31221,CARNDONAGH
+Maynooth Presbyterian Church,Dublin Road,,Maynooth,Kildare,,https://www.maynoothcc.org,PCI,Presbyterian/Reformed,53.38407,-6.59475,MAYNOOTH
+McKelvey's Grove Presbyterian Church,Loughbrattoge,,Castleblaney,Monaghan,,,PCI,Presbyterian/Reformed,54.18198,-6.70364,CARRICKMACROSS-CASTLEBLAYNEY
+Milford Presbyterian Church,"Kilmacrennan Road, Milford",,Letterkenny,Donegal,,,PCI,Presbyterian/Reformed,55.08654,-7.70033,MILFORD
+Monaghan - First Presbyterian Church,Dublin Street,,Monaghan Town,Monaghan,,https://www.firstmonaghanpci.org,PCI,Presbyterian/Reformed,54.24716,-6.96607,MONAGHAN
+Monreagh Presbyterian Church,"Glebe, Monreagh",,St Johnston,Donegal,,,PCI,Presbyterian/Reformed,54.95625,-7.45621,BUNCRANA
+Moville Presbyterian Church,"Glencrow, Moville",,Lifford,Donegal,,https://www.inishowen4pc.com,PCI,Presbyterian/Reformed,55.18834,-7.04405,CARNDONAGH
+Mullingar Presbyterian Church,"35-39 Grange Crescent, Rathgowan",,Mullingar,Westmeath,,https://www.mullingarpresbyterian.com,PCI,Presbyterian/Reformed,53.52687,-7.34008,MULLINGAR
+Naas Presbyterian Church,North Main Street,,Naas,Kildare,,https://www.naaspci.ie,PCI,Presbyterian/Reformed,53.21783,-6.66364,NAAS
+Newbliss Presbyterian Church,Drumshannon,,Newbliss,Monaghan,,https://clonespchurchesgroup.wixsite.com/clonespchurchesgroup,PCI,Presbyterian/Reformed,54.16074,-7.13093,BALLYBAY-CLONES
+Newtowncunningham Presbyterian Church,"Monad Road, Newtowncunningham",,Lifford,Donegal,,,PCI,Presbyterian/Reformed,54.99561,-7.52195,BUNCRANA
+Ramelton Presbyterian Church,"Church Street, Ramelton",,Letterkenny,Donegal,,https://www.rameltonpresbyterianchurch.com,PCI,Presbyterian/Reformed,55.03634,-7.64522,MILFORD
+Raphoe & Ballindrait Presbyterian Church,"Meetinghouse Street, Raphoe",,Lifford,Donegal,,,PCI,Presbyterian/Reformed,54.87364,-7.59888,LIFFORD-STRANORLAR
+Rathmullan Presbyterian Church,"Pier Road, Rathmullan",,Letterkenny,Donegal,,,PCI,Presbyterian/Reformed,55.0959,-7.53508,MILFORD
+Ray Presbyterian Church,"Errity, Manorcunningham",,Letterkenny,Donegal,,,PCI,Presbyterian/Reformed,54.95407,-7.62065,LETTERKENNY
+Rockcorry Presbyterian Church,Main Street,,Rockcorry,Monaghan,,,PCI,Presbyterian/Reformed,54.11686,-7.01519,BALLYBAY-CLONES
+Sligo Presbyterian Church,Church Street,,Sligo,Sligo,F91 A312,https://www.facebook.com/sligopresbyterianchurch/,PCI,Presbyterian/Reformed,54.26957,-8.475566,SLIGO-STRANDHILL
+Smithborough Presbyterian Church,Mulladuff,,Smithborough,Monaghan,,,PCI,Presbyterian/Reformed,54.22223,-7.09804,BALLYBAY-CLONES
+St. Johnston Presbyterian Church,"Church Street, St. Johnston",,Lifford,Donegal,,,PCI,Presbyterian/Reformed,54.93397,-7.46074,LIFFORD-STRANORLAR
+Stonebridge Presbyterian Church,Gransha More,,Clones,Monaghan,,https://clonespchurchesgroup.wixsite.com/clonespchurchesgroup,PCI,Presbyterian/Reformed,54.20117,-7.16845,BALLYBAY-CLONES
+Strand and Buncrana Presbyterian Church,Millbrae,,Buncrana,Donegal,,,PCI,Presbyterian/Reformed,55.131689,-7.4524,BUNCRANA
+Stranorlar Presbyterian Church,"Meeting House Street, Stranorlar",,Ballybofey,Donegal,,,PCI,Presbyterian/Reformed,54.80686,-7.76896,LIFFORD-STRANORLAR
+Trenta Presbyterian Church,Carnatrentagh,,Letterkenny,Donegal,,https://www.trentaghpci.org,PCI,Presbyterian/Reformed,55.02054,-7.79125,MILFORD
+Trinity Presbyterian Church,Virginia Road,,Bailieborough,Cavan,,,PCI,Presbyterian/Reformed,53.913194,-6.971565,BAILIEBOROUGH-COOTEHILL
+Trinity Presbyterian Church,Little William Street Summerhill North,,Cork,Cork,T23 XR63,,PCI,Presbyterian/Reformed,51.9017100,-8.465296,CORK CITY NORTH EAST
+Tullamore Presbyterian Church,45 High Street,,Tullamore,Offaly,,https://www.tullamorepresbyterian.org,PCI,Presbyterian/Reformed,53.27209,-7.49459,TULLAMORE
+United Presbyterian Church,Queen Street,,Galway,Galway,,https://www.unitedchurchgalway.ie,PCI,Presbyterian/Reformed,53.27285,-9.04811,GALWAY CITY CENTRAL
+Wexford Church Development (PCI),Anne Street,,Wexford,Wexford,,,PCI,Presbyterian/Reformed,52.33845,-6.46092,WEXFORD
+Bridge Christian Community,1A Wexford Road,The Centre,Arklow,Wicklow,Y14 PA46,bccarklow.ie,Independent Evangelical,Other Protestant/Evangelical,52.797066,-6.162182,ARKLOW
+River Of Life Athlone Le Ceile Christian Church,Grace Road,Le Chéile,Athlone,Westmeath,N37 H398,https://www.riveroflife.ie,Independent Evangelical,Other Protestant/Evangelical,53.428572,-7.95038,ATHLONE
+Abundant Grace,"Unit 2, John Crossan Business Park, Bonagee",,Letterkenny,Donegal,F92 F862,,RCCG,Pentecostal/Charismatic,54.9452,-7.7123,LETTERKENNY
+Agape Family Centre,"Unit 6, Seapoint Business Park",,Tramore,Waterford,X91 E023,,RCCG,Pentecostal/Charismatic,52.1624,-7.1512,TRAMORE-WATERFORD CITY WEST
+Agape Parish,"33 Belmont Court, Rochestown",,Ballincollig,Cork,T12 P652,,RCCG,Pentecostal/Charismatic,51.8794,-8.6012,CORK CITY SOUTH WEST
+All Nations Assembly,"Apple Community Centre, Bunbury Gate Ave",,Swords,Dublin,K67 E903,,RCCG,Pentecostal/Charismatic,53.4564,-6.2134,SWORDS
+All Saints Parish,"Trinity Hall, Behind KIA Motors, Dublin Road",,Portlaoise,Laois,R32 E023,,RCCG,Pentecostal/Charismatic,53.0324,-7.2912,PORTLAOISE
+All Souls Parish,"Unit 36, Edenderry Business Park",,Edenderry,Offaly,R45 W902,,RCCG,Pentecostal/Charismatic,53.3412,-7.0512,EDENDERRY
+Assembly of Praise,Lusk,,Lusk,Dublin,K45 X762,,RCCG,Pentecostal/Charismatic,53.5243,-6.1624,RUSH-LUSK
+Bethel Parish,"Unit 28, Ballybrit Heights",,Galway City,Galway,H91 CH6C,,RCCG,Pentecostal/Charismatic,53.2894,-9.0123,GALWAY CITY EAST
+Carrickmacross RCCG,"Catholic Hall, O'Neill Street",,Carrickmacross,Monaghan,,,RCCG,Pentecostal/Charismatic,53.9802420,-6.719868,CARRICKMACROSS-CASTLEBLAYNEY
 Chapel of Light,1A Cartronageeragh Industrial Estate,,Longford,Longford,N39 E023,,RCCG,Pentecostal/Charismatic,53.7294,-7.7912,LONGFORD
 Chapel of Light,"Unit 8, Site 30-31, Duleek Business Park",,Duleek,Meath,A92 E023,,RCCG,Pentecostal/Charismatic,53.6543,-6.4123,LAYTOWN-BETTYSTOWN
 Chapel of Mercy,"St. Mary's Church, Dublin Road",,Edgeworthstown,Longford,N39 E628,,RCCG,Pentecostal/Charismatic,53.6964,-7.6124,BALLYMAHON
 Chapel of Restoration,"Unit 3, Adamstown Industrial Estate",,Adamstown,Dublin,K78 X409,,RCCG,Pentecostal/Charismatic,53.3384,-6.4423,LUCAN
-Chinese Gospel Church Abbey Street,49 Middle Abbey Street,,Dublin 1,Dublin,D01 Y6W3,https://cgci.ie/abbey-street/,Chinese Gospel Church,Other Protestant/Evangelical,53.347521,-6.262674,NORTH INNER CITY
-Chinese Gospel Church Esker House,"Esker House, Esker Road, Esker South",,Lucan,Dublin,,https://cgci.ie,Chinese Gospel Church,Other Protestant/Evangelical,53.349466,-6.441046,LUCAN
-Chinese Gospel Church Portlaoise,Unit A11 National Enterprise Park,,Portlaoise,Laois,R32 HA21,,Chinese Gospel Church,Other Protestant/Evangelical,53.0226820,-7.31462,PORTLAOISE
-Christ Church North Dublin,"Baldoyle Community Hall, Main Street, Baldoyle",,Dublin 13,Dublin,,,ICM,Other Protestant/Evangelical,53.3994197,-6.1277145,HOWTH-MALAHIDE
 Christ Church Parish,Balbriggan,,Balbriggan,Dublin,K32 W720,,RCCG,Pentecostal/Charismatic,53.6123,-6.1824,BALBRIGGAN
-Christ Church Presbyterian/Methodist,51 O'Connell Street,,Limerick,Limerick,V94 HPH9,,PCI,Presbyterian/Reformed,52.6612,-8.6293,LIMERICK CITY WEST
-Christ Church Rathgar Presbyterian Church,Rathgar Road,,Rathgar,Dublin,,https://www.christchurchrathgar.org,PCI,Presbyterian/Reformed,53.31282,-6.27349,KIMMAGE-RATHMINES
-Christ City Church Dublin,"Synge Street Secondary School, Synge Street",Portobello,Dublin 8,Dublin,,christcitychurch.ie,Independent Evangelical,Baptist/Independent Evangelical,53.333248,-6.267112,SOUTH EAST INNER CITY
-Christ Embassy Cork,,,,,,,Various Pentecostal,Pentecostal/Charismatic,51.898225,-8.446947,CORK CITY SOUTH EAST
-Christ Embassy Dublin,"Unit K2, Ballymount Drive, Ballymount Industrial Estate",,Dublin 12,Dublin,D12 Y590 (verify),,Various Pentecostal,Pentecostal/Charismatic,53.314298,-6.345679,RATHFARNHAM-TEMPLEOGUE
 Christ Foundation Sanctuary,"Unit 2, Charlotte Street",,Carlow,Carlow,R93 WK25,,RCCG,Pentecostal/Charismatic,52.8354,-6.9311,CARLOW
 Christ Life Centre,Ashbourne,,Ashbourne,Meath,A84 A662,,RCCG,Pentecostal/Charismatic,53.5124,-6.3984,ASHBOURNE
 Christ Our Cornerstone,Laytown,,Laytown,Meath,A92 FP21,,RCCG,Pentecostal/Charismatic,53.6784,-6.2412,LAYTOWN-BETTYSTOWN
 Christ the King,Castlebar,,Castlebar,Mayo,F23 E274,,RCCG,Pentecostal/Charismatic,53.8512,-9.2984,CASTLEBAR
-Christian Assembly Evangelical Church,110 Middle Abbey Street,,Dublin,Dublin,D01 EH48,http://www.caec.ie/,Independent Evangelical,Baptist/Independent Evangelical,53.348113,-6.263342,NORTH INNER CITY
-Christian Church Tralee,,,,,,,Independent Evangelical,Baptist/Independent Evangelical,52.268874,-9.691741,TRALEE
-Christian Community Church Arklow,,,,,,,Independent Evangelical,Baptist/Independent Evangelical,52.803083,-6.144087,ARKLOW
-Christian Congregation in Ireland - Ennis,Rear of 8 Carmody Street,Clonroad Beg,Ennis,Clare,,https://www.ccirl.ie/churchlocator/,Brethren,Pentecostal/Charismatic,52.84251,-8.987792,ENNIS
-Christian Fellowship Church Dublin,Unit 6 Malahide Road Industrial Park Coolock,,Dublin,Dublin,D17 EP86,,Independent Evangelical,Baptist/Independent Evangelical,53.4010,-6.2089,ARTANE-WHITEHALL
-Christian Fellowship Church Waterford,"Unit Two, Passage Cross",Dunmore Road,Waterford,Waterford,X91 W1XF,https://www.lifecommunitychurchwaterford.com,Various Pentecostal,Pentecostal/Charismatic,52.155016,-7.030819,WATERFORD CITY EAST
-Church Of Christ Dublin,47 Ranelagh Road,,Dublin 6,Dublin,D06 C2P3,https://www.churchofchristireland.ie,Church of Christ,Other Protestant/Evangelical,53.326938,-6.256796,PEMBROKE
-Church of Christ Knocklyon,Knocklyon Road Templeogue,,Dublin,Dublin,D16 Y157,,Church of Christ,Other Protestant/Evangelical,53.2841571,-6.3259815,FIRHOUSE-BOHERNABREENA
-City Church Dublin,ODEON Point Square,"East Wall Road, Point Square",Dublin 1,Dublin,,https://citychurchdublin.ie,ICM,Other Protestant/Evangelical,53.34604,-6.272206,NORTH INNER CITY
 City of David,Newbridge,,Newbridge,Kildare,W12 P262,,RCCG,Pentecostal/Charismatic,53.1812,-6.7912,NEWBRIDGE
-Clare Bible Study,53 Parnell Street,,Ennis,Clare,V95 FTK5,,Various Baptist,Baptist/Independent Evangelical,52.8437679,-8.9857396,ENNIS
-Clonakilty Methodist Church,Dunmanway Road,,Clonakilty,Cork,P85 TY80,,Methodist,Methodist/Wesleyan,51.6242,-8.8921,SKIBBEREEN-WEST CORK
-Clondalkin Christian Fellowship,"Rowlagh Community Centre, Neilstown Road",,"Clondalkin, Dublin 22",Dublin,,https://clondalkinchristianfellowship.com,Independent Evangelical,Baptist/Independent Evangelical,53.343572,-6.398226,PALMERSTOWN-FONTHILL
-Clones Presbyterian Church,Monaghan Street,,Clones,Monaghan,,https://clonespchurchesgroup.wixsite.com/clonespchurchesgroup,PCI,Presbyterian/Reformed,54.17971,-7.23052,BALLYBAY-CLONES
-Clonmel Baptist Church,SIPTU Hall,Anglesea Street,Clonmel,Tipperary,E91 E6K1,http://www.clonmelbaptist.ie/,Various Baptist,Baptist/Independent Evangelical,52.353107,-7.696483,CLONMEL
-Clonmel Christian Bible Church,Western Park,,Clonmel,Tipperary,,https://clonmelbiblechurch.wordpress.com/,Independent Evangelical,Baptist/Independent Evangelical,52.353642,-7.717792,CLONMEL
-Clontarf and Scots,3 Howth Road,,Clontarf,Dublin,,https://www.clontarfchurch.ie,PCI,Presbyterian/Reformed,53.36419,-6.22704,CLONTARF
-Clontarf Methodist Church,201 Clontarf Road,,Dublin 3,Dublin,D03 NY50,,Methodist,Methodist/Wesleyan,53.3631,-6.2024,CLONTARF
-Clontibret Presbyterian Church,Braddocks,,,Monaghan,,,PCI,Presbyterian/Reformed,54.19888,-6.88718,BALLYBAY-CLONES
-Cloughjordan Methodist Church,Main Street,,Cloughjordan,Tipperary,E53 DF24,,Methodist,Methodist/Wesleyan,52.9432,-8.0351,NENAGH
 Communion Parish,Monksland,,Monksland,Roscommon,N37 N2V0,,RCCG,Pentecostal/Charismatic,53.4243,-7.9612,ATHLONE
-Community Baptist Church,Spout Lane,,Milltown,Kerry,,,Various Baptist,Baptist/Independent Evangelical,52.144519,-9.716971,CORCA DHUIBHNE
-Community Christian Church,Unit 2 Gairdin Mhaire,,Moycullen,Galway,H91 K35R,Www.CommunityChristian.ie,Independent Evangelical,Baptist/Independent Evangelical,53.339307,-9.182126,CONAMARA SOUTH
-Connect Church,"Unit 7, Liosbaun Business Park",Tuam Road,Galway,Galway,,connectchurchgalway.ie,Various Pentecostal,Pentecostal/Charismatic,53.286987,-9.034093,GALWAY CITY EAST
-Convoy Covenanter Church (Convoy RPC),Beside Ballyboe Bridge,Ballyboe,Convoy,Donegal,F93 TW31,https://convoy.rpc.org/,Reformed Presbyterian Church of Ireland,Presbyterian/Reformed,54.8588806,-7.6555806,LIFFORD-STRANORLAR
-Convoy Presbyterian Church,"Letterkenny Road, Convoy",,Lifford,Donegal,,,PCI,Presbyterian/Reformed,54.86086,-7.66438,LIFFORD-STRANORLAR
-Cootehill Christian Fellowship,66 Bridge Street,,Cootehill,Cavan,,https://cootehillchristianfellowship.ie/,Independent Evangelical,Baptist/Independent Evangelical,54.074453,-7.085014,BAILIEBOROUGH-COOTEHILL
-Cootehill Presbyterian Church,Bridge Street,,Cootehill,Cavan,,,PCI,Presbyterian/Reformed,54.07363,-7.08443,BAILIEBOROUGH-COOTEHILL
-Corboy Presbyterian Church,Corboy,,Edgeworthstown,Longford,,https://www.corboychurch.com,PCI,Presbyterian/Reformed,53.71255,-7.67496,LONGFORD
-Cork - Trinity Presbyterian Church,Little William Street,,Cork,Cork,,https://www.presbyteriancork.com,PCI,Presbyterian/Reformed,51.90168,-8.46576,CORK CITY NORTH EAST
-Cork (Ardfallen Methodist Church,Nursery Drive,,Ballinlough,Cork,T12 VX20,,Methodist,Methodist/Wesleyan,51.8887,-8.4391,CORK CITY SOUTH EAST
-Cork (Military Rd) Methodist Church,"St. Luke's, Military Road",,Cork,Cork,T23 K299,,Methodist,Methodist/Wesleyan,51.9051,-8.4652,CORK CITY NORTH EAST
-Cork Baptist Church,46 MacCurtain Street,,Cork,Cork,T23K N76,www.corkbaptist.org,ABCI,Baptist/Independent Evangelical,51.903614,-8.468399,CORK CITY NORTH EAST
-Cork Church,"Connolly Hall, Lower Oliver Plunkett Street",,Cork,Cork,,,Various Pentecostal,Pentecostal/Charismatic,51.898772,-8.466919,CORK CITY SOUTH CENTRAL
-Cornerstone Church at the Well,"The Well, Church Terrace, Main Street",,Bray,Wicklow,A98 VE43,cornerstonechurch.ie,Independent Evangelical,Baptist/Independent Evangelical,53.204859,-6.10999,BRAY EAST
 Cornerstone Parish Tuam,Unit 16 MG Business Park Galway Road,,Tuam,Galway,,,RCCG,Pentecostal/Charismatic,53.5087042,-8.8758801,TUAM
-Cornerstone Slieve Bloom Church,3 Sragh Avenue,Sragh Business Park,Tullamore,Offaly,R35,https://www.cornerstoneireland.ie/,Various Pentecostal,Pentecostal/Charismatic,53.28723,-7.515688,TULLAMORE
-Corraneary Presbyterian Church,Corraneary,,Cootehill,Cavan,,https://www.bgpc.ie,PCI,Presbyterian/Reformed,53.99265,-7.02324,BAILIEBOROUGH-COOTEHILL
-Corvally Presbyterian Church,"Shanco, Corvally",,Carrickmacross,Monaghan,,,PCI,Presbyterian/Reformed,53.99754,-6.83572,CARRICKMACROSS-CASTLEBLAYNEY
-Cove Street Christian Fellowship,42 Cove Street,,Cork,Cork,,,Independent Evangelical,Baptist/Independent Evangelical,51.894949,-8.474385,CORK CITY SOUTH CENTRAL
-Covenant Christian Fellowship,"Unit 3, Sean Mulvoy Commercial Centre",Sean Mulvoy Road,Galway,Galway,H91 W2H5,https://www.ccfgalway.com/,Reformed Presbyterian Church of Ireland,Presbyterian/Reformed,53.282412,-9.039917,GALWAY CITY CENTRAL
-Crossroads Church Dublin,1A Earlscourt Industrial Estate,"Beaumont Avenue, Churchtown",Dublin 14,Dublin,D14 E0F4,https://crossroadschurchdublin.blogspot.com/,Independent Evangelical,Baptist/Independent Evangelical,53.292258,-6.259351,DUNDRUM
-Crossroads Presbyterian Church,"Garshooey, Newtowncunningham",,Lifford,Donegal,,,PCI,Presbyterian/Reformed,54.98318,-7.43688,BUNCRANA
-Crumlin Christian Assembly,"Community Hall, 101 Cashel Road",,"Crumlin, Dublin 12",Dublin,,,Various Pentecostal,Pentecostal/Charismatic,53.32236,-6.30628,KIMMAGE-RATHMINES
-D24 Church,Movies@TheSquare Level 3 The Square Tallaght,,Dublin,Dublin,,,Christian Churches Ireland,Pentecostal/Charismatic,53.2870720,-6.370449,TALLAGHT CENTRAL
 Desire of All Nations,Newbridge,,Newbridge,Kildare,W12 EK72,,RCCG,Pentecostal/Charismatic,53.1812,-6.7912,NEWBRIDGE
-Discovery Church (Galway),"Industrial Development Agency (IDA) Small Business Centre, Park Tuam Road",,Galway,Galway,H91 RK5Y,https://discoverychurch.ie/,Christian Churches Ireland,Pentecostal/Charismatic,53.28911,-9.02164,GALWAY CITY EAST
-Discovery Church (Tuam),"Vincent De Paul Family Centre (TUSLA Building), Dublin Road, Glebe",,Tuam,Galway,H54 AH75,https://discoverychurch.ie/,Christian Churches Ireland,Pentecostal/Charismatic,53.511193,-8.845648,TUAM
 Dominion Chapel,"Rossecourt Resource Centre, Balgaddy",,Lucan,Dublin,K78 YV90,,RCCG,Pentecostal/Charismatic,53.3392,-6.4214,LUCAN
-Donabate Presbyterian Church,"Donabate & Portrane Community Centre, Portrane Road",,Donabate,Dublin,,https://www.donabatepc.org,PCI,Presbyterian/Reformed,53.48999,-6.14255,RUSH-LUSK
-Donegal Presbyterian Church,Mountcharles Road,,Donegal Town,Donegal,,https://www.donegaltownpresbyterianchurch.com,PCI,Presbyterian/Reformed,54.65569,-8.11371,DONEGAL
-Donegal Town Methodist Church,Waterloo Place,,Donegal Town,Donegal,,,Methodist,Methodist/Wesleyan,54.655210,-8.11205,DONEGAL
-Donoughmore Presbyterian Church,"1 Carricknashane, Castlefin",,Lifford,Donegal,,,PCI,Presbyterian/Reformed,54.80107,-7.63912,LIFFORD-STRANORLAR
-Douglas Baptist Church,Douglas Community School,Clermont Avenue,Douglas Road,Cork,T12H F77,douglasbaptist.ie,ABCI,Baptist/Independent Evangelical,51.878422,-8.437283,CORK CITY SOUTH CENTRAL
-Drimoleague Methodist Church,West End,,Drimoleague,Cork,,https://www.westcorkmethodists.com/drimoleague,Methodist,Methodist/Wesleyan,51.659227,-9.263666,BANTRY-WEST CORK
-Drogheda Prayer Centre,Naomh Feichín GAA Club Beaulieu,,Drogheda,Louth,A92 ET95,,Various Pentecostal,Pentecostal/Charismatic,53.7248,-6.3085,DROGHEDA RURAL
-Drogheda Presbyterian Church,Colpe East,,Drogheda,Louth,,https://www.droghedapresbyterian.ie,PCI,Presbyterian/Reformed,53.71656,-6.34763,DROGHEDA URBAN
-Drumkeen Presbyterian Church,Aghadrumkeen,,Newbliss,Monaghan,,,PCI,Presbyterian/Reformed,54.14865,-7.06005,BALLYBAY-CLONES
-Drumkeeran Presbyterian Church,"L125B Drumkilroosk, Drumkeeran",,Killeshandra,Cavan,,https://jeanmackarel.wixsite.com/cavanpresbyterian,PCI,Presbyterian/Reformed,53.96031,-7.52671,BALLYJAMESDUFF
-Dublin Central Methodist Church,Church of St George & St Thomas Cathal Brugha Street,,Rotunda,Dublin,Dublin 1,,Methodist,Methodist/Wesleyan,53.352401,-6.259216,NORTH INNER CITY
-Dublin Christian Fellowship,"Unit 10 Lilmar Industrial Estate, Coolock Lane",,"Santry, Dublin 9",Dublin,,https://www.messagedublin.com,Independent Evangelical,Baptist/Independent Evangelical,53.399028,-6.239085,SWORDS
-Dublin International Christian Church,"61 Mountjoy Street, Phibsborough",,Dublin 7,Dublin,D07 AX51,,Various Pentecostal,Pentecostal/Charismatic,53.358900,-6.2649,CABRA-GLASNEVIN
-Dublin Korean,"Litton Hall, Leeson Park",,Dublin 6,Dublin,D06 N152,,Methodist,Methodist/Wesleyan,53.3302,-6.2531,PEMBROKE
-Dublin Prayer Fellowship,"39 Maplewood Park, Springfield",,"Tallaght, Dublin 24",Dublin,,http://www.dublinprayerfellowship.com/,Independent Evangelical,Baptist/Independent Evangelical,53.286018,-6.382981,TALLAGHT CENTRAL
-Dublin Vineyard,35 Avenue Road,Portobello,Dublin 8,Dublin,D08 FT53,dublinvineyard.ie,Various Pentecostal,Pentecostal/Charismatic,53.331028,-6.270814,SOUTH EAST INNER CITY
-Dublin West Community Church,Hansfield Educate Together National School,"Barnwell Road, Hansfield",Dublin 15,Dublin,D15 H1FC,https://dublinwest.ie,Independent Evangelical,Baptist/Independent Evangelical,53.391477,-6.445011,ONGAR
-Dun Laoghaire Evangelical Church,Lower Glenageary Road,,Dún Laoghaire,Dublin,A96 F6T0,https://www.dec.ie,Independent Evangelical,Baptist/Independent Evangelical,53.285472,-6.13323,DÚN LAOGHAIRE
-Dun Laoghaire Methodist Church,10 Northumberland Ave,,Dun Laoghaire,Dublin,A96 VY15,,Methodist,Methodist/Wesleyan,53.2921,-6.1342,DÚN LAOGHAIRE
-Dun Laoghaire Presbyterian Church,York Road,,Dun Laoghaire,Dublin,,https://www.dl-pc.org,PCI,Presbyterian/Reformed,53.29069,-6.14397,DÚN LAOGHAIRE
-Dundalk Baptist Church,Ardee Terrace,Ardee Road,Dundalk,Louth,A91N A0D,www.dundalkbaptistchurch.org,ABCI,Baptist/Independent Evangelical,54.000000,-6.41667,DUNDALK SOUTH
-Dundalk Community Church,Hagan House,The Ramparts,Dundalk,Louth,A91 D7VX,https://dundalkcommunitychurch.ie/,Independent Evangelical,Baptist/Independent Evangelical,54.001925,-6.401309,DUNDALK SOUTH
-Dundalk Presbyterian Church,Jocelyn Street,,Dundalk,Louth,,https://www.dundalkpresbyterianchurch.com,PCI,Presbyterian/Reformed,54.00485,-6.39564,DUNDALK SOUTH
-Dundrum Methodist Church,Ballinteer Road,Dundrum Methodist Church,"Dundrum, Dublin 16",Dublin,D16 WK27,https://dundrummethodist.ie/,Methodist,Methodist/Wesleyan,53.276371,-6.244032,GLENCULLEN-SANDYFORD
-Dunfanaghy Presbyterian Church,"St Patrick's Hill, Dunfanaghy",,Letterkenny,Donegal,,,PCI,Presbyterian/Reformed,55.18307,-7.96812,GLENTIES
-Dungarvan Christian Fellowship,4 Harbour Mill,Davitts Quay,Dungarvan,Waterford,,dungarvanchurch.org,Independent Evangelical,Baptist/Independent Evangelical,52.084949,-7.622171,DUNGARVAN
 Dunleer Parish,100 Woodland,,Dunleer,Louth,,,RCCG,Pentecostal/Charismatic,53.8236,-6.4031,ARDEE
-Elevate Community Church,"St. Philomena’s, South Circular Road",,Limerick,Limerick,V94 DFP1,https://ecclimerick.com/,Independent Evangelical,Baptist/Independent Evangelical,52.654483,-8.63662,LIMERICK CITY WEST
-Emmanuel Community Church,17 Seatown Place,,Dundalk,Louth,A91 W722,https://www.emmanueldundalk.com/contact,Independent Evangelical,Baptist/Independent Evangelical,54.004982,-6.39205,DUNDALK SOUTH
 Emmanuel's House,Celbridge,,Celbridge,Kildare,W23 E274,,RCCG,Pentecostal/Charismatic,53.3364,-6.5412,CELBRIDGE
-Ennis Evangelical Church,"Unit 6, Block E, Quin Road Business Park",,Ennis,Clare,V95 XK03,https://www.ennisevangelicalchurch.org/,Independent Evangelical,Baptist/Independent Evangelical,52.835912,-8.969403,ENNIS
-Enniscorthy Christian Fellowship,"Meeting room behind Bellefield Design, Enniscorthy Community Workshop",Bellefield Road,Enniscorthy,Wexford,Y21 W6D7,https://www.enniscorthychristianfellowship.ie/,Independent Evangelical,Baptist/Independent Evangelical,52.506334,-6.579444,ENNISCORTHY
-Enniscorthy Methodist Church,Mill Park Road,,Enniscorthy,Wexford,Y21 XE97,,Methodist,Methodist/Wesleyan,52.5021,-6.5682,ENNISCORTHY
-Ervey Presbyterian Church,nr Ervey Lough,,Ervey,Meath,,https://www.bgpc.ie,PCI,Presbyterian/Reformed,53.88891,-6.84413,KELLS
-Every Nation Dublin,CBS Synge Street,Synge Street,Dublin 8,Dublin,,https://www.everynation.ie,Various Pentecostal,Pentecostal/Charismatic,53.33327,-6.267051,SOUTH EAST INNER CITY
 Excel Parish,"Unit 55F, Stillorgan Industrial Park",,Sandyford,Dublin,D18 P6N7,,RCCG,Pentecostal/Charismatic,53.2784,-6.1924,STILLORGAN
-Expectation Church,"Screen 6, Vue Cinema, Liffey Valley Shopping Centre",,Dublin 22,Dublin,D22 R6K8,https://www.weareexpectation.com/,Christian Churches Ireland,Pentecostal/Charismatic,53.3522478,-6.3936439,PALMERSTOWN-FONTHILL
-Fahan Presbyterian Church,"Tievebane, Burnfoot",,Lifford,Donegal,,https://www.fahanchurch.org,PCI,Presbyterian/Reformed,55.06506,-7.43113,BUNCRANA
-Fairview Hall,13 Annesley Bridge Road,Fairview,Dublin 3,Dublin,D03 DC92,https://fairviewhall.ie,Brethren,Brethren/Gospel Hall,53.361783,-6.238005,CLONTARF
-Fairview Reformed Presbyterian Church,Tullycaughney,Oram,Castleblayney,Monaghan,A75 YV21,https://rpglobalalliance.org/congregation/fairview-reformed-presbyterian-church-ireland/,Reformed Presbyterian Church of Ireland,Presbyterian/Reformed,54.1529000,-6.67283,CARRICKMACROSS-CASTLEBLAYNEY
 Faith Arena Parish,Monasterevin,,Monasterevin,Kildare,W34 K074,,RCCG,Pentecostal/Charismatic,53.1364,-7.0624,KILDARE
-Faith City Church,"ODEON Coolock, 84 Malahide Road, Coolock",,Dublin 5,Dublin,D17 ET62,,Various Pentecostal,Pentecostal/Charismatic,53.3911118,-6.1927281,DONAGHMEDE
 Faith Hall,Portlaoise,,Portlaoise,Laois,R32 R262,,RCCG,Pentecostal/Charismatic,53.0324,-7.2912,PORTLAOISE
 Faith Tabernacle,Abbeyleix,,Abbeyleix,Laois,R32 E274,,RCCG,Pentecostal/Charismatic,52.9145,-7.3412,PORTLAOISE
-Fannet Presbyterian Church,"Main Street, Kerrykeel",,Letterkenny,Donegal,,,PCI,Presbyterian/Reformed,55.13932,-7.66459,MILFORD
-Fermoy Presbyterian Church,"Allen's Walk, Carrignagroghera",,Fermoy,Cork,,,PCI,Presbyterian/Reformed,52.14206,-8.27408,FERMOY
-Ferrybank Christian Community Church,Hillsfield Community Centre,"Belmont Road, Ferrybank",Waterford,Kilkenny,X91 W9YY,https://ferrybankchristianchurch.ie/,Independent Evangelical,Baptist/Independent Evangelical,52.269912,-7.097433,PILTOWN
-Firebrand Christian Church,Scoil Chaitlin Maude Hazelgrove Tallaght,,Dublin,Dublin,D24 RYW1,,Various Pentecostal,Pentecostal/Charismatic,53.27413,-6.4028,TALLAGHT SOUTH
-First Monaghan Presbyterian Church,Old Cross Square,,Monaghan,Monaghan,H18 XW22,,PCI,Presbyterian/Reformed,54.2471900,-6.96571,MONAGHAN
-Foundation Ministries,"Unit 6, Elevation Business Park",Clonroad,Ennis,Clare,,https://foundationministriesireland.net/,Various Pentecostal,Pentecostal/Charismatic,52.846165,-8.971989,ENNIS
 Fountain of Life,Loughrea,,Loughrea,Galway,H62 K290,,RCCG,Pentecostal/Charismatic,53.2012,-8.5712,LOUGHREA
 Fountain of Love,Naas,,Naas,Kildare,W91 W902,,RCCG,Pentecostal/Charismatic,53.2184,-6.6612,NAAS
 Fountain of Love,Clane,,Clane,Kildare,W15 N2V0,,RCCG,Pentecostal/Charismatic,53.2924,-6.6892,CLANE
-Fountaingate Christian Church,"St Joseph Road, Applegreen Station",,Mallow,Cork,,https://fountaingate.ie/,Various Pentecostal,Pentecostal/Charismatic,52.135667,-8.640055,MALLOW
-Frankford Presbyterian Church,"Blaney Road, Newtownhamilton Road",,Castleblaney,Monaghan,,,PCI,Presbyterian/Reformed,54.13535,-6.72347,CARRICKMACROSS-CASTLEBLAYNEY
-Free Grace Evangelical Church,8 Woodlands Avenue,,Mullingar,Westmeath,N91 WN8C,https://www.fgecmullingar.org/,Independent Evangelical,Baptist/Independent Evangelical,53.521216,-7.361458,MULLINGAR
-Furbo Baptist Church,CARRAIG NA GREINE,,Furbo,Galway,H91 FK71,twitter.com/FurboChurch/media,ABCI,Baptist/Independent Evangelical,53.257500,-9.2125,CONAMARA SOUTH
-Galway Christian Fellowship,"New Life Centre, Monivea Road",Ballybrit,Galway,Galway,H91 H2W8,https://gcfchurch.ie/,Independent Evangelical,Baptist/Independent Evangelical,53.288847,-9.008297,GALWAY CITY EAST
-Galway City Baptist Church,Knocknacarra National School,Western Distributor Road,Knocknacarra,Galway,H91R 3N1,www.galwaycitychurch.com,ABCI,Baptist/Independent Evangelical,53.258398,-9.127748,GALWAY CITY WEST
-Galway Covenant Fellowship,"Unit 3, Sean Mulvoy Commercial Centre",Sean Mulvoy Road,Galway,Galway,H91 W2H5,https://www.ccfgalway.com/,Reformed Presbyterian Church of Ireland,Presbyterian/Reformed,53.282796,-9.043241,GALWAY CITY CENTRAL
-Garden of Eden Int'l Church,Limerick Strand Hotel,Ennis Road,Limerick,Limerick,V94 03F2,https://www.gardenofedeninternationalchurch.org/contact,Various Pentecostal,Pentecostal/Charismatic,52.6662726,-8.632013,LIMERICK CITY NORTH
-Garmany's Grove Presbyterian Church,"Formil, Drumagrib",,Castleblayney,Monaghan,,,PCI,Presbyterian/Reformed,54.14911,-6.68581,CARRICKMACROSS-CASTLEBLAYNEY
-Gateway Church (Tullow),Rathoe Road,,Tullow,Carlow,R93 Y3PW,https://www.gatewaychurchtullow.ie/,Christian Churches Ireland,Pentecostal/Charismatic,52.7958005,-6.7541132,TULLOW
-Gateway Methodist Church,Gateway Methodist Church,Killarney Road,Kenmare,Kerry,,https://www.kenmare.ie/kenmare-item/gateway-methodist-church/,Methodist,Methodist/Wesleyan,51.88423,-9.591112,KENMARE
-Glennan Presbyterian Church,"Glennan, Glaslough",,Monaghan,Monaghan,,,PCI,Presbyterian/Reformed,54.32415,-6.91707,MONAGHAN
-Global Faith Dimensions,"Unit 2B, Avonbeg Industrial Estate",Long Mile Road,Dublin 12,Dublin,D12 PR58,,Various Pentecostal,Pentecostal/Charismatic,53.286099,-6.354864,TALLAGHT CENTRAL
-Good News Christian Church,14 Church Street,,Cobh,Cork,,https://goodnewschristianchurch.blogspot.com/p/contact-us.html,Independent Evangelical,Baptist/Independent Evangelical,51.85152,-8.289651,COBH
-Gorey Christian Assembly,"The Heath, Ramsgate Village",Knockmullen,Gorey,Wexford,Y25 P277,https://goreyca.com,Independent Evangelical,Baptist/Independent Evangelical,52.66925,-6.297709,GOREY
-Gorey Methodist Church,Market Square,,Gorey,Wexford,Y25 AE65,,Methodist,Methodist/Wesleyan,52.6752,-6.2931,GOREY
-Gospel Faith Mission International Ireland HQ,"Unit 4, Dartmouth House Industrial Centre, Kylemore Road",,Dublin 10,Dublin,D10 YE00,,Various Pentecostal,Pentecostal/Charismatic,53.3391342,-6.3481003,BALLYFERMOT-DRIMNAGH
-Gospel Lighthouse Church,Garrandarragh,,Mullinavat,Kilkenny,,,Various Pentecostal,Pentecostal/Charismatic,52.4874,-6.9864,CALLAN-THOMASTOWN
-Grace Abundant Filipino Community Church,10 Main Street Blanchardstown,,Dublin,Dublin,D15 DX34,,Various Pentecostal,Pentecostal/Charismatic,53.3866571,-6.3781978,CASTLEKNOCK
-Grace Baptist Church (Killarney),St Olivers National School,Rookery Road,Killarney,Kerry,V93 W594,www.gracebaptistchurch.ie,ABCI,Baptist/Independent Evangelical,52.059937,-9.504427,KILLARNEY
-Grace Bible Fellowship,28a Pearse Street,,Dublin 2,Dublin,D02 NA48,www.grace.ie,ABCI,Baptist/Independent Evangelical,53.340270,-6.252518,SOUTH EAST INNER CITY
-Grace Christian Church,53 MacCurtain Street,,Cork,Cork,T23 VH56,https://graceireland.com/,Various Pentecostal,Pentecostal/Charismatic,51.901507,-8.467529,CORK CITY NORTH EAST
-Grace Church New Ross,Dunbrody Wharf,,New Ross,Wexford,,http://www.thegracechurch.ie,Independent Evangelical,Baptist/Independent Evangelical,52.397351,-6.94361,NEW ROSS
-Grace Community Church,"Corroy, Ballymurray",,Roscommon,Roscommon,F42 FT67,https://graceroscommon.church/,Independent Evangelical,Baptist/Independent Evangelical,53.590447,-8.120183,ROSCOMMON
-Grace Family International Church,O’Brien Centre,Old Dublin Road,Carlow,Carlow,R93 EY27,gficireland.com,Various Pentecostal,Pentecostal/Charismatic,52.839679,-6.928824,CARLOW
-Grace Fellowship Church,"c/o Central Fire Station, Tara Street (corner of Pearse St & Tara St)",,Dublin 2,Dublin,,https://www.grace.ie,Independent Evangelical,Baptist/Independent Evangelical,53.345258,-6.253041,SOUTH EAST INNER CITY
-Grace Missionary Baptist Church,Glounthaune Community Centre Glounthaune,,Glanmire,Cork,,,Various Baptist,Baptist/Independent Evangelical,51.9108924,-8.336159,COBH
-Greenbank Presbyterian Church,"Greenbank, Quigleys Point",,Lifford,Donegal,,https://www.inishowen4pc.com,PCI,Presbyterian/Reformed,55.12026,-7.20339,BUNCRANA
-Greystones Presbyterian Church,Trafalgar Road,,Greystones,Wicklow,,https://www.greystonespc.org,PCI,Presbyterian/Reformed,53.14727,-6.06379,GREYSTONES
-Grosvenor Road Baptist Church,15A Grosvenor Road,Rathmines,Dublin 6,Dublin,D06 AH26,www.grosvenorbaptist.org,ABCI,Baptist/Independent Evangelical,53.329640,-6.26311,PEMBROKE
-Hacketstown Christian Centre,The Green,,Hacketstown,Carlow,R93 FT75,,Independent Evangelical,Baptist/Independent Evangelical,52.861589,-6.555077,TULLOW
 Hephzibah Parish,4 Castle Street (Opposite Allen's),,Carlow,Carlow,R93 AK83,,RCCG,Pentecostal/Charismatic,52.8365,-6.9304,CARLOW
-Hillside Evangelical Church,Hillside Road,,Greystones,Wicklow,A63 C927,https://www.hillside.ie,Independent Evangelical,Baptist/Independent Evangelical,53.144993,-6.06594,GREYSTONES
 His Glory Parish,Limerick,,Limerick,Limerick,V94 N2V0,,RCCG,Pentecostal/Charismatic,52.6684,-8.6312,LIMERICK CITY NORTH
 His Grace Sanctuary,Mosney,,Mosney,Meath,A92 E023,,RCCG,Pentecostal/Charismatic,53.6564,-6.2312,LAYTOWN-BETTYSTOWN
-Holy Church House Of Grace,29 Bridge Street,,Cavan,Cavan,,,Various Pentecostal,Pentecostal/Charismatic,53.989445,-7.362097,CAVAN-BELTURBET
-Holy Trinity Church,17 Parnell Square North,,Dublin 1,Dublin,D01 V2A0,,International Church,Pentecostal/Charismatic,53.354486,-6.263691,NORTH INNER CITY
-Hope and Glory Christian Ministries,"Unit 23/24, Tolka Valley Business Park",Tolka Valley Road,Dublin 11,Dublin,D11 Y362,https://hopeandglorychurch.com/,Various Pentecostal,Pentecostal/Charismatic,53.40051,-6.346859,BLANCHARDSTOWN-MULHUDDART
-Hope Baptist Church,"Taney Hall, Eglinton Terrace, Dundrum",,Dublin 14,Dublin,D14 C7F7,,Various Baptist,Baptist/Independent Evangelical,53.2898113,-6.2423108,DUNDRUM
-Hope Centre,"Old St. Mary's Church, St Agnes Terrace, Crumlin",,Dublin 12,Dublin,D12 YC80,https://hopecentre.ie/,Christian Churches Ireland,Pentecostal/Charismatic,53.3227635,-6.319465,KIMMAGE-RATHMINES
-Hope Church Ennis,Maria Assumpta Hall Station Road,,Ennis,Clare,V95 HT99,,Christian Churches Ireland,Pentecostal/Charismatic,52.8412671,-8.981503,ENNIS
-Hope Community Church,Lower Main St,Townparks,Longford,Longford,N39 K2N2,hopelongford.com,ABCI,Baptist/Independent Evangelical,53.725360,-7.79823,LONGFORD
 Hope Ennis,7 Munster House Gort Road Business Park Lifford,,Ennis,Clare,,,RCCG,Pentecostal/Charismatic,52.8557701,-8.9834204,ENNIS
 Hope of Glory,Knockcross,,Balrothery,Dublin,K32 HP60,,RCCG,Pentecostal/Charismatic,53.5824,-6.1924,BALBRIGGAN
 Hosanna House,"Unit 2A, Crystal Retail Park, Dublin Road",,Cavan,Cavan,H12 E023,,RCCG,Pentecostal/Charismatic,53.9928,-7.3435,CAVAN-BELTURBET
@@ -287,286 +393,179 @@ House of Grace,Drogheda,,Drogheda,Louth,A92 E274,,RCCG,Pentecostal/Charismatic,5
 House of His Glory,Mullingar,,Mullingar,Westmeath,N91 N2V0,,RCCG,Pentecostal/Charismatic,53.5243,-7.3412,MULLINGAR
 House of Praise,"Unit 8-10, Gort Road Business Park",,Ennis,Clare,V95 YP90,,RCCG,Pentecostal/Charismatic,52.8643,-8.9876,ENNIS
 House of Prayer For All People,"1 Dun Ard Ri, Ballyleary Road",,Cobh,Cork,P24 V921,,RCCG,Pentecostal/Charismatic,51.8624,-8.2934,COBH
-Howth (and Malahide) Presbyterian Church,"103 Howth Road, Howth",,Dublin,,,https://www.hmpchurch.org,PCI,Presbyterian/Reformed,53.39061,-6.08596,HOWTH-MALAHIDE
-ICRM Redeemer Church Dublin,"Our Lady's Hall, 12 Mourne Road",,"Drimnagh, Dublin 12",Dublin,D12 DW68,https://www.icrmchurchdublin.com,International Church,Pentecostal/Charismatic,53.337562,-6.278521,SOUTH WEST INNER CITY
-Immanuel Church Dublin,28 Bachelors Walk,,Dublin 1,Dublin,D01 P4V6,https://immanuelchurchdublin.org,ICM,Other Protestant/Evangelical,53.347479,-6.260487,NORTH INNER CITY
-Inch Presbyterian,Carnaghan,,Inch Island,Donegal,,,PCI,Presbyterian/Reformed,55.06249,-7.48661,BUNCRANA
-Indian Pentecostal Church of God - IPC Dublin,86 Saint Joseph's Road,,Dublin 12,Dublin,D12 H956,ipcchurchdublin.com,International Church,Pentecostal/Charismatic,53.309952,-6.332328,RATHFARNHAM-TEMPLEOGUE
 Inspiration House,"3 Frankfield Industrial Estate, Killeen Road",,Cork City,Cork,T12 AF90,,RCCG,Pentecostal/Charismatic,51.8812,-8.4612,CORK CITY SOUTH CENTRAL
 Inspiration House,Tralee,,Tralee,Kerry,V92 K290,,RCCG,Pentecostal/Charismatic,52.2684,-9.7012,TRALEE
-Inver Methodist Church,Drumconor,,Inver,Donegal,,,Methodist,Methodist/Wesleyan,54.64227,-8.25505,DONEGAL
-IPC Pentecostal Church of Ireland,"Unit 6D, Greenhills Industrial Estate","Greenhills Road, Walkinstown",Dublin,Dublin,,ipcireland.org,Various Pentecostal,Pentecostal/Charismatic,53.312738,-6.337899,RATHFARNHAM-TEMPLEOGUE
-Iranian Gospel Church Dublin,28 Bachelors Walk,,Dublin,Dublin,,,ICM,Other Protestant/Evangelical,53.3477,-6.2606,NORTH INNER CITY
-Ireland Pentecostal Assembly,"Unit D2, Santry Hall Industrial Estate","Swords Road, Whitehall",Dublin 9,Dublin,,,Various Pentecostal,Pentecostal/Charismatic,53.394646,-6.249643,ARTANE-WHITEHALL
-Ireland Tamil Christian Fellowship,"Unit 35, Finglas Business Centre","Jamestown Road, Finglas North",Dublin 11,Dublin,,,Various Pentecostal,Pentecostal/Charismatic,53.37628,-6.30832,CABRA-GLASNEVIN
-Irishtown Gospel Hall & Chapel of Ease.,57 Irishtown Road,,Dublin 4,Dublin,D04 CA43,https://www.facebook.com/go2chapelofease/,Brethren,Brethren/Gospel Hall,53.338596,-6.223424,SOUTH EAST INNER CITY
-Island Church Dundalk,The Long Walk,,Dundalk,Louth,A91 Y433,https://www.islandchurchdundalk.ie/,Various Pentecostal,Pentecostal/Charismatic,54.006796,-6.406572,DUNDALK-CARLINGFORD
-Jamestown Road Baptist Church,29a Jamestown Road,,Finglas,Dublin,D11 HX89,www.jamestownroadchurch.ie,ABCI,Baptist/Independent Evangelical,53.389170,-6.29694,BALLYMUN-FINGLAS
 Jesus Centre,"Unit 119A, JFK Industrial Estate, Bluebell Ave",,Dublin,Dublin,D12 DR60,,RCCG,Pentecostal/Charismatic,53.3245,-6.3312,BALLYFERMOT-DRIMNAGH
 Jesus Glory International,Athy,,Athy,Kildare,R14 AY60,,RCCG,Pentecostal/Charismatic,52.9923,-6.9784,ATHY
 Jesus Kingdom,Mountmellick,,Mountmellick,Laois,R32 K074,,RCCG,Pentecostal/Charismatic,53.1164,-7.3312,BORRIS-IN-OSSORY-MOUNTMELLICK
 Jesus Tabernacle,Dublin,,Dublin,Dublin,D01 NY60,,RCCG,Pentecostal/Charismatic,53.3498,-6.2603,NORTH INNER CITY
-Jesus' Church @ Spring of Life,Brees,Cnoc na nIúr,Mayo Abbey,Mayo,,,Various Pentecostal,Pentecostal/Charismatic,53.779247,-9.074363,CASTLEBAR
-JILGM Ireland,"2A Ormond Road, Drumcondra",,Dublin 9,Dublin,D09 EH60,,Various Pentecostal,Pentecostal/Charismatic,53.370774,-6.252569,CLONTARF
 Joseph's Palace,"Unit 66, Broomhill Business Park",,Tallaght,Dublin,D24 EK72,,RCCG,Pentecostal/Charismatic,53.2894,-6.3512,TALLAGHT CENTRAL
-Kells Christian Centre,R164 / Moynalty Road,Archdeaconry Glebe,Kells,Meath,,,Various Pentecostal,Pentecostal/Charismatic,53.736889,-6.883861,KELLS
-Kells Presbyterian Church,Bective Street,,Kells,Meath,,,PCI,Presbyterian/Reformed,53.72422,-6.88043,KELLS
-Kenmare Methodist Church,"Gateway, Gortamullin",,Kenmare,Kerry,V93 T9XT,,Methodist,Methodist/Wesleyan,51.8831,-9.5852,KENMARE
-Kilkenny Christian Assembly,Lyrath,Carlow Road,Kilkenny,Kilkenny,R95 DW98,https://www.kilkennychristianassembly.com/,Christian Assembly,Brethren/Gospel Hall,52.645567,-7.20649,CASTLECOMER
-Kilkenny Community Church,17 Irishtown,,Kilkenny,Kilkenny,,http://www.kilcomchurch.org,Independent Evangelical,Baptist/Independent Evangelical,52.65563,-7.255477,KILKENNY
-Kilkenny Methodist Church,10 William Street,,Kilkenny,Kilkenny,R95 DH29,,Methodist,Methodist/Wesleyan,52.6531,-7.2512,KILKENNY
-Kilkenny Presbyterian Church,16 New Road,,Kilkenny,Kilkenny,,https://www.kilkennychurch.com,PCI,Presbyterian/Reformed,52.65998,-7.25005,KILKENNY
-Killarney Christian Group,Fossa Community Hall Fossa,,Killarney,Kerry,,,Independent Evangelical,Baptist/Independent Evangelical,52.07119,-9.58379,KILLARNEY
-Killarney Methodist Church,1 Countess Road,,Killarney,Kerry,V93 CHP9,,Methodist,Methodist/Wesleyan,52.0592,-9.5051,KILLARNEY
-Killeshandra Presbyterian Church,Shancroghan,,Killeshandra,Cavan,,https://jeanmackarel.wixsite.com/cavanpresbyterian,PCI,Presbyterian/Reformed,54.02238,-7.54324,CAVAN-BELTURBET
-Killult Christian Fellowship,Killult,,Falcarragh,Donegal,F92 R5X2,https://falcarraghcc.com/,Independent Evangelical,Baptist/Independent Evangelical,55.134205,-8.130093,GLENTIES
-Kilmacrennan,"Leiter, Kilmacrennan",,Letterkenny,Donegal,,,PCI,Presbyterian/Reformed,55.03113,-7.75047,MILFORD
-Kilmessan Christian Church,Kilmessan,,Kilmessan,Meath,,,Independent Evangelical,Baptist/Independent Evangelical,53.560612,-6.662344,RATOATH
-Kilmount Presbyterian Church,"Cornasaus, Mountain Lodge",,Cootehill,Cavan,,,PCI,Presbyterian/Reformed,54.00694,-7.08776,BAILIEBOROUGH-COOTEHILL
 King's Arena,"St. Anne's National School, Shankill",,Dun Laoghaire,Dublin,D18 E274,,RCCG,Pentecostal/Charismatic,53.2324,-6.1212,KILLINEY-SHANKILL
 King's Court,Damastown,,Damastown,Dublin,D15 K074,,RCCG,Pentecostal/Charismatic,53.4094,-6.4123,BLANCHARDSTOWN-MULHUDDART
 King's Sanctuary,Drumconrath,,Navan,Meath,C15 W902,,RCCG,Pentecostal/Charismatic,53.6512,-6.6812,NAVAN
 King's Tabernacle,Dublin,,Dublin,Dublin,D11 R262,,RCCG,Pentecostal/Charismatic,53.3894,-6.2824,BALLYMUN-FINGLAS
 King's Tower,Trim,,Trim,Meath,C15 N2V0,,RCCG,Pentecostal/Charismatic,53.5564,-6.7912,TRIM
-King’s Treasure Christian Centre,"Unit 3, Killarney Enterprise Centre, St Mary's Road",,Killarney,Kerry,V93 YCH0,https://www.facebook.com/pages/Kings-Treasure-Christian-Centre/128394808030508,Various Pentecostal,Pentecostal/Charismatic,52.068012,-9.429521,KILLARNEY
 Kingdom House,Monaghan,,Monaghan,Monaghan,H18 R262,,RCCG,Pentecostal/Charismatic,54.2494,-6.9612,MONAGHAN
-Kingdom Life Church,3 Kirwans Lane,,Athy,Kildare,R14 HV21,https://www.facebook.com/kildarecommunitystories/videos/kingdom-life-church-in-athy-/568721347977656/,Various Pentecostal,Pentecostal/Charismatic,52.99343,-6.979042,ATHY
-Kinsale Baptist Church,"Sáile, Kinsale Sports & Community Centre",Cappagh,Kinsale,Cork,P17 WD21,www.kinsaleabc.ie,ABCI,Baptist/Independent Evangelical,51.706051,-8.522501,BANDON-KINSALE
-Kinsale Methodist Church,Market Quay,,Kinsale,Cork,P17 CR29,,Methodist,Methodist/Wesleyan,51.7058,-8.5221,BANDON-KINSALE
-Knowhead Presbyterian Church,"Knowehead, Muff",,Lifford,Donegal,,,PCI,Presbyterian/Reformed,55.06509,-7.28452,BUNCRANA
-L15 Church,"Maldron Hotel, Headford Point, Sandy Road",,Galway,Galway,,,Various Pentecostal,Pentecostal/Charismatic,53.285725,-9.0451226,GALWAY CITY CENTRAL
-LA GRACE Christian Assembly,"44A John F. Kennedy Avenue, JFK Industrial Estate",,"Bluebell, Dublin 12",Dublin,D12 DKR6,http://www.lagrace.info,International Church,Pentecostal/Charismatic,53.326427,-6.355311,CLONDALKIN
-Laois Bible Church,Epworth Hall,Main Street,Abbeyleix,Laois,R32 FX6X,https://laoisbiblechurch.ie/,Brethren,Brethren/Gospel Hall,52.911561,-7.35074,PORTLAOISE
-Lee Valley Bible Church,Coláiste Choilm,"Main Road, Carrigrohane",Ballincollig,Cork,P31 NY77,http://www.leevalleybiblechurch.com/,Various Baptist,Baptist/Independent Evangelical,51.889675,-8.580151,CORK CITY SOUTH WEST
-Letterkenny - Trinity Presbyterian Church,Upper Main Street,,Letterkenny,Donegal,,,PCI,Presbyterian/Reformed,54.95149,-7.73603,LETTERKENNY
-Letterkenny Baptist Church,73 Port Road,,Letterkenny,Donegal,F92R K29,www.letterkennybaptistchurch.com,ABCI,Baptist/Independent Evangelical,54.949037,-7.734217,LETTERKENNY
-Letterkenny Christian Fellowship,Bonagee Hall,Bonagee Road,Letterkenny,Donegal,F92 ED95,https://www.lcf.ie/,Independent Evangelical,Baptist/Independent Evangelical,54.944751,-7.697285,LETTERKENNY
-Letterkenny Presbyterian Church,Main Street,,Letterkenny,Donegal,,,PCI,Presbyterian/Reformed,54.951420,-7.73581,LETTERKENNY
-Letterkenny Reformed Presbyterian Church,The Day Centre (Letterkenny Care of the Aged),Oliver Plunkett Road,Letterkenny,Donegal,F92 DE20,https://portal.rpglobalalliance.org/congregations/letterkenny/,Reformed Presbyterian Church of Ireland,Presbyterian/Reformed,54.9500137,-7.7363067,LETTERKENNY
-Liberty Church Merchant's Quay,"Unit 3, Ardee Street",Merchants Quay,Dublin 8,Dublin,D08 Y5R2,libertychurch.ie,Various Pentecostal,Pentecostal/Charismatic,53.337523,-6.278457,SOUTH WEST INNER CITY
-Liberty Church Quarryvale,Quarryvale Community Centre,"Greenfort Gardens, Clondalkin",Dublin 22,Dublin,D22 NW54,libertychurch.ie,Various Pentecostal,Pentecostal/Charismatic,53.350969,-6.399708,PALMERSTOWN-FONTHILL
 Liberty House,Dunshaughlin,,Dunshaughlin,Meath,A85 A662,,RCCG,Pentecostal/Charismatic,53.5124,-6.5412,RATOATH
-Life Community Church,"Unit 2 Passage Cross, Dunmore Road",,Waterford,Waterford,,,Various Pentecostal,Pentecostal/Charismatic,52.23311,-7.04669,WATERFORD CITY EAST
 Life Sanctuary,Maynooth,,Maynooth,Kildare,W23 A662,,RCCG,Pentecostal/Charismatic,53.3812,-6.5912,MAYNOOTH
-Lifegate Bible Baptist Church,3 Main Street,,Tallaght,Dublin,D24 DPK2,https://lifegate.org/,Various Baptist,Baptist/Independent Evangelical,53.28843,-6.356443,TALLAGHT CENTRAL
-LifeHouse Church,"Unit 2, Passage Cross",Dunmore Road,Waterford City,Waterford,,https://mylifehouse.wixsite.com/lifehousewaterford,Various Pentecostal,Pentecostal/Charismatic,52.313513,-7.173458,PILTOWN
-Light for the People,Unit 6 Office 1-2 Brogans Lane,,Roscommon,Roscommon,F42 HK13,https://www.lightforthepeople.org/,Various Pentecostal,Pentecostal/Charismatic,53.629363,-8.188835,ROSCOMMON
-Lighthouse Assembly International Church,Unit 5,"Bóthar Na Mine, Ballybane Industrial Estate",Galway,Galway,H91 RFC1,lighthouseassembly.neocities.org,Various Pentecostal,Pentecostal/Charismatic,53.292123,-9.015201,GALWAY CITY EAST
-Lighthouse Church (Dublin),"Odeon Cinema, Blanchardstown Shopping Centre, Blanchardstown Road South",,Dublin 15,Dublin,D15 XKC7,https://www.lighthousechurch.ie/,Christian Churches Ireland,Pentecostal/Charismatic,53.3925138,-6.3912158,CASTLEKNOCK
-Lighthouse Church (Dundalk),"The Venue, Imperial Hotel, Park Street",,Dundalk,Louth,A91 ND6P,https://www.lighthousechurch.ie/,Christian Churches Ireland,Pentecostal/Charismatic,54.003123,-6.402065,DUNDALK SOUTH
-Lighthouse Church (Navan),Johnstown Educational Campus,,Navan,Meath,C15 AE03,https://www.lighthousechurch.ie/,Christian Churches Ireland,Pentecostal/Charismatic,53.65283,-6.67939,NAVAN
-Limerick – Solas Church,Kilmurry Church Arts & Heritage Centre,"Kilmurry Road, Castletroy",Limerick,Limerick,V94 EH63,https://www.solaschurch.ie/,Reformed Presbyterian Church of Ireland,Presbyterian/Reformed,52.6613325,-8.6131776,LIMERICK CITY NORTH
-Limerick (Christ Church) Methodist Church,O'Connell Street,,Limerick,Limerick,V94 VY72,,Methodist,Methodist/Wesleyan,52.6625,-8.6254,LIMERICK CITY WEST
-Limerick Baptist Church,Old Cratloe Road,,Caherdavin,Limerick,V94 A564,limerickbaptist.ie,ABCI,Baptist/Independent Evangelical,52.671400,-8.6653,LIMERICK CITY NORTH
-Limerick Christian Centre Mungret,Mungret College,Mungret,Limerick,Limerick,V94 0Y56,https://www.limerickchristiancentre.com/contact-us,Independent Evangelical,Baptist/Independent Evangelical,52.63135,-8.679542,LIMERICK CITY WEST
-Limerick City Church,,,,,,,Independent Evangelical,Baptist/Independent Evangelical,52.659873,-8.627056,LIMERICK CITY WEST
-Listowel Christian Fellowship,,,,,,,Independent Evangelical,Baptist/Independent Evangelical,52.466122,-9.530038,LISTOWEL
-Living Hope,FBD Building,Navan Gate Street,Trim,Meath,C15 A6YD,livinghope.ie,ABCI,Baptist/Independent Evangelical,53.553624,-6.793584,TRIM
-Living Hope Christian Fellowship,Castlebar Tennis Club Lannagh Road Knockacroghery,,Castlebar,Mayo,F23 TK70,,Various Pentecostal,Pentecostal/Charismatic,53.85131,-9.31034,CASTLEBAR
-Living Rock Church,,,,,,,Various Pentecostal,Pentecostal/Charismatic,52.068193,-9.515397,KILLARNEY
 Living Stone Parish,"Unit 5, Monaclinoe Business Park, Ballysimon Rd",,Limerick,Limerick,V94 A662,,RCCG,Pentecostal/Charismatic,52.6564,-8.5912,LIMERICK CITY EAST
-Livingwater Church,33 Slaney Road,"Dublin Industrial Estate, Glasnevin / Finglas",Dublin 11,Dublin,D11 VA40,facebook.com/livingwaterchurchfinglas,Elim Ministries Ireland,Pentecostal/Charismatic,53.373848,-6.290634,CABRA-GLASNEVIN
-Longford Baptist Church,6 Keon's Terrace Dublin Road,,Longford,Longford,N39 Y2X5,,Various Baptist,Baptist/Independent Evangelical,53.7263421,-7.7966678,LONGFORD
-Longford Methodist Church,Battery Road,,Longford,Longford,N39 AC62,,Methodist,Methodist/Wesleyan,53.7291,-7.7984,LONGFORD
-Louth Community Church Jesus House,Level 2 Barbican Centre William Street,,Drogheda,Louth,,,Various Pentecostal,Pentecostal/Charismatic,53.7149,-6.3488,DROGHEDA URBAN
-Lucan Methodist Church,Dispensary Road,,Lucan,Dublin,K78 R7P2,,Methodist,Methodist/Wesleyan,53.3582,-6.4491,LUCAN
-Lucan Presbyterian Church,Lower Main Street,,Lucan,Dublin,,https://www.lpc.ie,PCI,Presbyterian/Reformed,53.35804,-6.44846,LUCAN
-Malahide Presbyterian Church,Dublin Road,,Malahide,Dublin,K36 PE80,,PCI,Presbyterian/Reformed,53.4501268,-6.1595067,HOWTH-MALAHIDE
-Malin Presbyterian Church,"Goorey, Malin",,Lifford,Donegal,,https://www.inishowen4pc.com,PCI,Presbyterian/Reformed,55.31021,-7.31221,CARNDONAGH
-Mallow St Christian Fellowship,Mallow Street Hall,Mallow Street,Limerick City,Limerick,V94 DP60,mallowstchristians.com,Brethren,Brethren/Gospel Hall,52.65995,-8.629589,LIMERICK CITY WEST
-Manorhamilton Christian Fellowship,Bee Park Community Centre New Line,,Manorhamilton,Leitrim,,,Independent Evangelical,Baptist/Independent Evangelical,54.3062546,-8.1754413,MANORHAMILTON
 Maranatha Chapel,Sligo,,Sligo,Sligo,F91 A662,,RCCG,Pentecostal/Charismatic,54.2712,-8.4712,SLIGO-STRANDHILL
-Maranatha Christian Community Church,1b Poleberry Link Road,,Waterford,Waterford,X91 WKR8,https://maranatha.ie/,Various Pentecostal,Pentecostal/Charismatic,52.254853,-7.112703,WATERFORD CITY SOUTH
 Maranatha Parish,Carrick-on-Shannon,,Carrick-on-Shannon,Leitrim,N41 W902,,RCCG,Pentecostal/Charismatic,53.9452,-8.0912,CARRICK-ON-SHANNON
-Maynooth Community Church,Dublin Road,,Maynooth,Kildare,W23 P02A,maynoothcc.org,Independent Evangelical,Baptist/Independent Evangelical,53.381726,-6.593948,MAYNOOTH
-Maynooth Presbyterian Church,Dublin Road,,Maynooth,Kildare,,https://www.maynoothcc.org,PCI,Presbyterian/Reformed,53.38407,-6.59475,MAYNOOTH
-McKelvey's Grove Presbyterian Church,Loughbrattoge,,Castleblaney,Monaghan,,,PCI,Presbyterian/Reformed,54.18198,-6.70364,CARRICKMACROSS-CASTLEBLAYNEY
-Meath Christian Centre,Liscarton,Kells Road,Navan,Meath,C15 Y272,https://www.facebook.com/MeathChristianCentre/,Elim Ministries Ireland,Pentecostal/Charismatic,53.661155,-6.723942,NAVAN
 Mercy of God Tabernacle,Killorglin,,Killorglin,Kerry,V93 FP21,,RCCG,Pentecostal/Charismatic,52.1084,-9.7892,KENMARE
-Methodist Centenary Church,"Wesley House, Leeson Park",,Ranelagh,Dublin,D06 E542,,Methodist,Methodist/Wesleyan,53.329315,-6.251702,PEMBROKE
-Methodist Church Farnagh,Farnagh,,Carrick-on-Shannon,Leitrim,,,Methodist,Methodist/Wesleyan,53.9765,-8.05157,CARRICK-ON-SHANNON
-Midleton Baptist Church,Clonmult Memorial Park,,Midleton,Cork,P25 TD73,midletonbaptist.ie,ABCI,Baptist/Independent Evangelical,51.915260,-8.18052,MIDLETON
-Milford Presbyterian Church,"Kilmacrennan Road, Milford",,Letterkenny,Donegal,,,PCI,Presbyterian/Reformed,55.08654,-7.70033,MILFORD
-Milford Reformed Presbyterian Church,"Unit 1 & 2, Milford Business Park",Glenkeen,Milford,Donegal,F92 PN5D,https://www.rpc.org/milford/,Reformed Presbyterian Church of Ireland,Presbyterian/Reformed,55.0821285,-7.6851138,MILFORD
-Ministry of Jesus,7 Le Fanu Road,"Ballyfermot Road, Cherry Orchard",Dublin 10,Dublin,D10 NH74,ministryofjesus.ie,Various Pentecostal,Pentecostal/Charismatic,53.342156,-6.356633,BALLYFERMOT-DRIMNAGH
 Miracle Land,Dundalk,,Dundalk,Louth,A91 K074,,RCCG,Pentecostal/Charismatic,54.0024,-6.4123,DUNDALK-CARLINGFORD
-Monaghan - First Presbyterian Church,Dublin Street,,Monaghan Town,Monaghan,,https://www.firstmonaghanpci.org,PCI,Presbyterian/Reformed,54.24716,-6.96607,MONAGHAN
-Monaghan Elim Pentecostal Church,Drumbear,Ballybay Road,Monaghan,Monaghan,H18 TE81,https://www.monaghanelim.com/,Elim Ministries Ireland,Pentecostal/Charismatic,54.234854,-6.963795,MONAGHAN
-Monaghan Methodist Church,Dawson Street,,Monaghan,Monaghan,,,Methodist,Methodist/Wesleyan,54.2472087,-6.9685796,MONAGHAN
-Monreagh Presbyterian Church,"Glebe, Monreagh",,St Johnston,Donegal,,,PCI,Presbyterian/Reformed,54.95625,-7.45621,BUNCRANA
-Mount Olive Tamil Church,Saint Alphonsus' Monastery,"Saint Alphonsus' Road Upper, Drumcondra",Dublin 9,Dublin,,mountolivetamilchurch.com,International Church,Pentecostal/Charismatic,53.365625,-6.261252,CABRA-GLASNEVIN
-"Mountain of Fire & Miracles Ministries, Waterford, Ireland (MFM)",Unit 52 Westside Business Park,Old Kilmeaden Road,Waterford,Waterford,X91 XE27,https://www.facebook.com/MfmWaterford/,Various Pentecostal,Pentecostal/Charismatic,52.249314,-7.162947,WATERFORD CITY SOUTH
-Mountmellick Methodist Church,Parnell Street,,Mountmellick,Laois,R32 E062,,Methodist,Methodist/Wesleyan,53.1182,-7.3271,BORRIS-IN-OSSORY-MOUNTMELLICK
-Moville Presbyterian Church,"Glencrow, Moville",,Lifford,Donegal,,https://www.inishowen4pc.com,PCI,Presbyterian/Reformed,55.18834,-7.04405,CARNDONAGH
-Mullingar Christian Fellowship,Spout Well Lane,,Mullingar,Westmeath,N91 C56R,mullingarcf.ie,Independent Evangelical,Baptist/Independent Evangelical,53.526233,-7.339066,MULLINGAR
-Mullingar Presbyterian Church,"35-39 Grange Crescent, Rathgowan",,Mullingar,Westmeath,,https://www.mullingarpresbyterian.com,PCI,Presbyterian/Reformed,53.52687,-7.34008,MULLINGAR
-Naas Baptist Fellowship,Monread Community Centre,Maudlins Avenue,Naas,Kildare,W91 FNV9,naasbaptist.ie,ABCI,Baptist/Independent Evangelical,53.220565,-6.659308,NAAS
-Naas Community Church,Millbrook,,Naas,Kildare,W91 EH96,https://www.naaschurch.ie/,Christian Churches Ireland,Pentecostal/Charismatic,53.2166451,-6.6589422,NAAS
-Naas Presbyterian Church,North Main Street,,Naas,Kildare,,https://www.naaspci.ie,PCI,Presbyterian/Reformed,53.21783,-6.66364,NAAS
-Navan Baptist Church,65 Flower Hill,,Navan,Meath,C15 D762,,Various Baptist,Baptist/Independent Evangelical,53.6559882,-6.680708,NAVAN
-Nazarene Community Church - Greystones,"10 Burnaby Avenue, Killincarrig",,Greystones,Wicklow,,https://nazarene.ie,Church of the Nazarene,Methodist/Wesleyan,53.131311,-6.071152,GREYSTONES
-Nenagh Baptist Church,Nenagh Arts Centre,"Town Hall, Banba Square",Nenagh,Tipperary,E45 NX26,nenaghbaptistchurch.eu,ABCI,Baptist/Independent Evangelical,52.864297,-8.197556,NENAGH
-New Apostolic Church Dublin,Quaker House Stocking Lane Rathfarnham,,Dublin,Dublin,D16 V3F8,,Various Pentecostal,Pentecostal/Charismatic,53.2726162,-6.3060898,FIRHOUSE-BOHERNABREENA
 New Covenant,"Unit 3, Antley Business Park",,Ballymahon,Longford,N39 R262,,RCCG,Pentecostal/Charismatic,53.5624,-7.7612,BALLYMAHON
-New Covenant Church Blanchardstown,Unit A1 BASE Enterprise Centre Damastown Road Mulhuddart,,Dublin,Dublin,,,Various Pentecostal,Pentecostal/Charismatic,53.4080100,-6.400643,BLANCHARDSTOWN-MULHUDDART
-New Covenant Church Tralee,,,,,,,Independent Evangelical,Baptist/Independent Evangelical,52.271156,-9.707091,TRALEE
-New Covenant Church Tralee,5 Maine Street,,Tralee,Kerry,,,Various Pentecostal,Pentecostal/Charismatic,52.2711913,-9.7071113,TRALEE
 New Dawn Assembly,Midleton Community Centre,,Midleton,Cork,P25 V264,,RCCG,Pentecostal/Charismatic,51.9145,-8.1724,MIDLETON
 New Generation,Limerick,,Limerick,Limerick,V94 FP21,,RCCG,Pentecostal/Charismatic,52.6684,-8.6312,LIMERICK CITY NORTH
-New Hope Christian Centre,36 Hebron Park,,Kilkenny,Kilkenny,,https://www.facebook.com/newhopekilkenny/,Various Pentecostal,Pentecostal/Charismatic,52.652597,-7.232302,KILKENNY
 New Life Assembly,"Unit 23, Tramore Road Business Park",,Waterford,Waterford,X91 R262,,RCCG,Pentecostal/Charismatic,52.2512,-7.1212,WATERFORD CITY SOUTH
-New Life Baptist Church,Unit 14 The Workspace Centre Mayoralty Street,,Drogheda,Louth,A92 V963,,Various Baptist,Baptist/Independent Evangelical,53.7158,-6.3492,DROGHEDA URBAN
-New Life Christian Church,Smithstown Industrial Estate,,Shannon,Clare,V14 ER83,,Various Pentecostal,Pentecostal/Charismatic,52.7166770,-8.8730233,SHANNON
-New Life Church,Ardrostig House,Bishopstown,Cork,Cork,,https://www.facebook.com/NewLifeChurchCork/,Various Pentecostal,Pentecostal/Charismatic,51.872838,-8.521788,CORK CITY SOUTH WEST
-New Life Church Birr,"New Order District, Syngefield Business Park",,Birr,Offaly,R42 PR27,,Elim Ministries Ireland,Pentecostal/Charismatic,53.0925949,-7.8953263,BIRR
-New Life Church Dublin,1 Drumfinn Park,,Dublin 10,Dublin,,https://www.nlcdublin.com,International Church,Pentecostal/Charismatic,53.344176,-6.359673,BALLYFERMOT-DRIMNAGH
-New Life Family Church (Drogheda),"Units 1 & 2, Mill Wharf, Merchants Quay",,Drogheda,Louth,A92 H324,https://www.nlfc.ie/,Christian Churches Ireland,Pentecostal/Charismatic,53.7152303,-6.3458384,DROGHEDA URBAN
-New Life Fellowship Church,Day Centre,Off Oliver Plunkett Road,Letterkenny,Donegal,,newlifefellowship.ie,Independent Evangelical,Baptist/Independent Evangelical,54.94806,-7.736274,LETTERKENNY
-New Life International Ministries,"Unit 31, Cherry Orchard Industrial Estate",Ballyfermot Road,Dublin 10,Dublin,,newlifedublin.com,Various Pentecostal,Pentecostal/Charismatic,53.346165,-6.373474,PALMERSTOWN-FONTHILL
-New Life United Pentecostal Church Dundalk,Dundalk Lawn Tennis & Badminton Club The Ramparts,,Dundalk,Louth,,,Various Pentecostal,Pentecostal/Charismatic,54.0010,-6.402,DUNDALK SOUTH
 New Overcomers,Mullingar,,Mullingar,Westmeath,N91 FP21,,RCCG,Pentecostal/Charismatic,53.5243,-7.3412,MULLINGAR
-Newbliss Presbyterian Church,Drumshannon,,Newbliss,Monaghan,,https://clonespchurchesgroup.wixsite.com/clonespchurchesgroup,PCI,Presbyterian/Reformed,54.16074,-7.13093,BALLYBAY-CLONES
-Newbridge Bible Fellowship Church,Liffey Lodge,,Newbridge,Kildare,W12 CK00,,Independent Evangelical,Baptist/Independent Evangelical,53.1805,-6.796,NEWBRIDGE
-Newcastle West Bible Fellowship,North Quay,,Newcastle West,Limerick,,https://www.ncwbiblefellowship.com/,Brethren,Brethren/Gospel Hall,52.449692,-9.057948,NEWCASTLE WEST
-Newtowncunningham Presbyterian Church,"Monad Road, Newtowncunningham",,Lifford,Donegal,,,PCI,Presbyterian/Reformed,54.99561,-7.52195,BUNCRANA
-North City Baptist Church,Deaf Village Ireland,Ratoath Road,Cabra West,Dublin,D07 V4KP,www.northcitychurch.ie,ABCI,Baptist/Independent Evangelical,53.369048,-6.299793,CABRA-GLASNEVIN
-North Clare Community Church,Ennistymon Community Centre,Parliament St,Ennistymon,Clare,V95 X8XC,https://www.northclarechurch.com,Calvary Chapel,Other Protestant/Evangelical,52.9405119,-9.291085,ENNISTIMON
 Oasis Arena,"Unit 2A, Block 1, Lackenwood Business Park",,Waterford,Waterford,X91 E274,,RCCG,Pentecostal/Charismatic,52.2512,-7.1212,WATERFORD CITY SOUTH
-Oasis Christian Fellowship,"Oasis Christian Centre, Gaol Road",,Roscrea,Tipperary,,,Elim Ministries Ireland,Pentecostal/Charismatic,52.9530000,-7.801,ROSCREA-TEMPLEMORE
 Oasis of Grace Centre,Maynooth,,Maynooth,Kildare,W23 FP21,,RCCG,Pentecostal/Charismatic,53.3812,-6.5912,MAYNOOTH
-Open Arms Church (Newbridge),"4 The Pier, Irish Row",,Newbridge,Kildare,W12 HT38,https://openarms.ie/,Christian Churches Ireland,Pentecostal/Charismatic,53.1723845,-6.7960429,NEWBRIDGE
-Open Arms Church (Sandyford),"69c Heather Road, Sandyford Business Park",,Dublin,Dublin,D18 Y9F6,https://openarms.ie/,Christian Churches Ireland,Pentecostal/Charismatic,53.273702,-6.212426,GLENCULLEN-SANDYFORD
-Open Door Christian Fellowship,"Northwest Business Park, Unit 5D Bymac Centre",,"Blanchardstown, Dublin 15",Dublin,,,Assemblies of God,Pentecostal/Charismatic,53.4112,-6.355819,BLANCHARDSTOWN-MULHUDDART
 Open Heavens,"20 Lee Road, Dublin Industrial Estate, Glasnevin",,Dublin,Dublin,D11 A662,,RCCG,Pentecostal/Charismatic,53.3784,-6.2912,BALLYMUN-FINGLAS
-Oranmore Community Church,Maldron Hotel Carrowmoneash,,Oranmore,Galway,H91 K7FA,,Various Baptist,Baptist/Independent Evangelical,53.2773623,-8.9283634,ATHENRY-ORANMORE
 Our God Reigns,"The Community Centre, 32 Mourne Park",,Skerries,Dublin,K34 FP21,,RCCG,Pentecostal/Charismatic,53.5824,-6.1112,BALBRIGGAN
 Overcomers Chapel,"The Scout Den, Balheary Road",,Swords,Dublin,K67 E6Y7,,RCCG,Pentecostal/Charismatic,53.4684,-6.2234,SWORDS
-Passage Baptist Church,Fr Collins Centre,Cork Street,Passage West,Cork,T12 DT78,passagebaptistchurch.ie,ABCI,Baptist/Independent Evangelical,51.869751,-8.336546,CARRIGALINE
-Peoples Church Cavan,18 River Street,Townparks,Cavan,Cavan,H12 RR28,https://www.instagram.com/bechurch.cavan/,Various Pentecostal,Pentecostal/Charismatic,53.988897,-7.361735,CAVAN-BELTURBET
-Peoples Church Dublin City,67A Pearse Street,,Dublin 2,Dublin,,https://www.peopleschurchdublin.com/,Various Pentecostal,Pentecostal/Charismatic,53.343636,-6.245977,SOUTH EAST INNER CITY
-Portlaoise Life Church,"Unit A11, National Enterprise Park",,Portlaoise,Laois,R32 HA21,portlaoise.lifechurch.ie,Various Pentecostal,Pentecostal/Charismatic,53.022837,-7.314726,PORTLAOISE
-Portlaoise Methodist Church,Heatlow,,Portlaoise,Laois,R32 TP08,,Methodist,Methodist/Wesleyan,53.0331,-7.3002,PORTLAOISE
 Potters House,"Unit 7B, Block 50, Rosemount Business Park",,Dublin,Dublin,D11 W902,,RCCG,Pentecostal/Charismatic,53.3984,-6.3512,BLANCHARDSTOWN-MULHUDDART
 Power House,"Office 5, 12 Main Street Lower",,Lucan,Dublin,K78 N2V0,,RCCG,Pentecostal/Charismatic,53.3564,-6.4512,LUCAN
-Radical Life Christian Church,"Unit 6, St Patrick's Woollen Mills",Douglas,Cork,Cork,T12 A361,https://radicallife.ie/,Various Pentecostal,Pentecostal/Charismatic,51.876138,-8.440656,CORK CITY SOUTH EAST
-Ramelton Presbyterian Church,"Church Street, Ramelton",,Letterkenny,Donegal,,https://www.rameltonpresbyterianchurch.com,PCI,Presbyterian/Reformed,55.03634,-7.64522,MILFORD
-Ranelagh Christian Church,47A Ranelagh Road,,Ranelagh,Dublin,D06 NX99,,Church of Christ,Other Protestant/Evangelical,53.326833,-6.256637,PEMBROKE
-Raphoe & Ballindrait Presbyterian Church,"Meetinghouse Street, Raphoe",,Lifford,Donegal,,,PCI,Presbyterian/Reformed,54.87364,-7.59888,LIFFORD-STRANORLAR
-Raphoe Congregational Church,Derry Road,Magheraboy,Raphoe,Donegal,,https://raphoechurch.com/,Congregational,Baptist/Independent Evangelical,54.875916,-7.588112,LIFFORD-STRANORLAR
-Rathgar Methodist Church,6 Brighton Road,,Terenure,Dublin,D06 H797,,Methodist,Methodist/Wesleyan,53.3152,-6.2751,KIMMAGE-RATHMINES
-Rathmullan Presbyterian Church,"Pier Road, Rathmullan",,Letterkenny,Donegal,,,PCI,Presbyterian/Reformed,55.0959,-7.53508,MILFORD
-Ray Presbyterian Church,"Errity, Manorcunningham",,Letterkenny,Donegal,,,PCI,Presbyterian/Reformed,54.95407,-7.62065,LETTERKENNY
-Redeemer Church,Rathfarnham Educate Together,Lereto Ave,Dublin,Dublin,D14 V5W4,https://www.redeemerdublin.ie/,Independent Evangelical,Baptist/Independent Evangelical,53.291757,-6.275089,DUNDRUM
-Reformed Presbyterian Fellowship,"Ulster Room, Dublin Skylon Hotel, Upper Drumcondra Road",,Dublin 9,Dublin,D09 V1Y2,,Reformed Presbyterian Church of Ireland,Presbyterian/Reformed,53.372744,-6.253451,CABRA-GLASNEVIN
-Rehoboth Christian Church,Pipe Band Hall,,Tralee,Kerry,V92 DR13,,Various Pentecostal,Pentecostal/Charismatic,52.2711120,-9.7101171,TRALEE
 Resurrection Assembly,Carrick-On-Suir,,Carrick-On-Suir,Tipperary,E32 FP21,,RCCG,Pentecostal/Charismatic,52.3484,-7.4123,CARRICK-ON-SUIR
-River Church Limerick,Leamy House Prior's-Land,,Limerick,Limerick,V94 CH9E,,Various Pentecostal,Pentecostal/Charismatic,52.6589221,-8.6306466,LIMERICK CITY WEST
-River Of Life Athlone Le Ceile Christian Church,Grace Road,Le Chéile,Athlone,Westmeath,N37 H398,https://www.riveroflife.ie,Plumbline,Other Protestant/Evangelical,53.428572,-7.95038,ATHLONE
-River Valley Baptist Church,Blacklion,Dublin / Leixlip Road,Maynooth,Kildare,,https://rivervalleybc.org/contact/,Various Baptist,Baptist/Independent Evangelical,53.381022,-6.577727,MAYNOOTH
-Riverside Gospel Hall,2 Allen Square,,Bandon,Cork,P72 TE29,https://www.riversidegospelhall.com/,Brethren,Brethren/Gospel Hall,51.747039,-8.741141,BANDON-KINSALE
-Rockcorry Presbyterian Church,Main Street,,Rockcorry,Monaghan,,,PCI,Presbyterian/Reformed,54.11686,-7.01519,BALLYBAY-CLONES
-Roscrea Methodist Church,The Mall,,Roscrea,Tipperary,E53 H019,,Methodist,Methodist/Wesleyan,52.9551,-7.7972,ROSCREA-TEMPLEMORE
 Royal Embassy Drogheda,Holy Family Community Centre Ballsgrove,,Drogheda,Louth,A92 A9PH,,RCCG,Pentecostal/Charismatic,53.7198,-6.3272,DROGHEDA URBAN
 Sanctuary for all Nations,Drogheda,,Drogheda,Louth,A92 W902,,RCCG,Pentecostal/Charismatic,53.7123,-6.3512,DROGHEDA URBAN
 Sanctuary of His Glory,Freedom Hall,,Mallow,Cork,P51 V262,,RCCG,Pentecostal/Charismatic,52.1384,-8.6412,MALLOW
-Shalom Christian Fellowship,"Dawson Street / YWCA Hall, North Road",,Monaghan,Monaghan,H18 T228,https://www.facebook.com/ShalomChristianFellowshipMonaghan/,Independent Evangelical,Baptist/Independent Evangelical,54.247117,-6.970829,MONAGHAN
-Shalom Prayer Fellowship,9 Well Road Kylekiproe,,Portlaoise,Laois,R32 CRC0,,Various Pentecostal,Pentecostal/Charismatic,53.0328324,-7.2944049,PORTLAOISE
-Shankill Bible Church,Glen Maris House,Eaton Wood Grove,Shankill,Dublin,D18 WK27,https://www.shankillbiblechurch.org/,Brethren,Brethren/Gospel Hall,53.234116,-6.116952,KILLINEY-SHANKILL
-Shannon Christian Church,"Unit 2, Smithstown",,Shannon,Clare,V14 KX52,https://shannonchristians.ie/,Independent Evangelical,Baptist/Independent Evangelical,52.716366,-8.870825,SHANNON
-Shinrone Methodist Church,Main Street,,Shinrone,Offaly,R42 N932,,Methodist,Methodist/Wesleyan,52.9982,-7.8681,BIRR
-Skerries Methodist Church,Mourne View,,Skerries,Dublin,K34 PP62,,Methodist,Methodist/Wesleyan,53.5821,-6.1112,BALBRIGGAN
-Skibbereen Methodist Church,Mill Road,,Skibbereen,Cork,P81 V184,,Methodist,Methodist/Wesleyan,51.5512,-9.2661,SKIBBEREEN-WEST CORK
-Sligo Baptist Church,Cartron Village,Rosses Point Road,Sligo,Sligo,F91X E42,facebook.com/pages/Sligo-Baptist-Church/273579899430747,ABCI,Baptist/Independent Evangelical,54.270601,-8.471644,SLIGO-STRANDHILL
-Sligo City Church,"Mercy College, Chapel Hill, Abbeyquarter South",,Sligo,Sligo,F91 CF80,,Various Pentecostal,Pentecostal/Charismatic,54.2669594,-8.468642,SLIGO-STRANDHILL
-Sligo Presbyterian Church,Church Street,,Sligo,Sligo,F91 A312,https://www.facebook.com/sligopresbyterianchurch/,PCI,Presbyterian/Reformed,54.26957,-8.475566,SLIGO-STRANDHILL
-Smithborough Presbyterian Church,Mulladuff,,Smithborough,Monaghan,,,PCI,Presbyterian/Reformed,54.22223,-7.09804,BALLYBAY-CLONES
 Solemn Assembly,Carrickmacross,,Carrickmacross,Monaghan,A81 E023,,RCCG,Pentecostal/Charismatic,53.9784,-6.7123,CARRICKMACROSS-CASTLEBLAYNEY
-Solid Rock Centre Dublin,"6B Goldenbridge Industrial Estate, Tyrconnell Road, Inchicore",,Dublin 8,Dublin,D08 F880,https://solidrockdublin.org,Various Pentecostal,Pentecostal/Charismatic,53.335647,-6.323949,SOUTH WEST INNER CITY
-Solid Rock Church of God - Drogheda,"Whitethorn House, Ballymakenny Road",,Drogheda,Louth,,,Various Pentecostal,Pentecostal/Charismatic,53.728832,-6.343639,DROGHEDA RURAL
-Solid Rock Dublin,"6B Goldenbridge Industrial Estate, Inchicore",,Dublin 8,Dublin,D08 F880,,Various Pentecostal,Pentecostal/Charismatic,53.33609,-6.32385,SOUTH WEST INNER CITY
 Solid Rock Parish,Ballinasloe,,Ballinasloe,Galway,H53 X084,,RCCG,Pentecostal/Charismatic,53.3294,-8.2234,BALLINASLOE
-Solid Rock Portlaoise,Midlands Park Hotel Jessop Street Maryborough,,Portlaoise,Laois,R32 KV20,,Various Pentecostal,Pentecostal/Charismatic,53.0350261,-7.3024575,PORTLAOISE
-South City Church,Glenalbyn Sports and Conference Centre,"Glenalbyn Road, Stillorgan",Dublin,Dublin,A94 WC62,https://www.southcitychurch.ie,Independent Evangelical,Baptist/Independent Evangelical,53.286534,-6.200003,STILLORGAN
-South Hill Evangelical Church,South Hill Park,"Booterstown Avenue, Mount Merrion",Blackrock,Dublin,A94 R5W4,https://www.southhillchurchdublin.ie,Independent Evangelical,Baptist/Independent Evangelical,53.298803,-6.204168,BLACKROCK
-St Catherine's Church of Ireland,Thomas Street,The Liberties,Dublin 8,Dublin,D08 DNA7,https://saintcatherines.ie,Church of Ireland,Other Protestant/Evangelical,53.342949,-6.281226,SOUTH WEST INNER CITY
-St. Johnston Presbyterian Church,"Church Street, St. Johnston",,Lifford,Donegal,,,PCI,Presbyterian/Reformed,54.93397,-7.46074,LIFFORD-STRANORLAR
-St. Mark's Church Dublin,42A Pearse Street,,Dublin 2,Dublin,D02 R123,https://www.stmarks.ie,Christian Churches Ireland,Pentecostal/Charismatic,53.344737,-6.251019,SOUTH EAST INNER CITY
-St. Patrick's United Church,"Gateway Centre, Patrick Street",,Waterford,Waterford,X91 HY48,,Methodist,Methodist/Wesleyan,52.260326,-7.114122,TRAMORE-WATERFORD CITY WEST
-Stonebridge Presbyterian Church,Gransha More,,Clones,Monaghan,,https://clonespchurchesgroup.wixsite.com/clonespchurchesgroup,PCI,Presbyterian/Reformed,54.20117,-7.16845,BALLYBAY-CLONES
-Strand and Buncrana Presbyterian Church,Millbrae,,Buncrana,Donegal,,,PCI,Presbyterian/Reformed,55.131689,-7.4524,BUNCRANA
-Stranorlar Presbyterian Church,"Meeting House Street, Stranorlar",,Ballybofey,Donegal,,,PCI,Presbyterian/Reformed,54.80686,-7.76896,LIFFORD-STRANORLAR
-Stranorlar Reformed Presbyterian Church,Main Street,,Stranorlar,Donegal,F93 WTC9,https://www.rpc.org/stranorlar/,Reformed Presbyterian Church of Ireland,Presbyterian/Reformed,54.8067470,-7.7689654,LIFFORD-STRANORLAR
-Sutton (Landmark) Methodist Church,Church Road,,Sutton,Dublin,D13 K092,,Methodist,Methodist/Wesleyan,53.3912,-6.1121,HOWTH-MALAHIDE
-Swords Baptist Church,The Riasc Centre,Feltrim Road,Swords,Dublin,K67P X85,www.swordsbaptistchurch.com,ABCI,Baptist/Independent Evangelical,53.459720,-6.21806,SWORDS
-Swords Elim Church,"St Colmcille's GFC, Glen Ellan Road",Holybanks,Swords,Dublin,K67 H996,https://swordselim.weebly.com/,Elim Ministries Ireland,Pentecostal/Charismatic,53.46795,-6.221682,SWORDS
-Tallaght (An Solas) Methodist Church,Jobstown,,Tallaght,Dublin,D24 XW6P,,Methodist,Methodist/Wesleyan,53.2751,-6.3772,TALLAGHT SOUTH
-Telugu Church - Christian Fellowship Ireland - Telugu & English,"Scoil Áine Naofa, Newcastle Rd, Esker Dr",,Lucan,Dublin,,https://cfidublin.wixsite.com/cfi-church,International Church,International Churches,53.390156,-6.435989,ONGAR
-"The Bride, Christian Fellowship",The Bride Christian Fellowship,Bruckless,Donegal Town,Donegal,F94 K263,https://www.facebook.com/p/The-Bride-Christian-Fellowship-100089613445513/,Independent Evangelical,Baptist/Independent Evangelical,54.640049,-8.389689,DONEGAL
-The Bridge Church,Unit 4 Celbridge Industrial Estate Shackleton Road,,Celbridge,Kildare,W23 R763,,Independent Evangelical,Baptist/Independent Evangelical,53.3416,-6.548,CELBRIDGE
-The Bridge Church,"Unit 4, Celbridge Industrial Estate, Shackleton Road",,Celbridge,Kildare,W23 R763,thebridgechurch.ie,Independent Evangelical,Baptist/Independent Evangelical,53.343654,-6.545904,CELBRIDGE
-"The Christian Community, Movement for Religious Renewal","The Christian Community House, Drewsborough",,Tuamgraney,Clare,V94 D5TK,https://www.thechristiancommunity.co.uk/topic/congregations/ireland/clare/,Various Pentecostal,Pentecostal/Charismatic,52.900501,-8.539924,KILLALOE
-The Church of Christ,New Testament Church Jamestown,,Carrick-on-Shannon,Leitrim,,,Church of Christ,Other Protestant/Evangelical,53.9490,-8.09,CARRICK-ON-SHANNON
-The Church of Pentecost Ireland,26-29 Summerplace Mountjoy Square,,Dublin 1,Dublin,D01 TR63,,Various Pentecostal,Pentecostal/Charismatic,53.359300,-6.2579,NORTH INNER CITY
-The Church on Main Street,Dara Cinema,North Main Street,Naas,Kildare,,tcoms.ie,Independent Evangelical,Baptist/Independent Evangelical,53.218794,-6.662489,NAAS
-The CornerChurch Tuam,Vicar Street,,Tuam,Galway,H54 W718,http://www.irishchristian.net/tuam,Independent Evangelical,Baptist/Independent Evangelical,53.514193,-8.852097,TUAM
-The Evangelical Church of Reconciliation,Unit A12 Cookstown Industrial Estate,Tallaght,Dublin 24,Dublin,,,Various Pentecostal,Pentecostal/Charismatic,53.295174,-6.378029,TALLAGHT CENTRAL
 The Father's House,St. John the Evangelist National School,,Adamstown,Dublin,K78 DP80,,RCCG,Pentecostal/Charismatic,53.3384,-6.4512,LUCAN
-The Light House,Dean Street,,Kilkenny,Kilkenny,R95 P93V,,Independent Evangelical,Baptist/Independent Evangelical,52.6514,-7.2557,KILKENNY
 The Light of God Tabernacle,Limerick,,Limerick,Limerick,V94 E023,,RCCG,Pentecostal/Charismatic,52.6684,-8.6312,LIMERICK CITY NORTH
 The Lord of Hosts Fellowship Centre,Rochfortbridge,,Rochfortbridge,Westmeath,N91 A662,,RCCG,Pentecostal/Charismatic,53.4284,-7.2912,KINNEGAD
 The Lord Reigns,39 Dublin Street,,Balbriggan,Dublin,K32 W720,,RCCG,Pentecostal/Charismatic,53.6124,-6.1824,BALBRIGGAN
 The New Life Assembly,New Ross,,New Ross,Wexford,Y34 K074,,RCCG,Pentecostal/Charismatic,52.3952,-6.9412,NEW ROSS
-The Potter’s House Church,14 Findlater Place (off O'Connell Street),,Dublin 1,Dublin,,https://pottershouse.ie,Various Pentecostal,Pentecostal/Charismatic,53.352406,-6.259536,NORTH INNER CITY
-The Romanian Pentecostal Church Mount Zion,Growtown,,Dunshaughlin,Meath,A85 WY11,,International Church,Pentecostal/Charismatic,53.4767314,-6.5020499,RATOATH
 The Seat of Mercy,Drogheda,,Drogheda,Louth,A92 N2V0,,RCCG,Pentecostal/Charismatic,53.7123,-6.3512,DROGHEDA URBAN
+Trinity Chapel,Gort,,Gort,Galway,H91 V2P0,,RCCG,Pentecostal/Charismatic,53.0654,-8.8124,GORT-KINVARA
+Trinity Chapel,Kells,,Kells,Meath,A82 FP21,,RCCG,Pentecostal/Charismatic,53.7264,-6.8784,KELLS
+Triumphant House,"Skelly Oil, Killyfinla",,Ballyjamesduff,Cavan,A82 V2V0,,RCCG,Pentecostal/Charismatic,53.8654,-7.1352,BALLYJAMESDUFF
+Victory House Athlone,"Unit 9 Centre Court, Blyry Business Park",,Athlone,Westmeath,N37 X9X6,,RCCG,Pentecostal/Charismatic,53.4313852,-7.8942976,ATHLONE
+Word of Life Parish,Ballyhaunis,,Ballyhaunis,Mayo,F35 K074,,RCCG,Pentecostal/Charismatic,53.7624,-8.7612,CLAREMORRIS
+Convoy Covenanter Church (Convoy RPC),Beside Ballyboe Bridge,Ballyboe,Convoy,Donegal,F93 TW31,https://convoy.rpc.org/,Reformed Presbyterian Church of Ireland,Presbyterian/Reformed,54.8588806,-7.6555806,LIFFORD-STRANORLAR
+Covenant Christian Fellowship,"Unit 3, Sean Mulvoy Commercial Centre",Sean Mulvoy Road,Galway,Galway,H91 W2H5,https://www.ccfgalway.com/,Reformed Presbyterian Church of Ireland,Presbyterian/Reformed,53.282412,-9.039917,GALWAY CITY CENTRAL
+Fairview Reformed Presbyterian Church,Tullycaughney,Oram,Castleblayney,Monaghan,A75 YV21,https://rpglobalalliance.org/congregation/fairview-reformed-presbyterian-church-ireland/,Reformed Presbyterian Church of Ireland,Presbyterian/Reformed,54.1529000,-6.67283,CARRICKMACROSS-CASTLEBLAYNEY
+Galway Covenant Fellowship,"Unit 3, Sean Mulvoy Commercial Centre",Sean Mulvoy Road,Galway,Galway,H91 W2H5,https://www.ccfgalway.com/,Reformed Presbyterian Church of Ireland,Presbyterian/Reformed,53.282796,-9.043241,GALWAY CITY CENTRAL
+Letterkenny Reformed Presbyterian Church,The Day Centre (Letterkenny Care of the Aged),Oliver Plunkett Road,Letterkenny,Donegal,F92 DE20,https://portal.rpglobalalliance.org/congregations/letterkenny/,Reformed Presbyterian Church of Ireland,Presbyterian/Reformed,54.9500137,-7.7363067,LETTERKENNY
+Limerick – Solas Church,Kilmurry Church Arts & Heritage Centre,"Kilmurry Road, Castletroy",Limerick,Limerick,V94 EH63,https://www.solaschurch.ie/,Reformed Presbyterian Church of Ireland,Presbyterian/Reformed,52.6613325,-8.6131776,LIMERICK CITY NORTH
+Milford Reformed Presbyterian Church,"Unit 1 & 2, Milford Business Park",Glenkeen,Milford,Donegal,F92 PN5D,https://www.rpc.org/milford/,Reformed Presbyterian Church of Ireland,Presbyterian/Reformed,55.0821285,-7.6851138,MILFORD
+Reformed Presbyterian Fellowship,"Ulster Room, Dublin Skylon Hotel, Upper Drumcondra Road",,Dublin 9,Dublin,D09 V1Y2,,Reformed Presbyterian Church of Ireland,Presbyterian/Reformed,53.372744,-6.253451,CABRA-GLASNEVIN
+Stranorlar Reformed Presbyterian Church,Main Street,,Stranorlar,Donegal,F93 WTC9,https://www.rpc.org/stranorlar/,Reformed Presbyterian Church of Ireland,Presbyterian/Reformed,54.8067470,-7.7689654,LIFFORD-STRANORLAR
+Arann Reformed Baptist Church,Royal Marine Hotel Marine Road,,Dún Laoghaire,Dublin,,,Various Baptist,Baptist/Independent Evangelical,53.2923517,-6.1336491,DÚN LAOGHAIRE
+Arklow Baptist Church,St Michael's Terrace,Tinahask Lower,Arklow,Wicklow,,arklowbaptistchurch.com,Various Baptist,Baptist/Independent Evangelical,52.793156,-6.148974,ARKLOW
+Ballaghaderreen Baptist Church,Circular Road,,Ballaghaderreen,Roscommon,,,Various Baptist,Baptist/Independent Evangelical,53.9010000,-8.5767,BOYLE
+Blanchardstown Baptist Church,Rath Dara Community College Blanchardstown Road North,,Dublin,Dublin,D15 P380,,Various Baptist,Baptist/Independent Evangelical,53.4014400,-6.37923,BLANCHARDSTOWN-MULHUDDART
+Boyne Valley Baptist Church,Ballymakenny Road,,Drogheda,Louth,A92 P662,https://www.facebook.com/61557349603260/,Various Baptist,Baptist/Independent Evangelical,53.763505,-6.344261,DROGHEDA RURAL
+Calvary Baptist Church,Wilton Park House Bishopstown,,Cork,Cork,T12 YX3Y,,Various Baptist,Baptist/Independent Evangelical,51.8779173,-8.5121851,CORK CITY SOUTH WEST
+Calvary Bible Baptist Church Bray,27 Florence Road,,Bray,Wicklow,A98 RD68,,Various Baptist,Baptist/Independent Evangelical,53.2036226,-6.1074959,BRAY EAST
+Clare Bible Study,53 Parnell Street,,Ennis,Clare,V95 FTK5,,Various Baptist,Baptist/Independent Evangelical,52.8437679,-8.9857396,ENNIS
+Clonmel Baptist Church,SIPTU Hall,Anglesea Street,Clonmel,Tipperary,E91 E6K1,http://www.clonmelbaptist.ie/,Various Baptist,Baptist/Independent Evangelical,52.353107,-7.696483,CLONMEL
+Community Baptist Church,Spout Lane,,Milltown,Kerry,,,Various Baptist,Baptist/Independent Evangelical,52.144519,-9.716971,CORCA DHUIBHNE
+Grace Missionary Baptist Church,Glounthaune Community Centre Glounthaune,,Glanmire,Cork,,,Various Baptist,Baptist/Independent Evangelical,51.9108924,-8.336159,COBH
+Hope Baptist Church,"Taney Hall, Eglinton Terrace, Dundrum",,Dublin 14,Dublin,D14 C7F7,,Various Baptist,Baptist/Independent Evangelical,53.2898113,-6.2423108,DUNDRUM
+Lifegate Bible Baptist Church,3 Main Street,,Tallaght,Dublin,D24 DPK2,https://lifegate.org/,Various Baptist,Baptist/Independent Evangelical,53.28843,-6.356443,TALLAGHT CENTRAL
+Longford Baptist Church,6 Keon's Terrace Dublin Road,,Longford,Longford,N39 Y2X5,,Various Baptist,Baptist/Independent Evangelical,53.7263421,-7.7966678,LONGFORD
+Navan Baptist Church,65 Flower Hill,,Navan,Meath,C15 D762,,Various Baptist,Baptist/Independent Evangelical,53.6559882,-6.680708,NAVAN
+New Life Baptist Church,Unit 14 The Workspace Centre Mayoralty Street,,Drogheda,Louth,A92 V963,,Various Baptist,Baptist/Independent Evangelical,53.7158,-6.3492,DROGHEDA URBAN
+Oranmore Community Church,Maldron Hotel Carrowmoneash,,Oranmore,Galway,H91 K7FA,,Various Baptist,Baptist/Independent Evangelical,53.2773623,-8.9283634,ATHENRY-ORANMORE
+River Valley Baptist Church,Blacklion,Dublin / Leixlip Road,Maynooth,Kildare,,https://rivervalleybc.org/contact/,Various Baptist,Baptist/Independent Evangelical,53.381022,-6.577727,MAYNOOTH
+Abundant Grace Christian Assembly,"Regal House, 28 Fitzwilliam Street",Ringsend,Dublin 4,Dublin,D04 FH24,https://www.abundantgrace.ie,Various Pentecostal,Pentecostal/Charismatic,53.342294,-6.227141,SOUTH EAST INNER CITY
+Abundant Life Family Church,"Abundant Life Family Church, Bluebell Lane",George Cooke Industrial Estate,Dublin,Dublin,D12 HPY2,https://www.facebook.com/abundantlifefamilychurchdublin/,Various Pentecostal,Pentecostal/Charismatic,53.329155,-6.346923,BALLYFERMOT-DRIMNAGH
+AFM Praise Tabernacle,9 Portland Row,Dublin 1,Dublin,Dublin,,,Various Pentecostal,Pentecostal/Charismatic,53.356380,-6.24893,NORTH INNER CITY
+Alive Chapel,Mill Park Road,,Enniscorthy,Wexford,,,Various Pentecostal,Pentecostal/Charismatic,52.499977,-6.567202,ENNISCORTHY
+Alive Church Enniscorthy,Unit 2 Abbey Centre,,Enniscorthy,Wexford,Y21 V2X4,alivechurch.ie,Various Pentecostal,Pentecostal/Charismatic,52.500249,-6.565136,ENNISCORTHY
+All Nations Church,"National Stadium, 145 South Circular Road",,Dublin 8,Dublin,D08 HY40,https://www.allnations.ie/,Various Pentecostal,Pentecostal/Charismatic,53.330833,-6.280278,SOUTH WEST INNER CITY
+Arklow Christian Community Church,"St Mary's Chapel, St Mary's Road",,Arklow,Wicklow,Y14 P957,,Various Pentecostal,Pentecostal/Charismatic,52.7944300,-6.14958,ARKLOW
+Banner of Love Church Arklow,"The UpperRoom, Abbey Lane",,Arklow,Wicklow,Y14 PP23,,Various Pentecostal,Pentecostal/Charismatic,52.7999410,-6.144013,ARKLOW
+Banner of Love Church Wicklow,"The Basement, Wicklow House, Market Square",,Wicklow Town,Wicklow,,,Various Pentecostal,Pentecostal/Charismatic,52.9798477,-6.0381429,WICKLOW
+Betania Church,Powerstown Road,Tyrrelstown,Dublin 15,Dublin,D15 V0YK,https://www.betania.ie/en,Various Pentecostal,Pentecostal/Charismatic,53.414611,-6.394757,BLANCHARDSTOWN-MULHUDDART
+Bethel Christian Assembly Dublin,"St Luke's Social Service Centre, Kilbarron Park, Kilmore West",,Dublin 5,Dublin,D05 W925,,Various Pentecostal,Pentecostal/Charismatic,53.3943,-6.2218,ARTANE-WHITEHALL
+Bethel Worship Centre,1 Drumfinn Park,,Dublin 10,Dublin,D10 TX63,,Various Pentecostal,Pentecostal/Charismatic,53.344167,-6.359596,BALLYFERMOT-DRIMNAGH
+CAC Outreach Athlone,"Unit 54, Athlone Civic Centre","Church Street, Blyry Industrial Estate",Athlone,Westmeath,,https://www.instagram.com/cacoutreachathlone/,Various Pentecostal,Pentecostal/Charismatic,53.431137,-7.897205,ATHLONE
+Christ Embassy Cork,,,,,,,Various Pentecostal,Pentecostal/Charismatic,51.898225,-8.446947,CORK CITY SOUTH EAST
+Christ Embassy Dublin,"Unit K2, Ballymount Drive, Ballymount Industrial Estate",,Dublin 12,Dublin,D12 Y590 (verify),,Various Pentecostal,Pentecostal/Charismatic,53.314298,-6.345679,RATHFARNHAM-TEMPLEOGUE
+Christian Fellowship Church Waterford,"Unit Two, Passage Cross",Dunmore Road,Waterford,Waterford,X91 W1XF,https://www.lifecommunitychurchwaterford.com,Various Pentecostal,Pentecostal/Charismatic,52.155016,-7.030819,WATERFORD CITY EAST
+Connect Church,"Unit 7, Liosbaun Business Park",Tuam Road,Galway,Galway,,connectchurchgalway.ie,Various Pentecostal,Pentecostal/Charismatic,53.286987,-9.034093,GALWAY CITY EAST
+Cork Church,"Connolly Hall, Lower Oliver Plunkett Street",,Cork,Cork,,,Various Pentecostal,Pentecostal/Charismatic,51.898772,-8.466919,CORK CITY SOUTH CENTRAL
+Cornerstone Slieve Bloom Church,3 Sragh Avenue,Sragh Business Park,Tullamore,Offaly,R35,https://www.cornerstoneireland.ie/,Various Pentecostal,Pentecostal/Charismatic,53.28723,-7.515688,TULLAMORE
+Crumlin Christian Assembly,"Community Hall, 101 Cashel Road",,"Crumlin, Dublin 12",Dublin,,,Various Pentecostal,Pentecostal/Charismatic,53.32236,-6.30628,KIMMAGE-RATHMINES
+Drogheda Prayer Centre,Naomh Feichín GAA Club Beaulieu,,Drogheda,Louth,A92 ET95,,Various Pentecostal,Pentecostal/Charismatic,53.7248,-6.3085,DROGHEDA RURAL
+Dublin International Christian Church,"61 Mountjoy Street, Phibsborough",,Dublin 7,Dublin,D07 AX51,,Various Pentecostal,Pentecostal/Charismatic,53.358900,-6.2649,CABRA-GLASNEVIN
+Dublin Vineyard,35 Avenue Road,Portobello,Dublin 8,Dublin,D08 FT53,dublinvineyard.ie,Various Pentecostal,Pentecostal/Charismatic,53.331028,-6.270814,SOUTH EAST INNER CITY
+Every Nation Dublin,CBS Synge Street,Synge Street,Dublin 8,Dublin,,https://www.everynation.ie,Various Pentecostal,Pentecostal/Charismatic,53.33327,-6.267051,SOUTH EAST INNER CITY
+Faith City Church,"ODEON Coolock, 84 Malahide Road, Coolock",,Dublin 5,Dublin,D17 ET62,,Various Pentecostal,Pentecostal/Charismatic,53.3911118,-6.1927281,DONAGHMEDE
+Firebrand Christian Church,Scoil Chaitlin Maude Hazelgrove Tallaght,,Dublin,Dublin,D24 RYW1,,Various Pentecostal,Pentecostal/Charismatic,53.27413,-6.4028,TALLAGHT SOUTH
+Foundation Ministries,"Unit 6, Elevation Business Park",Clonroad,Ennis,Clare,,https://foundationministriesireland.net/,Various Pentecostal,Pentecostal/Charismatic,52.846165,-8.971989,ENNIS
+Fountaingate Christian Church,"St Joseph Road, Applegreen Station",,Mallow,Cork,,https://fountaingate.ie/,Various Pentecostal,Pentecostal/Charismatic,52.135667,-8.640055,MALLOW
+Garden of Eden Int'l Church,Limerick Strand Hotel,Ennis Road,Limerick,Limerick,V94 03F2,https://www.gardenofedeninternationalchurch.org/contact,Various Pentecostal,Pentecostal/Charismatic,52.6662726,-8.632013,LIMERICK CITY NORTH
+Global Faith Dimensions,"Unit 2B, Avonbeg Industrial Estate",Long Mile Road,Dublin 12,Dublin,D12 PR58,,Various Pentecostal,Pentecostal/Charismatic,53.286099,-6.354864,TALLAGHT CENTRAL
+Gospel Faith Mission International Ireland HQ,"Unit 4, Dartmouth House Industrial Centre, Kylemore Road",,Dublin 10,Dublin,D10 YE00,,Various Pentecostal,Pentecostal/Charismatic,53.3391342,-6.3481003,BALLYFERMOT-DRIMNAGH
+Gospel Lighthouse Church,Garrandarragh,,Mullinavat,Kilkenny,,,Various Pentecostal,Pentecostal/Charismatic,52.4874,-6.9864,CALLAN-THOMASTOWN
+Grace Abundant Filipino Community Church,10 Main Street Blanchardstown,,Dublin,Dublin,D15 DX34,,Various Pentecostal,Pentecostal/Charismatic,53.3866571,-6.3781978,CASTLEKNOCK
+Grace Christian Church,53 MacCurtain Street,,Cork,Cork,T23 VH56,https://graceireland.com/,Various Pentecostal,Pentecostal/Charismatic,51.901507,-8.467529,CORK CITY NORTH EAST
+Grace Family International Church,O’Brien Centre,Old Dublin Road,Carlow,Carlow,R93 EY27,gficireland.com,Various Pentecostal,Pentecostal/Charismatic,52.839679,-6.928824,CARLOW
+Holy Church House Of Grace,29 Bridge Street,,Cavan,Cavan,,,Various Pentecostal,Pentecostal/Charismatic,53.989445,-7.362097,CAVAN-BELTURBET
+Hope and Glory Christian Ministries,"Unit 23/24, Tolka Valley Business Park",Tolka Valley Road,Dublin 11,Dublin,D11 Y362,https://hopeandglorychurch.com/,Various Pentecostal,Pentecostal/Charismatic,53.40051,-6.346859,BLANCHARDSTOWN-MULHUDDART
+IPC Pentecostal Church of Ireland,"Unit 6D, Greenhills Industrial Estate","Greenhills Road, Walkinstown",Dublin,Dublin,,ipcireland.org,Various Pentecostal,Pentecostal/Charismatic,53.312738,-6.337899,RATHFARNHAM-TEMPLEOGUE
+Ireland Pentecostal Assembly,"Unit D2, Santry Hall Industrial Estate","Swords Road, Whitehall",Dublin 9,Dublin,,,Various Pentecostal,Pentecostal/Charismatic,53.394646,-6.249643,ARTANE-WHITEHALL
+Ireland Tamil Christian Fellowship,"Unit 35, Finglas Business Centre","Jamestown Road, Finglas North",Dublin 11,Dublin,,,Various Pentecostal,Pentecostal/Charismatic,53.37628,-6.30832,CABRA-GLASNEVIN
+Island Church Dundalk,The Long Walk,,Dundalk,Louth,A91 Y433,https://www.islandchurchdundalk.ie/,Various Pentecostal,Pentecostal/Charismatic,54.006796,-6.406572,DUNDALK-CARLINGFORD
+Jesus' Church @ Spring of Life,Brees,Cnoc na nIúr,Mayo Abbey,Mayo,,,Various Pentecostal,Pentecostal/Charismatic,53.779247,-9.074363,CASTLEBAR
+JILGM Ireland,"2A Ormond Road, Drumcondra",,Dublin 9,Dublin,D09 EH60,,Various Pentecostal,Pentecostal/Charismatic,53.370774,-6.252569,CLONTARF
+Kells Christian Centre,R164 / Moynalty Road,Archdeaconry Glebe,Kells,Meath,,,Various Pentecostal,Pentecostal/Charismatic,53.736889,-6.883861,KELLS
+King’s Treasure Christian Centre,"Unit 3, Killarney Enterprise Centre, St Mary's Road",,Killarney,Kerry,V93 YCH0,https://www.facebook.com/pages/Kings-Treasure-Christian-Centre/128394808030508,Various Pentecostal,Pentecostal/Charismatic,52.068012,-9.429521,KILLARNEY
+Kingdom Life Church,3 Kirwans Lane,,Athy,Kildare,R14 HV21,https://www.facebook.com/kildarecommunitystories/videos/kingdom-life-church-in-athy-/568721347977656/,Various Pentecostal,Pentecostal/Charismatic,52.99343,-6.979042,ATHY
+L15 Church,"Maldron Hotel, Headford Point, Sandy Road",,Galway,Galway,,,Various Pentecostal,Pentecostal/Charismatic,53.285725,-9.0451226,GALWAY CITY CENTRAL
+Liberty Church Merchant's Quay,"Unit 3, Ardee Street",Merchants Quay,Dublin 8,Dublin,D08 Y5R2,libertychurch.ie,Various Pentecostal,Pentecostal/Charismatic,53.337523,-6.278457,SOUTH WEST INNER CITY
+Liberty Church Quarryvale,Quarryvale Community Centre,"Greenfort Gardens, Clondalkin",Dublin 22,Dublin,D22 NW54,libertychurch.ie,Various Pentecostal,Pentecostal/Charismatic,53.350969,-6.399708,PALMERSTOWN-FONTHILL
+Life Community Church,"Unit 2 Passage Cross, Dunmore Road",,Waterford,Waterford,,,Various Pentecostal,Pentecostal/Charismatic,52.23311,-7.04669,WATERFORD CITY EAST
+LifeHouse Church,"Unit 2, Passage Cross",Dunmore Road,Waterford City,Waterford,,https://mylifehouse.wixsite.com/lifehousewaterford,Various Pentecostal,Pentecostal/Charismatic,52.313513,-7.173458,PILTOWN
+Light for the People,Unit 6 Office 1-2 Brogans Lane,,Roscommon,Roscommon,F42 HK13,https://www.lightforthepeople.org/,Various Pentecostal,Pentecostal/Charismatic,53.629363,-8.188835,ROSCOMMON
+Lighthouse Assembly International Church,Unit 5,"Bóthar Na Mine, Ballybane Industrial Estate",Galway,Galway,H91 RFC1,lighthouseassembly.neocities.org,Various Pentecostal,Pentecostal/Charismatic,53.292123,-9.015201,GALWAY CITY EAST
+Living Hope Christian Fellowship,Castlebar Tennis Club Lannagh Road Knockacroghery,,Castlebar,Mayo,F23 TK70,,Various Pentecostal,Pentecostal/Charismatic,53.85131,-9.31034,CASTLEBAR
+Living Rock Church,,,,,,,Various Pentecostal,Pentecostal/Charismatic,52.068193,-9.515397,KILLARNEY
+Louth Community Church Jesus House,Level 2 Barbican Centre William Street,,Drogheda,Louth,,,Various Pentecostal,Pentecostal/Charismatic,53.7149,-6.3488,DROGHEDA URBAN
+Maranatha Christian Community Church,1b Poleberry Link Road,,Waterford,Waterford,X91 WKR8,https://maranatha.ie/,Various Pentecostal,Pentecostal/Charismatic,52.254853,-7.112703,WATERFORD CITY SOUTH
+Ministry of Jesus,7 Le Fanu Road,"Ballyfermot Road, Cherry Orchard",Dublin 10,Dublin,D10 NH74,ministryofjesus.ie,Various Pentecostal,Pentecostal/Charismatic,53.342156,-6.356633,BALLYFERMOT-DRIMNAGH
+"Mountain of Fire & Miracles Ministries, Waterford, Ireland (MFM)",Unit 52 Westside Business Park,Old Kilmeaden Road,Waterford,Waterford,X91 XE27,https://www.facebook.com/MfmWaterford/,Various Pentecostal,Pentecostal/Charismatic,52.249314,-7.162947,WATERFORD CITY SOUTH
+New Apostolic Church Dublin,Quaker House Stocking Lane Rathfarnham,,Dublin,Dublin,D16 V3F8,,Various Pentecostal,Pentecostal/Charismatic,53.2726162,-6.3060898,FIRHOUSE-BOHERNABREENA
+New Covenant Church Blanchardstown,Unit A1 BASE Enterprise Centre Damastown Road Mulhuddart,,Dublin,Dublin,,,Various Pentecostal,Pentecostal/Charismatic,53.4080100,-6.400643,BLANCHARDSTOWN-MULHUDDART
+New Covenant Church Tralee,5 Maine Street,,Tralee,Kerry,,,Various Pentecostal,Pentecostal/Charismatic,52.2711913,-9.7071113,TRALEE
+New Hope Christian Centre,36 Hebron Park,,Kilkenny,Kilkenny,,https://www.facebook.com/newhopekilkenny/,Various Pentecostal,Pentecostal/Charismatic,52.652597,-7.232302,KILKENNY
+New Life Christian Church,Smithstown Industrial Estate,,Shannon,Clare,V14 ER83,,Various Pentecostal,Pentecostal/Charismatic,52.7166770,-8.8730233,SHANNON
+New Life Church,Ardrostig House,Bishopstown,Cork,Cork,,https://www.facebook.com/NewLifeChurchCork/,Various Pentecostal,Pentecostal/Charismatic,51.872838,-8.521788,CORK CITY SOUTH WEST
+New Life International Ministries,"Unit 31, Cherry Orchard Industrial Estate",Ballyfermot Road,Dublin 10,Dublin,,newlifedublin.com,Various Pentecostal,Pentecostal/Charismatic,53.346165,-6.373474,PALMERSTOWN-FONTHILL
+New Life United Pentecostal Church Dundalk,Dundalk Lawn Tennis & Badminton Club The Ramparts,,Dundalk,Louth,,,Various Pentecostal,Pentecostal/Charismatic,54.0010,-6.402,DUNDALK SOUTH
+Peoples Church Cavan,18 River Street,Townparks,Cavan,Cavan,H12 RR28,https://www.instagram.com/bechurch.cavan/,Various Pentecostal,Pentecostal/Charismatic,53.988897,-7.361735,CAVAN-BELTURBET
+Peoples Church Dublin City,67A Pearse Street,,Dublin 2,Dublin,,https://www.peopleschurchdublin.com/,Various Pentecostal,Pentecostal/Charismatic,53.343636,-6.245977,SOUTH EAST INNER CITY
+Portlaoise Life Church,"Unit A11, National Enterprise Park",,Portlaoise,Laois,R32 HA21,portlaoise.lifechurch.ie,Various Pentecostal,Pentecostal/Charismatic,53.022837,-7.314726,PORTLAOISE
+Radical Life Christian Church,"Unit 6, St Patrick's Woollen Mills",Douglas,Cork,Cork,T12 A361,https://radicallife.ie/,Various Pentecostal,Pentecostal/Charismatic,51.876138,-8.440656,CORK CITY SOUTH EAST
+Rehoboth Christian Church,Pipe Band Hall,,Tralee,Kerry,V92 DR13,,Various Pentecostal,Pentecostal/Charismatic,52.2711120,-9.7101171,TRALEE
+River Church Limerick,Leamy House Prior's-Land,,Limerick,Limerick,V94 CH9E,,Various Pentecostal,Pentecostal/Charismatic,52.6589221,-8.6306466,LIMERICK CITY WEST
+Shalom Prayer Fellowship,9 Well Road Kylekiproe,,Portlaoise,Laois,R32 CRC0,,Various Pentecostal,Pentecostal/Charismatic,53.0328324,-7.2944049,PORTLAOISE
+Sligo City Church,"Mercy College, Chapel Hill, Abbeyquarter South",,Sligo,Sligo,F91 CF80,,Various Pentecostal,Pentecostal/Charismatic,54.2669594,-8.468642,SLIGO-STRANDHILL
+Solid Rock Centre Dublin,"6B Goldenbridge Industrial Estate, Tyrconnell Road, Inchicore",,Dublin 8,Dublin,D08 F880,https://solidrockdublin.org,Various Pentecostal,Pentecostal/Charismatic,53.335647,-6.323949,SOUTH WEST INNER CITY
+Solid Rock Church of God - Drogheda,"Whitethorn House, Ballymakenny Road",,Drogheda,Louth,,,Various Pentecostal,Pentecostal/Charismatic,53.728832,-6.343639,DROGHEDA RURAL
+Solid Rock Dublin,"6B Goldenbridge Industrial Estate, Inchicore",,Dublin 8,Dublin,D08 F880,,Various Pentecostal,Pentecostal/Charismatic,53.33609,-6.32385,SOUTH WEST INNER CITY
+Solid Rock Portlaoise,Midlands Park Hotel Jessop Street Maryborough,,Portlaoise,Laois,R32 KV20,,Various Pentecostal,Pentecostal/Charismatic,53.0350261,-7.3024575,PORTLAOISE
+"The Christian Community, Movement for Religious Renewal","The Christian Community House, Drewsborough",,Tuamgraney,Clare,V94 D5TK,https://www.thechristiancommunity.co.uk/topic/congregations/ireland/clare/,Various Pentecostal,Pentecostal/Charismatic,52.900501,-8.539924,KILLALOE
+The Church of Pentecost Ireland,26-29 Summerplace Mountjoy Square,,Dublin 1,Dublin,D01 TR63,,Various Pentecostal,Pentecostal/Charismatic,53.359300,-6.2579,NORTH INNER CITY
+The Evangelical Church of Reconciliation,Unit A12 Cookstown Industrial Estate,Tallaght,Dublin 24,Dublin,,,Various Pentecostal,Pentecostal/Charismatic,53.295174,-6.378029,TALLAGHT CENTRAL
+The Potter’s House Church,14 Findlater Place (off O'Connell Street),,Dublin 1,Dublin,,https://pottershouse.ie,Various Pentecostal,Pentecostal/Charismatic,53.352406,-6.259536,NORTH INNER CITY
 The Upper Room,5 Union Quay,,Cork,Cork,T12 CF21,https://upperroomcork.com/,Various Pentecostal,Pentecostal/Charismatic,51.896904,-8.466953,CORK CITY SOUTH CENTRAL
 The Way of Christ Evangelical Ministry,"Unit 60, Briarhill Business Park",Off Airport Road,Galway,Galway,,https://thewayofchristworldevangelicalministries.com/,Various Pentecostal,Pentecostal/Charismatic,53.270743,-9.05677,GALWAY CITY CENTRAL
-Thurles Baptist Church,Graigue,,Thurles,Tipperary,E41F C62,www.thurlesbaptistchurch.ie/Contact.html,ABCI,Baptist/Independent Evangelical,52.681940,-7.80222,THURLES
-Tipperary Bible Church,"Arravale Rovers, Sean Treacy Park, Station Road",,Tipperary Town,Tipperary,E34 DK26,,Independent Evangelical,Baptist/Independent Evangelical,52.4698000,-8.1549,CASHEL-TIPPERARY
-Tipperary Christian Fellowship,"St Michael's Street Community Centre, St Michael Street",,Tipperary Town,Tipperary,E34 K156,,Independent Evangelical,Baptist/Independent Evangelical,52.4751868,-8.1592594,CASHEL-TIPPERARY
-Tralee Baptist Church,Collis Sandes House,Oakpark,Tralee,Kerry,V92P F5N,www.traleebaptistchurch.com/welcome,ABCI,Baptist/Independent Evangelical,52.270420,-9.70264,TRALEE
-Tralee Bible Fellowship,1st Floor CWS Centre Upper Rock Street Gallowsfield,,Tralee,Kerry,V92 YH5V,,Independent Evangelical,Baptist/Independent Evangelical,52.273610,-9.705515,TRALEE
-Tramore Bible Church,"Community Care Centre, Pond Road",,Tramore,Waterford,,,Independent Evangelical,Baptist/Independent Evangelical,52.1642007,-7.1500541,TRAMORE-WATERFORD CITY WEST
 "Transfiguration Christian Center, Dublin",Herberton Centre,"Raleigh Square, Crumlin",Dublin 12,Dublin,,https://www.facebook.com/TransfigurationChristianCenter/,Various Pentecostal,Pentecostal/Charismatic,53.326156,-6.30754,KIMMAGE-RATHMINES
 TREM House of Glory Sligo,"Unit 9, Cartron Village",,Sligo,Sligo,F91 TW64,,Various Pentecostal,Pentecostal/Charismatic,54,,SLIGO-STRANDHILL
 TREM House of Mercy,Unit 45 Briarhill Business Park,,Briarhill,Galway,H91 C971,,Various Pentecostal,Pentecostal/Charismatic,53.2910,-8.989,GALWAY CITY EAST
-Trenta Presbyterian Church,Carnatrentagh,,Letterkenny,Donegal,,https://www.trentaghpci.org,PCI,Presbyterian/Reformed,55.02054,-7.79125,MILFORD
-Trinity Chapel,Gort,,Gort,Galway,H91 V2P0,,RCCG,Pentecostal/Charismatic,53.0654,-8.8124,GORT-KINVARA
-Trinity Chapel,Kells,,Kells,Meath,A82 FP21,,RCCG,Pentecostal/Charismatic,53.7264,-6.8784,KELLS
-Trinity Church Network,The Exchange,50 Gardiner Street Lower,Dublin 1,Dublin,D01 VC03,https://www.trinity.ie,Independent Evangelical,Baptist/Independent Evangelical,53.350019,-6.254138,NORTH INNER CITY
-Trinity Presbyterian Church,Virginia Road,,Bailieborough,Cavan,,,PCI,Presbyterian/Reformed,53.913194,-6.971565,BAILIEBOROUGH-COOTEHILL
-Trinity Presbyterian Church,Little William Street Summerhill North,,Cork,Cork,T23 XR63,,PCI,Presbyterian/Reformed,51.9017100,-8.465296,CORK CITY NORTH EAST
 Triumph Church,The Westgrove Hotel Clane,,Clane,Kildare,W91 YWE0,,Various Pentecostal,Pentecostal/Charismatic,53.2897767,-6.6818225,CLANE
-Triumphant House,"Skelly Oil, Killyfinla",,Ballyjamesduff,Cavan,A82 V2V0,,RCCG,Pentecostal/Charismatic,53.8654,-7.1352,BALLYJAMESDUFF
-Tuam Evangelical Church,c/o Irish Wheelchair Association Dublin Road,,Tuam,Galway,H54 TR77,,Independent Evangelical,Baptist/Independent Evangelical,53.5217,-8.8475,TUAM
-Tullamore Bible Church,21H Cluster 2,Axis Business Park,Tullamore,Offaly,R35 K762,www.tullamorebiblechurch.org,ABCI,Baptist/Independent Evangelical,53.275526,-7.493385,TULLAMORE
-Tullamore Methodist Church,Store Street,,Tullamore,Offaly,R35 RR62,,Methodist,Methodist/Wesleyan,53.2731,-7.4952,TULLAMORE
-Tullamore Presbyterian Church,45 High Street,,Tullamore,Offaly,,https://www.tullamorepresbyterian.org,PCI,Presbyterian/Reformed,53.27209,-7.49459,TULLAMORE
 UCKG HelpCentre - Universal Church,157 Phibsborough Road,Phibsborough,Dublin 7,Dublin,D07 YN73,uckg.ie,Various Pentecostal,Pentecostal/Charismatic,53.361158,-6.272064,CABRA-GLASNEVIN
-United Church Castlebar,"T.F. Royal Hotel & Theatre, Old Westport Road",,Castlebar,Mayo,,,Independent Evangelical,Baptist/Independent Evangelical,53.85328602,-9.30352091,CASTLEBAR
-United Presbyterian Church,Queen Street,,Galway,Galway,,https://www.unitedchurchgalway.ie,PCI,Presbyterian/Reformed,53.27285,-9.04811,GALWAY CITY CENTRAL
-Urban Junction,Blackrock,,Dublin,Dublin,A94 K6C3,,Methodist,Methodist/Wesleyan,53.3002,-6.1761,BLACKROCK
-Victory House Athlone,"Unit 9 Centre Court, Blyry Business Park",,Athlone,Westmeath,N37 X9X6,,RCCG,Pentecostal/Charismatic,53.4313852,-7.8942976,ATHLONE
 Victory of God Fellowship,Unit 14A Greenhills Industrial Village,,Drogheda,Louth,A92 Y798,,Various Pentecostal,Pentecostal/Charismatic,53.719007,-6.329618,DROGHEDA URBAN
 Victory Outreach Dublin Church,"Unit 11 & 12, Westlink Industrial Estate, Ballyfermot",,Dublin 10,Dublin,,,Various Pentecostal,Pentecostal/Charismatic,53.3372397,-6.3433277,BALLYFERMOT-DRIMNAGH
-Waterford Baptist Church,Catherine Street,,Waterford,Waterford,X91N N56,www.waterfordbaptist.ie,ABCI,Baptist/Independent Evangelical,52.258330,-7.11194,WATERFORD CITY SOUTH
-Waterford Christian Assembly,Tycor Business Centre,Corner of Morrissons Avenue and Tycor Avenue,Waterford,Waterford,X91 V8PX,https://waterford-assembly.com,Independent Evangelical,Baptist/Independent Evangelical,52.256999,-7.129553,WATERFORD CITY SOUTH
-Waterford Methodist Church,Greyfriars,,Waterford,Waterford,X91 K160,,Methodist,Methodist/Wesleyan,52.2611,-7.1082,TRAMORE-WATERFORD CITY WEST
 West Cork Community Church,McSwiney Quay,,Bandon,Cork,,,Various Pentecostal,Pentecostal/Charismatic,51.7454725,-8.7379,BANDON-KINSALE
-Westside Baptist Church,Old Chapel Village,,Bandon,Cork,P72 CK23,www.westsidebaptist.ie,ABCI,Baptist/Independent Evangelical,51.748975,-8.735469,BANDON-KINSALE
-Wexford Bible Church,Gaelscoil Charman,Whiterock Hill,Wexford,Wexford,Y35 XW99,wexfordbiblechurch.ie,Independent Evangelical,Baptist/Independent Evangelical,52.327924,-6.473087,WEXFORD
-Wexford Christian Community Church,"Unit 31, Westpoint Business Park, Clonard",,Wexford,Wexford,Y35 PR94,http://www.wxccc.org/,Christian Churches Ireland,Pentecostal/Charismatic,52.3843486,-6.4498605,WEXFORD
-Wexford Church Development (PCI),Anne Street,,Wexford,Wexford,,,PCI,Presbyterian/Reformed,52.33845,-6.46092,WEXFORD
-Wexford Methodist Church,Ardcavan Lane,,Wexford,Wexford,Y35 CY82,,Methodist,Methodist/Wesleyan,52.3481,-6.4672,WEXFORD
-Wicklow Christian Assembly,6 Wentworth Place,,Wicklow Town,Wicklow,,,Brethren,Brethren/Gospel Hall,52.9818550,-6.0466405,WICKLOW
-Wicklow Methodist Church,Convent Road,,Wicklow,Wicklow,A67 WK11,,Methodist,Methodist/Wesleyan,52.9781,-6.0442,WICKLOW
 Winner's House Christian Centre,Unit 4C Naas Road Industrial Park,Old Naas Road,Dublin 12,Dublin,D12 DE74,winnerschapelireland.org,Various Pentecostal,Pentecostal/Charismatic,53.464454,-6.217983,SWORDS
 Word International Ministries Ireland,Unit G-5 Chapelizod Industrial Park,,Dublin,Dublin,,,Various Pentecostal,Pentecostal/Charismatic,53.34719,-6.34275,BALLYFERMOT-DRIMNAGH
 Word of Life Church,"Unit 2, Unit 6I Gurtnafleur Business Park",,Clonmel,Tipperary,,wordoflifechurchclonmel.com,Various Pentecostal,Pentecostal/Charismatic,52.362019,-7.672344,CLONMEL
-Word of Life Parish,Ballyhaunis,,Ballyhaunis,Mayo,F35 K074,,RCCG,Pentecostal/Charismatic,53.7624,-8.7612,CLAREMORRIS
 Word Of Victory Christian Fellowship & Bible School,,,,,,,Various Pentecostal,Pentecostal/Charismatic,52.07211,-9.451591,KILLARNEY
 World Outreach Christian Centre,A3 Corcanree Business Park,Dock Road,Limerick,Limerick,V94 EDK0,https://www.wocc.ie/,Various Pentecostal,Pentecostal/Charismatic,52.653242,-8.657049,LIMERICK CITY WEST
 Worship and Word Gospel Centre,Studio Wolfe C5 Donnybrook Commercial Centre Douglas,,Cork,Cork,T12 R25F,,Various Pentecostal,Pentecostal/Charismatic,51.8688471,-8.4406887,CORK CITY SOUTH EAST
-Youghal Baptist Church,Brú Na Sí,Blackwater Heights,Youghal,Cork,P36H 265,youghalbaptist.ie/contact/,ABCI,Baptist/Independent Evangelical,51.954270,-7.847171,MIDLETON
-Youghal Methodist,Friar Street,,Youghal,Cork,P36 W271,,Methodist,Methodist/Wesleyan,51.9442,-7.8481,MIDLETON
 Zion Family Christian Church,The Core,Church Street,Roscommon,Roscommon,F42 DK19,https://zfcc.org/,Various Pentecostal,Pentecostal/Charismatic,53.63064,-8.189793,ROSCOMMON
