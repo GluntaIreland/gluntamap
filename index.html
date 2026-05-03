@@ -8,84 +8,89 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
   <style>
-    :root {
-      --glunta-green: #064e3b;
-      --header-height: 72px;
-      --panel-width: 360px;
-    }
-
     html, body {
       margin: 0;
       padding: 0;
       height: 100%;
-      overflow: hidden;
       font-family: Arial, sans-serif;
-      background: #f7f5ef;
+      overflow: hidden;
     }
 
-    /* ================= HEADER ================= */
+    :root {
+      --glunta-green: #064e3b;
+      --header-height: 76px;
+      --right-panel-width: 390px;
+    }
 
-    #header {
+    #top-banner {
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       height: var(--header-height);
-      background: rgba(255,255,255,0.96);
-      backdrop-filter: blur(6px);
+      background: rgba(255, 255, 255, 0.96);
+      z-index: 1300;
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      align-items: center;
-      padding: 0 20px;
-      z-index: 1200;
-      border-bottom: 1px solid #ddd;
+      padding: 0 26px;
+      box-sizing: border-box;
+      border-bottom: 1px solid rgba(0,0,0,0.12);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.12);
     }
 
-    .header-left {
+    .banner-left {
       display: flex;
-      flex-direction: column;
+      align-items: baseline;
+      gap: 18px;
     }
 
-    .header-title {
-      font-size: 20px;
-      font-weight: bold;
+    .banner-title {
+      font-size: 24px;
+      font-weight: 800;
+      color: #073b2a;
+      white-space: nowrap;
+    }
+
+    .banner-subtitle {
+      font-size: 13px;
+      color: #374151;
+      white-space: nowrap;
+    }
+
+    .banner-right {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .glunta-logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
       color: var(--glunta-green);
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      font-size: 24px;
     }
 
-    .header-subtitle {
-      font-size: 12px;
-      color: #555;
+    .glunta-logo-wrap img {
+      width: 38px;
+      height: 38px;
+      object-fit: contain;
     }
 
-    .header-right {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .glunta-brand {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-weight: bold;
-      color: var(--glunta-green);
-    }
-
-    .glunta-brand img {
-      height: 32px;
-    }
-
-    .about-btn {
+    .about-button {
       background: var(--glunta-green);
       color: white;
       text-decoration: none;
-      padding: 10px 14px;
-      border-radius: 5px;
-      font-size: 14px;
-      font-weight: bold;
+      font-weight: 800;
+      font-size: 15px;
+      padding: 14px 24px;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(6,78,59,0.25);
+      white-space: nowrap;
     }
-
-    /* ================= MAP ================= */
 
     #map {
       position: absolute;
@@ -93,166 +98,481 @@
       left: 0;
       right: 0;
       bottom: 0;
+      width: 100%;
+      height: calc(100vh - var(--header-height));
+      z-index: 1;
     }
-
-    /* ================= LEFT PROFILE ================= */
 
     #profile-panel {
       position: absolute;
-      top: calc(var(--header-height) + 12px);
-      left: 12px;
-      width: 330px;
-      max-height: calc(100vh - var(--header-height) - 24px);
+      top: calc(var(--header-height) + 14px);
+      left: 14px;
+      z-index: 1000;
+      width: 350px;
+      max-height: calc(100vh - var(--header-height) - 32px);
       overflow-y: auto;
       background: white;
       padding: 14px;
       border-radius: 10px;
-      box-shadow: 0 4px 18px rgba(0,0,0,0.25);
-      z-index: 1000;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.25);
     }
 
-    /* ================= RIGHT PANEL ================= */
+    #profile-panel h2 {
+      margin: 0 0 10px 0;
+      font-size: 20px;
+      line-height: 1.2;
+    }
 
-    #right-panel {
+    #profile-panel h3 {
+      margin-top: 14px;
+      font-size: 16px;
+    }
+
+    #profile-summary {
+      background: #f2f2f2;
+      padding: 10px;
+      border-radius: 6px;
+      margin-bottom: 14px;
+      line-height: 1.4;
+    }
+
+    #profile-church-list {
+      padding-left: 20px;
+      margin-top: 8px;
+    }
+
+    #profile-church-list li {
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    #right-panel-stack {
       position: absolute;
       top: var(--header-height);
       right: 0;
-      width: var(--panel-width);
-      height: calc(100vh - var(--header-height));
-      background: rgba(255,255,255,0.97);
-      box-shadow: -4px 0 18px rgba(0,0,0,0.2);
-      padding: 20px;
+      z-index: 1200;
+      width: var(--right-panel-width);
+      max-height: calc(100vh - var(--header-height));
+      pointer-events: none;
+    }
+
+    #mobileControlsToggle {
+      display: none;
+    }
+
+    #control-panel {
+      background: rgba(255, 255, 255, 0.97);
+      padding: 28px 28px 24px;
+      box-shadow: -4px 6px 22px rgba(0,0,0,0.22);
+      pointer-events: auto;
+      max-height: calc(100vh - var(--header-height));
       overflow-y: auto;
-      z-index: 1100;
+      border-left: 1px solid rgba(0,0,0,0.10);
+      border-bottom-left-radius: 12px;
     }
 
-    #right-panel h2 {
-      margin-top: 0;
+    #control-panel h2 {
+      margin: 0 0 18px 0;
+      font-size: 24px;
     }
 
-    label {
+    #control-panel label.control-label {
       font-weight: bold;
-      font-size: 14px;
-      margin-top: 12px;
       display: block;
+      margin-top: 14px;
+      margin-bottom: 6px;
+      font-size: 15px;
     }
 
-    input, select {
+    #searchInput,
+    #boundaryLayerSelect {
       width: 100%;
-      padding: 8px;
-      margin-top: 6px;
-      border-radius: 4px;
+      box-sizing: border-box;
+      padding: 9px;
       border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 15px;
+    }
+
+    #affiliationFilterBox {
+      max-height: 180px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 8px;
+      background: white;
+      font-size: 13px;
+    }
+
+    .affiliation-option {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 7px;
+      line-height: 1.25;
+      cursor: pointer;
+    }
+
+    .affiliation-option input {
+      margin: 0;
+      flex-shrink: 0;
+    }
+
+    .affiliation-dot,
+    .denomination-dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      display: inline-block;
+      border: 1px solid rgba(0,0,0,0.25);
+      flex-shrink: 0;
+      margin-right: 6px;
+      vertical-align: middle;
+    }
+
+    #affiliationFilterHint {
+      font-size: 13px;
+      color: #666;
+      margin-top: 8px;
+      line-height: 1.3;
+    }
+
+    #gospelOpportunityLegend {
+      display: none;
+      margin-top: 10px;
+      padding: 9px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      background: #fafafa;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .legend-swatch {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      margin-right: 6px;
+      border-radius: 2px;
+      border: 1px solid rgba(0,0,0,0.2);
+      vertical-align: middle;
+    }
+
+    .urban-opportunity-marker {
+      width: 15px;
+      height: 15px;
+      background: white;
+      border: 2px solid black;
+      box-sizing: border-box;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.35);
     }
 
     .button {
       width: 100%;
-      margin-top: 10px;
-      padding: 10px;
+      margin-top: 12px;
+      padding: 11px;
       border: none;
-      border-radius: 4px;
+      border-radius: 5px;
       color: white;
-      font-weight: bold;
       cursor: pointer;
+      font-weight: bold;
+      font-size: 15px;
     }
 
-    #resetMapButton { background: #333; }
-    #clearSelectionButton { background: #888; }
+    #resetMapButton {
+      background: #333;
+    }
+
+    #clearSelectionButton {
+      background: #888;
+    }
+
+    #downloadUnreachedTownsButton {
+      display: none;
+      background: #064e3b;
+    }
+
+    #downloadUnreachedTownsButton.is-visible {
+      display: block;
+    }
 
     #church-count {
-      margin-top: 14px;
-      font-size: 14px;
+      margin-top: 16px;
+      font-size: 18px;
     }
 
-    /* Fix zoom overlapping panel */
+    .popup-denomination {
+      margin-top: 8px;
+      font-style: italic;
+    }
+
+    .profile-detail-row {
+      margin-bottom: 10px;
+      line-height: 1.35;
+    }
+
+    .profile-detail-label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 2px;
+    }
+
     .leaflet-control-zoom {
-      margin-right: calc(var(--panel-width) + 10px) !important;
+      display: flex !important;
+      flex-direction: row !important;
+      margin-bottom: 12px !important;
+      margin-right: calc(var(--right-panel-width) + 16px) !important;
     }
 
-    /* ================= MOBILE ================= */
+    .leaflet-control-zoom a {
+      width: 28px !important;
+      height: 28px !important;
+      line-height: 28px !important;
+      font-size: 18px !important;
+    }
+
+    .leaflet-control-zoom-in {
+      border-bottom: none !important;
+      border-right: 1px solid #ccc !important;
+    }
 
     @media (max-width: 900px) {
-      #right-panel {
-        width: 100%;
-        height: auto;
-        max-height: 50vh;
-        bottom: 0;
-        top: auto;
-        border-radius: 12px 12px 0 0;
+      :root {
+        --header-height: 68px;
+      }
+
+      #top-banner {
+        padding: 0 12px;
+      }
+
+      .banner-title {
+        font-size: 18px;
+      }
+
+      .banner-subtitle {
+        display: none;
+      }
+
+      .glunta-logo-wrap {
+        font-size: 18px;
+        letter-spacing: 0.08em;
+      }
+
+      .glunta-logo-wrap img {
+        width: 30px;
+        height: 30px;
+      }
+
+      .about-button {
+        padding: 10px 12px;
+        font-size: 13px;
       }
 
       #profile-panel {
         display: none;
       }
 
-      .header-subtitle {
+      #right-panel-stack {
+        top: calc(var(--header-height) + 8px);
+        right: 8px;
+        left: 8px;
+        width: auto;
+        max-height: 58vh;
+      }
+
+      #mobileControlsToggle {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        border: none;
+        background: #ffffff;
+        color: #111111;
+        padding: 12px 14px;
+        border-radius: 12px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+        font-size: 16px;
+        font-weight: bold;
+        pointer-events: auto;
+        cursor: pointer;
+      }
+
+      #mobileControlsToggle span:last-child {
+        font-size: 18px;
+        line-height: 1;
+      }
+
+      #control-panel {
+        display: none;
+        margin-top: 8px;
+        padding: 14px;
+        border-radius: 12px;
+        max-height: 50vh;
+        overflow-y: auto;
+        border-left: none;
+      }
+
+      body.mobile-controls-open #control-panel {
+        display: block;
+      }
+
+      #control-panel h2 {
+        display: none;
+      }
+
+      #control-panel label.control-label {
+        font-size: 13px;
+        margin-top: 8px;
+        margin-bottom: 4px;
+      }
+
+      #searchInput,
+      #boundaryLayerSelect {
+        padding: 8px;
+        font-size: 14px;
+      }
+
+      #affiliationFilterBox {
+        max-height: 115px;
+        font-size: 12px;
+        padding: 7px;
+      }
+
+      #affiliationFilterHint {
+        font-size: 11px;
+      }
+
+      #gospelOpportunityLegend {
+        font-size: 12px;
+        padding: 8px;
+        line-height: 1.45;
+      }
+
+      .button {
+        padding: 8px;
+        font-size: 13px;
+        margin-top: 8px;
+      }
+
+      #church-count {
+        font-size: 13px;
+        margin-top: 9px;
+      }
+
+      .leaflet-control-zoom {
+        transform: scale(0.85);
+        transform-origin: bottom right;
+        margin-bottom: 14px !important;
+        margin-right: 10px !important;
+      }
+
+      .leaflet-control-attribution {
         display: none;
       }
     }
 
+    @media (max-width: 560px) {
+      .glunta-logo-wrap {
+        display: none;
+      }
+
+      .about-button {
+        padding: 10px 12px;
+      }
+    }
   </style>
 </head>
 
 <body>
-
-  <!-- HEADER -->
-  <div id="header">
-    <div class="header-left">
-      <div class="header-title">Glúnta Research Map</div>
-      <div class="header-subtitle">Exploring Gospel Presence Across Ireland</div>
+  <header id="top-banner">
+    <div class="banner-left">
+      <div class="banner-title">Glúnta Research Map</div>
+      <div class="banner-subtitle">Exploring Gospel Presence Across Ireland</div>
     </div>
 
-    <div class="header-right">
-      <div class="glunta-brand">
-        <img src="Glunta (small logo).png">
-        GLÚNTA
+    <div class="banner-right">
+      <div class="glunta-logo-wrap">
+        <img src="Glunta (small logo).png" alt="Glúnta logo" />
+        <span>GLÚNTA</span>
       </div>
 
-      <a href="https://glunta.com" target="_blank" class="about-btn">
-        About Glúnta →
+      <a class="about-button" href="https://glunta.com" target="_blank" rel="noopener">
+        About Glúnta ↗
       </a>
     </div>
-  </div>
+  </header>
 
-  <!-- MAP -->
   <div id="map"></div>
 
-  <!-- PROFILE PANEL -->
   <div id="profile-panel">
     <h2 id="profile-title">County Profile</h2>
-    <div id="profile-summary">Click a boundary to view details.</div>
-    <h3>Churches</h3>
+    <div id="profile-summary">Click a county to view population and church data.</div>
+    <h3 id="profile-list-heading">Churches in this county</h3>
     <ol id="profile-church-list"></ol>
   </div>
 
-  <!-- RIGHT PANEL -->
-  <div id="right-panel">
-    <h2>Filters</h2>
+  <div id="right-panel-stack">
+    <button id="mobileControlsToggle" type="button" aria-expanded="false" aria-controls="control-panel">
+      <span>Filters &amp; Layers</span>
+      <span id="mobileControlsToggleIcon">＋</span>
+    </button>
 
-    <label>Boundary layer</label>
-    <select id="boundaryLayerSelect">
-      <option value="county">Counties</option>
-      <option value="lea">LEAs</option>
-      <option value="urban">Urban Zones</option>
-      <option value="gospel">Gospel Opportunities</option>
-    </select>
+    <div id="control-panel">
+      <h2>Filters</h2>
 
-    <label>Search</label>
-    <input id="searchInput" placeholder="Search church, town, county..." />
+      <label class="control-label" for="boundaryLayerSelect">Boundary layer</label>
+      <select id="boundaryLayerSelect">
+        <option value="county">Counties</option>
+        <option value="lea">LEAs</option>
+        <option value="urban">Urban Zones</option>
+        <option value="gospel">Gospel Opportunities</option>
+      </select>
 
-    <label>Denomination or Affiliation</label>
-    <div id="affiliationFilterBox">Loading...</div>
+      <div id="gospelOpportunityLegend">
+        <strong>Gospel Opportunities</strong><br>
+        <div><span class="legend-swatch" style="background:#8b0000;"></span>Urgent</div>
+        <div><span class="legend-swatch" style="background:#e74c3c;"></span>High</div>
+        <div><span class="legend-swatch" style="background:#f39c12;"></span>Significant</div>
+        <div><span class="legend-swatch" style="background:#9ccc65;"></span>Lower</div>
+        <div><span class="legend-swatch" style="background:#2e8b57;"></span>Established Presence</div>
+        <div style="margin-top:8px;">
+          <span class="urban-opportunity-marker" style="display:inline-block;vertical-align:middle;margin-right:6px;"></span>
+          Unreached Towns
+        </div>
+      </div>
 
-    <button id="resetMapButton" class="button">Reset map</button>
-    <button id="clearSelectionButton" class="button">Clear boundary selection</button>
+      <label class="control-label" for="searchInput">Search</label>
+      <input type="text" id="searchInput" placeholder="Search church, town, county..." />
 
-    <div id="church-count">Loading...</div>
+      <label class="control-label">Denomination or Affiliation (Please Select)</label>
+      <div id="affiliationFilterBox">Loading affiliations...</div>
+      <div id="affiliationFilterHint">Tick one or more. Leave all unticked to show all.</div>
+
+      <button id="resetMapButton" class="button">Reset map</button>
+      <button id="clearSelectionButton" class="button">Clear boundary selection</button>
+      <button id="downloadUnreachedTownsButton" class="button" type="button">Download unreached towns CSV</button>
+
+      <div id="church-count">Loading churches...</div>
+    </div>
   </div>
 
-  <!-- SCRIPTS -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const toggleButton = document.getElementById("mobileControlsToggle");
+      const toggleIcon = document.getElementById("mobileControlsToggleIcon");
+
+      if (!toggleButton) return;
+
+      toggleButton.addEventListener("click", function () {
+        const isOpen = document.body.classList.toggle("mobile-controls-open");
+        toggleButton.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        toggleIcon.textContent = isOpen ? "−" : "＋";
+      });
+    });
+  </script>
+
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="https://unpkg.com/papaparse@5.4.1/papaparse.min.js"></script>
-  <script src="script.js?v=0.9.0"></script>
-
+  <script src="script.js?v=0.8.16"></script>
 </body>
 </html>
