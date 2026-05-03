@@ -1,6 +1,6 @@
 /*
   Glúnta Research Church Map
-  Version: v0.8.14-cso-lea-name-fix
+  Version: v0.8.15-cso-lea-name-fix
 
   Changes:
   - Fixes Gospel Opportunities and LEA names by using CSO_LEA from lea-boundaries.geojson.
@@ -8,7 +8,7 @@
   - Keeps the unreached towns CSV download button.
 */
 
-const CACHE_VERSION = "0.8.14";
+const CACHE_VERSION = "0.8.15";
 
 // --------------------------------------------------
 // MAP SETUP
