@@ -2,69 +2,257 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <title>Glúnta Research Map</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Glúnta Research Map</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9D83SGW102"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+  <style>
+    :root {
+      --glunta-green: #064e3b;
+      --header-height: 72px;
+      --panel-width: 360px;
+    }
 
-    gtag('config', 'G-XXXXXXXXXX');
-  </script>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      background: #f7f5ef;
+    }
 
-  <!-- Leaflet CSS -->
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-  />
+    /* ================= HEADER ================= */
 
-  <!-- Your stylesheet -->
-  <link rel="stylesheet" href="style.css" />
+    #header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--header-height);
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(6px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      z-index: 1200;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .header-left {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header-title {
+      font-size: 20px;
+      font-weight: bold;
+      color: var(--glunta-green);
+    }
+
+    .header-subtitle {
+      font-size: 12px;
+      color: #555;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .glunta-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: bold;
+      color: var(--glunta-green);
+    }
+
+    .glunta-brand img {
+      height: 32px;
+    }
+
+    .about-btn {
+      background: var(--glunta-green);
+      color: white;
+      text-decoration: none;
+      padding: 10px 14px;
+      border-radius: 5px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    /* ================= MAP ================= */
+
+    #map {
+      position: absolute;
+      top: var(--header-height);
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+
+    /* ================= LEFT PROFILE ================= */
+
+    #profile-panel {
+      position: absolute;
+      top: calc(var(--header-height) + 12px);
+      left: 12px;
+      width: 330px;
+      max-height: calc(100vh - var(--header-height) - 24px);
+      overflow-y: auto;
+      background: white;
+      padding: 14px;
+      border-radius: 10px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.25);
+      z-index: 1000;
+    }
+
+    /* ================= RIGHT PANEL ================= */
+
+    #right-panel {
+      position: absolute;
+      top: var(--header-height);
+      right: 0;
+      width: var(--panel-width);
+      height: calc(100vh - var(--header-height));
+      background: rgba(255,255,255,0.97);
+      box-shadow: -4px 0 18px rgba(0,0,0,0.2);
+      padding: 20px;
+      overflow-y: auto;
+      z-index: 1100;
+    }
+
+    #right-panel h2 {
+      margin-top: 0;
+    }
+
+    label {
+      font-weight: bold;
+      font-size: 14px;
+      margin-top: 12px;
+      display: block;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 6px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    .button {
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    #resetMapButton { background: #333; }
+    #clearSelectionButton { background: #888; }
+
+    #church-count {
+      margin-top: 14px;
+      font-size: 14px;
+    }
+
+    /* Fix zoom overlapping panel */
+    .leaflet-control-zoom {
+      margin-right: calc(var(--panel-width) + 10px) !important;
+    }
+
+    /* ================= MOBILE ================= */
+
+    @media (max-width: 900px) {
+      #right-panel {
+        width: 100%;
+        height: auto;
+        max-height: 50vh;
+        bottom: 0;
+        top: auto;
+        border-radius: 12px 12px 0 0;
+      }
+
+      #profile-panel {
+        display: none;
+      }
+
+      .header-subtitle {
+        display: none;
+      }
+    }
+
+  </style>
 </head>
 
 <body>
-  <div id="app">
-    <aside id="sidebar">
-      <h1>Glúnta Research Map</h1>
 
-      <p class="intro">
-        A developing missiological map of Protestant and evangelical church presence in the Republic of Ireland.
-      </p>
+  <!-- HEADER -->
+  <div id="header">
+    <div class="header-left">
+      <div class="header-title">Glúnta Research Map</div>
+      <div class="header-subtitle">Exploring Gospel Presence Across Ireland</div>
+    </div>
 
-      <div id="controls">
-        <input
-          type="text"
-          id="searchBox"
-          placeholder="Search churches or places..."
-        />
-
-        <div id="filters"></div>
-
-        <button id="resetMapButton" type="button">
-          Reset Map
-        </button>
+    <div class="header-right">
+      <div class="glunta-brand">
+        <img src="Glunta (small logo).png">
+        GLÚNTA
       </div>
 
-      <div id="selectedInfo">
-        <h2>Map Information</h2>
-        <p>Select a church, boundary, or gospel opportunity to see more details.</p>
-      </div>
-    </aside>
-
-    <main id="map"></main>
+      <a href="https://glunta.com" target="_blank" class="about-btn">
+        About Glúnta →
+      </a>
+    </div>
   </div>
 
-  <!-- PapaParse for CSV loading -->
-  <script src="https://unpkg.com/papaparse@5.4.1/papaparse.min.js"></script>
+  <!-- MAP -->
+  <div id="map"></div>
 
-  <!-- Leaflet JS -->
+  <!-- PROFILE PANEL -->
+  <div id="profile-panel">
+    <h2 id="profile-title">County Profile</h2>
+    <div id="profile-summary">Click a boundary to view details.</div>
+    <h3>Churches</h3>
+    <ol id="profile-church-list"></ol>
+  </div>
+
+  <!-- RIGHT PANEL -->
+  <div id="right-panel">
+    <h2>Filters</h2>
+
+    <label>Boundary layer</label>
+    <select id="boundaryLayerSelect">
+      <option value="county">Counties</option>
+      <option value="lea">LEAs</option>
+      <option value="urban">Urban Zones</option>
+      <option value="gospel">Gospel Opportunities</option>
+    </select>
+
+    <label>Search</label>
+    <input id="searchInput" placeholder="Search church, town, county..." />
+
+    <label>Denomination or Affiliation</label>
+    <div id="affiliationFilterBox">Loading...</div>
+
+    <button id="resetMapButton" class="button">Reset map</button>
+    <button id="clearSelectionButton" class="button">Clear boundary selection</button>
+
+    <div id="church-count">Loading...</div>
+  </div>
+
+  <!-- SCRIPTS -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/papaparse@5.4.1/papaparse.min.js"></script>
+  <script src="script.js?v=0.9.0"></script>
 
-  <!-- Your map script -->
-  <script src="script.js"></script>
 </body>
 </html>
