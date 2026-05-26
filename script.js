@@ -1,11 +1,13 @@
 /*
   Glúnta Research Church Map
-  Version: v0.8.17-less-aggressive-zoom
+  Version: v0.8.17-urban-zone-county-key-fix
 
   Changes:
   - Church marker click zoom is now less aggressive: zoom level 16 instead of 18.
   - Church list click in the profile panel also zooms to level 16.
   - Keeps Gospel Opportunities, LEA name fixes, and unreached towns CSV download.
+  - Fixes urban zone population lookups by using UrbanZone + County where available,
+    preventing duplicate place names such as Ballina from overwriting each other.
 */
 
 const CACHE_VERSION = "0.8.17";
@@ -53,7 +55,10 @@ let urbanGeoJsonData = null;
 
 let countyData = {};
 let leaData = {};
-let urbanData = {};
+let urbanData = {
+  byName: {},
+  byCountyKey: {}
+};
 
 let colourMode = "tradition";
 
@@ -214,6 +219,40 @@ function normaliseName(value) {
     .replace(/\s+/g, " ")
     .trim()
     .toUpperCase();
+}
+
+function makeNameCountyKey(name, county) {
+  return `${normaliseName(name)}|${normaliseName(county)}`;
+}
+
+function getCountyValueFromObject(object) {
+  if (!object) return "";
+
+  return clean(
+    getValueByPossibleKeys(object, [
+      "County",
+      "COUNTY",
+      "county",
+      "COUNTY_NAME",
+      "CountyName",
+      "CNTY",
+      "ADMIN_COUNTY",
+      "Local Authority",
+      "LOCAL_AUTHORITY"
+    ])
+  );
+}
+
+function getCountyFromFeature(feature) {
+  const props = feature && feature.properties ? feature.properties : {};
+  return getCountyValueFromObject(props);
+}
+
+function getFeatureFromLayerOrFeature(layerOrFeature) {
+  if (!layerOrFeature) return null;
+  if (layerOrFeature.type === "Feature") return layerOrFeature;
+  if (layerOrFeature.feature) return layerOrFeature.feature;
+  return null;
 }
 
 function parsePopulationNumber(value) {
@@ -579,18 +618,14 @@ function getBoundaryFeatureName(feature, boundaryType) {
   );
 }
 
-function getUrbanCounty(urbanName, feature) {
-  const urbanRow = findRowByNormalisedName(urbanData, urbanName);
-  const props = feature && feature.properties ? feature.properties : {};
+function getUrbanCounty(urbanName, featureOrLayer) {
+  const feature = getFeatureFromLayerOrFeature(featureOrLayer);
+  const featureCounty = feature ? getCountyFromFeature(feature) : "";
+  const urbanRow = findUrbanRow(urbanName, featureCounty);
 
   return clean(
-    urbanRow.County ||
-    urbanRow.COUNTY ||
-    urbanRow.county ||
-    props.County ||
-    props.COUNTY ||
-    props.COUNTY_NAME ||
-    props.CountyName ||
+    getCountyValueFromObject(urbanRow) ||
+    featureCounty ||
     ""
   );
 }
@@ -678,6 +713,8 @@ function churchIsInsideBoundaryLayer(church, leafletLayer) {
 // --------------------------------------------------
 
 function getPopulationFromRow(row) {
+  if (!row) return "";
+
   return (
     row.Population ||
     row.population ||
@@ -702,6 +739,54 @@ function findRowByNormalisedName(dataObject, boundaryName) {
   });
 
   return matchingKey ? dataObject[matchingKey] : {};
+}
+
+function getUrbanNameFromRow(row) {
+  return clean(
+    row.UrbanZone ||
+    row["Urban Zone"] ||
+    row.URBAN_AREA_NAME ||
+    row.URBAN_NAME ||
+    row.SETTLEMENT ||
+    row.SETTLEMENT_NAME ||
+    row.TOWN ||
+    row.Town ||
+    row.Name ||
+    row.NAME
+  );
+}
+
+function findUrbanRow(urbanName, countyName) {
+  const normalisedUrbanName = normaliseName(urbanName);
+  const normalisedCountyName = normaliseName(countyName);
+
+  if (normalisedUrbanName && normalisedCountyName) {
+    const directCountyKey = makeNameCountyKey(urbanName, countyName);
+    if (urbanData.byCountyKey[directCountyKey]) {
+      return urbanData.byCountyKey[directCountyKey];
+    }
+  }
+
+  const rowsWithSameName = urbanData.byName[normalisedUrbanName] || [];
+
+  if (rowsWithSameName.length === 0) return {};
+
+  if (normalisedCountyName) {
+    const exactCountyMatch = rowsWithSameName.find((row) => {
+      return normaliseName(getCountyValueFromObject(row)) === normalisedCountyName;
+    });
+
+    if (exactCountyMatch) return exactCountyMatch;
+  }
+
+  if (rowsWithSameName.length === 1) return rowsWithSameName[0];
+
+  console.warn(
+    `Multiple urban population rows found for "${urbanName}" but no county match was available. ` +
+    "Using the first row. Check the county field in urban-zones.geojson and urban-zone-data.csv."
+  );
+
+  return rowsWithSameName[0];
 }
 
 function loadCountyData() {
@@ -753,16 +838,37 @@ function loadUrbanData() {
     header: true,
     skipEmptyLines: true,
     complete: function (results) {
-      urbanData = {};
+      urbanData = {
+        byName: {},
+        byCountyKey: {}
+      };
+
       results.data.forEach((row) => {
-        const name = normaliseName(row.UrbanZone || row["Urban Zone"] || row.URBAN_AREA_NAME || row.Name || row.NAME);
-        if (name) urbanData[name] = row;
+        const name = getUrbanNameFromRow(row);
+        const county = getCountyValueFromObject(row);
+        const normalisedName = normaliseName(name);
+
+        if (!normalisedName) return;
+
+        if (!urbanData.byName[normalisedName]) {
+          urbanData.byName[normalisedName] = [];
+        }
+
+        urbanData.byName[normalisedName].push(row);
+
+        if (county) {
+          urbanData.byCountyKey[makeNameCountyKey(name, county)] = row;
+        }
       });
+
+      console.log("Urban population rows loaded:", results.data.length);
+      console.log("Urban population name keys loaded:", Object.keys(urbanData.byName).length);
+      console.log("Urban population name+county keys loaded:", Object.keys(urbanData.byCountyKey).length);
     }
   });
 }
 
-function getPopulationForBoundary(boundaryName) {
+function getPopulationForBoundary(boundaryName, boundaryLayerOrFeature) {
   if (currentBoundaryType === "county") {
     return getPopulationFromRow(findRowByNormalisedName(countyData, boundaryName));
   }
@@ -772,7 +878,9 @@ function getPopulationForBoundary(boundaryName) {
   }
 
   if (currentBoundaryType === "urban") {
-    return getPopulationFromRow(findRowByNormalisedName(urbanData, boundaryName));
+    const feature = getFeatureFromLayerOrFeature(boundaryLayerOrFeature);
+    const county = feature ? getCountyFromFeature(feature) : "";
+    return getPopulationFromRow(findUrbanRow(boundaryName, county));
   }
 
   return "";
@@ -809,7 +917,7 @@ function updateProfilePanel(boundaryName, boundaryLayer) {
     return churchIsInsideBoundaryLayer(church, boundaryLayer) && churchMatchesFilters(church);
   });
 
-  const populationValue = getPopulationForBoundary(boundaryName);
+  const populationValue = getPopulationForBoundary(boundaryName, boundaryLayer);
   const populationNumber = parsePopulationNumber(populationValue);
   const populationPerChurch =
     !Number.isNaN(populationNumber) && populationNumber > 0 && churchesInBoundary.length > 0
@@ -897,7 +1005,7 @@ function calculateGospelOpportunity(boundaryName, boundaryLayer) {
   });
 
   const churchCount = churchesInBoundary.length;
-  const populationValue = getPopulationForBoundary(boundaryName);
+  const populationValue = getPopulationForBoundary(boundaryName, boundaryLayer);
   const populationNumber = parsePopulationNumber(populationValue);
 
   let populationPerChurch = "";
@@ -972,8 +1080,10 @@ function refreshGospelOpportunityLayerStyles() {
 // URBAN OPPORTUNITY MARKERS
 // --------------------------------------------------
 
-function getPopulationForUrbanZone(urbanName) {
-  const data = findRowByNormalisedName(urbanData, urbanName);
+function getPopulationForUrbanZone(urbanName, urbanLayerOrFeature) {
+  const feature = getFeatureFromLayerOrFeature(urbanLayerOrFeature);
+  const county = feature ? getCountyFromFeature(feature) : "";
+  const data = findUrbanRow(urbanName, county);
   return getPopulationFromRow(data);
 }
 
@@ -1003,7 +1113,7 @@ function getClosestCountedChurchToPoint(point) {
 }
 
 function calculateUrbanOpportunity(urbanName, urbanLayer) {
-  const populationValue = getPopulationForUrbanZone(urbanName);
+  const populationValue = getPopulationForUrbanZone(urbanName, urbanLayer);
   const populationNumber = parsePopulationNumber(populationValue);
 
   const countedChurchesInside = allChurches.filter((church) => {
